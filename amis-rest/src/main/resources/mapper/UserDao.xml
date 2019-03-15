@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.UserDao" >
+
+    <select id="login" resultType="com.amis.entity.Users">
+        SELECT
+            u_id,
+            u_name,
+            u_gender,
+            u_phone,
+            u_picture,
+            coach_teaching_age,
+            coach_title,
+            tc_id,
+            u_role
+        FROM t_user
+        WHERE u_phone = #{u_phone}
+    </select>
+
+</mapper>

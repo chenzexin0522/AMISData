@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.TotalTrainDao" >
+
+    <insert id="insertTrain" parameterType="com.amis.entity.TotalTrain" useGeneratedKeys="true" keyProperty="tt_id">
+        insert into  total_train(
+          start_end_time,
+          total_number,
+          actual_number,
+          average_number,
+          train_duration,
+          u_id)
+        values (
+          #{start_end_time},
+          #{total_number},
+          #{actual_number},
+          #{average_number},
+          #{train_duration},
+          #{u_id})
+    </insert>
+
+    <insert id="insertAV" >
+        insert into  action_value(
+          av_set,
+          av_yes,
+          av_average,
+          at_id,
+          st_tt_id,
+          u_id)
+        values (
+          #{av_set},
+          #{av_yes},
+          #{av_average},
+          #{at_id},
+          #{st_tt_id},
+          #{u_id})
+    </insert>
+
+    <insert id="insertStudentTrain" parameterType="com.amis.entity.StudentTrain" useGeneratedKeys="true" keyProperty="st_id">
+        insert into  student_train(
+          start_end_time,
+          train_duration,
+          tt_id,
+          u_id)
+        values (
+          #{start_end_time},
+          #{train_duration},
+          #{tt_id},
+          #{u_id})
+    </insert>
+
+    <insert id="insertTrainDetailed" >
+        insert into  st_train_detailed(
+          std_id,
+          std_speed,
+          std_frequency,
+          std_Melody,
+          std_Fluency,
+          std_Power,
+          at_id,
+          st_id)
+        values (
+          #{std_id},
+          #{std_speed},
+          #{std_frequency},
+          #{std_Melody},
+          #{std_Fluency},
+          #{std_Power},
+          #{at_id},
+          #{st_id})
+
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,2 @@
+2019-03-11 11:02:27,509 [WARN ] [http-nio-8888-exec-1] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-11 11:49:21,542 [WARN ] [http-nio-8888-exec-3] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.

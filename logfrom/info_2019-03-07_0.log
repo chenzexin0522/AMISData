@@ -1,0 +1,46 @@
+2019-03-07 16:29:24,646 [INFO ] [main] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 7272 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-03-07 16:29:24,647 [INFO ] [main] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-03-07 16:29:25,936 [INFO ] [main] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-03-07 16:29:25,947 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-03-07 16:29:25,953 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-03-07 16:29:25,953 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-07 16:29:25,959 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-03-07 16:29:25,959 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-03-07 16:29:25,959 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-03-07 16:29:25,998 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-03-07 16:29:26,131 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-03-07 16:29:26,131 [INFO ] [main] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 1451 ms
+2019-03-07 16:29:26,710 [INFO ] [main] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-07 16:29:26,877 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-03-07 16:29:26,894 [INFO ] [main] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-03-07 16:29:26,896 [INFO ] [main] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 2.681 seconds (JVM running for 4.038)
+2019-03-07 16:33:25,587 [INFO ] [http-nio-8888-exec-2] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-07 16:33:25,587 [INFO ] [http-nio-8888-exec-2] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-03-07 16:33:25,591 [INFO ] [http-nio-8888-exec-2] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 4 ms
+2019-03-07 16:33:25,667 [INFO ] [http-nio-8888-exec-2] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - test - Starting...
+2019-03-07 16:33:25,669 [WARN ] [http-nio-8888-exec-2] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-07 16:33:26,083 [INFO ] [http-nio-8888-exec-2] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - test - Start completed.
+2019-03-07 16:34:19,506 [INFO ] [main] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 2828 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-03-07 16:34:19,507 [INFO ] [main] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-03-07 16:34:20,376 [INFO ] [main] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-03-07 16:34:20,386 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-03-07 16:34:20,392 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-03-07 16:34:20,392 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-07 16:34:20,397 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-03-07 16:34:20,398 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-03-07 16:34:20,398 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-03-07 16:34:20,401 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-03-07 16:34:20,514 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-03-07 16:34:20,514 [INFO ] [main] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 965 ms
+2019-03-07 16:34:20,872 [INFO ] [main] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-07 16:34:21,033 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-03-07 16:34:21,049 [INFO ] [main] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-03-07 16:34:21,051 [INFO ] [main] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 2.043 seconds (JVM running for 2.968)
+2019-03-07 16:34:26,108 [INFO ] [http-nio-8888-exec-3] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-07 16:34:26,109 [INFO ] [http-nio-8888-exec-3] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-03-07 16:34:26,115 [INFO ] [http-nio-8888-exec-3] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 6 ms
+2019-03-07 16:34:26,182 [INFO ] [http-nio-8888-exec-3] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - test - Starting...
+2019-03-07 16:34:26,183 [WARN ] [http-nio-8888-exec-3] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-07 16:34:26,250 [INFO ] [http-nio-8888-exec-3] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - test - Start completed.
+2019-03-07 16:42:29,914 [WARN ] [http-nio-8888-exec-2] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.amis.common.ResponseVO com.amis.controller.user.UserController.getUser(com.amis.entity.Users) throws java.lang.Exception]
+2019-03-07 16:42:55,645 [WARN ] [http-nio-8888-exec-9] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.amis.common.ResponseVO com.amis.controller.user.UserController.getUser(com.amis.entity.Users) throws java.lang.Exception]

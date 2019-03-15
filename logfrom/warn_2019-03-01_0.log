@@ -1,0 +1,151 @@
+2019-03-01 10:09:29,810 [WARN ] [http-nio-8888-exec-5] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 11:20:26,693 [WARN ] [http-nio-8888-exec-3] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(javax.servlet.http.HttpServletRequest,com.amis.entity.Users) throws java.lang.Exception]
+2019-03-01 11:21:36,877 [WARN ] [http-nio-8888-exec-6] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(javax.servlet.http.HttpServletRequest,com.amis.entity.Users) throws java.lang.Exception]
+2019-03-01 11:28:07,897 [WARN ] [http-nio-8888-exec-2] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(com.amis.entity.Users) throws java.lang.Exception]
+2019-03-01 11:28:38,437 [WARN ] [http-nio-8888-exec-1] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(com.amis.entity.Users)]
+2019-03-01 11:34:01,958 [WARN ] [http-nio-8888-exec-2] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(com.amis.entity.Users)]
+2019-03-01 11:36:47,536 [WARN ] [http-nio-8888-exec-2] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(com.amis.entity.Users)]
+2019-03-01 11:43:31,151 [WARN ] [http-nio-8888-exec-4] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(com.amis.entity.Users)]
+2019-03-01 11:58:51,611 [WARN ] [http-nio-8888-exec-2] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public boolean com.amis.controller.user.UserController.setUser(com.amis.entity.Users)]
+2019-03-01 12:09:19,580 [WARN ] [http-nio-8888-exec-2] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=--------------------------117748132943902324490261;charset=UTF-8' not supported]
+2019-03-01 12:12:10,591 [WARN ] [http-nio-8888-exec-5] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=--------------------------348646633742814163638268;charset=UTF-8' not supported]
+2019-03-01 12:13:19,632 [WARN ] [http-nio-8888-exec-8] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=--------------------------675095422804878235484685;charset=UTF-8' not supported]
+2019-03-01 12:13:27,809 [WARN ] [http-nio-8888-exec-9] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'multipart/form-data;boundary=--------------------------818899111312203227832298;charset=UTF-8' not supported]
+2019-03-01 13:45:37,089 [WARN ] [http-nio-8888-exec-1] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (PushbackInputStream); line: 3, column: 3]]
+2019-03-01 13:48:13,705 [WARN ] [http-nio-8888-exec-5] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 13:52:30,019 [WARN ] [http-nio-8888-exec-1] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 14:03:21,901 [WARN ] [http-nio-8888-exec-1] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 14:05:54,380 [ERROR] [http-nio-8888-exec-2] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.amis.dao.UserDao.deleteUser] with root cause
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.amis.dao.UserDao.deleteUser
+	at org.apache.ibatis.binding.MapperMethod$SqlCommand.<init>(MapperMethod.java:227)
+	at org.apache.ibatis.binding.MapperMethod.<init>(MapperMethod.java:49)
+	at org.apache.ibatis.binding.MapperProxy.cachedMapperMethod(MapperProxy.java:65)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58)
+	at com.sun.proxy.$Proxy58.deleteUser(Unknown Source)
+	at com.amis.service.impl.UserServiceImpl.deleteUser(UserServiceImpl.java:27)
+	at com.amis.controller.user.UserController.deleteUser(UserController.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-03-01 14:06:31,598 [WARN ] [http-nio-8888-exec-2] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 14:17:20,043 [ERROR] [http-nio-8888-exec-1] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.amis.dao.UserDao.update] with root cause
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.amis.dao.UserDao.update
+	at org.apache.ibatis.binding.MapperMethod$SqlCommand.<init>(MapperMethod.java:227)
+	at org.apache.ibatis.binding.MapperMethod.<init>(MapperMethod.java:49)
+	at org.apache.ibatis.binding.MapperProxy.cachedMapperMethod(MapperProxy.java:65)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:58)
+	at com.sun.proxy.$Proxy58.update(Unknown Source)
+	at com.amis.service.impl.UserServiceImpl.update(UserServiceImpl.java:33)
+	at com.amis.controller.user.UserController.updateUser(UserController.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-03-01 14:18:22,826 [WARN ] [http-nio-8888-exec-4] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 14:24:16,796 [WARN ] [test housekeeper] - com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run[HikariPool.java:766] - test - Thread starvation or clock leap detected (housekeeper delta=2m53s806ms299µs700ns).
+2019-03-01 17:17:15,535 [WARN ] [http-nio-8888-exec-2] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 17:30:42,852 [WARN ] [http-nio-8888-exec-1] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-01 17:34:04,913 [WARN ] [http-nio-8888-exec-7] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "1(125)(125)true"]
+2019-03-01 17:34:25,496 [WARN ] [http-nio-8888-exec-4] - org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.logException[AbstractHandlerExceptionResolver.java:197] - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "125125true"]
