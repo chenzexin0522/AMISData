@@ -30,7 +30,7 @@ public class RestControllerAdvice {
     @ExceptionHandler(value = Exception.class)
     public Map errorHandler(HttpServletRequest request, Exception ex) throws AmisException {
         Map<String, Object> map = new HashMap();
-        map.put("result", MessageKey.SYSTEM_ERROR);
+        map.put("resultCode", MessageKey.SYSTEM_ERROR);
         map.put("message", AmisTools.getMessageByKey(MessageKey.SYSTEM_ERROR));
         logger(request, ex, map);
         return map;
@@ -44,7 +44,7 @@ public class RestControllerAdvice {
     public Map errorHandler(HttpServletRequest request, HttpMessageNotReadableException ex) throws AmisException {
         Map<String, Object> map = new HashMap();
         log.error("================================ip============RestControllerAdvice" +request.getRemoteAddr());
-        map.put("result", MessageKey.REQUEST_EXCEPTIONS_OR_PARAMETER_ERROR);
+        map.put("resultCode", MessageKey.REQUEST_EXCEPTIONS_OR_PARAMETER_ERROR);
         map.put("message", AmisTools.getMessageByKey(MessageKey.REQUEST_EXCEPTIONS_OR_PARAMETER_ERROR));
         logger(request, ex, map);
         return map;
@@ -57,7 +57,7 @@ public class RestControllerAdvice {
     @ExceptionHandler(value = AmisException.class)
     public Map errorHandler(HttpServletRequest request, AmisException ax) {
         Map<String, Object> map = new HashMap();
-        map.put("result", ax.getResult());
+        map.put("resultCode", ax.getResultCode());
         map.put("message", ax.getMessage());
         logger(request, ax, map);
         return map;

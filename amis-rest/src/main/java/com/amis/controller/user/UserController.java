@@ -45,18 +45,50 @@ public class UserController {
      * @Date 2019/3/11 13:43
      * @param users
      * @return com.amis.common.ResponseVO
-     * @Description      登录
+     * @Description      验证码登录
      **/
     @RequestMapping(value = "userlogin",method = RequestMethod.POST)
     public ResponseVO userlogin(@RequestBody Users users) throws Exception{
         if (users == null || StringUtils.isBlank(users.getU_phone())) {
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        Users resultUser = userService.login(users.getU_phone());
-        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(resultUser);
-        return responseVO;
+        return userService.login(users);
     }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/15 15:15
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description      账号密码登录
+     **/
+    @RequestMapping(value = "usercplogin",method = RequestMethod.POST)
+    public ResponseVO usercplogin(@RequestBody Users users) throws Exception {
+        if (users == null || StringUtils.isBlank(users.getU_phone()) || StringUtils.isBlank(users.getU_password())) {
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return userService.cplogin(users);
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/15 17:42
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description        用户注册
+     **/
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public ResponseVO register(@RequestBody Users users)throws Exception{
+        if (users == null || StringUtils.isBlank(users.getU_name())
+                || StringUtils.isBlank(users.getU_password())
+                || StringUtils.isBlank(users.getU_phone())
+                || StringUtils.isBlank(users.getU_gender())){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return userService.register(users);
+    }
+
+
 
 
 }

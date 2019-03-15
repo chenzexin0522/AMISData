@@ -7,4 +7,6 @@ public interface MessageKey {
     String REQUEST_EXCEPTIONS_OR_PARAMETER_ERROR = "1002";
     String PARAMETER_ERROR = "1003";
     String INSERT_FAIL= "1004";
+    String PHOME_NUMBER_OR_PASSWORD_ERROR = "1005";
+    String PHOME_NUMBER_EXISTENCE = "1006";
 }

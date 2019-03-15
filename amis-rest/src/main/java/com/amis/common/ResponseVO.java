@@ -19,22 +19,22 @@ public class ResponseVO implements Serializable {
 
     private static final String RETURN_OK = "0000";
 
-    private String result;
+    private String resultCode;
     private String message;
     private Object data;
 
     public ResponseVO() {
-        this.result = RETURN_OK;
+        this.resultCode = RETURN_OK;
         this.message = getMessageByKey(RETURN_OK);
     }
 
     public ResponseVO(String messageKey) {
-        this.result = messageKey;
+        this.resultCode = messageKey;
         this.message = getMessageByKey(messageKey);
     }
 
     public ResponseVO(String messageKey, String language) {
-        this.result = messageKey;
+        this.resultCode = messageKey;
         this.message = getMessageByKey(messageKey,language);
     }
 

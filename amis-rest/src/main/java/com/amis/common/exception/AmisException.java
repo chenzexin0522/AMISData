@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class AmisException extends Exception implements Serializable {
 
     private static final long serialVersionUID = -3981092309290166672L;
-    private String result;
+    private String resultCode;
     private MessageKey resultMessage;
 
     /*
@@ -29,7 +29,7 @@ public class AmisException extends Exception implements Serializable {
      */
     public AmisException(String messageKey) {
         super(AmisTools.getMessageByKey(messageKey));
-        this.setResult(messageKey);
+        this.setResultCode(messageKey);
     }
 
 
@@ -41,7 +41,7 @@ public class AmisException extends Exception implements Serializable {
      */
     public AmisException(String result, String message) {
         super(message);
-        this.setResult(result);
+        this.setResultCode(result);
     }
 
 
@@ -54,7 +54,7 @@ public class AmisException extends Exception implements Serializable {
      */
     public AmisException(Exception e, String result, String message) {
         super(message, e);
-        this.setResult(result);
+        this.setResultCode(result);
     }
 
     /**
@@ -65,6 +65,6 @@ public class AmisException extends Exception implements Serializable {
      */
     public AmisException(String messageKey, Object... message) {
         super(String.format(AmisTools.getMessageByKey(messageKey), message));
-        this.setResult(messageKey);
+        this.setResultCode(messageKey);
     }
 }

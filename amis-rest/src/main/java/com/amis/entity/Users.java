@@ -13,6 +13,7 @@ public class Users implements Serializable {
     private String u_name;
     private String u_gender;
     private String u_phone;
+    private String u_password;
     private String u_picture;
     private int coach_teaching_age;     //教练教龄
     private String coach_title;         //教练称号
