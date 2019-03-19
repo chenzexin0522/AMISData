@@ -6,14 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserDao {
 
-    /**
-     * @Author chenzexin
-     * @Date 2019/3/15 15:58
-     * @param u_phone
-     * @return com.amis.entity.Users
-     * @Description        手机短信验证登录
-     **/
-    Users login(String u_phone);
 
     /**
      * @Author chenzexin
@@ -42,6 +34,33 @@ public interface UserDao {
      * @Description        根据手机号码查询
      **/
     Users findByPhone(String u_phone);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/17 12:08
+     * @param users
+     * @return int
+     * @Description        修改用户基本信息
+     **/
+    int updateUser(Users users);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/18 10:13
+     * @param users
+     * @return int
+     * @Description        删除用户
+     **/
+    int deleteUser(Users users);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/18 16:52
+     * @param users
+     * @return int
+     * @Description        修改密码
+     **/
+    int forgetPassword(Users users);
 
 
 }

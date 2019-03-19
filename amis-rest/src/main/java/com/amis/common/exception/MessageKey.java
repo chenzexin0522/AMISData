@@ -9,4 +9,6 @@ public interface MessageKey {
     String INSERT_FAIL= "1004";
     String PHOME_NUMBER_OR_PASSWORD_ERROR = "1005";
     String PHOME_NUMBER_EXISTENCE = "1006";
+    String DB_OPERATIONE_FAIL="1007";
+    String VERCODE_NON_EXISTENT="1008";
 }
