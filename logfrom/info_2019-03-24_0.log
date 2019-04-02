@@ -1,0 +1,22 @@
+2019-03-24 18:02:23,384 [INFO ] [main] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 9440 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-03-24 18:02:23,386 [INFO ] [main] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-03-24 18:02:24,972 [INFO ] [main] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-03-24 18:02:24,993 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-03-24 18:02:25,009 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-03-24 18:02:25,010 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-24 18:02:25,027 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-03-24 18:02:25,028 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-03-24 18:02:25,028 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-03-24 18:02:25,125 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-03-24 18:02:25,299 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-03-24 18:02:25,299 [INFO ] [main] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 1810 ms
+2019-03-24 18:02:26,408 [INFO ] [main] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-24 18:02:26,718 [INFO ] [main] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-03-24 18:02:26,738 [INFO ] [main] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-03-24 18:02:26,741 [INFO ] [main] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 4.33 seconds (JVM running for 6.137)
+2019-03-24 18:03:50,756 [INFO ] [http-nio-8888-exec-4] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-24 18:03:50,756 [INFO ] [http-nio-8888-exec-4] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-03-24 18:03:50,767 [INFO ] [http-nio-8888-exec-4] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 11 ms
+2019-03-24 18:03:52,973 [INFO ] [http-nio-8888-exec-4] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-03-24 18:03:52,974 [WARN ] [http-nio-8888-exec-4] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-03-24 18:03:53,283 [INFO ] [http-nio-8888-exec-4] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.

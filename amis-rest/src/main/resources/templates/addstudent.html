@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>后台登录</title>
+    <!-- for-mobile-apps -->
+
+    <!-- //for-mobile-apps -->
+    <link rel="stylesheet" href="/styeCss/addclass.css" />
+
+</head>
+<body>
+<!-- main -->
+<div class="main">
+    <h1>
+        AIMS-添加学生
+    </h1>
+    <form>
+        <input type="text" value="学生昵称" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校昵称';}"
+               required="">
+        <input type="text" value="学生班级" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校学生数';}"
+               required="">
+        <input type="text" value="学生手机号" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校教练数';}"
+               required="">
+        <input type="text" value="学生mac" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校位置';}"
+               required="">
+        <input type="submit" value="保存">
+    </form>
+</div>
+<!-- //main -->
+</body>
+</html>

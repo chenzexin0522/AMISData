@@ -1,0 +1,18 @@
+2019-03-30 17:11:48,931 [ERROR] [main] - org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter.report[LoggingFailureAnalysisReporter.java:42] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field adminService in com.amis.controller.admin.AdminController required a bean of type 'com.amis.service.AdminService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.amis.service.AdminService' in your configuration.
+

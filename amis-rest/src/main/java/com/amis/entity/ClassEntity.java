@@ -15,4 +15,5 @@ public class ClassEntity {
     private int tc_id;
     private String tc_name;     //班级名称
     private int tc_number;      //班级人数
+    private int s_id;      //班级人数
 }

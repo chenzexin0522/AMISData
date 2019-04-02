@@ -1,7 +1,12 @@
 package com.amis.dao;
 
 import com.amis.entity.ClassEntity;
+import com.amis.entity.dto.SelectClassDTO;
+import com.amis.entity.dto.SelectCoachDTO;
+import com.amis.entity.dto.SelectStudentDTO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @InterfaceName SelectClassDao
@@ -11,5 +16,11 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface SelectClassDao {
-    ClassEntity selectClass(String u_id);
+    List<SelectClassDTO> selectClass(int s_id);
+
+    List<SelectCoachDTO> selectCoach(int s_id);
+
+    List<SelectClassDTO> coachSelectClass(int u_id);
+
+    List<SelectStudentDTO> selectStudent(int tc_id);
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>AIMS首页</title>
+		<link rel="stylesheet" href="/styeCss/page.css" />
+
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/index.js" ></script>
+
+		<style>
+
+			.content{
+				margin-top: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="left">
+			<div class="bigTitle">AIMS后台管理系统</div>
+			<div class="lines">
+				<div onclick="pageClick('addedition')" ><img src="img/icon-1.png" />AIMS首页</div>
+				<div onclick="pageClick('updateedition')"  ><img src="img/icon-1.png" />学校管理</div>
+				<div onclick="pageClick('studenttable')" ><img src="img/icon-1.png" />学生管理</div>
+				<div onclick="pageClick('traintable')" ><img src="img/icon-1.png" />教练管理</div>
+				<div onclick="pageClick('elmtable')" ><img src="img/icon-1.png" />设备管理</div>
+				<div onclick="pageClick('editiontable')" class="active"><img src="img/icon-1.png" />版本管理</div>
+			</div>
+		</div>
+		<div class="top">
+			<div class="leftTiyle" id="flTitle">版本管理</div>
+			<div class="thisUser">当前用户：AIMS</div>
+		</div>
+		<div class="content">
+				<iframe  src="tables" style="width: 100%;height: 650px;border: hidden;"></iframe>
+		</div>
+		
+		<script>
+			function pageClick(url) {
+				$("iframe").attr("src",url)
+			}
+		</script>
+	</body>
+	
+	
+
+</html>

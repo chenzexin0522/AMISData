@@ -5,8 +5,9 @@ import com.amis.common.ResponseVO;
 import com.amis.entity.PhoneCode;
 import com.amis.entity.UserPhoneCode;
 import com.amis.entity.Users;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface UserService {
 
 
@@ -82,5 +83,23 @@ public interface UserService {
      * @Description        验证验证码
      **/
     ResponseVO checkverCode(PhoneCode phoneCode)throws Exception;
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/19 14:06
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description        修改手机号码
+     **/
+    ResponseVO updatePhone(UserPhoneCode userPhoneCode)throws Exception;
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/19 16:00
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description        修改密码
+     **/
+    ResponseVO updatePassword(Users users)throws Exception;
 
 }

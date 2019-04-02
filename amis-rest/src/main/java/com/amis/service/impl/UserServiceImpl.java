@@ -4,6 +4,7 @@ import com.amis.common.ResponseVO;
 import com.amis.common.aliyuncsCode.GetCode;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
+import com.amis.common.utils.BasePicture;
 import com.amis.dao.PhoneCodeDao;
 import com.amis.dao.UserDao;
 import com.amis.entity.PhoneCode;
@@ -37,6 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseVO register(Users users) throws Exception {
+        String smgName = BasePicture.GenerateImage(users.getU_picture(),users.getU_phone());
+        users.setU_picture(smgName);
         Users findUserPhone = findByPhone(users.getU_phone());
         if (findUserPhone != null){
             throw new AmisException(MessageKey.PHOME_NUMBER_EXISTENCE);
@@ -127,6 +130,44 @@ public class UserServiceImpl implements UserService {
         if (phoneCode1 == null || StringUtils.isBlank(phoneCode1.getP_verCode())
                 || StringUtils.isBlank(phoneCode1.getP_phone())){
             throw new AmisException(MessageKey.VERCODE_NON_EXISTENT);
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+    @Override
+    public ResponseVO updatePhone(UserPhoneCode userPhoneCode) throws Exception {
+        Users users = new Users();
+        users.setU_id(userPhoneCode.getId());
+        users.setU_phone(userPhoneCode.getNewPhone());
+        PhoneCode newphoneCode = new PhoneCode();
+        newphoneCode.setP_phone(userPhoneCode.getPhone());
+        newphoneCode.setP_verCode(userPhoneCode.getVerCode());
+        PhoneCode oldphoneCode = new PhoneCode();
+        oldphoneCode.setP_phone(userPhoneCode.getNewPhone());
+        oldphoneCode.setP_verCode(userPhoneCode.getNewverCode());
+        int os = userDao.updatePhone(users);
+        if (os == 0){
+            throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
+        }
+        int is = phoneCodeDao.deletePhoneAndCode(oldphoneCode);
+        int as = phoneCodeDao.deletePhoneAndCode(newphoneCode);
+        if (is == 0 || as == 0){
+            throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+    @Override
+    public ResponseVO updatePassword(Users users) throws Exception {
+        Users users1 = userDao.selectIdPassword(users);
+        if (users1 == null){
+            throw new AmisException(MessageKey.OLD_PASSWORD_ERROR);
+        }
+        int is = userDao.updatePassword(users);
+        if (is == 0){
+            throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;

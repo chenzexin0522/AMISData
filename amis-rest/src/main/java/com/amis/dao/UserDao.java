@@ -58,9 +58,36 @@ public interface UserDao {
      * @Date 2019/3/18 16:52
      * @param users
      * @return int
-     * @Description        修改密码
+     * @Description        忘记密码
      **/
     int forgetPassword(Users users);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/19 14:02
+     * @param users
+     * @return int
+     * @Description        修改手机号码
+     **/
+    int updatePhone(Users users);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/19 16:04
+     * @param users
+     * @return int
+     * @Description        修改密码
+     **/
+    int updatePassword(Users users);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/3/19 16:07
+     * @param users
+     * @return com.amis.entity.Users
+     * @Description        根据id和密码查询用户是否存在
+     **/
+    Users selectIdPassword(Users users);
 
 
 }

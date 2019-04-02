@@ -11,4 +11,5 @@ public interface MessageKey {
     String PHOME_NUMBER_EXISTENCE = "1006";
     String DB_OPERATIONE_FAIL="1007";
     String VERCODE_NON_EXISTENT="1008";
+    String OLD_PASSWORD_ERROR="1009";
 }

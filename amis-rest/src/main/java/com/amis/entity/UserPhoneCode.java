@@ -10,7 +10,11 @@ import lombok.Data;
  **/
 @Data
 public class UserPhoneCode {
+    int id;
     String phone;
+    String newPhone;
+    String VerCode;
+    String newverCode;
     String newPassword;
-    String verCode;
+
 }
