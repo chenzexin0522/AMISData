@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.UserDao" >
+
+    <select id="findByPhone" resultType="com.amis.entity.Users">
+        SELECT
+            u_id,
+            u_name,
+            u_gender,
+            u_phone,
+            u_picture,
+            coach_teaching_age,
+            coach_title,
+            u_role
+        FROM tab_user
+        WHERE u_phone = #{u_phone}
+    </select>
+
+    <select id="cplogin" resultType="com.amis.entity.Users">
+            SELECT
+              u_id,
+              u_name,
+              u_gender,
+              u_phone,
+              u_picture,
+              coach_teaching_age,
+              coach_title,
+              u_role
+            FROM tab_user
+            WHERE u_phone = #{u_phone} AND u_password = #{u_password}
+    </select>
+
+
+    <insert id="register" >
+        insert into  tab_user(
+          u_name,
+          u_gender,
+          u_phone,
+          u_password,
+          u_picture,
+          u_role)
+        values (
+          #{u_name},
+          #{u_gender},
+          #{u_phone},
+          #{u_password},
+          #{u_picture},
+          #{u_role})
+    </insert>
+
+    <update id="updateUser">
+        UPDATE tab_user
+        <set>
+            <if test="u_name != null and u_name != ''">
+                    u_name = #{u_name},
+            </if>
+            <if test="u_gender != null and u_gender != ''">
+                u_gender = #{u_gender},
+            </if>
+            <if test="u_picture != null and u_picture != ''">
+                u_picture = #{u_picture},
+            </if>
+            <if test="u_role != null and u_role != '' and u_role == 1">
+                coach_title = #{coach_title}
+            </if>
+        </set>
+        <where>
+            u_id = #{u_id}
+        </where>
+    </update>
+
+    <delete id="deleteUser">
+        delete from tab_user
+        where u_id=#{u_id}
+    </delete>
+
+    <insert id="insertPhoneCode" >
+        insert into  tab_phoneCode(
+          p_phone,
+          p_verCode)
+        values (
+          #{p_phone},
+          #{p_verCode})
+    </insert>
+
+    <update id="forgetPassword">
+        UPDATE tab_user
+        <set>
+            <if test="u_password != null and u_password != ''">
+                u_password = #{u_password}
+            </if>
+        </set>
+        <where>
+            u_phone = #{u_phone}
+        </where>
+    </update>
+
+    <update id="updatePhone">
+        UPDATE tab_user
+        <set>
+            <if test="u_phone != null and u_phone != ''">
+                u_phone = #{u_phone}
+            </if>
+        </set>
+        <where>
+            u_id = #{u_id}
+        </where>
+    </update>
+    
+    <select id="selectIdPassword" resultType="com.amis.entity.Users">
+            SELECT
+              u_id,
+              u_name,
+              u_gender,
+              u_phone,
+              u_picture,
+              coach_teaching_age,
+              coach_title,
+              tc_id,
+              u_role
+            FROM tab_user
+            WHERE u_id = #{u_id} AND u_password = #{u_password}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE tab_user
+        <set>
+            <if test="u_password != null and u_password != ''">
+                u_password = #{newPassword}
+            </if>
+        </set>
+        <where>
+            u_id = #{u_id}
+        </where>
+    </update>
+
+
+</mapper>

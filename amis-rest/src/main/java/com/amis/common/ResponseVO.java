@@ -22,6 +22,7 @@ public class ResponseVO implements Serializable {
     private String resultCode;
     private String message;
     private Object data;
+    private int id;
 
     public ResponseVO() {
         this.resultCode = RETURN_OK;

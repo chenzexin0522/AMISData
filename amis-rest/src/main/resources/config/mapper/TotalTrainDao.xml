@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.TotalTrainDao" >
+
+    <insert id="insertTrain" parameterType="com.amis.entity.TotalTrain" useGeneratedKeys="true" keyProperty="tt_id">
+        insert into  tab_total_train(
+          train_duration,
+          action_set_one,
+          action_set_two,
+          action_set_three,
+          action_set_four,
+          tc_id,
+          train_state,
+          u_id)
+        values (
+          #{train_duration},
+          #{action_set_one},
+          #{action_set_two},
+          #{action_set_three},
+          #{action_set_four},
+          #{tc_id},
+          1,
+          #{u_id})
+    </insert>
+
+
+  <insert id="insertTabResultList">
+    INSERT INTO tab_result
+    (
+    tc_id,
+     te_id,
+     uc_id,
+     tt_id,
+     action_actual_one,
+     action_actual_two,
+     action_actual_three,
+     action_actual_four,
+     action_one_speed,
+     action_one_frequency,
+     action_one_melody,
+     action_one_fluency,
+     action_one_power,
+    action_two_speed,
+    action_two_frequency,
+    action_two_melody,
+    action_two_fluency,
+    action_two_power,
+    action_three_speed,
+    action_three_frequency,
+    action_three_melody,
+    action_three_fluency,
+    action_three_power,
+    action_four_speed,
+    action_four_frequency,
+    action_four_melody,
+    action_four_fluency,
+    action_four_power
+     )
+    VALUES
+    <foreach collection ="list" item="item" separator =",">
+      (
+      #{item.tc_id},
+      #{item.te_id},
+      #{item.uc_id},
+      #{item.tt_id},
+      #{item.action_actual_one},
+      #{item.action_actual_two},
+      #{item.action_actual_three},
+      #{item.action_actual_four},
+      #{item.action_one_speed},
+      #{item.action_one_frequency},
+      #{item.action_one_melody},
+      #{item.action_one_fluency},
+      #{item.action_one_power},
+      #{item.action_two_speed},
+      #{item.action_two_frequency},
+      #{item.action_two_melody},
+      #{item.action_two_fluency},
+      #{item.action_two_power},
+      #{item.action_three_speed},
+      #{item.action_three_frequency},
+      #{item.action_three_melody},
+      #{item.action_three_fluency},
+      #{item.action_three_power},
+      #{item.action_four_speed},
+      #{item.action_four_frequency},
+      #{item.action_four_melody},
+      #{item.action_four_fluency},
+      #{item.action_four_power}
+       )
+    </foreach >
+  </insert>
+
+
+    <update id="updateTrainType">
+        UPDATE tab_total_train
+        <set>
+            train_state = 2,
+            start_time = #{start_time},
+            end_time = #{end_time},
+            avg_duration = #{avg_duration}
+        </set>
+        <where>
+            tt_id = #{tt_id}
+        </where>
+    </update>
+
+
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.SelectClassDao" >
+
+    <resultMap id="selectClassList" type="com.amis.entity.dto.SelectClassDTO">
+        <result column="tc_id" property="tc_id" />
+        <result column="tc_name" property="tc_name" />
+        <result column="tc_number" property="tc_number" />
+    </resultMap>
+
+    <select id="selectClass"  resultMap="selectClassList">
+        SELECT
+            tc_id,
+            tc_name,
+            tc_number
+        FROM tab_class
+        WHERE s_id = #{s_id}
+    </select>
+
+
+    <resultMap id="selectCoachList" type="com.amis.entity.dto.SelectCoachDTO">
+        <result column="u_id" property="u_id" />
+        <result column="u_name" property="u_name" />
+        <result column="u_gender" property="u_gender" />
+        <result column="u_phone" property="u_phone" />
+        <result column="u_password" property="u_password" />
+        <result column="u_picture" property="u_picture" />
+        <result column="coach_teaching_age" property="coach_teaching_age" />
+        <result column="coach_title" property="coach_title" />
+        <result column="u_autograph" property="u_autograph" />
+        <result column="uuid" property="uuid" />
+        <result column="u_role" property="u_role" />
+    </resultMap>
+
+    <select id="selectCoach"  resultMap="selectCoachList">
+        SELECT
+            u_id,
+            u_name,
+            u_gender,
+            u_picture,
+            u_phone,
+            coach_teaching_age,
+            coach_title,
+            u_autograph,
+            uuid,
+            u_role
+        FROM tab_user
+        WHERE s_id = #{s_id}
+    </select>
+
+    <select id="coachSelectClass"  resultMap="selectClassList">
+SELECT tc.tc_id,tc.tc_name,COUNT(tus.uc_id) from tab_class tc LEFT JOIN tab_coach_class tcc ON tc.tc_id = tcc.tc_id
+LEFT JOIN tab_uc_student tus ON tus.tc_id = tc.tc_id WHERE tcc.u_id = #{u_id} GROUP BY tc.tc_id
+    </select>
+
+
+    <resultMap id="selectStudentList" type="com.amis.entity.dto.SelectStudentDTO">
+        <result column="uc_id" property="uc_id" />
+        <result column="uc_name" property="uc_name" />
+        <result column="uc_gender" property="uc_gender" />
+        <result column="uc_phone" property="uc_phone" />
+        <result column="uc_picture" property="uc_picture" />
+        <result column="uc_autograph" property="uc_autograph" />
+        <result column="uuid" property="uuid" />
+        <result column="eq_mac" property="eq_mac" />
+        <result column="u_role" property="u_role" />
+    </resultMap>
+
+    <select id="selectStudent"  resultMap="selectStudentList">
+        SELECT
+            uc_id,
+            uc_name,
+            uc_gender,
+            uc_picture,
+            uc_phone,
+            uc_autograph,
+            uuid,
+            eq_mac,
+            u_role
+        FROM tab_uc_student
+        WHERE tc_id = #{tc_id}
+    </select>
+</mapper>

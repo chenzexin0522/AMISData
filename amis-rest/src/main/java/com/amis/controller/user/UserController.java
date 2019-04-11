@@ -48,7 +48,7 @@ public class UserController {
      **/
     @RequestMapping(value = "verCodeLogin",method = RequestMethod.POST)
     public ResponseVO verCodeLogin(@RequestBody PhoneCode phoneCode) throws Exception{
-        if (phoneCode == null || StringUtils.isBlank(phoneCode.getP_phone())
+        if ( StringUtils.isBlank(phoneCode.getP_phone())
             || StringUtils.isBlank(phoneCode.getP_verCode())) {
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }

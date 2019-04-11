@@ -1,0 +1,247 @@
+2019-04-07 00:16:28,721 [WARN ] [amis housekeeper] - com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run[HikariPool.java:766] - amis - Thread starvation or clock leap detected (housekeeper delta=29m11s578ms645µs100ns).
+2019-04-07 00:26:33,376 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 30688 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 00:26:33,379 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 00:26:33,441 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-07 00:26:33,441 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-07 00:26:35,835 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 00:26:35,857 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 00:26:35,871 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 00:26:35,872 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 00:26:35,883 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 00:26:35,883 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 00:26:35,884 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 00:26:35,890 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 00:26:36,157 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 00:26:36,158 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 2717 ms
+2019-04-07 00:26:37,064 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 00:26:37,295 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 00:26:37,589 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 00:26:37,673 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 00:26:37,720 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 00:26:37,725 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 5.148 seconds (JVM running for 6.953)
+2019-04-07 00:27:00,203 [INFO ] [http-nio-8888-exec-1] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-07 00:27:00,204 [INFO ] [http-nio-8888-exec-1] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-04-07 00:27:00,210 [INFO ] [http-nio-8888-exec-1] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 6 ms
+2019-04-07 00:27:00,312 [INFO ] [http-nio-8888-exec-1] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-04-07 00:27:00,314 [WARN ] [http-nio-8888-exec-1] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-04-07 00:27:00,397 [INFO ] [http-nio-8888-exec-1] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.
+2019-04-07 01:09:49,647 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 27760 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:09:49,649 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:09:49,695 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-07 01:09:49,696 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-07 01:11:20,628 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 30572 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:11:20,629 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:11:20,677 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-07 01:11:20,678 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-07 01:11:21,912 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 01:11:21,925 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:11:21,934 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 01:11:21,934 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 01:11:21,941 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 01:11:21,942 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 01:11:21,942 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 01:11:21,945 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 01:11:22,106 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 01:11:22,107 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 1429 ms
+2019-04-07 01:11:22,662 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:11:22,791 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 01:11:22,945 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 01:11:23,015 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:11:23,059 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 01:11:23,066 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 3.053 seconds (JVM running for 4.192)
+2019-04-07 01:12:08,696 [INFO ] [http-nio-8888-exec-1] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-07 01:12:08,696 [INFO ] [http-nio-8888-exec-1] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-04-07 01:12:08,701 [INFO ] [http-nio-8888-exec-1] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 5 ms
+2019-04-07 01:12:18,404 [INFO ] [http-nio-8888-exec-3] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-04-07 01:12:18,406 [WARN ] [http-nio-8888-exec-3] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-04-07 01:12:18,503 [INFO ] [http-nio-8888-exec-3] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.
+2019-04-07 01:19:03,782 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 25192 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:19:03,784 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:19:03,833 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-07 01:19:03,833 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-07 01:19:05,120 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 01:19:05,132 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:19:05,150 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 01:19:05,150 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 01:19:05,160 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 01:19:05,160 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 01:19:05,161 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 01:19:05,165 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 01:19:05,373 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 01:19:05,373 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 1539 ms
+2019-04-07 01:19:06,085 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:19:06,227 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 01:19:06,382 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 01:19:06,425 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:19:06,444 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 01:19:06,447 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 3.264 seconds (JVM running for 4.339)
+2019-04-07 01:19:11,802 [INFO ] [http-nio-8888-exec-2] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-07 01:19:11,802 [INFO ] [http-nio-8888-exec-2] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-04-07 01:19:11,808 [INFO ] [http-nio-8888-exec-2] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 5 ms
+2019-04-07 01:19:11,881 [INFO ] [http-nio-8888-exec-2] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-04-07 01:19:11,882 [WARN ] [http-nio-8888-exec-2] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-04-07 01:19:11,951 [INFO ] [http-nio-8888-exec-2] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.
+2019-04-07 01:24:23,506 [INFO ] [Thread-10] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown[ExecutorConfigurationSupport.java:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:24:23,508 [INFO ] [Thread-10] - com.zaxxer.hikari.HikariDataSource.close[HikariDataSource.java:350] - amis - Shutdown initiated...
+2019-04-07 01:24:23,520 [INFO ] [Thread-10] - com.zaxxer.hikari.HikariDataSource.close[HikariDataSource.java:352] - amis - Shutdown completed.
+2019-04-07 01:24:24,259 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 25192 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:24:24,260 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:24:25,155 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 01:24:25,156 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:24:25,157 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 01:24:25,157 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 01:24:25,158 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 01:24:25,158 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 01:24:25,159 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 01:24:25,159 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 01:24:25,283 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 01:24:25,284 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 1019 ms
+2019-04-07 01:24:25,604 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:24:25,698 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 01:24:25,826 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 01:24:25,870 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:24:25,877 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 01:24:25,878 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 1.666 seconds (JVM running for 323.771)
+2019-04-07 01:24:25,887 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener.onApplicationEvent[ConditionEvaluationDeltaLoggingListener.java:70] - Condition evaluation unchanged
+2019-04-07 01:24:27,337 [INFO ] [Thread-18] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown[ExecutorConfigurationSupport.java:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:24:28,219 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 25192 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:24:28,219 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:24:29,019 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 01:24:29,020 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:24:29,021 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 01:24:29,022 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 01:24:29,022 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 01:24:29,023 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 01:24:29,023 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 01:24:29,024 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 01:24:29,146 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 01:24:29,147 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 924 ms
+2019-04-07 01:24:29,512 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:24:29,610 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 01:24:29,725 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 01:24:29,771 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:24:29,778 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 01:24:29,778 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 1.619 seconds (JVM running for 327.67)
+2019-04-07 01:24:29,780 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener.onApplicationEvent[ConditionEvaluationDeltaLoggingListener.java:70] - Condition evaluation unchanged
+2019-04-07 01:26:24,583 [INFO ] [http-nio-8888-exec-4] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-07 01:26:24,584 [INFO ] [http-nio-8888-exec-4] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-04-07 01:26:24,594 [INFO ] [http-nio-8888-exec-4] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 9 ms
+2019-04-07 01:26:24,599 [INFO ] [http-nio-8888-exec-4] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-04-07 01:26:24,599 [WARN ] [http-nio-8888-exec-4] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-04-07 01:26:24,604 [INFO ] [http-nio-8888-exec-4] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.
+2019-04-07 01:31:16,942 [INFO ] [Thread-24] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown[ExecutorConfigurationSupport.java:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:31:16,943 [INFO ] [Thread-24] - com.zaxxer.hikari.HikariDataSource.close[HikariDataSource.java:350] - amis - Shutdown initiated...
+2019-04-07 01:31:16,951 [INFO ] [Thread-24] - com.zaxxer.hikari.HikariDataSource.close[HikariDataSource.java:352] - amis - Shutdown completed.
+2019-04-07 01:31:17,751 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 25192 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:31:17,751 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:31:18,615 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 01:31:18,617 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:31:18,619 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 01:31:18,620 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 01:31:18,620 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 01:31:18,621 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 01:31:18,621 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 01:31:18,622 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 01:31:18,729 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 01:31:18,731 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 976 ms
+2019-04-07 01:31:18,996 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:31:19,094 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 01:31:19,241 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 01:31:19,284 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:31:19,293 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 01:31:19,294 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 1.609 seconds (JVM running for 737.185)
+2019-04-07 01:31:19,297 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener.onApplicationEvent[ConditionEvaluationDeltaLoggingListener.java:70] - Condition evaluation unchanged
+2019-04-07 01:31:20,726 [INFO ] [Thread-30] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown[ExecutorConfigurationSupport.java:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:31:21,634 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 25192 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 01:31:21,634 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 01:31:22,475 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 01:31:22,477 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:31:22,477 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 01:31:22,478 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 01:31:22,478 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 01:31:22,479 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 01:31:22,479 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 01:31:22,479 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 01:31:22,564 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 01:31:22,565 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 929 ms
+2019-04-07 01:31:22,839 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 01:31:22,920 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 01:31:23,046 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 01:31:23,078 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 01:31:23,084 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 01:31:23,084 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 1.494 seconds (JVM running for 740.977)
+2019-04-07 01:31:23,086 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener.onApplicationEvent[ConditionEvaluationDeltaLoggingListener.java:70] - Condition evaluation unchanged
+2019-04-07 22:54:23,360 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 24848 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 22:54:23,376 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 22:54:23,488 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-07 22:54:23,489 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-07 22:54:25,762 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 22:54:25,784 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 22:54:25,796 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 22:54:25,797 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 22:54:25,807 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 22:54:25,807 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 22:54:25,808 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 22:54:25,866 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 22:54:26,096 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 22:54:26,097 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 2607 ms
+2019-04-07 22:54:26,774 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 22:54:26,934 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 22:54:27,110 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 22:54:27,162 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 22:54:27,198 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 22:54:27,204 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 4.752 seconds (JVM running for 7.51)
+2019-04-07 22:55:34,285 [INFO ] [http-nio-8888-exec-2] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-07 22:55:34,286 [INFO ] [http-nio-8888-exec-2] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-04-07 22:55:34,303 [INFO ] [http-nio-8888-exec-2] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 17 ms
+2019-04-07 22:55:34,483 [INFO ] [http-nio-8888-exec-2] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-04-07 22:55:34,486 [WARN ] [http-nio-8888-exec-2] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-04-07 22:55:35,083 [INFO ] [http-nio-8888-exec-2] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.
+2019-04-07 23:06:07,836 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 28052 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 23:06:07,838 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 23:06:07,881 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-04-07 23:06:07,881 [INFO ] [restartedMain] - org.springframework.boot.logging.DeferredLog.logTo[DeferredLog.java:227] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-04-07 23:06:09,040 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 23:06:09,053 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 23:06:09,063 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 23:06:09,063 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 23:06:09,070 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 23:06:09,070 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 23:06:09,071 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 23:06:09,076 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 23:06:09,241 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 23:06:09,241 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 1360 ms
+2019-04-07 23:06:09,814 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 23:06:09,944 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 23:06:10,117 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 23:06:10,160 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 23:06:10,182 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 23:06:10,185 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 2.932 seconds (JVM running for 4.04)
+2019-04-07 23:06:28,277 [INFO ] [http-nio-8888-exec-1] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-07 23:06:28,278 [INFO ] [http-nio-8888-exec-1] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:524] - Initializing Servlet 'dispatcherServlet'
+2019-04-07 23:06:28,291 [INFO ] [http-nio-8888-exec-1] - org.springframework.web.servlet.FrameworkServlet.initServletBean[FrameworkServlet.java:546] - Completed initialization in 12 ms
+2019-04-07 23:06:28,437 [INFO ] [http-nio-8888-exec-1] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:110] - amis - Starting...
+2019-04-07 23:06:28,440 [WARN ] [http-nio-8888-exec-1] - com.zaxxer.hikari.util.DriverDataSource.<init>[DriverDataSource.java:68] - Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-04-07 23:06:28,590 [INFO ] [http-nio-8888-exec-1] - com.zaxxer.hikari.HikariDataSource.getConnection[HikariDataSource.java:123] - amis - Start completed.
+2019-04-07 23:21:39,080 [INFO ] [Thread-11] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown[ExecutorConfigurationSupport.java:208] - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-04-07 23:21:39,081 [INFO ] [Thread-11] - com.zaxxer.hikari.HikariDataSource.close[HikariDataSource.java:350] - amis - Shutdown initiated...
+2019-04-07 23:21:39,092 [INFO ] [Thread-11] - com.zaxxer.hikari.HikariDataSource.close[HikariDataSource.java:352] - amis - Shutdown completed.
+2019-04-07 23:21:39,537 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarting[StartupInfoLogger.java:50] - Starting AmisRestApplication on LAPTOP-OKPFJSSL with PID 28052 (D:\IdeaProjects\amisbuild001\amis-rest\target\classes started by 86130 in D:\IdeaProjects\amisbuild001)
+2019-04-07 23:21:39,539 [INFO ] [restartedMain] - org.springframework.boot.SpringApplication.logStartupProfileInfo[SpringApplication.java:675] - No active profile set, falling back to default profiles: default
+2019-04-07 23:21:40,063 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize[TomcatWebServer.java:90] - Tomcat initialized with port(s): 8888 (http)
+2019-04-07 23:21:40,064 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8888"]
+2019-04-07 23:21:40,065 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting service [Tomcat]
+2019-04-07 23:21:40,065 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-07 23:21:40,066 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.6.5].
+2019-04-07 23:21:40,066 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-04-07 23:21:40,067 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-04-07 23:21:40,067 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - OpenSSL successfully initialized [OpenSSL 1.1.1a  20 Nov 2018]
+2019-04-07 23:21:40,155 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2019-04-07 23:21:40,155 [INFO ] [restartedMain] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext[ServletWebServerApplicationContext.java:296] - Root WebApplicationContext: initialization completed in 615 ms
+2019-04-07 23:21:40,384 [INFO ] [restartedMain] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize[ExecutorConfigurationSupport.java:171] - Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-07 23:21:40,426 [INFO ] [restartedMain] - org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping.<init>[WelcomePageHandlerMapping.java:61] - Adding welcome page template: index
+2019-04-07 23:21:40,602 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer[OptionalLiveReloadServer.java:57] - LiveReload server is running on port 35729
+2019-04-07 23:21:40,632 [INFO ] [restartedMain] - org.apache.juli.logging.DirectJDKLog.log[DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8888"]
+2019-04-07 23:21:40,638 [INFO ] [restartedMain] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start[TomcatWebServer.java:204] - Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-07 23:21:40,639 [INFO ] [restartedMain] - org.springframework.boot.StartupInfoLogger.logStarted[StartupInfoLogger.java:59] - Started AmisRestApplication in 1.134 seconds (JVM running for 934.495)
+2019-04-07 23:21:40,641 [INFO ] [restartedMain] - org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener.onApplicationEvent[ConditionEvaluationDeltaLoggingListener.java:70] - Condition evaluation unchanged

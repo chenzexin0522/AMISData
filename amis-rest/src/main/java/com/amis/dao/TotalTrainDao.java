@@ -1,10 +1,10 @@
 package com.amis.dao;
 
-import com.amis.entity.ActionValue;
-import com.amis.entity.StudentTrain;
+import com.amis.entity.TabResult;
 import com.amis.entity.TotalTrain;
-import com.amis.entity.TrainDetailed;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @InterfaceName TotalTrainDao
@@ -14,15 +14,9 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface TotalTrainDao {
-    int insertTrain(TotalTrain totalTrain);
+    int insertTrain(TotalTrain totalTrain);//插入结果集合
 
-    int insertAV(ActionValue actionValue);
+    int insertTabResultList(List<TabResult> tabResultsList);
 
-    int insertStudentTrain(StudentTrain studentTrain);
-
-    int insertStudentTrainAV(StudentTrain studentTrain);
-
-    int insertDetailed(StudentTrain studentTrain);
-
-    int insertTrainDetailed(TrainDetailed trainDetailed);
+    void updateTrainType(TotalTrain totalTrain);
 }

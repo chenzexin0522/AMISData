@@ -1,6 +1,5 @@
 package com.amis.service;
 
-import com.amis.entity.ClassEntity;
 import com.amis.entity.dto.SelectClassDTO;
 import com.amis.entity.dto.SelectCoachDTO;
 import com.amis.entity.dto.SelectStudentDTO;

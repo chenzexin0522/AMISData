@@ -3,6 +3,8 @@ package com.amis.service;
 import com.amis.common.ResponseVO;
 import com.amis.entity.TotalTrain;
 
+
+
 /**
  * @InterfaceName TotalTrainService
  * @Description 训练
@@ -11,4 +13,8 @@ import com.amis.entity.TotalTrain;
  **/
 public interface TotalTrainService {
     ResponseVO insertTrain(TotalTrain totalTrain);
+
+    ResponseVO insertTrainAlone(TotalTrain totalTrain);
+
+    ResponseVO insertStudentTrainAlone(TotalTrain totalTrain);
 }

@@ -94,7 +94,7 @@ public class UserServiceImpl implements UserService {
         || StringUtils.isBlank(phoneCode1.getP_phone())){
             throw new AmisException(MessageKey.VERCODE_NON_EXISTENT);
         }
-        int os = phoneCodeDao.deletePhoneCode(phoneCode1);
+        int os = 1 ; // phoneCodeDao.deletePhoneCode(phoneCode1);           //删除获取到的验证码------测试隐藏
         if (os == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }

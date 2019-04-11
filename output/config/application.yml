@@ -1,0 +1,24 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    name: amis
+    url: jdbc:mysql://127.0.0.1:3306/amis?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: amis
+    password: amis123
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mybatis:
+    configuration:
+      call-setters-on-nulls: true
+  mapper-locations: classpath:config/mapper/*.xml
+  type-aliases-package: com.amis.entity
+
+logging:
+  level:
+       root: info
+  config: output/config/logback.xml
+
+name: ChenZeXin

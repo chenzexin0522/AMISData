@@ -1,6 +1,5 @@
 package com.amis.entity.dto;
 
-import com.amis.entity.ClassEntity;
 import lombok.Data;
 
 /**

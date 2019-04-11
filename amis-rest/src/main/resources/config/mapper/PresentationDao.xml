@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.PresentationDao" >
+
+    <insert id="insertPresentation" >
+        insert into  tab_presentation(
+          start_time,
+          end_time,
+          tc_uc_id,
+          type,
+          u_id)
+        values (
+          #{start_time},
+          #{end_time},
+          #{tc_uc_id},
+          #{type},
+          #{u_id})
+    </insert>
+
+    <resultMap id="selectPresentationLists" type="com.amis.entity.dto.ReturnPresentationDto">
+        <result column="pr_id" property="pr_id"/>
+        <result column="type" property="type"/>
+        <result column="start_time" property="start_time"/>
+        <result column="end_time" property="end_time"/>
+        <result column="tempName" property="tempName"/>
+        <result column="gradeName" property="gradeName"/>
+    </resultMap>
+
+    <select id="selectPresentationList" resultMap="selectPresentationLists">
+(SELECT tpr.pr_id,tpr.type,tpr.start_time,tpr.end_time,tc.tc_name tempName,'' gradeName from (SELECT * from tab_presentation where type=0 and u_id=#{u_id}) tpr
+LEFT JOIN tab_class tc ON tpr.tc_uc_id = tc.tc_id)
+union all (SELECT tpr.pr_id,tpr.type,tpr.start_time,tpr.end_time,tus.uc_name tempName,tac.tc_name gradeName from (SELECT * from tab_presentation where type=1 and u_id=#{u_id}) tpr
+LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id LEFT JOIN tab_class tac on tac.tc_id= tus.tc_id) ORDER BY start_time DESC;
+
+    </select>
+
+
+    <resultMap id="selectPresentationDetailsList" type="com.amis.entity.dto.SelectPresentationDTO">
+        <result column="total_completion_rate" property="total_completion_rate"/>
+        <result column="one_completion_rate" property="one_completion_rate"/>
+        <result column="two_completion_rate" property="two_completion_rate"/>
+        <result column="three_completion_rate" property="three_completion_rate"/>
+        <result column="four_completion_rate" property="four_completion_rate"/>
+    </resultMap>
+
+    <select id="selectPresentationDetails" resultMap="selectPresentationDetailsList">
+        SELECT ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,2) as total_completion_rate,
+        ROUND(COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null))/COUNT(tr.tr_id)*100,2)as one_completion_rate,
+        ROUND(COUNT(IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null))/COUNT(tr.tr_id)*100,2)as two_completion_rate,
+        ROUND(COUNT(IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null))/COUNT(tr.tr_id)*100,2)as three_completion_rate,
+        ROUND(COUNT(IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,2)as four_completion_rate
+        FROM tab_total_train ttt LEFT JOIN tab_result tr ON ttt.tt_id=tr.tt_id
+        where ttt.start_time BETWEEN (SELECT tpr.start_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id}) AND
+        (SELECT tpr.end_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND ttt.u_id =  (SELECT tpr.u_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND ttt.tc_id=  (SELECT tpr.tc_uc_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})  GROUP BY ttt.tt_id
+    </select>
+
+
+    <select id="selectPresentationStudent" resultMap="selectPresentationDetailsList">
+        SELECT ROUND((IF(ttt.action_set_one &lt;= tr.action_actual_one,true,0)
+        + IF(ttt.action_set_two &lt;= tr.action_actual_two,true,0)
+        + IF(ttt.action_set_three &lt;= tr.action_actual_three,true,0)
+        + IF(ttt.action_set_four &lt;= tr.action_actual_four,true,0)) / 4 * 100,0) as total_completion_rate,
+        ROUND(tr.action_actual_one / ttt.action_set_one * 100,0)as one_completion_rate,
+        ROUND(tr.action_actual_two / ttt.action_set_two * 100,0)as two_completion_rate,
+        ROUND(tr.action_actual_three / ttt.action_set_three * 100,0)as three_completion_rate,
+        ROUND(tr.action_actual_four / ttt.action_set_four * 100,0)as four_completion_rate
+        FROM tab_total_train ttt LEFT JOIN tab_result tr ON ttt.tt_id = tr.tt_id WHERE
+        ttt.start_time BETWEEN (SELECT tpr.start_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND (SELECT tpr.end_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND ttt.u_id =  (SELECT tpr.u_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND ttt.tc_id=  (SELECT tus.tc_id from tab_presentation tpr LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id WHERE tpr.pr_id = #{pr_id})
+        AND tr.uc_id = ((SELECT tpr.tc_uc_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})) GROUP BY tr.tr_id
+
+    </select>
+
+</mapper>
