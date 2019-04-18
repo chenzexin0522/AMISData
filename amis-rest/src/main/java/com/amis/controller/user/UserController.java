@@ -3,7 +3,6 @@ package com.amis.controller.user;
 import com.amis.common.ResponseVO;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
-import com.amis.common.utils.BasePicture;
 import com.amis.entity.PhoneCode;
 import com.amis.entity.UserPhoneCode;
 import com.amis.entity.Users;
@@ -103,14 +102,6 @@ public class UserController {
         }
         return userService.register(users);
     }
-    @RequestMapping(value = "getpic", method = RequestMethod.POST)
-    public ResponseVO getpic(@RequestBody String u_picture)throws Exception{
-        String smgName = BasePicture.GenerateImage(u_picture,"tttt");
-        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(smgName);
-        return responseVO;
-    }
-
 
     /**
      * @Author chenzexin
@@ -193,4 +184,23 @@ public class UserController {
         }
         return userService.updatePassword(users);
     }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/12 10:12
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description        修改头像
+     **/
+    @RequestMapping(value = "updatePicture",method = RequestMethod.POST)
+    public ResponseVO updatePicture(@RequestBody Users users)throws Exception{
+        if (users.getU_id() == 0 ||StringUtils.isBlank(users.getU_password())
+                ||StringUtils.isBlank(users.getNewPassword())){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return userService.updatePicture(users);
+    }
+
+
+
 }

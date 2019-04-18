@@ -173,6 +173,20 @@ public class UserServiceImpl implements UserService {
         return responseVO;
     }
 
+    @Override
+    public ResponseVO updatePicture(Users users) {
+//        byte[] bs = users.getU_picture();
+//         if (bs.length > 0) {
+//   try {
+//    String filePath = "保存路径";
+//    System.out.println("开始上传");
+//    File validateCodeFolder = new File(filePath);
+//    if (!validateCodeFolder.exists()) {
+//     validateCodeFolder.mkdirs();
+//    }
+        return userDao.updatePicture(users);
+    }
+
 
     /**
      * @Author chenzexin

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.RestAdminDao" >
+
+    <resultMap id="selectEditions" type="com.amis.entity.Edition">
+        <result column="tet_id" property="tet_id"/>
+        <result column="versionCode" property="versionCode"/>
+        <result column="isUpdate" property="isUpdate"/>
+        <result column="message" property="message"/>
+        <result column="fileUrl" property="fileUrl"/>
+        <result column="isHotUpdate" property="isHotUpdate"/>
+        <result column="hotCode" property="hotCode"/>
+        <result column="editionReleasePeople" property="editionReleasePeople"/>
+    </resultMap>
+
+    <select id="selectEditionList" resultMap="selectEditions">
+        select tet_id,versionCode,isUpdate,message,fileUrl,isHotUpdate,hotCode,editionReleasePeople from tab_edition
+    </select>
+
+
+    <delete id="deleteEdition">
+        delete from tab_edition
+        where tet_id=#{tet_id}
+    </delete>
+
+    <update id="updateEdition">
+        UPDATE tab_edition
+        <set>
+            <if test="versionCode != null and versionCode != ''">
+                versionCode = #{versionCode},
+            </if>
+            <if test="isUpdate != 0 ">
+                isUpdate = #{isUpdate},
+            </if>
+            <if test="message != null and message != ''">
+                message = #{message},
+            </if>
+            <if test="fileUrl != null and fileUrl != ''">
+                fileUrl = #{fileUrl},
+            </if>
+            <if test="isHotUpdate != 0 ">
+                isHotUpdate = #{isHotUpdate},
+            </if>
+            <if test="hotCode != null and hotCode != ''">
+                hotCode = #{hotCode},
+            </if>
+            <if test="editionReleasePeople != null and editionReleasePeople != ''">
+                editionReleasePeople = #{editionReleasePeople}
+            </if>
+        </set>
+        <where>
+            tet_id = #{tet_id}
+        </where>
+    </update>
+
+    <select id="adminlogin" resultType="com.amis.entity.Admin">
+        SELECT
+              ad_id,
+              ad_name,
+              ad_phone
+            FROM tab_admin
+            WHERE ad_phone = #{ad_phone} AND ad_password = #{ad_password}
+    </select>
+
+    <resultMap id="selectSchool" type="com.amis.entity.School">
+        <result column="s_id" property="s_id"/>
+        <result column="s_name" property="s_name"/>
+        <result column="s_province" property="s_province"/>
+        <result column="s_city" property="s_city"/>
+    </resultMap>
+
+    <select id="selectSchoolList" resultMap="selectSchool">
+        select s_id,s_name,s_province,s_city from tab_school
+    </select>
+
+    <insert id="addSchool">
+        insert into tab_school(s_name,s_province,s_city) value (#{s_name},#{s_province},#{s_city})
+    </insert>
+
+    <delete id="deleteSchool">
+        delete from tab_school
+        where s_id=#{s_id}
+    </delete>
+
+    <update id="updateSchool">
+        UPDATE tab_school
+        <set>
+            <if test="s_name != null and s_name != ''">
+                s_name = #{s_name},
+            </if>
+            <if test="s_province != null and s_province != ''">
+                s_province = #{s_province},
+            </if>
+            <if test="s_city != null and s_city != ''">
+                s_city = #{s_city}
+            </if>
+        </set>
+        <where>
+            s_id = #{s_id}
+        </where>
+    </update>
+
+
+
+    <resultMap id="selectCoach" type="com.amis.entity.dto.ReturnCoachDTO">
+        <result column="u_id" property="u_id"/>
+        <result column="u_name" property="u_name"/>
+        <result column="u_gender" property="u_gender"/>
+        <result column="u_phone" property="u_phone"/>
+        <result column="coach_teaching_age" property="coach_teaching_age"/>
+        <result column="coach_title" property="coach_title"/>
+        <result column="s_name" property="s_name"/>
+    </resultMap>
+
+    <select id="selectCoachlList" resultMap="selectCoach">
+        select tu.u_id,tu.u_name,tu.u_gender,tu.u_phone,tu.coach_teaching_age,tu.coach_title,ts.s_name from tab_user tu left join tab_school ts on tu.s_id = ts.s_id
+    </select>
+
+
+    <insert id="addCoach">
+        insert into  tab_user(
+          u_name,
+          u_gender,
+          u_phone,
+          u_password,
+          coach_teaching_age,
+          s_id)
+        values (
+          #{u_name},
+          #{u_gender},
+          #{u_phone},
+          #{u_password},
+          #{coach_teaching_age},
+          #{s_id})
+    </insert>
+
+
+    <delete id="deleteCoach">
+        delete from tab_user
+        where u_id=#{u_id}
+    </delete>
+
+
+    <resultMap id="selectStudent" type="com.amis.entity.dto.ReturnStudentListDTO">
+        <result column="uc_id" property="uc_id"/>
+        <result column="uc_name" property="uc_name"/>
+        <result column="uc_phone" property="uc_phone"/>
+        <result column="eq_mac" property="eq_mac"/>
+        <result column="tc_name" property="tc_name"/>
+    </resultMap>
+
+    <select id="selectStudentList" resultMap="selectStudent">
+        select uc.uc_id,uc.uc_name,uc.uc_phone,uc.eq_mac,tc.tc_name from tab_uc_student uc left join tab_class tc on uc.tc_id = tc.tc_id
+    </select>
+
+
+
+    <insert id="addStudent">
+        insert into  tab_uc_student(
+          uc_name,
+          uc_phone,
+          uc_password,
+          eq_mac,
+          tc_id)
+        values (
+          #{uc_name},
+          #{uc_phone},
+          #{uc_password},
+          #{eq_mac},
+          #{tc_id})
+    </insert>
+
+    <delete id="deleteStudent">
+        delete from tab_uc_student
+        where uc_id=#{uc_id}
+    </delete>
+
+
+
+    <resultMap id="selectEquipment" type="com.amis.entity.dto.EquipmentDTO">
+        <result column="te_id" property="te_id"/>
+        <result column="te_mac" property="te_mac"/>
+        <result column="te_edition" property="te_edition"/>
+        <result column="uc_name" property="uc_name"/>
+    </resultMap>
+
+    <select id="selectEquipmentList" resultMap="selectEquipment">
+         select te.te_id,te.te_mac,te.te_edition,tus.uc_name from tab_equipment te left join tab_uc_student tus on te.uc_id = tus.uc_id
+    </select>
+
+
+
+    <insert id="addEquipment">
+        insert into  tab_equipment(
+          te_mac,
+          te_edition,
+          uc_id)
+        values (
+          #{te_mac},
+          #{te_edition},
+          #{uc_id})
+    </insert>
+
+    <delete id="deleteEquipment">
+        delete from tab_equipment
+        where te_id=#{te_id}
+    </delete>
+
+</mapper>

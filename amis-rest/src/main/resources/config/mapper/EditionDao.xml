@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.EditionDao" >
+
+    <update id="photoUpload">
+        UPDATE tab_user set u_picture = #{path} where u_id = #{u_id}
+    </update>
+
+    <insert id="modelUpload">
+        insert into tab_model(md_path) value (#{path})
+    </insert>
+
+    <select id="selectModelCount" resultType="int">
+        SELECT COUNT(md_id) FROM tab_model
+    </select>
+
+    <insert id="editionUpgrade">
+        insert into tab_edition
+        (versionCode,
+         isUpdate,
+         message,
+         fileUrl,
+         isHotUpdate,
+         hotCode,
+         editionReleasePeople)
+        value
+        (#{versionCode},
+        #{isUpdate},
+        #{message},
+        #{fileUrl},
+        #{isHotUpdate},
+        #{hotCode},
+        #{editionReleasePeople}
+        )
+    </insert>
+
+
+    <select id="getEdition" resultType="com.amis.entity.Edition">
+        select tet_id,versionCode,isUpdate,message,fileUrl,isHotUpdate,hotCode from tab_edition where tet_id=(select MAX(tet_id) from tab_edition)
+    </select>
+
+</mapper>

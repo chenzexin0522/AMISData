@@ -26,7 +26,7 @@
     </insert>
 
     <select id="selectTaskList" resultType="com.amis.entity.dto.ReturnTaskListDTO">
-SELECT tat.ta_id,tc.tc_name,DATE_FORMAT(tat.start_time,'%Y-%m-%h')AS start_time,TIMESTAMPDIFF(DAY,tat.start_time,tat.end_time) AS dayNumber,
+SELECT tat.ta_id,tc.tc_name,tat.state,DATE_FORMAT(tat.start_time,'%Y-%m-%h')AS start_time,TIMESTAMPDIFF(DAY,tat.start_time,tat.end_time) AS dayNumber,
 		tat.action_set_one,tat.action_set_two,tat.action_set_three,tat.action_set_four,tat.completion_number,tat.completion_rate
     from tab_task tat
     LEFT JOIN tab_class tc ON tat.tc_id = tc.tc_id WHERE tat.u_id = #{u_id}

@@ -11,8 +11,8 @@ import com.amis.service.PresentationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @ClassName PresentationServiceImpl
@@ -28,6 +28,20 @@ public class PresentationServiceImpl implements PresentationService {
 
     @Override
     public void insertPresentation(Presentation presentation) throws Exception {
+        String start_time = presentation.getStart_time();
+        SimpleDateFormat start = new SimpleDateFormat("yyyy-MM-dd");
+        Date starttime = start.parse(start_time);
+        String end_time = presentation.getEnd_time();
+        SimpleDateFormat end = new SimpleDateFormat("yyyy-MM-dd");
+        Date endtime = end.parse(end_time);
+        if (start_time == end_time){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(new Date());
+            calendar.add(calendar.DATE,1);
+            String date2= sdf.format(calendar.getTime());
+            presentation.setEnd_time(date2);
+        }
         int a = presentationDao.insertPresentation(presentation);
         if (a == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);

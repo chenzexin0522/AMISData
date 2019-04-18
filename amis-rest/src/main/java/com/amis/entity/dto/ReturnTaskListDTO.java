@@ -14,6 +14,7 @@ public class ReturnTaskListDTO {
     private String tc_name;
     private String start_time;
     private int dayNumber;
+    private int state;
     private int action_set_one;
     private int action_set_two;
     private int action_set_three;

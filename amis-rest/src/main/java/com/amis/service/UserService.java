@@ -102,4 +102,12 @@ public interface UserService {
      **/
     ResponseVO updatePassword(Users users)throws Exception;
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/12 10:11
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description        修改头像
+     **/
+    ResponseVO updatePicture(Users users);
 }

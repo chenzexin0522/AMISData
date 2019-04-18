@@ -11,7 +11,11 @@
             u_picture,
             coach_teaching_age,
             coach_title,
-            u_role
+            u_autograph,
+            u_role,
+            matchMode,
+            modelPath,
+            isModelUpdate
         FROM tab_user
         WHERE u_phone = #{u_phone}
     </select>
@@ -25,7 +29,10 @@
               u_picture,
               coach_teaching_age,
               coach_title,
-              u_role
+              u_role,
+              matchMode,
+              modelPath,
+              isModelUpdate
             FROM tab_user
             WHERE u_phone = #{u_phone} AND u_password = #{u_password}
     </select>
@@ -117,7 +124,10 @@
               coach_teaching_age,
               coach_title,
               tc_id,
-              u_role
+              u_role,
+              matchMode,
+              modelPath,
+              isModelUpdate
             FROM tab_user
             WHERE u_id = #{u_id} AND u_password = #{u_password}
     </select>

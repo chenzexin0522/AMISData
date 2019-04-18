@@ -56,17 +56,14 @@ public class AdminController {
     public String shou(){
         return "shou";
     }
-
     @RequestMapping("/addClass")
     public String addClass(){
         return "addClass";
     }
-
     @RequestMapping("/updateclass")
     public String updateclass(){
         return "updateclass";
     }
-
     @RequestMapping("/studenttable")
     public String studenttable(){
         return "studenttable";
@@ -103,7 +100,6 @@ public class AdminController {
     public String updateelm(){
         return "updateelm";
     }
-
     @RequestMapping("/editiontable")
     public String editiontable(){
         return "editiontable";

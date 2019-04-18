@@ -1,0 +1,9 @@
+模型路径：
+http://172.16.17.30:8080/model/model_1/train.model
+http://172.16.17.30:8080/model/model_2/train.model
+http://172.16.17.30:8080/model/model_3/train.model
+
+版本apk路径：
+http://172.16.17.30:8080/model/apk/train.model
+
+http://172.16.17.30:8080/a/

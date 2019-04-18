@@ -49,7 +49,7 @@
     </select>
 
     <select id="coachSelectClass"  resultMap="selectClassList">
-SELECT tc.tc_id,tc.tc_name,COUNT(tus.uc_id) from tab_class tc LEFT JOIN tab_coach_class tcc ON tc.tc_id = tcc.tc_id
+SELECT tc.tc_id,tc.tc_name,COUNT(tus.uc_id) tc_number from tab_class tc LEFT JOIN tab_class_teaching tcc ON tc.tc_id = tcc.tc_id
 LEFT JOIN tab_uc_student tus ON tus.tc_id = tc.tc_id WHERE tcc.u_id = #{u_id} GROUP BY tc.tc_id
     </select>
 
