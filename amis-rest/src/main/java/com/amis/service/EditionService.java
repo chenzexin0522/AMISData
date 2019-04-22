@@ -1,6 +1,7 @@
 package com.amis.service;
 
 import com.amis.entity.Edition;
+import com.amis.entity.dto.TrainLog;
 
 /**
  * @InterfaceName EditionService
@@ -19,4 +20,6 @@ public interface EditionService {
     void editionUpgrade(Edition edition);
 
     Edition getEdition();
+
+    void trainLogUpload(TrainLog trainLog);
 }

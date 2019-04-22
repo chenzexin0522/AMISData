@@ -1,6 +1,7 @@
 package com.amis.dao;
 
 import com.amis.entity.Edition;
+import com.amis.entity.dto.TrainLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,4 +22,6 @@ public interface EditionDao {
     void editionUpgrade(Edition edition);
 
     Edition getEdition();
+
+    void trainLogUpload(TrainLog trainLog);
 }

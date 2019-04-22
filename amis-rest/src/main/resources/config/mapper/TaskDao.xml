@@ -12,7 +12,8 @@
         action_set_one,
         action_set_two,
         action_set_three,
-        action_set_four)
+        action_set_four,
+        hide)
         values (
         #{u_id},
         #{tc_id},
@@ -22,7 +23,8 @@
         #{action_set_one},
         #{action_set_two},
         #{action_set_three},
-        #{action_set_four})
+        #{action_set_four},
+        0)
     </insert>
 
     <select id="selectTaskList" resultType="com.amis.entity.dto.ReturnTaskListDTO">

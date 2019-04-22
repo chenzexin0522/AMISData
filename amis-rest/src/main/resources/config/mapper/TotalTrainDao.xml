@@ -11,7 +11,8 @@
           action_set_four,
           tc_id,
           train_state,
-          u_id)
+          u_id,
+          hide)
         values (
           #{train_duration},
           #{action_set_one},
@@ -20,7 +21,8 @@
           #{action_set_four},
           #{tc_id},
           1,
-          #{u_id})
+          #{u_id},
+          0)
     </insert>
 
 

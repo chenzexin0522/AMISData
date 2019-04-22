@@ -3,6 +3,7 @@ package com.amis.controller.edition;
 import com.amis.common.ResponseVO;
 import com.amis.common.exception.MessageKey;
 import com.amis.entity.Edition;
+import com.amis.entity.dto.TrainLog;
 import com.amis.service.EditionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class EditionController {
      **/
     @ResponseBody
     @RequestMapping(value = "getVersion",method = RequestMethod.POST)
-    public ResponseVO getEdition() throws Exception {
+    public ResponseVO getEdition(){
         Edition edition = editionService.getEdition();
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(edition);
@@ -54,11 +55,11 @@ public class EditionController {
         String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/apk/";
         // 自定义的文件名称
         String fileName = file.getOriginalFilename();// 文件原名称
+        String fileUrl = "http://172.16.17.30:8080/apk/"+fileName;
         String path = photoUpload(file,fileName,pathName);
-        edition.setFileUrl(path);
+        edition.setFileUrl(fileUrl);
         editionService.editionUpgrade(edition);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(path);
         return responseVO;
     }
 
@@ -76,10 +77,10 @@ public class EditionController {
         String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/headpicture/";
         // 自定义的文件名称
         String fileName = String.valueOf(System.currentTimeMillis())+"_"+userId + file.getOriginalFilename();// 文件原名称
+        String fileUrl = "http://172.16.17.30:8080/headpicture/"+fileName;
         String path = photoUpload(file,fileName,pathName);
-        editionService.photoUpload(path,userId);
+        editionService.photoUpload(fileUrl,userId);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(path);
         responseVO.setId(userId);
         return responseVO;
     }
@@ -98,10 +99,33 @@ public class EditionController {
         String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/models/model_"+ a +"/";
         // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
         String fileName = file.getOriginalFilename();// 文件原名称
+        String fileUrl = "http://172.16.17.30:8080/models/model_"+ a +"/"+fileName;
         String path = photoUpload(file,fileName,pathName);
-        editionService.modelUpload(path);
+        editionService.modelUpload(fileUrl);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(path);
+        responseVO.setData(fileUrl);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/22 15:34
+     * @param file
+     * @return com.amis.common.ResponseVO
+     * @Description        上传用户个人模型
+     **/
+    @ResponseBody
+    @RequestMapping(value = "trainLogUpload",method = RequestMethod.POST)
+    public ResponseVO trainLogUpload(MultipartFile file, TrainLog trainLog) throws Exception{
+        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/trainLog/";
+        // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
+        String fileName = file.getOriginalFilename();// 文件原名称
+        String fileUrl = "http://172.16.17.30:8080/trainLog/"+fileName;
+        String path = photoUpload(file,fileName,pathName);
+        trainLog.setFileUrl(fileUrl);
+        editionService.trainLogUpload(trainLog);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(fileUrl);
         return responseVO;
     }
 
@@ -130,9 +154,6 @@ public class EditionController {
                         }
                     }
                     System.out.println("存放图片文件的路径:" + path);
-                    if ( "PNG".equals(type.toUpperCase()) || "JPG".equals(type.toUpperCase())){
-                        path = "http://172.16.17.30:8080/headpicture/"+fileName;
-                    }
                     // 转存文件到指定的路径
                     file.transferTo(filepath);
                     System.out.println("文件成功上传到指定目录下");

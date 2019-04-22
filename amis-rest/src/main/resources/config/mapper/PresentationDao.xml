@@ -8,13 +8,15 @@
           end_time,
           tc_uc_id,
           type,
-          u_id)
+          u_id,
+          hide)
         values (
           #{start_time},
           #{end_time},
           #{tc_uc_id},
           #{type},
-          #{u_id})
+          #{u_id},
+          0)
     </insert>
 
     <resultMap id="selectPresentationLists" type="com.amis.entity.dto.ReturnPresentationDto">

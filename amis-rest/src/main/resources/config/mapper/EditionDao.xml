@@ -39,4 +39,10 @@
         select tet_id,versionCode,isUpdate,message,fileUrl,isHotUpdate,hotCode,editionReleasePeople from tab_edition where tet_id=(select MAX(tet_id) from tab_edition)
     </select>
 
+
+    <insert id="trainLogUpload">
+        insert into tab_trainLog(u_id,insertTime,fileUrl)
+        value (#{u_id},#{insertTime},#{fileUrl})
+    </insert>
+
 </mapper>

@@ -2,6 +2,7 @@ package com.amis.service.impl;
 
 import com.amis.dao.EditionDao;
 import com.amis.entity.Edition;
+import com.amis.entity.dto.TrainLog;
 import com.amis.service.EditionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,10 @@ public class EditionServiceImpl implements EditionService {
     public Edition getEdition() {
         return editionDao.getEdition();
     }
+
+    @Override
+    public void trainLogUpload(TrainLog trainLog) {
+        editionDao.trainLogUpload(trainLog);
+    }
+
 }
