@@ -3,6 +3,7 @@ package com.amis.service.impl;
 import com.amis.dao.RestAdminDao;
 import com.amis.entity.*;
 import com.amis.entity.dto.EquipmentDTO;
+import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
 import com.amis.service.RestAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,6 +106,11 @@ public class RestAdminServiceImpl implements RestAdminService {
     @Override
     public int deleteEquipment(int te_id) {
         return restAdminDao.deleteEquipment(te_id);
+    }
+
+    @Override
+    public List<FeedbackDTO> selectFeedback() {
+        return restAdminDao.selectFeedback();
     }
 
 }

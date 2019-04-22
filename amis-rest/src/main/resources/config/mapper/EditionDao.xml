@@ -36,7 +36,7 @@
 
 
     <select id="getEdition" resultType="com.amis.entity.Edition">
-        select tet_id,versionCode,isUpdate,message,fileUrl,isHotUpdate,hotCode from tab_edition where tet_id=(select MAX(tet_id) from tab_edition)
+        select tet_id,versionCode,isUpdate,message,fileUrl,isHotUpdate,hotCode,editionReleasePeople from tab_edition where tet_id=(select MAX(tet_id) from tab_edition)
     </select>
 
 </mapper>

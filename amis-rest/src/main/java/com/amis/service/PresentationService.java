@@ -20,4 +20,6 @@ public interface PresentationService {
     List<ReturnPresentationDto> selectPresentationList(int u_id);
 
     SelectPresentationClassDTO selectPresentationDetails(int pr_id,int type);
+
+    int deletePresentation(int pr_id);
 }

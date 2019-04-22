@@ -84,5 +84,22 @@ public class PresentationController {
         return responseVO;
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/19 12:09
+     * @param presentation
+     * @return com.amis.common.ResponseVO
+     * @Description        删除单挑报告
+     **/
+    @RequestMapping(value = "deletePresentation",method = RequestMethod.POST)
+    public ResponseVO deletePresentation(@RequestBody Presentation presentation) throws AmisException {
+        if (presentation.getPr_id() == 0 ) {
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        int os = presentationService.deletePresentation(presentation.getPr_id());
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.amis.dao;
 
 import com.amis.entity.*;
 import com.amis.entity.dto.EquipmentDTO;
+import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -48,4 +49,6 @@ public interface RestAdminDao {
     int addEquipment(Equipment equipment);
 
     int deleteEquipment(int te_id);
+
+    List<FeedbackDTO> selectFeedback();
 }

@@ -1,10 +1,10 @@
 package com.amis.controller.admin;
 
 import com.amis.common.ResponseVO;
-import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.entity.*;
 import com.amis.entity.dto.EquipmentDTO;
+import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
 import com.amis.service.RestAdminService;
 import org.apache.commons.lang3.StringUtils;
@@ -328,6 +328,25 @@ public class RestAdminController {
             return responseVO;
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/19 14:29
+     * @param
+     * @return com.amis.common.ResponseVO
+     * @Description        查询所有反馈
+     **/
+    @RequestMapping(value = "selectFeedback",method = RequestMethod.POST)
+    public ResponseVO selectFeedback(){
+        List<FeedbackDTO> feedbackDTOS = restAdminService.selectFeedback();
+        if (feedbackDTOS == null || feedbackDTOS.equals(null)){
+            ResponseVO responseVO = new ResponseVO(MessageKey.SELECT_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(feedbackDTOS);
         return responseVO;
     }
 

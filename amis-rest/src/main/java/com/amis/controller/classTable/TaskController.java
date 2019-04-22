@@ -82,4 +82,21 @@ public class TaskController {
         return responseVO;
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/19 11:13
+     * @param task
+     * @return com.amis.common.ResponseVO
+     * @Description        删除单挑作业
+     **/
+    @RequestMapping(value = "deleteTask",method = RequestMethod.POST)
+    public ResponseVO deleteTask(@RequestBody Task task) throws AmisException {
+        if (task.getTa_id() == 0 ) {
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        int os = taskService.deleteTask(task.getTa_id());
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
 }

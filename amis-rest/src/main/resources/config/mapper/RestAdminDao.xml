@@ -206,4 +206,19 @@
         where te_id=#{te_id}
     </delete>
 
+
+
+
+    <resultMap id="selectFeedbacksList" type="com.amis.entity.dto.FeedbackDTO">
+        <result column="tf_id" property="tf_id"/>
+        <result column="tf_content" property="tf_content"/>
+        <result column="tf_time" property="tf_time"/>
+        <result column="u_name" property="u_name"/>
+    </resultMap>
+
+    <select id="selectFeedback" resultMap="selectFeedbacksList">
+         SELECT tf.tf_id,tf.tf_content,DATE_FORMAT(tf.tf_time,'%Y-%m-%e %h:%i:%s') as tf_time,tu.u_name from tab_feedback tf LEFT JOIN tab_user tu on tf.u_id = tu.u_id
+    </select>
+
+
 </mapper>

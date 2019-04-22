@@ -145,4 +145,17 @@
     </update>
 
 
+
+    <insert id="insertFeedback" >
+        insert into  tab_feedback(
+          tf_content,
+          u_id,
+          tf_time)
+        values (
+          #{tf_content},
+          #{u_id},
+          sysdate())
+    </insert>
+
+
 </mapper>

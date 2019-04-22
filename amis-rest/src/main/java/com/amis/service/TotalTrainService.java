@@ -17,4 +17,8 @@ public interface TotalTrainService {
     ResponseVO insertTrainAlone(TotalTrain totalTrain);
 
     ResponseVO insertStudentTrainAlone(TotalTrain totalTrain);
+
+    ResponseVO updateTrainAlone(TotalTrain totalTrain);
+
+    int deleteTrain(int tt_id);
 }

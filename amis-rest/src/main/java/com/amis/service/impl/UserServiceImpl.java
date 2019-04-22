@@ -7,6 +7,7 @@ import com.amis.common.exception.MessageKey;
 import com.amis.common.utils.BasePicture;
 import com.amis.dao.PhoneCodeDao;
 import com.amis.dao.UserDao;
+import com.amis.entity.Feedback;
 import com.amis.entity.PhoneCode;
 import com.amis.entity.UserPhoneCode;
 import com.amis.entity.Users;
@@ -185,6 +186,16 @@ public class UserServiceImpl implements UserService {
 //     validateCodeFolder.mkdirs();
 //    }
         return userDao.updatePicture(users);
+    }
+
+    @Override
+    public ResponseVO insertFeedback(Feedback feedback) throws Exception {
+        int os = userDao.insertFeedback(feedback);
+        if (os == 0){
+            throw new AmisException(MessageKey.INSERT_FAIL);
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
     }
 
 

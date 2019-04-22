@@ -18,4 +18,6 @@ public interface TaskService {
     List<ReturnTaskListDTO> selectTaskList(int u_id);
 
     SelectStudentTaskDetails selectStudentTask(int tc_id);
+
+    int deleteTask(int ta_id);
 }

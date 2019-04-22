@@ -82,4 +82,22 @@ public class TotalTrainServiceImpl implements TotalTrainService {
         responseVO.setId(totalTrain.getTt_id());
         return responseVO;
     }
+
+    @Override
+    public ResponseVO updateTrainAlone(TotalTrain totalTrain) {
+        ResponseVO responseVO;
+        int to = totalTrainDao.updateTrainAlone(totalTrain);
+        if (to == 0){
+            responseVO=new ResponseVO(MessageKey.UPDATE_FAIL);
+            return responseVO;
+        }
+        responseVO=new ResponseVO(MessageKey.RETURN_OK);        //设置返回类型
+        responseVO.setId(totalTrain.getTt_id());
+        return responseVO;
+    }
+
+    @Override
+    public int deleteTrain(int tt_id) {
+        return totalTrainDao.deleteTrain(tt_id);
+    }
 }

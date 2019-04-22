@@ -19,4 +19,5 @@ public class SelectStudentDTO {
     private String uc_autograph;
     private String eq_mac;
     private int u_role;                 //用户角色
+    private String past_completion_rate;  //以往完成率
 }

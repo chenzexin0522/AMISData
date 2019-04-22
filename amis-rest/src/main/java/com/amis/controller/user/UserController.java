@@ -3,6 +3,7 @@ package com.amis.controller.user;
 import com.amis.common.ResponseVO;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
+import com.amis.entity.Feedback;
 import com.amis.entity.PhoneCode;
 import com.amis.entity.UserPhoneCode;
 import com.amis.entity.Users;
@@ -199,6 +200,22 @@ public class UserController {
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
         return userService.updatePicture(users);
+    }
+
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/19 13:51
+     * @param feedback
+     * @return com.amis.common.ResponseVO
+     * @Description        添加反馈内容
+     **/
+    @RequestMapping(value = "insertFeedback",method = RequestMethod.POST)
+    public ResponseVO insertFeedback(@RequestBody Feedback feedback)throws Exception{
+        if (feedback.getU_id() == 0 || StringUtils.isBlank(feedback.getTf_content())){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return userService.insertFeedback(feedback);
     }
 
 

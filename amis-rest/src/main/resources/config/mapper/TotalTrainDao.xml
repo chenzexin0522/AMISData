@@ -106,4 +106,33 @@
     </update>
 
 
+
+    <update id="updateTrainAlone">
+        UPDATE tab_total_train
+        <set>
+            start_time = #{start_time},
+            end_time = #{end_time},
+            action_set_one = #{action_set_one},
+            action_set_two = #{action_set_two},
+            action_set_three = #{action_set_three},
+            action_set_four = #{action_set_four}
+        </set>
+        <where>
+            tt_id = #{tt_id}
+        </where>
+    </update>
+
+
+    <update id="deleteTrain">
+        UPDATE tab_total_train
+        <set>
+            hide = 1
+        </set>
+        <where>
+            tt_id = #{tt_id}
+        </where>
+    </update>
+
+
+
 </mapper>

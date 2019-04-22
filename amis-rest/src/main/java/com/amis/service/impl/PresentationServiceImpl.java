@@ -99,4 +99,9 @@ public class PresentationServiceImpl implements PresentationService {
             selectPresentationClassDTO.setFour_rateList(four_rateList);
             return selectPresentationClassDTO;
     }
+
+    @Override
+    public int deletePresentation(int pr_id) {
+        return presentationDao.deletePresentation(pr_id);
+    }
 }

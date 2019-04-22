@@ -1,6 +1,7 @@
 package com.amis.dao;
 
 import com.amis.common.ResponseVO;
+import com.amis.entity.Feedback;
 import com.amis.entity.Users;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -99,4 +100,6 @@ public interface UserDao {
      * @Description        修改图片
      **/
     ResponseVO updatePicture(Users users);
+
+    int insertFeedback(Feedback feedback);
 }

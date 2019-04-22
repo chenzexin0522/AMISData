@@ -29,13 +29,26 @@
 SELECT tat.ta_id,tc.tc_name,tat.state,DATE_FORMAT(tat.start_time,'%Y-%m-%h')AS start_time,TIMESTAMPDIFF(DAY,tat.start_time,tat.end_time) AS dayNumber,
 		tat.action_set_one,tat.action_set_two,tat.action_set_three,tat.action_set_four,tat.completion_number,tat.completion_rate
     from tab_task tat
-    LEFT JOIN tab_class tc ON tat.tc_id = tc.tc_id WHERE tat.u_id = #{u_id}
+    LEFT JOIN tab_class tc ON tat.tc_id = tc.tc_id WHERE tat.u_id = #{u_id} AND tat.hide = 0
     </select>
 
 
     <select id="selectStudentList" resultType="com.amis.entity.Student">
         select uc_name from tab_uc_student where tc_id = #{tc_id}
     </select>
+
+
+
+
+    <update id="deleteTask">
+        UPDATE tab_task
+        <set>
+            hide = 1
+        </set>
+        <where>
+            ta_id = #{ta_id}
+        </where>
+    </update>
 
 
 </mapper>

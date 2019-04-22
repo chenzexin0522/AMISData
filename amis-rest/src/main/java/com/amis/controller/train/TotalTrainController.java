@@ -75,4 +75,40 @@ public class TotalTrainController {
         ResponseVO responseVO = totalTrainService.insertStudentTrainAlone(totalTrain);
         return responseVO;
     }
+
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/19 10:42
+     * @param totalTrain
+     * @return com.amis.common.ResponseVO
+     * @Description        修改训练信息
+     **/
+    @RequestMapping(value = "updateTrainAlone",method = RequestMethod.POST)
+    public ResponseVO updateTrainAlone(@RequestBody TotalTrain totalTrain) throws Exception {    //判断是否为空
+        if (totalTrain == null ){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        ResponseVO responseVO = totalTrainService.updateTrainAlone(totalTrain);
+        return responseVO;
+    }
+
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/19 11:50
+     * @param totalTrain
+     * @return com.amis.common.ResponseVO
+     * @Description        删除训练记录
+     **/
+    @RequestMapping(value = "deleteTrain",method = RequestMethod.POST)
+    public ResponseVO deleteTrain(@RequestBody TotalTrain totalTrain) throws AmisException {
+        if (totalTrain.getTt_id() == 0 ) {
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        int os = totalTrainService.deleteTrain(totalTrain.getTt_id());
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
 }

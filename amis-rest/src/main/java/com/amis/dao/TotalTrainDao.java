@@ -19,4 +19,8 @@ public interface TotalTrainDao {
     int insertTabResultList(List<TabResult> tabResultsList);
 
     void updateTrainType(TotalTrain totalTrain);
+
+    int updateTrainAlone(TotalTrain totalTrain);
+
+    int deleteTrain(int tt_id);
 }

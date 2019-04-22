@@ -22,4 +22,6 @@ public interface PresentationDao {
     List<SelectPresentationDTO> selectPresentationDetails(int pr_id);
 
     List<SelectPresentationDTO> selectPresentationStudent(int pr_id);
+
+    int deletePresentation(int pr_id);
 }

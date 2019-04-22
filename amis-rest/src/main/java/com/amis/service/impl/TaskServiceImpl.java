@@ -52,4 +52,9 @@ public class TaskServiceImpl implements TaskService {
 
         return selectStudentTaskDetails;
     }
+
+    @Override
+    public int deleteTask(int ta_id) {
+        return taskDao.deleteTask(ta_id);
+    }
 }

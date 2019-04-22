@@ -21,4 +21,6 @@ public interface TaskDao {
     List<ReturnTaskListDTO> selectTaskList(int u_id);
 
     List<Student> selectStudentList(int tc_id);
+
+    int deleteTask(int ta_id);
 }

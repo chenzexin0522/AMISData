@@ -73,7 +73,7 @@ public class EditionController {
     @ResponseBody
     @RequestMapping(value = "photoUpload",method = RequestMethod.POST)
     public ResponseVO photoUpload(MultipartFile file, int userId) throws Exception{
-        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/";
+        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/headpicture/";
         // 自定义的文件名称
         String fileName = String.valueOf(System.currentTimeMillis())+"_"+userId + file.getOriginalFilename();// 文件原名称
         String path = photoUpload(file,fileName,pathName);
@@ -120,9 +120,6 @@ public class EditionController {
                         || "JPG".equals(type.toUpperCase()) || "TXT".equals(type.toUpperCase())
                         || "MODEL".equals(type.toUpperCase()) ||"ZIP".equals(type.toUpperCase())
                         || "APK".equals(type.toUpperCase())) {
-                    // 项目在容器中实际发布运行的根路径
-//		                     String realPath=request.getSession().getServletContext().getRealPath("/");
-                    // 设置存放图片文件的路径
                     path = realPath + /* System.getProperty("file.separator")+ */fileName;
                     File filepath = new File(path);
                     System.out.println(filepath.getParentFile());
@@ -133,6 +130,9 @@ public class EditionController {
                         }
                     }
                     System.out.println("存放图片文件的路径:" + path);
+                    if ( "PNG".equals(type.toUpperCase()) || "JPG".equals(type.toUpperCase())){
+                        path = "http://172.16.17.30:8080/headpicture/"+fileName;
+                    }
                     // 转存文件到指定的路径
                     file.transferTo(filepath);
                     System.out.println("文件成功上传到指定目录下");

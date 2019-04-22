@@ -68,16 +68,20 @@ LEFT JOIN tab_uc_student tus ON tus.tc_id = tc.tc_id WHERE tcc.u_id = #{u_id} GR
 
     <select id="selectStudent"  resultMap="selectStudentList">
         SELECT
-            uc_id,
-            uc_name,
-            uc_gender,
-            uc_picture,
-            uc_phone,
-            uc_autograph,
-            uuid,
-            eq_mac,
-            u_role
-        FROM tab_uc_student
-        WHERE tc_id = #{tc_id}
+        tus.uc_id,
+        tus.uc_name,
+        tus.uc_gender,
+        tus.uc_picture,
+        tus.uc_phone,
+        tus.uc_autograph,
+        tus.uuid,
+        tus.eq_mac,
+        tus.u_role,
+        ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,2) as past_completion_rate
+        FROM tab_uc_student tus LEFT JOIN tab_result tr ON tus.uc_id = tr.uc_id LEFT JOIN tab_total_train ttt ON tr.tt_id = ttt.tt_id
+        WHERE tus.tc_id = #{tc_id} GROUP BY tus.uc_id
     </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.amis.service;
 
 
 import com.amis.common.ResponseVO;
+import com.amis.entity.Feedback;
 import com.amis.entity.PhoneCode;
 import com.amis.entity.UserPhoneCode;
 import com.amis.entity.Users;
@@ -110,4 +111,6 @@ public interface UserService {
      * @Description        修改头像
      **/
     ResponseVO updatePicture(Users users);
+
+    ResponseVO insertFeedback(Feedback feedback) throws Exception;
 }

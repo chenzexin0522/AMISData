@@ -2,6 +2,7 @@ package com.amis.service;
 
 import com.amis.entity.*;
 import com.amis.entity.dto.EquipmentDTO;
+import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
 
 import java.util.List;
@@ -47,4 +48,6 @@ public interface RestAdminService {
     int addEquipment(Equipment equipment);
 
     int deleteEquipment(int te_id);
+
+    List<FeedbackDTO> selectFeedback();
 }
