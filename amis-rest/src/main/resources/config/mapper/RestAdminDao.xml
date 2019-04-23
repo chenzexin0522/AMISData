@@ -62,15 +62,8 @@
             WHERE ad_phone = #{ad_phone} AND ad_password = #{ad_password}
     </select>
 
-    <resultMap id="selectSchool" type="com.amis.entity.School">
-        <result column="s_id" property="s_id"/>
-        <result column="s_name" property="s_name"/>
-        <result column="s_province" property="s_province"/>
-        <result column="s_city" property="s_city"/>
-    </resultMap>
-
-    <select id="selectSchoolList" resultMap="selectSchool">
-        select s_id,s_name,s_province,s_city from tab_school
+    <select id="selectSchoolList" resultType="com.amis.entity.School">
+        select s_name,s_province,s_city from tab_school
     </select>
 
     <insert id="addSchool">
@@ -96,7 +89,7 @@
             </if>
         </set>
         <where>
-            s_id = #{s_id}
+            s_id = 1
         </where>
     </update>
 

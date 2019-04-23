@@ -55,4 +55,9 @@ public class FromListServiceImpl implements FromListService {
         return studentTrainTab;
     }
 
+    @Override
+    public List<QueryClassReportDTO> queryClassReport(QueryClassReportDTO queryClassReportDTO) {
+        return fromListDao.queryClassReport(queryClassReportDTO);
+    }
+
 }

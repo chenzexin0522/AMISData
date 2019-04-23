@@ -8,10 +8,22 @@ spring:
     username: amis
     password: amis123
     driver-class-name: com.mysql.jdbc.Driver
+
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+
 
 mybatis:
   mybatis:

@@ -26,4 +26,6 @@ public interface FromListService {
     ClassTrainTabDTO selectTotalTab(int tt_id);
 
     StudentTrainTab selectStudentTab(int tr_id);
+
+    List<QueryClassReportDTO> queryClassReport(QueryClassReportDTO queryClassReportDTO);
 }

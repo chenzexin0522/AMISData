@@ -44,7 +44,7 @@ public class RestAdminServiceImpl implements RestAdminService {
     }
 
     @Override
-    public List<School> selectSchoolList() {
+    public School selectSchoolList() {
         return restAdminDao.selectSchoolList();
     }
 

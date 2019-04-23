@@ -24,7 +24,7 @@ public interface RestAdminDao {
 
     Admin adminlogin(Admin admin);
 
-    List<School> selectSchoolList();
+    School selectSchoolList();
 
     int addSchool(School school);
 

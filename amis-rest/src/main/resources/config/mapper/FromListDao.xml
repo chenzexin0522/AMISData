@@ -68,4 +68,16 @@ from tab_result tr LEFT JOIN tab_total_train ttt ON tr.tt_id = ttt.tt_id
 WHERE tr.tr_id = #{tr_id}
     </select>
 
+
+    <resultMap id="queryClassReportList" type="com.amis.entity.dto.QueryClassReportDTO">
+        <result column="tc_name" property="tc_name"/>
+        <result column="u_id" property="u_id"/>
+        <result column="start_time" property="start_time"/>
+        <result column="end_time" property="end_time"/>
+    </resultMap>
+
+    <select id="queryClassReport">
+        select * from tab_total_train where tc_id = #{tc_id} and u_id = #{u_id} and start_time between #{start_time} and #{end_time}
+    </select>
+
 </mapper>

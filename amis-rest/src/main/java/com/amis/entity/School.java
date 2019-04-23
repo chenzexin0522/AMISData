@@ -10,7 +10,6 @@ import lombok.Data;
  **/
 @Data
 public class School {
-    private int s_id;
     private String s_name;
     private String s_province;      //学校省份
     private String s_city;          //学生市区

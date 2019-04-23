@@ -89,7 +89,7 @@ public class PresentationController {
      * @Date 2019/4/19 12:09
      * @param presentation
      * @return com.amis.common.ResponseVO
-     * @Description        删除单挑报告
+     * @Description        删除单条报告
      **/
     @RequestMapping(value = "deletePresentation",method = RequestMethod.POST)
     public ResponseVO deletePresentation(@RequestBody Presentation presentation) throws AmisException {

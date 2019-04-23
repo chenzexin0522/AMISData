@@ -112,7 +112,7 @@ public class RestAdminController {
      **/
     @RequestMapping(value = "selectSchoolList",method = RequestMethod.POST)
     public ResponseVO selectSchoolList() {
-        List<School> schools = restAdminService.selectSchoolList();
+        School schools = restAdminService.selectSchoolList();
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(schools);
         return responseVO;
@@ -142,29 +142,10 @@ public class RestAdminController {
      * @Date 2019/4/17 19:52
      * @param school
      * @return com.amis.common.ResponseVO
-     * @Description        删除学校
-     **/
-    @RequestMapping(value = "deleteSchool",method = RequestMethod.POST)
-    public ResponseVO deleteSchool(@RequestBody School school){
-        int or = restAdminService.deleteSchool(school.getS_id());
-        if (or == 0){
-            ResponseVO responseVO = new ResponseVO(MessageKey.DELETE_FAIL);
-            return responseVO;
-        }
-        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        return responseVO;
-    }
-
-
-    /**
-     * @Author chenzexin
-     * @Date 2019/4/17 19:52
-     * @param school
-     * @return com.amis.common.ResponseVO
      * @Description        修改学校
      **/
     @RequestMapping(value = "updateSchool",method = RequestMethod.POST)
-    public ResponseVO updateSchool(@RequestBody School school){
+    public ResponseVO updateSchool(@RequestBody  School school){
         int or = restAdminService.updateSchool(school);
         if (or == 0){
             ResponseVO responseVO = new ResponseVO(MessageKey.UPDATE_FAIL);

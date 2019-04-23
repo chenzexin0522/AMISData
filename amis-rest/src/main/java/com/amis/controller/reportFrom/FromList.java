@@ -99,6 +99,7 @@ public class FromList {
         if (queryClassReportDTO.getTc_id() == 0 || queryClassReportDTO.getU_id() == 0) {
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
+        List<QueryClassReportDTO> queryClassReportDTOS = fromListService.queryClassReport(queryClassReportDTO);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(null);
         return responseVO;

@@ -1,9 +1,6 @@
 package com.amis.dao;
 
-import com.amis.entity.dto.ClassTrainTabDTO;
-import com.amis.entity.dto.ReturnTotalList;
-import com.amis.entity.dto.StudentTrainList;
-import com.amis.entity.dto.StudentTrainTab;
+import com.amis.entity.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -24,4 +21,6 @@ public interface FromListDao {
     List<StudentTrainList> selectStudentList(int tt_id);
 
     StudentTrainTab selectStudentTab(int tr_id);
+
+    List<QueryClassReportDTO> queryClassReport(QueryClassReportDTO queryClassReportDTO);
 }
