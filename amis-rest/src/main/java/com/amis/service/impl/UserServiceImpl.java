@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
         }
         String tokenStr = TokenProccessor.addtoken(users);
         resultUsers.setToken(tokenStr);
-        users.setLog_state(1);
-        userDao.updateLogState(users);
+        resultUsers.setLog_state(1);
+        userDao.updateLogState(resultUsers);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(resultUsers);
         return responseVO;
