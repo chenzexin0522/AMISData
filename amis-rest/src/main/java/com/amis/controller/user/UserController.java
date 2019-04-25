@@ -228,7 +228,7 @@ public class UserController {
      * @Description        退出登录
      **/
     @RequestMapping(value = "Logout",method = RequestMethod.POST)
-    public ResponseVO Logout(HttpServletRequest request,Users users)throws Exception{
+    public ResponseVO Logout(HttpServletRequest request,@RequestBody Users users)throws Exception{
         String token = request.getHeader("token");
         if (token == null || StringUtils.isBlank(token)){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
