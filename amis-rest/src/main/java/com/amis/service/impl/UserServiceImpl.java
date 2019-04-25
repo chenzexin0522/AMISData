@@ -35,10 +35,10 @@ public class UserServiceImpl implements UserService {
         if (resultUsers == null)    {
             throw new AmisException(MessageKey.PHOME_NUMBER_OR_PASSWORD_ERROR);
         }
-        if (resultUsers.getLog_state() == 1){
-            ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
-            return responseVO;
-        }
+        //if (users.getLog_state() == 1){                                       //判断登录状态：1-在线，则不允许登录
+        //    ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
+        //     return responseVO;
+        // }
         String tokenStr = TokenProccessor.addtoken(users);
         resultUsers.setToken(tokenStr);
         resultUsers.setLog_state(1);
@@ -112,10 +112,10 @@ public class UserServiceImpl implements UserService {
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }
         Users users = this.findByPhone(phoneCode.getP_phone());
-        if (users.getLog_state() == 1){
-            ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
-            return responseVO;
-        }
+        //if (users.getLog_state() == 1){                                       //判断登录状态：1-在线，则不允许登录
+        //    ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
+       //     return responseVO;
+       // }
         String tokenStr = TokenProccessor.addtoken(users);
         users.setToken(tokenStr);
         users.setLog_state(1);
