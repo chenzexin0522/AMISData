@@ -9,6 +9,7 @@ public class Users implements Serializable {
 
     private static final long serialVersionUID = 3192236069956065303L;
 
+    private String token;
     private int u_id;
     private String u_name;
     private String u_gender;
@@ -24,5 +25,6 @@ public class Users implements Serializable {
     private int matchMode;
     private String modelPath;
     private int isModelUpdate;
+    private int log_state;              //登录状态1-在线状态，2-离线状态
 
 }

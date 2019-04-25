@@ -112,8 +112,7 @@
     <update id="updateTrainAlone">
         UPDATE tab_total_train
         <set>
-            start_time = #{start_time},
-            end_time = #{end_time},
+            train_duration = #{train_duration},
             action_set_one = #{action_set_one},
             action_set_two = #{action_set_two},
             action_set_three = #{action_set_three},

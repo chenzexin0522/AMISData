@@ -2,6 +2,7 @@ package com.amis.controller.admin;
 
 import com.amis.common.ResponseVO;
 import com.amis.common.exception.MessageKey;
+import com.amis.common.md5.MD5Config;
 import com.amis.entity.*;
 import com.amis.entity.dto.EquipmentDTO;
 import com.amis.entity.dto.FeedbackDTO;
@@ -180,6 +181,7 @@ public class RestAdminController {
      **/
     @RequestMapping(value = "addCoach",method = RequestMethod.POST)
     public ResponseVO addCoach(@RequestBody Users users){
+        users.setU_password(MD5Config.md5Password(users.getU_password()));
         int or = restAdminService.addCoach(users);
         if (or == 0){
             ResponseVO responseVO = new ResponseVO(MessageKey.DELETE_FAIL);

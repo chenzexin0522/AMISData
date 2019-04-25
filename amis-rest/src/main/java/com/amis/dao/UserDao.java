@@ -4,6 +4,7 @@ import com.amis.common.ResponseVO;
 import com.amis.entity.Feedback;
 import com.amis.entity.Users;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserDao {
@@ -17,7 +18,7 @@ public interface UserDao {
      * @return com.amis.entity.Users
      * @Description        账号密码验证登录
      **/
-    Users cplogin(String u_phone,String u_password);
+    Users cplogin(@Param("u_phone") String u_phone,@Param("u_password") String u_password);
 
     /**
      * @Author chenzexin
@@ -102,4 +103,13 @@ public interface UserDao {
     ResponseVO updatePicture(Users users);
 
     int insertFeedback(Feedback feedback);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/25 14:20
+     * @param users
+     * @return void
+     * @Description        修改登录状态
+     **/
+    void updateLogState(Users users);
 }

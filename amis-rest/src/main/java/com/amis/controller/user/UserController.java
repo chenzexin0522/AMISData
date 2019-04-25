@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "user")
 public class UserController {
@@ -216,6 +218,22 @@ public class UserController {
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
         return userService.insertFeedback(feedback);
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/25 11:54
+     * @param request
+     * @return com.amis.common.ResponseVO
+     * @Description        退出登录
+     **/
+    @RequestMapping(value = "Logout",method = RequestMethod.POST)
+    public ResponseVO Logout(HttpServletRequest request,Users users)throws Exception{
+        String token = request.getHeader("token");
+        if (token == null || StringUtils.isBlank(token)){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return userService.Logout(token,users);
     }
 
 

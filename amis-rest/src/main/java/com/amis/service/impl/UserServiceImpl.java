@@ -4,6 +4,8 @@ import com.amis.common.ResponseVO;
 import com.amis.common.aliyuncsCode.GetCode;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
+import com.amis.common.md5.MD5Config;
+import com.amis.common.token.TokenProccessor;
 import com.amis.common.utils.BasePicture;
 import com.amis.dao.PhoneCodeDao;
 import com.amis.dao.UserDao;
@@ -28,10 +30,19 @@ public class UserServiceImpl implements UserService {
     public ResponseVO cplogin(Users users) throws Exception {
         String u_phone = users.getU_phone();
         String u_password = users.getU_password();
+        u_password = MD5Config.md5Password(u_password);
         Users resultUsers = userDao.cplogin(u_phone,u_password);
         if (resultUsers == null)    {
             throw new AmisException(MessageKey.PHOME_NUMBER_OR_PASSWORD_ERROR);
         }
+        if (resultUsers.getLog_state() == 1){
+            ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
+            return responseVO;
+        }
+        String tokenStr = TokenProccessor.addtoken(users);
+        resultUsers.setToken(tokenStr);
+        users.setLog_state(1);
+        userDao.updateLogState(users);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(resultUsers);
         return responseVO;
@@ -45,6 +56,7 @@ public class UserServiceImpl implements UserService {
         if (findUserPhone != null){
             throw new AmisException(MessageKey.PHOME_NUMBER_EXISTENCE);
         }
+        users.setU_password(MD5Config.md5Password(users.getU_password()));
         int os = userDao.register(users);
         if (os == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
@@ -99,8 +111,17 @@ public class UserServiceImpl implements UserService {
         if (os == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }
+        Users users = this.findByPhone(phoneCode.getP_phone());
+        if (users.getLog_state() == 1){
+            ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
+            return responseVO;
+        }
+        String tokenStr = TokenProccessor.addtoken(users);
+        users.setToken(tokenStr);
+        users.setLog_state(1);
+        userDao.updateLogState(users);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(this.findByPhone(phoneCode.getP_phone()));
+        responseVO.setData(users);
         return responseVO;
     }
 
@@ -109,6 +130,7 @@ public class UserServiceImpl implements UserService {
         Users users = new Users();
         users.setU_password(userPhoneCode.getNewPassword());
         users.setU_phone(userPhoneCode.getPhone());
+        users.setU_password(MD5Config.md5Password(users.getU_password()));
         PhoneCode phoneCode = new PhoneCode();
         phoneCode.setP_phone(userPhoneCode.getPhone());
         phoneCode.setP_verCode(userPhoneCode.getVerCode());
@@ -166,6 +188,7 @@ public class UserServiceImpl implements UserService {
         if (users1 == null){
             throw new AmisException(MessageKey.OLD_PASSWORD_ERROR);
         }
+        users.setU_password(MD5Config.md5Password(users.getU_password()));
         int is = userDao.updatePassword(users);
         if (is == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
@@ -195,6 +218,19 @@ public class UserServiceImpl implements UserService {
             throw new AmisException(MessageKey.INSERT_FAIL);
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+    @Override
+    public ResponseVO Logout(String token,Users users) throws Exception {
+        boolean os = TokenProccessor.deletetoken(token);
+        if (os == false){
+            ResponseVO responseVO = new ResponseVO(MessageKey.LOGOUT_FAIL);
+            return responseVO;
+        }
+        users.setLog_state(2);
+        userDao.updateLogState(users);
+        ResponseVO responseVO = new ResponseVO(MessageKey.LOGOUT_SUCCESS);
         return responseVO;
     }
 

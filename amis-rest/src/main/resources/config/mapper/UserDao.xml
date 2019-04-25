@@ -15,7 +15,8 @@
             u_role,
             matchMode,
             modelPath,
-            isModelUpdate
+            isModelUpdate,
+            log_state
         FROM tab_user
         WHERE u_phone = #{u_phone}
     </select>
@@ -32,7 +33,8 @@
               u_role,
               matchMode,
               modelPath,
-              isModelUpdate
+              isModelUpdate,
+              log_state
             FROM tab_user
             WHERE u_phone = #{u_phone} AND u_password = #{u_password}
     </select>
@@ -144,8 +146,6 @@
         </where>
     </update>
 
-
-
     <insert id="insertFeedback" >
         insert into  tab_feedback(
           tf_content,
@@ -157,5 +157,14 @@
           sysdate())
     </insert>
 
+    <update id="updateLogState">
+        UPDATE tab_user
+        <set>
+                log_state = #{log_state}
+        </set>
+        <where>
+            u_id = #{u_id}
+        </where>
+    </update>
 
 </mapper>

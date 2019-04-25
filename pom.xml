@@ -18,6 +18,24 @@
         <poms.version>1.0</poms.version>
     </properties>
 
+<!--    <dependencyManagement>
+        <dependencies>
+            &lt;!&ndash;
+                使用场景：当父依赖是公司内部依赖时（PS：不是spring-boot-starter-parent），需要
+            这样做。
+             &ndash;&gt;
+            &lt;!&ndash; Spring Boot 依赖 &ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.5.10.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>-->
+
+
     <modules>
         <module>amis-rest</module>
     </modules>

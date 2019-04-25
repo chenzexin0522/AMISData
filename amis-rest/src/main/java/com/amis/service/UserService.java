@@ -112,5 +112,21 @@ public interface UserService {
      **/
     ResponseVO updatePicture(Users users);
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/25 11:39
+     * @param feedback
+     * @return com.amis.common.ResponseVO
+     * @Description        添加反馈内容
+     **/
     ResponseVO insertFeedback(Feedback feedback) throws Exception;
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/25 11:39
+     * @param token
+     * @return com.amis.common.ResponseVO
+     * @Description        退出登录
+     **/
+    ResponseVO Logout(String token,Users users) throws Exception;
 }

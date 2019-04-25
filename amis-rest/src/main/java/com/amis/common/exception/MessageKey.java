@@ -15,4 +15,12 @@ public interface MessageKey {
     String DELETE_FAIL="1010";                                  //删除失败
     String UPDATE_FAIL="1011";                                  //插入失败
     String SELECT_FAIL="1012";                                  //查询失败
+    String INJECTION_FAIL="1100";                               //注入redis失败
+    String TOKEN_NON_EXISTENT="1101";                           //token不存在
+    String TOKEN_EXPIRED="1102";                                //token已过期
+    String TOKEN_VALIDATION_FAILED="1103";                      //token验证失败
+    String TOKEN_GENERATE_SUCCESS="1104";                       //token生成成功
+    String LOGOUT_SUCCESS="1105";                               //退出登录成功
+    String LOGOUT_FAIL="1106";                                  //退出登录失败
+    String ONLINE_STATE="1107";                                 //请先退出已登录设备，再进行登录
 }
