@@ -11,8 +11,9 @@ import lombok.Data;
 @Data
 public class Presentation {
     private int pr_id;
-    private String start_time;
-    private String end_time;
+    private String insert_time;         //插入时间
+    private String start_time;          //查询--开始时间
+    private String end_time;            //查询--结束时间
     private int tc_uc_id;
     private int type;
     private int u_id;

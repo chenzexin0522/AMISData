@@ -4,6 +4,7 @@
 
     <insert id="insertPresentation" >
         insert into  tab_presentation(
+          insert_time,
           start_time,
           end_time,
           tc_uc_id,
@@ -11,6 +12,7 @@
           u_id,
           hide)
         values (
+          #{insert_time},
           #{start_time},
           #{end_time},
           #{tc_uc_id},
@@ -29,10 +31,12 @@
     </resultMap>
 
     <select id="selectPresentationList" resultMap="selectPresentationLists">
-(SELECT tpr.pr_id,tpr.type,tpr.start_time,tpr.end_time,tc.tc_name tempName,'' gradeName from (SELECT * from tab_presentation where type=0 and u_id=#{u_id} and hide = 0) tpr
+(SELECT tpr.pr_id,tpr.insert_time,tpr.type,tpr.start_time,tpr.end_time,tc.tc_name tempName,'' gradeName
+from (SELECT * from tab_presentation where type=0 and u_id=#{u_id} and hide = 0) tpr
 LEFT JOIN tab_class tc ON tpr.tc_uc_id = tc.tc_id)
-union all (SELECT tpr.pr_id,tpr.type,tpr.start_time,tpr.end_time,tus.uc_name tempName,tac.tc_name gradeName from (SELECT * from tab_presentation where type=1 and u_id=#{u_id} and hide = 0) tpr
-LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id LEFT JOIN tab_class tac on tac.tc_id= tus.tc_id) ORDER BY start_time DESC;
+union all (SELECT tpr.pr_id,tpr.insert_time,tpr.type,tpr.start_time,tpr.end_time,tus.uc_name tempName,tac.tc_name gradeName
+ from (SELECT * from tab_presentation where type=1 and u_id=#{u_id} and hide = 0) tpr
+LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id LEFT JOIN tab_class tac on tac.tc_id= tus.tc_id) ORDER BY insert_time DESC;
 
     </select>
 

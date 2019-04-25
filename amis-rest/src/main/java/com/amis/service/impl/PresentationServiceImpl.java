@@ -42,6 +42,9 @@ public class PresentationServiceImpl implements PresentationService {
             String date2= sdf.format(calendar.getTime());
             presentation.setEnd_time(date2);
         }
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        presentation.setInsert_time(sdf.format(d));
         int a = presentationDao.insertPresentation(presentation);
         if (a == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
