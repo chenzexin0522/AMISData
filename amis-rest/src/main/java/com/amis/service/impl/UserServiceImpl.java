@@ -230,7 +230,7 @@ public class UserServiceImpl implements UserService {
         }
         users.setLog_state(2);
         userDao.updateLogState(users);
-        ResponseVO responseVO = new ResponseVO(MessageKey.LOGOUT_SUCCESS);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;
     }
 
