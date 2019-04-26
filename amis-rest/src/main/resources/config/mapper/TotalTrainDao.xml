@@ -107,6 +107,7 @@
             tt_id = #{tt_id}
         </where>
     </update>
+    <!--select NOW(),insert_time, TIMESTAMPDIFF(MINUTE,'2019-01-22 18:40:03',insert_time) as years from tab_presentation    查实际完成时间-->
 
 
 
