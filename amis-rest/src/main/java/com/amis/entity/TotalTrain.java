@@ -26,6 +26,7 @@ public class TotalTrain {
     private String action_set_two;
     private String action_set_three;
     private String action_set_four;
+    private String insert_time;         //插入时间
     private int train_state;
     private int avg_duration;
     private List<TabResult> tabResultsList; //结果表集合
