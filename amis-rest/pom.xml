@@ -166,6 +166,13 @@
                     <mainClass>com.amis.AmisRestApplication</mainClass>
                 </configuration>
                 <version>2.1.3.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
 
