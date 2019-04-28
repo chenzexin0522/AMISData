@@ -36,8 +36,8 @@ public class TokenFilterUtil  extends HandlerInterceptorAdapter {
          */
         try {
             String token = request.getHeader("token");
-            System.out.println("hender==================="+token);
-            String user_token = jedis.get(token);
+            String userid = request.getHeader("userid");
+            String user_token = jedis.get(userid);
             if (user_token == null){
                 response.setCharacterEncoding("utf-8");
                 response.setContentType("application/json;charset=UTF-8");
@@ -52,16 +52,6 @@ public class TokenFilterUtil  extends HandlerInterceptorAdapter {
                 user_token = user_token.substring(user_token.length()-32,user_token.length());
             }else{
                 throw new Exception();
-            }
-            if (user_token == null) {
-                response.setCharacterEncoding("utf-8");
-                response.setContentType("application/json;charset=UTF-8");
-                PrintWriter writer = response.getWriter();
-                writer.append("{\"resultCode\":\"" + MessageKey.TOKEN_NON_EXISTENT
-                        + "\",\"message\":\"" + AmisTools.getMessageByKey(MessageKey.TOKEN_NON_EXISTENT) + "\"}");
-                writer.flush();
-                writer.close();
-                return false;
             }
             if (!token.equals(user_token)) {
                 response.setCharacterEncoding("utf-8");
@@ -83,6 +73,8 @@ public class TokenFilterUtil  extends HandlerInterceptorAdapter {
             response.setCharacterEncoding("utf-8");
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter writer = response.getWriter();
+            writer.append("{\"resultCode\":\"" + MessageKey.TOKEN_NON_EXISTENT
+                    + "\",\"message\":\"" + AmisTools.getMessageByKey(MessageKey.TOKEN_NON_EXISTENT) + "\"}");
             writer.flush();
             writer.close();
             return false;

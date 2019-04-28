@@ -113,6 +113,6 @@ public class MySpringBootConfig implements WebMvcConfigurer {
         // excludePathPatterns("/login", "/register") 表示除了登陆与注册之外，因为登陆注册不需要登陆也可以访问
         registry.addInterceptor(tokenFilterUtil).addPathPatterns("/**").excludePathPatterns("/user/usercplogin",
                 "/user/verCodeLogin","/user/getVerCode","/user/checkverCode","/user/register",
-                "/user/forgetPassword");
+                "/user/forgetPassword","/admin/adminlogin");
     }
 }

@@ -6,7 +6,6 @@ import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.common.md5.MD5Config;
 import com.amis.common.token.TokenProccessor;
-import com.amis.common.utils.BasePicture;
 import com.amis.dao.PhoneCodeDao;
 import com.amis.dao.UserDao;
 import com.amis.entity.Feedback;
@@ -39,10 +38,8 @@ public class UserServiceImpl implements UserService {
         //    ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
         //     return responseVO;
         // }
-        String tokenStr = TokenProccessor.addtoken(users);
+        String tokenStr = TokenProccessor.addtoken(resultUsers.getU_id());
         resultUsers.setToken(tokenStr);
-        resultUsers.setLog_state(1);
-        userDao.updateLogState(resultUsers);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(resultUsers);
         return responseVO;
@@ -50,8 +47,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseVO register(Users users) throws Exception {
-        String smgName = BasePicture.GenerateImage(users.getU_picture(),users.getU_phone());
-        users.setU_picture(smgName);
         Users findUserPhone = findByPhone(users.getU_phone());
         if (findUserPhone != null){
             throw new AmisException(MessageKey.PHOME_NUMBER_EXISTENCE);
@@ -116,10 +111,8 @@ public class UserServiceImpl implements UserService {
         //    ResponseVO responseVO = new ResponseVO(MessageKey.ONLINE_STATE);
        //     return responseVO;
        // }
-        String tokenStr = TokenProccessor.addtoken(users);
+        String tokenStr = TokenProccessor.addtoken(users.getU_id());
         users.setToken(tokenStr);
-        users.setLog_state(1);
-        userDao.updateLogState(users);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(users);
         return responseVO;
@@ -149,6 +142,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseVO checkverCode(PhoneCode phoneCode) throws Exception {
+        PhoneCode phoneCode2 = phoneCodeDao.verificationPhone(phoneCode.getP_phone());
+        if (phoneCode2 == null || StringUtils.isBlank(phoneCode2.getU_phone())){
+            throw new AmisException(MessageKey.PHONE_NON_EXISTENT);
+        }
         PhoneCode phoneCode1 = phoneCodeDao.selectPhoneCode(phoneCode);
         if (phoneCode1 == null || StringUtils.isBlank(phoneCode1.getP_verCode())
                 || StringUtils.isBlank(phoneCode1.getP_phone())){
@@ -222,14 +219,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseVO Logout(String token,Users users) throws Exception {
-        boolean os = TokenProccessor.deletetoken(token);
+    public ResponseVO Logout(Users users) throws Exception {
+        boolean os = TokenProccessor.deletetoken(users);
         if (os == false){
             ResponseVO responseVO = new ResponseVO(MessageKey.LOGOUT_FAIL);
             return responseVO;
         }
-        users.setLog_state(2);
-        userDao.updateLogState(users);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;
     }

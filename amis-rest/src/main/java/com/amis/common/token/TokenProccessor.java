@@ -4,7 +4,6 @@ import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.common.md5.MD5Config;
 import com.amis.common.redis.RedisConfig;
-import com.amis.common.utils.AmisTools;
 import com.amis.entity.Users;
 import redis.clients.jedis.Jedis;
 import sun.misc.BASE64Encoder;
@@ -54,16 +53,16 @@ public class TokenProccessor {
      * @return java.lang.String
      * @Description        添加
      **/
-    public static String addtoken(Users users) throws Exception {
+    public static String addtoken(int id) throws Exception {
         RedisConfig redisConfig = new RedisConfig();
         Jedis jedis = redisConfig.getJedisPool();
         if (jedis == null){
             throw new AmisException(MessageKey.INJECTION_FAIL);
         }
-        Long tokenStr = users.getU_id()+ new Date().getTime();
+        Long tokenStr = id + new Date().getTime();
         String token = MD5Config.md5Password(String.valueOf(tokenStr));
         System.out.println("token=============="+token);
-        jedis.set(token,token);
+        jedis.set(String.valueOf(id),token);           //将map：id = token ，加入到redis中
         jedis.expire(token,60*60*24*7);
         return token;
     }
@@ -75,14 +74,13 @@ public class TokenProccessor {
      * @return java.lang.String
      * @Description        删除token
      **/
-    public static boolean deletetoken(String token) throws Exception {
+    public static boolean deletetoken(Users users) throws Exception {
         RedisConfig redisConfig = new RedisConfig();
         Jedis jedis = redisConfig.getJedisPool();
         if (jedis == null){
             throw new AmisException(MessageKey.INJECTION_FAIL);
         }
-        System.out.println("token=============="+token);
-        jedis.del(token);
+        jedis.del(String.valueOf(users.getU_id()));
         return true;
     }
 

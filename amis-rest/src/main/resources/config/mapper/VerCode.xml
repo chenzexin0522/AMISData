@@ -30,4 +30,13 @@
         where p_phone=#{p_phone} AND p_verCode=#{p_verCode}
     </delete>
 
+
+    <select id="verificationPhone" resultType="com.amis.entity.PhoneCode">
+        SELECT
+          u_phone
+        FROM tab_user
+        WHERE u_phone = #{p_phone}
+    </select>
+
+
 </mapper>

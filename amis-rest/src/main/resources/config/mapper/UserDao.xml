@@ -15,8 +15,7 @@
             u_role,
             matchMode,
             modelPath,
-            isModelUpdate,
-            log_state
+            isModelUpdate
         FROM tab_user
         WHERE u_phone = #{u_phone}
     </select>
@@ -47,6 +46,7 @@
           u_phone,
           u_password,
           u_picture,
+          s_id,
           u_role)
         values (
           #{u_name},
@@ -54,6 +54,7 @@
           #{u_phone},
           #{u_password},
           #{u_picture},
+          #{s_id},
           #{u_role})
     </insert>
 
@@ -157,15 +158,6 @@
           sysdate())
     </insert>
 
-    <update id="updateLogState">
-        UPDATE tab_user
-        <set>
-                log_state = #{log_state}
-        </set>
-        <where>
-            u_id = #{u_id}
-        </where>
-    </update>
 
 
 

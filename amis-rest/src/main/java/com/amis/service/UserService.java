@@ -128,5 +128,5 @@ public interface UserService {
      * @return com.amis.common.ResponseVO
      * @Description        退出登录
      **/
-    ResponseVO Logout(String token,Users users) throws Exception;
+    ResponseVO Logout(Users users) throws Exception;
 }

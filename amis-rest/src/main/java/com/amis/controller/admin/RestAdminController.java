@@ -3,7 +3,9 @@ package com.amis.controller.admin;
 import com.amis.common.ResponseVO;
 import com.amis.common.exception.MessageKey;
 import com.amis.common.md5.MD5Config;
+import com.amis.common.token.TokenProccessor;
 import com.amis.entity.*;
+import com.amis.entity.dto.AdminDTO;
 import com.amis.entity.dto.EquipmentDTO;
 import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
@@ -19,7 +21,7 @@ import java.util.List;
 
 /**
  * @ClassName RestAdminController
- * @Description 后台管理
+ * @Description 后台管理            //headers：user_id,token
  * @Author chenzexin
  * @Date 2019/4/17 10:38
  **/
@@ -89,18 +91,20 @@ public class RestAdminController {
      * @Description        管理员登录
      **/
     @RequestMapping(value = "adminlogin",method = RequestMethod.POST)
-    public ResponseVO adminlogin(@RequestBody Admin admin){
-        if (StringUtils.isBlank(admin.getAd_phone()) && StringUtils.isBlank(admin.getAd_password())){
+    public ResponseVO adminlogin(@RequestBody Admin admin) throws Exception {
+        if (StringUtils.isBlank(admin.getUser_phone()) && StringUtils.isBlank(admin.getUser_password())){
             ResponseVO responseVO = new ResponseVO(MessageKey.PHOME_NUMBER_OR_PASSWORD_ERROR);
             return responseVO;
         }
-        Admin admins = restAdminService.adminlogin(admin);
-        if (admins == null){
+        AdminDTO adminDTO = restAdminService.adminlogin(admin);
+        String tokenStr = TokenProccessor.addtoken(adminDTO.getUser_id());
+        adminDTO.setToken(tokenStr);
+        if (adminDTO == null){
             ResponseVO responseVO = new ResponseVO(MessageKey.SELECT_FAIL);
             return responseVO;
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(admins);
+        responseVO.setData(adminDTO);
         return responseVO;
     }
 

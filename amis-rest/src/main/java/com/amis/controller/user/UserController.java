@@ -3,6 +3,7 @@ package com.amis.controller.user;
 import com.amis.common.ResponseVO;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
+import com.amis.controller.edition.EditionController;
 import com.amis.entity.Feedback;
 import com.amis.entity.PhoneCode;
 import com.amis.entity.UserPhoneCode;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,7 +46,7 @@ public class UserController {
     /**
      * @Author chenzexin
      * @Date 2019/3/18 10:33 
-     * @param users
+     * @param phoneCode
      * @return com.amis.common.ResponseVO
      * @Description        验证码登录
      **/
@@ -60,7 +62,7 @@ public class UserController {
     /**
      * @Author chenzexin
      * @Date 2019/3/18 10:33
-     * @param users
+     * @param phoneCode
      * @return com.amis.common.ResponseVO
      * @Description        验证验证码
      **/
@@ -95,14 +97,21 @@ public class UserController {
      * @return com.amis.common.ResponseVO
      * @Description        用户注册
      **/
+    @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public ResponseVO register(@RequestBody Users users)throws Exception{
+    public ResponseVO register(MultipartFile file, Users users)throws Exception{
         if (users == null || StringUtils.isBlank(users.getU_name())
                 || StringUtils.isBlank(users.getU_password())
                 || StringUtils.isBlank(users.getU_phone())
                 || StringUtils.isBlank(users.getU_gender())){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
+        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/headpicture/";
+        // 自定义的文件名称
+        String fileName = String.valueOf(System.currentTimeMillis())+"_"+users.getU_id() + file.getOriginalFilename();// 文件原名称
+        String fileUrl = "http://172.16.17.30:8080/headpicture/"+fileName;
+        String path = EditionController.photoUpload(file,fileName,pathName);
+        users.setU_picture(fileUrl);
         return userService.register(users);
     }
 
@@ -228,12 +237,30 @@ public class UserController {
      * @Description        退出登录
      **/
     @RequestMapping(value = "Logout",method = RequestMethod.POST)
-    public ResponseVO Logout(HttpServletRequest request,@RequestBody Users users)throws Exception{
+    public ResponseVO Logout(@RequestBody Users users)throws Exception{
+        if (users == null || users.getU_id() == 0){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return userService.Logout(users);
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/28 13:07
+     * @param request
+     * @param users
+     * @return com.amis.common.ResponseVO
+     * @Description        验证token
+     **/
+    @RequestMapping(value = "vrificationToken",method = RequestMethod.POST)
+    public ResponseVO vrificationToken(HttpServletRequest request)throws Exception{
         String token = request.getHeader("token");
+        String userid = request.getHeader("userid");
         if (token == null || StringUtils.isBlank(token)){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        return userService.Logout(token,users);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
     }
 
 

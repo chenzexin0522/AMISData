@@ -2,6 +2,7 @@ package com.amis.service.impl;
 
 import com.amis.dao.RestAdminDao;
 import com.amis.entity.*;
+import com.amis.entity.dto.AdminDTO;
 import com.amis.entity.dto.EquipmentDTO;
 import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
@@ -39,7 +40,7 @@ public class RestAdminServiceImpl implements RestAdminService {
     }
 
     @Override
-    public Admin adminlogin(Admin admin) {
+    public AdminDTO adminlogin(Admin admin) {
         return restAdminDao.adminlogin(admin);
     }
 

@@ -13,4 +13,5 @@ public class PhoneCode {
     private int p_id;
     private String p_phone;
     private String p_verCode;
+    private String u_phone;
 }

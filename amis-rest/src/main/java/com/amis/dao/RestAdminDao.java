@@ -1,6 +1,7 @@
 package com.amis.dao;
 
 import com.amis.entity.*;
+import com.amis.entity.dto.AdminDTO;
 import com.amis.entity.dto.EquipmentDTO;
 import com.amis.entity.dto.FeedbackDTO;
 import com.amis.entity.dto.ReturnCoachDTO;
@@ -22,7 +23,7 @@ public interface RestAdminDao {
 
     int updateEdition(Edition edition);
 
-    Admin adminlogin(Admin admin);
+    AdminDTO adminlogin(Admin admin);
 
     School selectSchoolList();
 

@@ -48,4 +48,13 @@ public interface PhoneCodeDao {
      * @Description        删除验证码记录（手机号即验证码判断）
      **/
     int deletePhoneAndCode(PhoneCode phoneCode);
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/28 17:48
+     * @param p_phone
+     * @return com.amis.entity.PhoneCode
+     * @Description        验证手号码
+     **/
+    PhoneCode verificationPhone(String p_phone);
 }

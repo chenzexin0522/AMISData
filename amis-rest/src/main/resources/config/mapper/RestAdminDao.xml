@@ -53,13 +53,13 @@
         </where>
     </update>
 
-    <select id="adminlogin" resultType="com.amis.entity.Admin">
+    <select id="adminlogin" resultType="com.amis.entity.dto.AdminDTO">
         SELECT
-              ad_id,
-              ad_name,
-              ad_phone
+              user_id,
+              user_name,
+              user_phone
             FROM tab_admin
-            WHERE ad_phone = #{ad_phone} AND ad_password = #{ad_password}
+            WHERE user_phone = #{user_phone} AND user_password = #{user_password}
     </select>
 
     <select id="selectSchoolList" resultType="com.amis.entity.School">
