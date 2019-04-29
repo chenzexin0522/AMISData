@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
  * @Date 2019/3/28 15:20
  **/
 @Controller
+@RequestMapping(value = "admines")
 public class AdminController {
 
     @Autowired

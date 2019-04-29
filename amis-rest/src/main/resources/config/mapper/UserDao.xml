@@ -67,10 +67,13 @@
             <if test="u_gender != null and u_gender != ''">
                 u_gender = #{u_gender},
             </if>
-            <if test="u_picture != null and u_picture != ''">
-                u_picture = #{u_picture},
+            <if test="coach_teaching_age != null and coach_teaching_age != ''">
+                coach_teaching_age = #{coach_teaching_age},
             </if>
-            <if test="u_role != null and u_role != '' and u_role == 1">
+            <if test="u_autograph != null and u_autograph != ''">
+                u_autograph = #{u_autograph},
+            </if>
+            <if test="coach_title != null and coach_title != ''">
                 coach_title = #{coach_title}
             </if>
         </set>

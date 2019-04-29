@@ -124,7 +124,7 @@ public class UserController {
      **/
     @RequestMapping(value = "updateUser",method = RequestMethod.POST)
     public ResponseVO updateUser(@RequestBody Users users) throws Exception{
-        if (users == null || users.getU_role() == 0 || users.getU_id() == 0){
+        if (users == null  || users.getU_id() == 0){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
         return userService.updateUser(users);
@@ -204,12 +204,19 @@ public class UserController {
      * @return com.amis.common.ResponseVO
      * @Description        修改头像
      **/
+    @ResponseBody
     @RequestMapping(value = "updatePicture",method = RequestMethod.POST)
-    public ResponseVO updatePicture(@RequestBody Users users)throws Exception{
+    public ResponseVO updatePicture(MultipartFile file, Users users)throws Exception{
         if (users.getU_id() == 0 ||StringUtils.isBlank(users.getU_password())
                 ||StringUtils.isBlank(users.getNewPassword())){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
+        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/headpicture/";
+        // 自定义的文件名称
+        String fileName = String.valueOf(System.currentTimeMillis())+"_"+users.getU_id() + file.getOriginalFilename();// 文件原名称
+        String fileUrl = "http://172.16.17.30:8080/headpicture/"+fileName;
+        String path = EditionController.photoUpload(file,fileName,pathName);
+        users.setU_picture(fileUrl);
         return userService.updatePicture(users);
     }
 

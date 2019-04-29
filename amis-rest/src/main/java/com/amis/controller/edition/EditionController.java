@@ -81,6 +81,7 @@ public class EditionController {
         String path = photoUpload(file,fileName,pathName);
         editionService.photoUpload(fileUrl,userId);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(fileUrl);
         responseVO.setId(userId);
         return responseVO;
     }

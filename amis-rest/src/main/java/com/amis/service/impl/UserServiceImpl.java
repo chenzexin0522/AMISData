@@ -57,6 +57,8 @@ public class UserServiceImpl implements UserService {
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }
         Users resultUsers = findByPhone(users.getU_phone());
+        String tokenStr = TokenProccessor.addtoken(resultUsers.getU_id());
+        resultUsers.setToken(tokenStr);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(resultUsers);
         return responseVO;
