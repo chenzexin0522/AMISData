@@ -101,7 +101,7 @@ public class FromList {
         }
         List<QueryClassReportDTO> queryClassReportDTOS = fromListService.queryClassReport(queryClassReportDTO);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(null);
+        responseVO.setData(queryClassReportDTOS);
         return responseVO;
     }
 }

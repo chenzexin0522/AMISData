@@ -76,9 +76,10 @@ WHERE tr.tr_id = #{tr_id}
         <result column="end_time" property="end_time"/>
     </resultMap>
 
-    <select id="queryClassReport">
+    <select id="queryClassReport" resultMap="queryClassReportList">
         select tc.tc_name,ttt.u_id,ttt.start_time,ttt.end_time from
-        tab_total_train ttt LEFT JOIN tab_class tc ON ttt.tc_id = tc.tc_id where ttt.tc_id = #{tc_id} and ttt.u_id = #{u_id} and (ttt.start_time between #{start_time} and #{end_time})
+        tab_total_train ttt LEFT JOIN tab_class tc ON ttt.tc_id = tc.tc_id
+        where ttt.tc_id = #{tc_id} and ttt.u_id = #{u_id} and (ttt.start_time between #{start_time} and #{end_time})
     </select>
 
 </mapper>

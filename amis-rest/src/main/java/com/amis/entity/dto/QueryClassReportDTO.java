@@ -14,6 +14,7 @@ import java.util.List;
 public class QueryClassReportDTO {
     private int tc_id;
     private int u_id;
+    private String tc_name;
     private String start_time;
     private String end_time;
     private int train_number;        //训练次数
