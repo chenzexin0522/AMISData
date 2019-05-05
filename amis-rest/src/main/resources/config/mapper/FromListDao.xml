@@ -17,7 +17,7 @@
        SELECT ttt.tt_id,ttt.start_time,ttt.end_time,ttt.train_duration,tc.tc_name,SUM(tr.action_actual_one) AS total_one,SUM(tr.action_actual_two) AS total_two,SUM(tr.action_actual_three) AS total_three,SUM(tr.action_actual_four) as total_four
         FROM tab_total_train ttt LEFT JOIN tab_class tc on ttt.tc_id = tc.tc_id
         LEFT JOIN tab_result tr ON tr.tt_id = ttt.tt_id
-        WHERE ttt.u_id = #{u_id} AND ttt.hide = 0  AND ttt.train_state = 2  GROUP BY ttt.insert_time DESC
+        WHERE ttt.u_id = #{u_id} AND ttt.hide = 0  AND ttt.train_state = 2  GROUP BY ttt.tt_id ORDER BY ttt.insert_time DESC
     </select>
 
     <select id="selectTotalTab" resultType="com.amis.entity.dto.ClassTrainTabDTO">
