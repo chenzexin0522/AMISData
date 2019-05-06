@@ -5,10 +5,7 @@ import com.amis.common.exception.MessageKey;
 import com.amis.common.md5.MD5Config;
 import com.amis.common.token.TokenProccessor;
 import com.amis.entity.*;
-import com.amis.entity.dto.AdminDTO;
-import com.amis.entity.dto.EquipmentDTO;
-import com.amis.entity.dto.FeedbackDTO;
-import com.amis.entity.dto.ReturnCoachDTO;
+import com.amis.entity.dto.*;
 import com.amis.service.RestAdminService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -336,6 +333,101 @@ public class RestAdminController {
         responseVO.setData(feedbackDTOS);
         return responseVO;
     }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/6 10:35
+     * @param
+     * @return com.amis.common.ResponseVO
+     * @Description        查询学校下所有班级
+     **/
+    @RequestMapping(value = "selectClass",method = RequestMethod.POST)
+    public ResponseVO selectClass(){
+        List<AdminClass> adminClassList = restAdminService.selectClass();
+        if (adminClassList == null || adminClassList.equals(null)){
+            ResponseVO responseVO = new ResponseVO(MessageKey.SELECT_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(adminClassList);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/6 11:07
+     * @param classEntity
+     * @return com.amis.common.ResponseVO
+     * @Description        查询指定班级下的教练（教练-班级，一对一）
+     **/
+    @RequestMapping(value = "selectClassCoach",method = RequestMethod.POST)
+    public ResponseVO selectClassCoach(@RequestBody ClassEntity classEntity){
+        ReturnCoachDTO returnCoachDTO = restAdminService.selectClassCoach(classEntity.getTc_id());
+        if (returnCoachDTO == null || returnCoachDTO.equals(null)){
+            ResponseVO responseVO = new ResponseVO(MessageKey.SELECT_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(returnCoachDTO);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/6 11:09
+     * @param classEntity
+     * @return com.amis.common.ResponseVO
+     * @Description        查询指定班级下的所有学生
+     **/
+    @RequestMapping(value = "selectClassStudent",method = RequestMethod.POST)
+    public ResponseVO selectClassStudent(@RequestBody ClassEntity classEntity){
+        List<ReturnStudentListDTO> returnStudentListDTOList = restAdminService.selectClassStudent(classEntity.getTc_id());
+        if (returnStudentListDTOList == null || returnStudentListDTOList.equals(null)){
+            ResponseVO responseVO = new ResponseVO(MessageKey.SELECT_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(returnStudentListDTOList);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/17 19:52
+     * @param classEntity
+     * @return com.amis.common.ResponseVO
+     * @Description        添加班级(单独部署学校独立且唯一，添加s_id为1.)
+     **/
+    @RequestMapping(value = "addClass",method = RequestMethod.POST)
+    public ResponseVO addClass(@RequestBody ClassEntity classEntity){
+        int or = restAdminService.addClass(classEntity);
+        if (or == 0){
+            ResponseVO responseVO = new ResponseVO(MessageKey.DELETE_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/17 19:52
+     * @param classEntity
+     * @return com.amis.common.ResponseVO
+     * @Description        删除班级
+     **/
+    @RequestMapping(value = "deleteClass",method = RequestMethod.POST)
+    public ResponseVO deleteClass(@RequestBody ClassEntity classEntity){
+        int or = restAdminService.deleteClass(classEntity.getTc_id());
+        if (or == 0){
+            ResponseVO responseVO = new ResponseVO(MessageKey.DELETE_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+
 
 
 }

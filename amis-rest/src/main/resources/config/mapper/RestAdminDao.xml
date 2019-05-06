@@ -213,5 +213,50 @@
          SELECT tf.tf_id,tf.tf_content,DATE_FORMAT(tf.tf_time,'%Y-%m-%e %h:%i:%s') as tf_time,tu.u_name from tab_feedback tf LEFT JOIN tab_user tu on tf.u_id = tu.u_id
     </select>
 
+    <resultMap id="selectClassList" type="com.amis.entity.dto.AdminClass">
+        <result column="tc_id" property="tc_id"/>
+        <result column="tc_name" property="tc_name"/>
+        <result column="tc_number" property="tc_number"/>
+    </resultMap>
+
+    <select id="selectClass" resultMap="selectClassList">
+          SELECT tc.tc_id,tc.tc_name,COUNT(tus.uc_id) as tc_number from tab_class tc LEFT JOIN tab_uc_student tus ON tc.tc_id = tus.tc_id GROUP BY tc.tc_id
+    </select>
+
+    <select id="selectClassCoach" resultType="com.amis.entity.dto.ReturnCoachDTO">
+       select tu.u_id,tu.u_name,tu.u_gender,tu.u_phone,tu.coach_teaching_age,tu.coach_title,ts.s_name
+        from tab_class_teaching tct LEFT JOIN tab_user tu ON tct.u_id = tu.u_id
+        LEFT JOIN tab_school ts ON tu.s_id = ts.s_id
+        WHERE tct.tc_id = #{tc_id}
+    </select>
+
+
+    <resultMap id="selectClassStudentList" type="com.amis.entity.dto.ReturnStudentListDTO">
+        <result column="uc_id" property="uc_id"/>
+        <result column="uc_name" property="uc_name"/>
+        <result column="uc_phone" property="uc_phone"/>
+        <result column="eq_mac" property="eq_mac"/>
+        <result column="tc_name" property="tc_name"/>
+    </resultMap>
+
+    <select id="selectClassStudent" resultMap="selectClassStudentList">
+SELECT tus.uc_id,tus.uc_name,tus.uc_phone,tus.eq_mac,tc.tc_name from tab_uc_student tus LEFT JOIN tab_class tc ON tus.tc_id = tc.tc_id
+WHERE tus.tc_id = #{tc_id}
+    </select>
+
+    <insert id="addClass">
+        insert into  tab_class(
+          tc_name,
+          s_id)
+        values (
+          #{tc_name},
+          1
+          )
+    </insert>
+
+    <delete id="deleteClass">
+        delete from tab_class
+        where tc_id=#{tc_id}
+    </delete>
 
 </mapper>

@@ -2,10 +2,7 @@ package com.amis.service.impl;
 
 import com.amis.dao.RestAdminDao;
 import com.amis.entity.*;
-import com.amis.entity.dto.AdminDTO;
-import com.amis.entity.dto.EquipmentDTO;
-import com.amis.entity.dto.FeedbackDTO;
-import com.amis.entity.dto.ReturnCoachDTO;
+import com.amis.entity.dto.*;
 import com.amis.service.RestAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -113,5 +110,31 @@ public class RestAdminServiceImpl implements RestAdminService {
     public List<FeedbackDTO> selectFeedback() {
         return restAdminDao.selectFeedback();
     }
+
+    @Override
+    public List<AdminClass> selectClass() {
+        return restAdminDao.selectClass();
+    }
+
+    @Override
+    public ReturnCoachDTO selectClassCoach(int tc_id) {
+        return restAdminDao.selectClassCoach(tc_id);
+    }
+
+    @Override
+    public List<ReturnStudentListDTO> selectClassStudent(int tc_id) {
+        return restAdminDao.selectClassStudent(tc_id);
+    }
+
+    @Override
+    public int addClass(ClassEntity classEntity) {
+        return restAdminDao.addClass(classEntity);
+    }
+
+    @Override
+    public int deleteClass(int tc_id) {
+        return restAdminDao.deleteClass(tc_id);
+    }
+
 
 }

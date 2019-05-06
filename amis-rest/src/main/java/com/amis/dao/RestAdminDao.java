@@ -1,10 +1,7 @@
 package com.amis.dao;
 
 import com.amis.entity.*;
-import com.amis.entity.dto.AdminDTO;
-import com.amis.entity.dto.EquipmentDTO;
-import com.amis.entity.dto.FeedbackDTO;
-import com.amis.entity.dto.ReturnCoachDTO;
+import com.amis.entity.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -52,4 +49,14 @@ public interface RestAdminDao {
     int deleteEquipment(int te_id);
 
     List<FeedbackDTO> selectFeedback();
+
+    List<AdminClass> selectClass();
+
+    ReturnCoachDTO selectClassCoach(int tc_id);
+
+    List<ReturnStudentListDTO> selectClassStudent(int tc_id);
+
+    int addClass(ClassEntity classEntity);
+
+    int deleteClass(int tc_id);
 }

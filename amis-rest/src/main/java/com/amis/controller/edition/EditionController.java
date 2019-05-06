@@ -26,6 +26,10 @@ public class EditionController {
     @Autowired
     private EditionService editionService;
 
+    // 本地"D:/IdeaProjects/amisbuild001/picture_apk/"   服务器：D:/AMISJAVA/picture_apk/
+    private static String urlC = "D:/AMISJAVA/picture_apk/";
+    private static String ipC = "47.52.249.147:3000";
+
     /**
      * @Author chenzexin
      * @Date 2019/4/16 17:15
@@ -52,10 +56,10 @@ public class EditionController {
     @ResponseBody
     @RequestMapping(value = "editionUpgrade",method = RequestMethod.POST)
     public ResponseVO editionUpgrade(MultipartFile file,Edition edition) throws Exception {
-        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/apk/";
+        String  pathName= urlC+"apk/";
         // 自定义的文件名称
         String fileName = file.getOriginalFilename();// 文件原名称
-        String fileUrl = "http://172.16.17.30:8080/apk/"+fileName;
+        String fileUrl = "http://"+ipC+"/apk/"+fileName;
         String path = photoUpload(file,fileName,pathName);
         edition.setFileUrl(fileUrl);
         editionService.editionUpgrade(edition);
@@ -74,10 +78,10 @@ public class EditionController {
     @ResponseBody
     @RequestMapping(value = "photoUpload",method = RequestMethod.POST)
     public ResponseVO photoUpload(MultipartFile file, int userId) throws Exception{
-        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/headpicture/";
+        String  pathName= urlC+"headpicture/";
         // 自定义的文件名称
         String fileName = String.valueOf(System.currentTimeMillis())+"_"+userId + file.getOriginalFilename();// 文件原名称
-        String fileUrl = "http://172.16.17.30:8080/headpicture/"+fileName;
+        String fileUrl = "http://"+ipC+"/headpicture/"+fileName;
         String path = photoUpload(file,fileName,pathName);
         editionService.photoUpload(fileUrl,userId);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
@@ -97,10 +101,10 @@ public class EditionController {
     @RequestMapping(value = "modelUpload",method = RequestMethod.POST)
     public ResponseVO modelUpload(MultipartFile file) throws Exception{
         int a = editionService.selectModelCount();
-        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/models/model_"+ a +"/";
+        String  pathName= urlC+"models/model_"+ a +"/";
         // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
         String fileName = file.getOriginalFilename();// 文件原名称
-        String fileUrl = "http://172.16.17.30:8080/models/model_"+ a +"/"+fileName;
+        String fileUrl = "http://"+ipC+"/models/model_"+ a +"/"+fileName;
         String path = photoUpload(file,fileName,pathName);
         editionService.modelUpload(fileUrl);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
@@ -118,10 +122,10 @@ public class EditionController {
     @ResponseBody
     @RequestMapping(value = "trainLogUpload",method = RequestMethod.POST)
     public ResponseVO trainLogUpload(MultipartFile file, TrainLog trainLog) throws Exception{
-        String  pathName= "D:/IdeaProjects/amisbuild001/picture_apk/trainLog/";
+        String  pathName= urlC+"trainLog/";
         // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
         String fileName = file.getOriginalFilename();// 文件原名称
-        String fileUrl = "http://172.16.17.30:8080/trainLog/"+fileName;
+        String fileUrl = "http://"+ipC+"/trainLog/"+fileName;
         String path = photoUpload(file,fileName,pathName);
         trainLog.setFileUrl(fileUrl);
         editionService.trainLogUpload(trainLog);
