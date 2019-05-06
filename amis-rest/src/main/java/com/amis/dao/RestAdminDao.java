@@ -59,4 +59,6 @@ public interface RestAdminDao {
     int addClass(ClassEntity classEntity);
 
     int deleteClass(int tc_id);
+
+    School getSchoolIP();
 }

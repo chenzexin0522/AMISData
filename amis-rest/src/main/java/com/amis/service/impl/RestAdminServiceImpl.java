@@ -1,5 +1,8 @@
 package com.amis.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.amis.common.http.HttpRequest;
+import com.amis.dao.EditionDao;
 import com.amis.dao.RestAdminDao;
 import com.amis.entity.*;
 import com.amis.entity.dto.*;
@@ -20,6 +23,9 @@ public class RestAdminServiceImpl implements RestAdminService {
 
     @Autowired
     private RestAdminDao restAdminDao;
+
+    @Autowired
+    private EditionDao editionDao;
 
     @Override
     public List<Edition> selectEditionList() {
@@ -134,6 +140,24 @@ public class RestAdminServiceImpl implements RestAdminService {
     @Override
     public int deleteClass(int tc_id) {
         return restAdminDao.deleteClass(tc_id);
+    }
+
+    @Override
+    public void updateAPK() {
+        Edition edition = editionDao.getEdition();
+        School school = restAdminDao.getSchoolIP();
+        String IP = school.getS_ip();
+        JSONObject jsobj1 = new JSONObject();
+        jsobj1.put("versionCode",edition.getVersionCode());
+        jsobj1.put("isUpdate",edition.getIsUpdate());
+        jsobj1.put("message",edition.getMessage());
+        jsobj1.put("fileUrl",edition.getFileUrl());
+        jsobj1.put("isHotUpdate",edition.getIsHotUpdate());
+        jsobj1.put("hotCode",edition.getHotCode());
+        jsobj1.put("editionReleasePeople",edition.getEditionReleasePeople());
+        //System.out.println(jsobj1);
+        HttpRequest.post(jsobj1,"http://"+IP+"/updateAll/updateAPK");//注册
+
     }
 
 

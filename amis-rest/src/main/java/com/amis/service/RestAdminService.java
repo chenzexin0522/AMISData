@@ -58,4 +58,6 @@ public interface RestAdminService {
     int addClass(ClassEntity classEntity);
 
     int deleteClass(int tc_id);
+
+    void updateAPK();
 }

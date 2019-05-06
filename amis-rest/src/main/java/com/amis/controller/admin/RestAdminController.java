@@ -9,10 +9,8 @@ import com.amis.entity.dto.*;
 import com.amis.service.RestAdminService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -427,7 +425,20 @@ public class RestAdminController {
         return responseVO;
     }
 
-
+    /**
+     * @Author chenzexin
+     * @Date 2019/4/11 15:58
+     * @param s
+     * @return com.amis.common.ResponseVO
+     * @Description        更新所有服务APK,必须本地先更新再更新到其他系统
+     **/
+    @ResponseBody
+    @RequestMapping(value = "updateAPK",method = RequestMethod.POST)
+    public ResponseVO updateAPK() throws Exception {
+        restAdminService.updateAPK();
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
 
 
 }
