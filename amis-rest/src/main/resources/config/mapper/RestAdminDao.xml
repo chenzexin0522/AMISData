@@ -260,11 +260,14 @@ WHERE tus.tc_id = #{tc_id}
     </delete>
 
     <resultMap id="getSchoolIPList" type="com.amis.entity.School">
+        <result column="s_name" property="s_name"/>
+        <result column="s_province" property="s_province"/>
+        <result column="s_city" property="s_city"/>
         <result column="s_ip" property="s_ip"/>
     </resultMap>
 
-    <select id="getSchoolIP" resultType="getSchoolIPList">
-        select s_ip from tab_school
+    <select id="getSchoolIP" resultMap="getSchoolIPList">
+        select s_name,s_province,s_city,s_ip from tab_school
     </select>
 
 </mapper>
