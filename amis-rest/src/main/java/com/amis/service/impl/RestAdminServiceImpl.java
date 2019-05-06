@@ -158,6 +158,7 @@ public class RestAdminServiceImpl implements RestAdminService {
         //System.out.println(jsobj1);
         HttpRequest.post(jsobj1,"http://"+IP+"/updateAll/updateAPK");//注册
 
+
     }
 
 

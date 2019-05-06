@@ -432,7 +432,6 @@ public class RestAdminController {
      * @return com.amis.common.ResponseVO
      * @Description        更新所有服务APK,必须本地先更新再更新到其他系统
      **/
-    @ResponseBody
     @RequestMapping(value = "updateAPK",method = RequestMethod.POST)
     public ResponseVO updateAPK() throws Exception {
         restAdminService.updateAPK();

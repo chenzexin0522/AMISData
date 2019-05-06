@@ -5,6 +5,7 @@ import com.amis.entity.Users;
 import com.amis.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @ClassName AdminServiceImpl
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @Date 2019/3/29 17:57
  **/
 
-@Component
+@Service
 public class AdminServiceImpl implements AdminService {
 
     @Autowired

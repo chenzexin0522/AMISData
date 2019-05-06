@@ -30,8 +30,8 @@ public class UpdateAllIP {
      * @Description        (开放)更新本地APK地址
      **/
     @ResponseBody
-    @RequestMapping(value = "updateAPK",method = RequestMethod.POST)
-    public ResponseVO updateAPK(@RequestBody Edition edition) throws Exception {
+    @RequestMapping(value = "updateSubAPK",method = RequestMethod.POST)
+    public ResponseVO updateAPK(@RequestBody Edition edition) {
         updateAllIPService.updateAPKURL(edition);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;
