@@ -7,6 +7,10 @@ import com.amis.service.EditionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @ClassName EditionServiceImpl
  * @Description 版本业务层
@@ -46,6 +50,9 @@ public class EditionServiceImpl implements EditionService {
 
     @Override
     public void trainLogUpload(TrainLog trainLog) {
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        trainLog.setInsertTime(sdf.format(d));
         editionDao.trainLogUpload(trainLog);
     }
 
