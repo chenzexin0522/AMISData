@@ -2,6 +2,9 @@ server:
   port: 8888
 
 spring:
+  thymeleaf:
+    mode : LEGACYHTML5
+
   datasource:
     name: amis
     url: jdbc:mysql://127.0.0.1:3306/amis?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC

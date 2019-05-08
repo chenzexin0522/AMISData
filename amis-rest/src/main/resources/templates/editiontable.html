@@ -1,8 +1,10 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>tables</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+
 
     <style>
         *{
@@ -143,39 +145,25 @@
         <thead>
         <tr>
             <th>版本id</th>
-            <th>版本昵称</th>
             <th>版本号</th>
-            <th>版本负责人</th>
-            <th>删除or修改</th>
+            <th>是否需要更新</th>
+            <th>更新说明</th>
+            <th>版本地址</th>
+            <th>是否需要热更新</th>
+            <th>热更新版本号</th>
+            <th>项目负责人</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>AIMS</td>
-            <td>1.0.1</td>
-            <td>陈泽鑫</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>AIMS</td>
-            <td>1.0.2</td>
-            <td>陈泽鑫</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>AIMS</td>
-            <td>1.0.3</td>
-            <td>陈泽鑫</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>AIMS</td>
-            <td>1.0.4</td>
-            <td>陈泽鑫</td>
+        <tr th:each="editions,stat : ${editionsList}">
+            <td th:text="${editions.tet_id}">s</td>
+            <td th:text="${editions.versionCode}">民乐</td>
+            <td th:text="${editions.isUpdate}">a</td>
+            <td th:text="${editions.message}">a</td>
+            <td th:text="${editions.fileUrl}">a</td>
+            <td th:text="${editions.isHotUpdate}">a</td>
+            <td th:text="${editions.hotCode}">a</td>
+            <td th:text="${editions.editionReleasePeople}">a</td>
             <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
         </tr>
         <tbody>

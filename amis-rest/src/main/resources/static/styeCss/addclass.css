@@ -138,6 +138,24 @@ body {
     font-family: 'Syncopate', sans-serif;
 }
 
+.main select ,.main option{
+    outline: none;
+    border: 1px solid #FFF;
+    background: #fed2ed;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 15px 10px;
+    width: 100%;
+    font-size: 1.3em;
+    color: #7e8fad;
+    text-align: center;
+
+    font-family: 'Syncopate', sans-serif;
+}
+
 .main input[type="password"] {
     margin: 1.5em 0;
 }

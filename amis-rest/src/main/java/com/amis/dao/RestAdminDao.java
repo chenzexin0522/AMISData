@@ -22,7 +22,7 @@ public interface RestAdminDao {
 
     AdminDTO adminlogin(Admin admin);
 
-    School selectSchoolList();
+    List<School> selectSchoolList();
 
     int addSchool(School school);
 
@@ -61,4 +61,6 @@ public interface RestAdminDao {
     int deleteClass(int tc_id);
 
     School getSchoolIP();
+
+    int addCoachClass(Users users);
 }

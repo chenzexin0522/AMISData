@@ -48,7 +48,7 @@ public class RestAdminServiceImpl implements RestAdminService {
     }
 
     @Override
-    public School selectSchoolList() {
+    public List<School> selectSchoolList() {
         return restAdminDao.selectSchoolList();
     }
 
@@ -159,6 +159,11 @@ public class RestAdminServiceImpl implements RestAdminService {
         HttpRequest.post(jsobj1,"http://"+IP+"/updateAll/updateAPK");//注册
 
 
+    }
+
+    @Override
+    public int addCoachClass(Users users) {
+        return restAdminDao.addCoachClass(users);
     }
 
 

@@ -21,7 +21,7 @@ public interface RestAdminService {
 
     AdminDTO adminlogin(Admin admin);
 
-    School selectSchoolList();
+    List<School> selectSchoolList();
 
     int addSchool(School school);
 
@@ -60,4 +60,6 @@ public interface RestAdminService {
     int deleteClass(int tc_id);
 
     void updateAPK();
+
+    int addCoachClass(Users users);
 }

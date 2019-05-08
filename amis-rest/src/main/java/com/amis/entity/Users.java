@@ -21,6 +21,7 @@ public class Users implements Serializable {
     private String coach_title;         //教练称号
     private String u_autograph;         //个性签名
     private int u_role;                 //用户角色
+    private int tc_id;
     private int s_id;
     private int matchMode;
     private String modelPath;

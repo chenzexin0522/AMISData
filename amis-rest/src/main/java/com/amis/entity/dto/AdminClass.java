@@ -13,4 +13,5 @@ public class AdminClass {
     private int tc_id;
     private String tc_name;
     private int tc_number;
+    private String u_name;
 }

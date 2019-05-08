@@ -34,6 +34,7 @@ public class TokenFilterUtil  extends HandlerInterceptorAdapter {
         /**
          * 请求令牌
          */
+        System.out.println("===================="+request.getRequestURI());
         try {
             String token = request.getHeader("token");
             String userid = request.getHeader("userid");

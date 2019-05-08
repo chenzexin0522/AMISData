@@ -1,8 +1,10 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8">
     <title>tables</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
 
     <style>
         *{
@@ -139,49 +141,27 @@
 
 <h2>AIMS-学生列表</h2>
 <div class="table-wrapper">
+    <div class="as"><a href="addstudent">添加学生</a></div>
     <table class="fl-table">
         <thead>
         <tr>
             <th>学生id</th>
             <th>学生昵称</th>
-            <th>学生班级</th>
             <th>学生手机号</th>
-            <th>学校设备mac</th>
+            <th>设备mac</th>
+            <th>学生班级</th>
             <th>删除or修改</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>范梦娇</td>
-            <td>高中（2）班</td>
-            <td>13033332222</td>
-            <td>80:EA:CA:00:19:4A</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>王宇帆</td>
-            <td>初中（2）班</td>
-            <td>13688888888</td>
-            <td>80:EA:CA:00:19:4B</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>刘海涛</td>
-            <td>二年（2）班</td>
-            <td>15066666666</td>
-            <td>80:EA:CA:00:19:4C</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>王天娇</td>
-            <td>五年（1）班</td>
-            <td>13948757646</td>
-            <td>80:EA:CA:00:19:4D</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
+        <tr th:each="students,stat : ${student}">
+            <td th:text="${students.uc_id}">s</td>
+            <td th:text="${students.uc_name}">民乐</td>
+            <td th:text="${students.uc_phone}">a</td>
+            <td th:text="${students.eq_mac}">a</td>
+            <td th:text="${students.tc_name}">a</td>
+            <!--   <td><button onclick="deleteById(${students.uc_id})">删除</button><&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a</td>-->
+            <td><button th:onclick = "|deleteById(${students.uc_id})|">删除</button></td>
         </tr>
         <tbody>
     </table>
@@ -192,4 +172,14 @@
 </div>
 
 </body>
+<script th:inline="none">
+    function deleteById(id){
+        $.ajax({
+            type: 'POST',
+            url: "/admines/deletestudentVal",
+            data: {"id":id}    //映射或字符串值，规定连同请求发送到服务器的数据；
+
+        })
+    }
+</script>
 </html>

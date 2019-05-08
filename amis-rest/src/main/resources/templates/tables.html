@@ -1,10 +1,12 @@
 ﻿<!doctype html>
-<html>
+<html xml:th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"/>
 <title>tables</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
 
-<style>
+
+    <style>
 *{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -135,7 +137,7 @@ h2{
 }
 </style>
 </head>
-<body><script src="/demos/googlegg.js"></script>
+<body><script src="/demos/googlegg.js" ></script>
 
 <h2>AIMS-学校列表</h2>
 <div class="table-wrapper">
@@ -144,47 +146,26 @@ h2{
         <tr>
             <th>学校id</th>
             <th>学校昵称</th>
-            <th>学校学生数</th>
-            <th>学校教练数</th>
-            <th>学校位置</th>
+            <th>学校省份</th>
+            <th>学校市区</th>
+            <th>学校ip</th>
             <th>删除or修改</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>民乐小学</td>
-            <td>602</td>
-            <td>12</td>
-            <td>深圳市龙华区</td>
+        <tr th:each="schools,stat : ${school}">
+            <td th:text="${schools.s_id}">s</td>
+            <td th:text="${schools.s_name}">民乐</td>
+            <td th:text="${schools.s_province}">a</td>
+            <td th:text="${schools.s_city}">a</td>
+            <td th:text="${schools.s_ip}">a</td>
             <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>体育中学</td>
-            <td>1023</td>
-            <td>23</td>
-            <td>深圳市宝安区</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>深沟小学</td>
-            <td>529</td>
-            <td>5</td>
-            <td>汕头市朝南区</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>金中中学</td>
-            <td>6245</td>
-            <td>98</td>
-            <td>汕头市澄海区</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tbody>
+
+        </tbody>
     </table>
+
+
 </div>
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
     <a href="http://www.lanrenzhijia.com/" target="_blank">上一页</a>&nbsp;&nbsp;

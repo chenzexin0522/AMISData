@@ -112,7 +112,7 @@ public class RestAdminController {
      **/
     @RequestMapping(value = "selectSchoolList",method = RequestMethod.POST)
     public ResponseVO selectSchoolList() {
-        School schools = restAdminService.selectSchoolList();
+        List<School> schools = restAdminService.selectSchoolList();
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(schools);
         return responseVO;

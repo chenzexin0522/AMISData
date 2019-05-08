@@ -139,25 +139,24 @@
 </head>
 <body><script src="/demos/googlegg.js"></script>
 
-<h2>AIMS-班级列表</h2>
+<h2>AIMS-反馈列表</h2>
 <div class="table-wrapper">
-    <div class="as"><a href="addClass">添加班级</a></div>
     <table class="fl-table">
         <thead>
         <tr>
-            <th>班级id</th>
-            <th>班级昵称</th>
-            <th>班级人数</th>
-            <th>归属教练</th>
+            <th>反馈id</th>
+            <th>反馈内容</th>
+            <th>反馈时间</th>
+            <th>用户昵称</th>
             <th>删除or修改</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="adminClassList,stat : ${ClassList}">
-            <td th:text="${adminClassList.tc_id}">s</td>
-            <td th:text="${adminClassList.tc_name}">民乐</td>
-            <td th:text="${adminClassList.tc_number}">a</td>
-            <td th:text="${adminClassList.u_name}">a</td>
+        <tr th:each="feedbackDTOSList,stat : ${feedbackDTOS}">
+            <td th:text="${feedbackDTOSList.tf_id}">s</td>
+            <td th:text="${feedbackDTOSList.tf_content}">民乐</td>
+            <td th:text="${feedbackDTOSList.tf_time}">a</td>
+            <td th:text="${feedbackDTOSList.u_name}">a</td>
             <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
         </tr>
         <tbody>

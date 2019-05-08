@@ -62,8 +62,16 @@
             WHERE user_phone = #{user_phone} AND user_password = #{user_password}
     </select>
 
-    <select id="selectSchoolList" resultType="com.amis.entity.School">
-        select s_name,s_province,s_city from tab_school
+    <resultMap id="selectSchoolLists" type="com.amis.entity.School">
+        <result column="s_id" property="s_id"/>
+        <result column="s_name" property="s_name"/>
+        <result column="s_province" property="s_province"/>
+        <result column="s_city" property="s_city"/>
+        <result column="s_ip" property="s_ip"/>
+    </resultMap>
+
+    <select id="selectSchoolList" resultMap="selectSchoolLists">
+        select s_id,s_name,s_province,s_city,s_ip from tab_school
     </select>
 
     <insert id="addSchool">
@@ -110,23 +118,34 @@
     </select>
 
 
-    <insert id="addCoach">
+    <insert id="addCoach" parameterType="com.amis.entity.Users" useGeneratedKeys="true" keyProperty="u_id">
         insert into  tab_user(
           u_name,
           u_gender,
           u_phone,
           u_password,
           coach_teaching_age,
-          s_id)
+          u_role
+          )
         values (
           #{u_name},
           #{u_gender},
           #{u_phone},
           #{u_password},
           #{coach_teaching_age},
-          #{s_id})
+          1)
     </insert>
 
+
+    <insert id="addCoachClass" >
+        insert into  tab_class_teaching(
+          u_id,
+          tc_id
+          )
+        values (
+          #{u_id},
+          #{tc_id})
+    </insert>
 
     <delete id="deleteCoach">
         delete from tab_user
@@ -151,14 +170,18 @@
     <insert id="addStudent">
         insert into  tab_uc_student(
           uc_name,
+          uc_gender,
           uc_phone,
           uc_password,
+          u_role,
           eq_mac,
           tc_id)
         values (
           #{uc_name},
+          #{uc_gender},
           #{uc_phone},
           #{uc_password},
+          1,
           #{eq_mac},
           #{tc_id})
     </insert>
@@ -217,10 +240,16 @@
         <result column="tc_id" property="tc_id"/>
         <result column="tc_name" property="tc_name"/>
         <result column="tc_number" property="tc_number"/>
+        <result column="u_name" property="u_name"/>
     </resultMap>
 
     <select id="selectClass" resultMap="selectClassList">
-          SELECT tc.tc_id,tc.tc_name,COUNT(tus.uc_id) as tc_number from tab_class tc LEFT JOIN tab_uc_student tus ON tc.tc_id = tus.tc_id GROUP BY tc.tc_id
+SELECT tc.tc_id,tc.tc_name,COUNT(tus.uc_id) as tc_number,tu.u_name
+from tab_class tc
+LEFT JOIN tab_uc_student tus ON tc.tc_id = tus.tc_id
+LEFT JOIN tab_class_teaching tct ON tc.tc_id = tct.tc_id
+LEFT JOIN tab_user tu ON tct.u_id = tu.u_id
+ GROUP BY tc.tc_id
     </select>
 
     <select id="selectClassCoach" resultType="com.amis.entity.dto.ReturnCoachDTO">
@@ -246,11 +275,9 @@ WHERE tus.tc_id = #{tc_id}
 
     <insert id="addClass">
         insert into  tab_class(
-          tc_name,
-          s_id)
+          tc_name)
         values (
-          #{tc_name},
-          1
+          #{tc_name}
           )
     </insert>
 

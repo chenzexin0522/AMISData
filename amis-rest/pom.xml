@@ -10,13 +10,23 @@
         <version>1.0</version>
     </parent>
 
+
+
     <properties>
         <java.version>1.8</java.version>
         <output.dir>${project.build.directory}/../../output/config</output.dir>
     </properties>
 
 
+
+
     <dependencies>
+
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.22</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -234,6 +244,7 @@
                     <include>**/*.txt</include>
                 </includes>
             </resource>
+
         </resources>
 
     </build>

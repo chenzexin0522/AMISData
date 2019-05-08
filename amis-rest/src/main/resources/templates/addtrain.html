@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
 
@@ -8,6 +8,7 @@
 
     <!-- //for-mobile-apps -->
     <link rel="stylesheet" href="/styeCss/addclass.css" />
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
 
 </head>
 <body>
@@ -16,18 +17,48 @@
     <h1>
         AIMS-添加教练
     </h1>
-    <form>
-        <input type="text" value="教练昵称" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校昵称';}"
-               required="">
-        <input type="text" value="教练学校" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校学生数';}"
-               required="">
-        <input type="text" value="教练手机号" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校教练数';}"
-               required="">
-        <input type="text" value="教练教龄" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校位置';}"
-               required="">
+    <form method="post" action="addtrainVal" onsubmit="return subForm()">
+        <input type="text" name="u_name" value='教练昵称' onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '教练昵称';}">
+        <select id="u_gender" name="u_gender">
+            <option name="gender"  th:value="男" th:text="男"></option>
+            <option name="gender"  th:value="女" th:text="女"></option>
+        </select>
+        <input type="text" name="u_phone" value="手机号" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '手机号';}">
+        <input type="text" name="u_password" value="密码" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '密码';}">
+        <input type="text" name="coach_teaching_age" value="教龄" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '教龄';}">
+        <select id="classop" name="tc_id">
+            <option name="tc_id" th:each="adminClassList,stat:${ClassList}" th:value="${adminClassList.tc_id}" th:text="${adminClassList.tc_name}"></option>
+        </select>
         <input type="submit" value="保存">
     </form>
 </div>
 <!-- //main -->
+<script>
+    function subForm(){
+        var u_name = $("input[name='u_name']").val();
+        var u_phone = $("input[name='u_phone']").val();
+        var u_password = $("input[name='u_password']").val();
+        var coach_teaching_age = $("input[name='coach_teaching_age']").val();
+        /*var obj=document.getElementById('classop');
+        var index=obj.selectedIndex; //序号，取当前选中选项的序号
+        var tc_id = obj.options[index].value;*/
+        if (u_name == "" ||u_name == "教练昵称" || u_name == null || u_name == undefined) {
+            alert("教练昵称不能为空");
+            return false;/*阻止表单提交*/
+        } else if (u_phone == "" ||u_phone == "手机号" || u_phone == null || u_phone == undefined) {
+            alert("手机号不能为空");
+            return false;
+        } else if (u_password == "" ||u_password == "密码" || u_password == null || u_password == undefined) {
+            alert("密码不能为空");
+            return false;
+        } else if (coach_teaching_age == "" ||coach_teaching_age == "教龄" || coach_teaching_age == null || coach_teaching_age == undefined) {
+            alert("教龄不能为空");
+            return false;
+        } else {
+            alert("提交");
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

@@ -1,8 +1,10 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>tables</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+
 
     <style>
         *{
@@ -139,48 +141,29 @@
 
 <h2>AIMS-教练列表</h2>
 <div class="table-wrapper">
+    <div class="as"><a href="addtrain">添加教练</a></div>
     <table class="fl-table">
         <thead>
         <tr>
             <th>教练id</th>
             <th>教练昵称</th>
-            <th>教练学校</th>
+            <th>教练性别</th>
             <th>教练手机号</th>
             <th>教练教龄</th>
+            <th>教练称号</th>
+            <th>学校昵称</th>
             <th>删除or修改</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>胡教练</td>
-            <td>金中中学</td>
-            <td>13033332222</td>
-            <td>10</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>王教练</td>
-            <td>体育中学</td>
-            <td>13688823233</td>
-            <td>5</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>刘教练</td>
-            <td>高级中学</td>
-            <td>15066666666</td>
-            <td>4</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>龙行教练</td>
-            <td>宝安小学</td>
-            <td>13948757646</td>
-            <td>18</td>
+        <tr th:each="returnCoachDTOS,stat : ${coachList}">
+            <td th:text="${returnCoachDTOS.u_id}">s</td>
+            <td th:text="${returnCoachDTOS.u_name}">民乐</td>
+            <td th:text="${returnCoachDTOS.u_gender}">a</td>
+            <td th:text="${returnCoachDTOS.u_phone}">a</td>
+            <td th:text="${returnCoachDTOS.coach_teaching_age}">a</td>
+            <td th:text="${returnCoachDTOS.coach_title}">a</td>
+            <td th:text="${returnCoachDTOS.s_name}">a</td>
             <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
         </tr>
         <tbody>

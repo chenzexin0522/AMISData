@@ -1,0 +1,321 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AIMS首页</title>
+
+<style>
+*{margin:0;padding:0;list-style-type:none;}
+
+.bg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #fab49b;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #fff;
+}
+
+.watch {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateX(-21.15%) translateY(-49.75%);
+          transform: translateX(-21.15%) translateY(-49.75%);
+}
+
+.screen {
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+  width: 272px;
+  height: 340px;
+  margin: auto;
+  position: relative;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #9e243e;
+}
+
+.heart {
+  margin: 0 auto;
+  display: block;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+  width: 66%;
+  opacity: 0.95;
+  -webkit-animation: beat 1.2s ease-in-out infinite forwards;
+          animation: beat 1.2s ease-in-out infinite forwards;
+}
+
+.bpm {
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  font-family: rift-soft, sans-serif;
+  color: #ffe1dd;
+  opacity: 1;
+  z-index: 100;
+  position: relative;
+  text-align: center;
+  top: 55px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.shadow {
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  top: 50%;
+  left: 50%;
+  border-radius: 100px;
+  -webkit-box-shadow: 0 0 200px 60px rgba(70, 0, 44, 0.6);
+          box-shadow: 0 0 200px 60px rgba(70, 0, 44, 0.6);
+  position: absolute;
+  z-index: 0;
+  -webkit-animation: beat-shadow 1.2s ease-in-out infinite forwards;
+          animation: beat-shadow 1.2s ease-in-out infinite forwards;
+}
+
+.tick {
+  width: 10px;
+  height: 10px;
+  background: #ff6c5e;
+  opacity: 0.6;
+  border-radius: 100%;
+  position: absolute;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.tick:nth-of-type(1) {
+  top: 20px;
+  left: 126px;
+  -webkit-animation: tock 12s ease-out 0s infinite forwards;
+          animation: tock 12s ease-out 0s infinite forwards;
+}
+
+.tick:nth-of-type(2) {
+  top: 50px;
+  right: 60px;
+  -webkit-animation: tock 12s ease-out 1s infinite forwards;
+          animation: tock 12s ease-out 1s infinite forwards;
+}
+
+.tick:nth-of-type(3) {
+  top: 100px;
+  right: 25px;
+  -webkit-animation: tock 12s ease-out 2s infinite forwards;
+          animation: tock 12s ease-out 2s infinite forwards;
+}
+
+.tick:nth-of-type(4) {
+  top: 165px;
+  right: 10px;
+  -webkit-animation: tock 12s ease-out 3s infinite forwards;
+          animation: tock 12s ease-out 3s infinite forwards;
+}
+
+.tick:nth-of-type(5) {
+  bottom: 90px;
+  right: 25px;
+  -webkit-animation: tock 12s ease-out 4s infinite forwards;
+          animation: tock 12s ease-out 4s infinite forwards;
+}
+
+.tick:nth-of-type(6) {
+  bottom: 45px;
+  right: 60px;
+  -webkit-animation: tock 12s ease-out 5s infinite forwards;
+          animation: tock 12s ease-out 5s infinite forwards;
+}
+
+.tick:nth-of-type(7) {
+  bottom: 20px;
+  right: 126px;
+  opacity: 1;
+  background: #ffd0cb;
+}
+
+.tick:nth-of-type(8) {
+  bottom: 45px;
+  left: 60px;
+  -webkit-animation: tock 12s ease-out 7s infinite forwards;
+          animation: tock 12s ease-out 7s infinite forwards;
+}
+
+.tick:nth-of-type(9) {
+  bottom: 90px;
+  left: 25px;
+  -webkit-animation: tock 12s ease-out 8s infinite forwards;
+          animation: tock 12s ease-out 8s infinite forwards;
+}
+
+.tick:nth-of-type(10) {
+  top: 165px;
+  left: 10px;
+  -webkit-animation: tock 12s ease-out 9s infinite forwards;
+          animation: tock 12s ease-out 9s infinite forwards;
+}
+
+.tick:nth-of-type(11) {
+  top: 100px;
+  left: 25px;
+  -webkit-animation: tock 12s ease-out 10s infinite forwards;
+          animation: tock 12s ease-out 10s infinite forwards;
+}
+
+.tick:nth-of-type(12) {
+  top: 50px;
+  left: 60px;
+  -webkit-animation: tock 12s ease-out 11s infinite forwards;
+          animation: tock 12s ease-out 11s infinite forwards;
+}
+
+.tick:nth-of-type(1), .tick:nth-of-type(4), .tick:nth-of-type(7), .tick:nth-of-type(10) {
+  width: 20px;
+  height: 20px;
+}
+
+@-webkit-keyframes beat {
+  0%,
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  15%,
+  45% {
+    -webkit-transform: scale3d(1.225, 1.225, 1);
+            transform: scale3d(1.225, 1.225, 1);
+  }
+  35% {
+    -webkit-transform: scale3d(1.15, 1.15, 1);
+            transform: scale3d(1.15, 1.15, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes beat {
+  0%,
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  15%,
+  45% {
+    -webkit-transform: scale3d(1.225, 1.225, 1);
+            transform: scale3d(1.225, 1.225, 1);
+  }
+  35% {
+    -webkit-transform: scale3d(1.15, 1.15, 1);
+            transform: scale3d(1.15, 1.15, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes beat-shadow {
+  0%,
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  15%,
+  45% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+            transform: scale3d(1.1, 1.1, 1);
+  }
+  30%,
+  60% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes beat-shadow {
+  0%,
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+  15%,
+  45% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+            transform: scale3d(1.1, 1.1, 1);
+  }
+  30%,
+  60% {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes tock {
+  0%, 2% {
+    opacity: 0.95;
+    background: #ffd0cb;
+  }
+  10%, 100% {
+    opacity: 0.6;
+    background: #ff6c5e;
+  }
+}
+
+@keyframes tock {
+  0%, 2% {
+    opacity: 0.95;
+    background: #ffd0cb;
+  }
+  10%, 100% {
+    opacity: 0.6;
+    background: #ff6c5e;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="bg">
+  <div class="screen">
+    <span class="shadow"></span>
+    <img class="heart" src="/img/25e52d50-31e3-4348-9e43-f9254d29e6c6.png">
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+    <div class="tick"></div>
+
+    <div>
+      <h2 class="bpm one">A I M S</h2>
+    </div>
+
+    <div class="watch">
+      <img src="/img/d49fcd21-a629-413f-bedd-cdea8841fa56.png">
+    </div>
+  </div>
+</div>
+<div style="text-align:center;">
+</div>
+</body>
+</html>

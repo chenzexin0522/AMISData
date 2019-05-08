@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<link>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<title>Aims</title>
 
-	<link type="text/css" href="/styeCss/style.css" rel="stylesheet" >
+	<link type="text/css" href="/styeCss/style.css" rel="stylesheet"/>
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/vector.js"></script>
@@ -19,8 +19,8 @@
 		<div class="containerT">
 			<h1>AIMS-管理员登录</h1>
 			<form class="form" method="post" action="loginPage" onsubmit="return subForm()">
-				<input type="text" name="username" id="entry_name" value="aims">
-				<input type="password" name="password" id="entry_password">
+				<input type="text" name="username" id="entry_name" value="aims"/>
+				<input type="password" name="password" id="entry_password"  value="1"/>
 				<button type="submit" id="entry_btn">登录</button>
 				<div id="prompt" class="prompt"></div>
 			</form>
@@ -50,7 +50,6 @@
 			alert("密码不能为空");
 			return false;
 		} else {
-			alert("提交");
 			return true;
 		}
 	}
