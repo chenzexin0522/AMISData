@@ -180,8 +180,11 @@
         $.ajax({
             type: 'POST',
             url: "/admines/deletetrainVal",
-            data: {"id":id}    //映射或字符串值，规定连同请求发送到服务器的数据；
-
+            data: {"id":id},    //映射或字符串值，规定连同请求发送到服务器的数据；
+            success : function(data) {
+                // 删除成功后刷新页面
+                window.location.reload();
+            }
         })
     }
 </script>
