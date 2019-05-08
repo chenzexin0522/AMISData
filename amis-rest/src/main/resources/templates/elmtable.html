@@ -158,7 +158,7 @@
             <td th:text="${adminClassList.tc_name}">民乐</td>
             <td th:text="${adminClassList.tc_number}">a</td>
             <td th:text="${adminClassList.u_name}">a</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
+            <td><button th:onclick = "|deleteById(${adminClassList.tc_id})|">删除</button></td>
         </tr>
         <tbody>
     </table>
@@ -169,4 +169,14 @@
 </div>
 
 </body>
+<script th:inline="none">
+    function deleteById(id){
+        $.ajax({
+            type: 'POST',
+            url: "/admines/deleteClassVal",
+            data: {"id":id}    //映射或字符串值，规定连同请求发送到服务器的数据；
+
+        })
+    }
+</script>
 </html>

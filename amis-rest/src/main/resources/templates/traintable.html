@@ -164,7 +164,7 @@
             <td th:text="${returnCoachDTOS.coach_teaching_age}">a</td>
             <td th:text="${returnCoachDTOS.coach_title}">a</td>
             <td th:text="${returnCoachDTOS.s_name}">a</td>
-            <td><a href="test.html">删除</a>&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a></td>
+            <td><button th:onclick = "|deleteById(${returnCoachDTOS.u_id})|">删除</button></td>
         </tr>
         <tbody>
     </table>
@@ -175,4 +175,14 @@
 </div>
 
 </body>
+<script th:inline="none">
+    function deleteById(id){
+        $.ajax({
+            type: 'POST',
+            url: "/admines/deletetrainVal",
+            data: {"id":id}    //映射或字符串值，规定连同请求发送到服务器的数据；
+
+        })
+    }
+</script>
 </html>

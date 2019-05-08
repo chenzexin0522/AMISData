@@ -195,13 +195,22 @@ public class AdminController {
         return "addstudent";
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/8 16:50
+     * @param request
+     * @param session
+     * @param model
+     * @return java.lang.String
+     * @Description        删除学生
+     **/
     @RequestMapping("/deletestudentVal")
     public String deletestudentVal(HttpServletRequest request, HttpSession session, Model model){
         int uc_id = Integer.parseInt(request.getParameter("id"));
         int a = restAdminService.deleteStudent(uc_id);
         List<Student> students = restAdminService.selectStudentList();
         model.addAttribute("student",students);
-        return "addstudent";
+        return "studenttable";
     }
 
 
@@ -264,6 +273,24 @@ public class AdminController {
         return "addtrain";
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/8 16:53
+     * @param request
+     * @param session
+     * @param model
+     * @return java.lang.String
+     * @Description        删除教练
+     **/
+    @RequestMapping("/deletetrainVal")
+    public String deletetrainVal(HttpServletRequest request, HttpSession session, Model model){
+        int u_id = Integer.parseInt(request.getParameter("id"));
+        int a = restAdminService.deleteCoach(u_id);
+        List<ReturnCoachDTO> returnCoachDTOS = restAdminService.selectCoachlList();
+        model.addAttribute("coachList",returnCoachDTOS);
+        return "traintable";
+    }
+
     @RequestMapping("/updatetrain")
     public String updatetrain(){
         return "updatetrain";
@@ -282,6 +309,25 @@ public class AdminController {
         model.addAttribute("ClassList",adminClassList);
         return "elmtable";
     }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/8 16:57
+     * @param request
+     * @param session
+     * @param model
+     * @return java.lang.String
+     * @Description        删除班级
+     **/
+    @RequestMapping("/deleteClassVal")
+    public String deleteClassVal(HttpServletRequest request, HttpSession session, Model model){
+        int tc_id = Integer.parseInt(request.getParameter("id"));
+        int a = restAdminService.deleteClass(tc_id);
+        List<AdminClass> adminClassList = restAdminService.selectClass();
+        model.addAttribute("ClassList",adminClassList);
+        return "elmtable";
+    }
+
     @RequestMapping("/addelm")
     public String addelm(){
         return "addelm";
