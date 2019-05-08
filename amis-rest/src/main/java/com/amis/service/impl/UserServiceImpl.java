@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
         GetCode getCode = new GetCode();
         String retule = getCode.getVerCode(phoneCode.getP_phone());
         phoneCode.setP_verCode(retule);
-        int os = phoneCodeDao.insertPhoneCode(phoneCode);
+        int os =phoneCodeDao.insertPhoneCode(phoneCode);
         if (os == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }
