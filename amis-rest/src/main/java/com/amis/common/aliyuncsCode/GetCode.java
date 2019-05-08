@@ -20,7 +20,7 @@ import java.util.Random;
 public class GetCode {
 
     public String getVerCode(String phone){
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI6mAre0aQltAu", "NOd0v4V38Upi38hnR24wssPGoAl1sf");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIZtJ2WMFq4Wqy", "SUagDyOsSbr50At4nuh2TG2vcQwNvQ");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         //request.setProtocol(ProtocolType.HTTPS);

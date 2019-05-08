@@ -161,7 +161,8 @@
             <td th:text="${students.eq_mac}">a</td>
             <td th:text="${students.tc_name}">a</td>
             <!--   <td><button onclick="deleteById(${students.uc_id})">删除</button><&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a</td>-->
-            <td><button th:onclick = "|deleteById(${students.uc_id})|">删除</button></td>
+            <td><button th:onclick = "|deleteById(${students.uc_id})|">删除</button><&nbsp;&nbsp;&nbsp;
+                <button th:onclick = "|deleteById(${students.uc_id})|">修改</button></td>
         </tr>
         <tbody>
     </table>

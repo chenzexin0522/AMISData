@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
 
@@ -8,6 +8,7 @@
 
     <!-- //for-mobile-apps -->
     <link rel="stylesheet" href="/styeCss/addclass.css" />
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
 
 </head>
 <body>
@@ -16,18 +17,48 @@
     <h1>
         AIMS-修改学生
     </h1>
-    <form>
-        <input type="text" value="王天娇" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校昵称';}"
-               required="">
-        <input type="text" value="二年（2）班" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校学生数';}"
-               required="">
-        <input type="text" value="130666666666" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校教练数';}"
-               required="">
-        <input type="text" value="80:EA:CA:00:19:4A" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学校位置';}"
-               required="">
+    <form method="post" action="addstudentVal" onsubmit="return subForm()">
+        <input type="text" name="uc_name" value='学生昵称' onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学生昵称';}">
+        <select id="gender" name="gender">
+            <option name="gender"  th:value="男" th:text="男"></option>
+            <option name="gender"  th:value="女" th:text="女"></option>
+        </select>
+        <input type="text" name="uc_phone" value="手机号" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '手机号';}">
+        <input type="text" name="uc_password" value="密码" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '密码';}">
+        <input type="text" name="eq_mac" value="设备mac" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '设备mac';}">
+        <select id="classop" name="tc_id">
+            <option name="tc_id" th:each="adminClassList,stat:${ClassList}" th:value="${adminClassList.tc_id}" th:text="${adminClassList.tc_name}"></option>
+        </select>
         <input type="submit" value="保存">
     </form>
 </div>
 <!-- //main -->
+<script>
+    function subForm(){
+        var uc_name = $("input[name='uc_name']").val();
+        var uc_phone = $("input[name='uc_phone']").val();
+        var uc_password = $("input[name='uc_password']").val();
+        var eq_mac = $("input[name='eq_mac']").val();
+        var obj=document.getElementById('classop');
+        var index=obj.selectedIndex; //序号，取当前选中选项的序号
+        var tc_id = obj.options[index].value;
+        if (uc_name == "" ||uc_name == "学生昵称" || uc_name == null || uc_name == undefined) {
+            alert("学生昵称不能为空");
+            return false;/*阻止表单提交*/
+        } else if (uc_phone == "" ||uc_phone == "手机号" || uc_phone == null || uc_phone == undefined) {
+            alert("手机号不能为空");
+            return false;
+        } else if (uc_password == "" ||uc_password == "密码" || uc_password == null || uc_password == undefined) {
+            alert("密码不能为空");
+            return false;
+        } else if (eq_mac == "" ||eq_mac == "设备mac" || eq_mac == null || eq_mac == undefined) {
+            alert("设备mac不能为空");
+            return false;
+        } else {
+            alert("添加成功");
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

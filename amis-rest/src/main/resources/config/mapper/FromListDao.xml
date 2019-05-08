@@ -23,14 +23,14 @@
     <select id="selectTotalTab" resultType="com.amis.entity.dto.ClassTrainTabDTO">
         SELECT ttt.tt_id,COUNT(tr.tr_id)as join_number,ttt.action_set_one,ttt.action_set_two,ttt.action_set_three,ttt.action_set_four,
         TIMESTAMPDIFF(MINUTE, ttt.start_time, ttt.end_time) as time_difference,
-        COUNT(IF(ttt.action_set_one &lt; tr.action_actual_one,true,null)
-        AND IF(ttt.action_set_two &lt; tr.action_actual_two,true,null)
-        AND IF(ttt.action_set_three &lt; tr.action_actual_three,true,null)
-        AND IF(ttt.action_set_four &lt; tr.action_actual_four,true,null))as actual_number,
-        ROUND( COUNT(IF(ttt.action_set_one &lt; tr.action_actual_one,true,null)
-        AND IF(ttt.action_set_two &lt; tr.action_actual_two,true,null)
-        AND IF(ttt.action_set_three &lt; tr.action_actual_three,true,null)
-        AND IF(ttt.action_set_four &lt; tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,0) as total_completion_rate,
+        COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))as actual_number,
+        ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,0) as total_completion_rate,
         ROUND(IF(ttt.action_set_one > 0,sum(IF(ttt.action_set_one &lt;= tr.action_actual_one,1,0)),0)/COUNT(tr.tr_id)*100,0)as one_completion_rate,
         ROUND(IF(ttt.action_set_two > 0,sum(IF(ttt.action_set_two &lt;= tr.action_actual_two,1,0)),0)/COUNT(tr.tr_id)*100,0)as two_completion_rate,
         ROUND(IF(ttt.action_set_three > 0,sum(IF(ttt.action_set_three &lt;= tr.action_actual_three,1,0)),0)/COUNT(tr.tr_id)*100,0)as three_completion_rate,
