@@ -59,28 +59,29 @@ LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id LEFT JOIN tab_class tac
         IF(ttt.action_set_three = 0,0,ROUND(COUNT(IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null))/COUNT(tr.tr_id)*100,2))as three_completion_rate,
         IF(ttt.action_set_four = 0,0,ROUND(COUNT(IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,2))as four_completion_rate
         FROM tab_total_train ttt LEFT JOIN tab_result tr ON ttt.tt_id=tr.tt_id
-        where ttt.start_time BETWEEN (SELECT tpr.start_time from tab_presentation tpr WHERE tpr.pr_id = 41) AND
-        (SELECT tpr.end_time from tab_presentation tpr WHERE tpr.pr_id = 41)
-        AND ttt.u_id =  (SELECT tpr.u_id from tab_presentation tpr WHERE tpr.pr_id = 41)
-        AND ttt.tc_id=  (SELECT tpr.tc_uc_id from tab_presentation tpr WHERE tpr.pr_id = 41)  GROUP BY ttt.tt_id
+        where ttt.start_time BETWEEN (SELECT tpr.start_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id}) AND
+        (SELECT tpr.end_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND ttt.u_id =  (SELECT tpr.u_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
+        AND ttt.tc_id=  (SELECT tpr.tc_uc_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})  GROUP BY ttt.tt_id
     </select>
 
 
     <select id="selectPresentationStudent" resultMap="selectPresentationDetailsList">
-        SELECT ROUND((IF(ttt.action_set_one &lt;= tr.action_actual_one,true,0)
-        + IF(ttt.action_set_two &lt;= tr.action_actual_two,true,0)
-        + IF(ttt.action_set_three &lt;= tr.action_actual_three,true,0)
-        + IF(ttt.action_set_four &lt;= tr.action_actual_four,true,0)) / 4 * 100,0) as total_completion_rate,
-       IF(ROUND(tr.action_actual_one / ttt.action_set_one * 100,0) > 100,100,ROUND(tr.action_actual_one / ttt.action_set_one * 100,0))as one_completion_rate,
-        IF(ROUND(tr.action_actual_two / ttt.action_set_two * 100,0) > 100,100,ROUND(tr.action_actual_two / ttt.action_set_two * 100,0))as two_completion_rate,
-        IF(ROUND(tr.action_actual_three / ttt.action_set_three * 100,0) > 100,100,ROUND(tr.action_actual_three / ttt.action_set_three * 100,0))as three_completion_rate,
-        IF(ROUND(tr.action_actual_four / ttt.action_set_four * 100,0) > 100,100,ROUND(tr.action_actual_four / ttt.action_set_four * 100,0))as four_completion_rate
+        SELECT ROUND((IF(ttt.action_set_one &lt;= tr.action_actual_one and ttt.action_set_one > 0,true,0)
+        + IF(ttt.action_set_two &lt;= tr.action_actual_two and ttt.action_set_two > 0,true,0)
+        + IF(ttt.action_set_three &lt;= tr.action_actual_three and ttt.action_set_three > 0,true,0)
+        + IF(ttt.action_set_four &lt;= tr.action_actual_four and ttt.action_set_four > 0,true,0)) / (IF(ttt.action_set_one>0,1,0)+IF(ttt.action_set_two>0,1,0)+IF(ttt.action_set_three>0,1,0)+IF(ttt.action_set_four>0,1,0)) * 100) as total_completion_rate,
+        IF(ttt.action_set_one = 0,0,IF(ROUND(tr.action_actual_one / ttt.action_set_one * 100,0) > 100,100,ROUND(tr.action_actual_one / ttt.action_set_one * 100,0)))as one_completion_rate,
+        IF(ttt.action_set_two = 0,0,IF(ROUND(tr.action_actual_two / ttt.action_set_two * 100,0) > 100,100,ROUND(tr.action_actual_two / ttt.action_set_two * 100,0)))as two_completion_rate,
+        IF(ttt.action_set_three = 0,0,IF(ROUND(tr.action_actual_three / ttt.action_set_three * 100,0) > 100,100,ROUND(tr.action_actual_three / ttt.action_set_three * 100,0)))as three_completion_rate,
+        IF(ttt.action_set_four = 0,0,IF(ROUND(tr.action_actual_four / ttt.action_set_four * 100,0) > 100,100,ROUND(tr.action_actual_four / ttt.action_set_four * 100,0)))as four_completion_rate
         FROM tab_total_train ttt LEFT JOIN tab_result tr ON ttt.tt_id = tr.tt_id WHERE
         ttt.start_time BETWEEN (SELECT tpr.start_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
         AND (SELECT tpr.end_time from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
         AND ttt.u_id =  (SELECT tpr.u_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})
         AND ttt.tc_id=  (SELECT tus.tc_id from tab_presentation tpr LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id WHERE tpr.pr_id = #{pr_id})
         AND tr.uc_id = ((SELECT tpr.tc_uc_id from tab_presentation tpr WHERE tpr.pr_id = #{pr_id})) GROUP BY tr.tr_id
+
 
     </select>
 
