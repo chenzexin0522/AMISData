@@ -40,9 +40,7 @@ public class UserController {
         if (phoneCode == null || StringUtils.isBlank(phoneCode.getP_phone())) {
              throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        return responseVO;
-       // return userService.insertPhoneCode(phoneCode);
+        return userService.insertPhoneCode(phoneCode);
     }
 
     /**

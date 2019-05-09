@@ -9,6 +9,8 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -18,6 +20,8 @@ import java.util.Random;
  * @Date 2019/3/18 14:43
  **/
 public class GetCode {
+
+
 
     public String getVerCode(String phone){
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIZtJ2WMFq4Wqy", "SUagDyOsSbr50At4nuh2TG2vcQwNvQ");
@@ -30,8 +34,8 @@ public class GetCode {
         request.setAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", phone);
-        request.putQueryParameter("SignName", "AIMS");
-        request.putQueryParameter("TemplateCode", "SMS_160765073");
+        request.putQueryParameter("SignName", "AIMS服务端");
+        request.putQueryParameter("TemplateCode", "SMS_164830785");
         String VerCode = getMsgCode();
         request.putQueryParameter("TemplateParam", "{\"code\":\""+VerCode+"\"}");
         try {
