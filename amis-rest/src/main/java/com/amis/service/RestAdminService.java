@@ -4,6 +4,7 @@ import com.amis.entity.*;
 import com.amis.entity.dto.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @InterfaceName RestAdminService
@@ -35,7 +36,7 @@ public interface RestAdminService {
 
     int deleteCoach(int u_id);
 
-    List<Student> selectStudentList();
+    List<ReturnStudentListDTO> selectStudentList();
 
     int addStudent(Student student);
 
@@ -62,4 +63,16 @@ public interface RestAdminService {
     void updateAPK();
 
     int addCoachClass(Users users);
+
+    int addAdmin(Admin admin);
+
+    UpdateStudent updatestudent(int uc_id);
+
+    Map<String, Object> loginPageS();
+
+    int updatestudentVal(Student student);
+
+    int updateCoachVal(Users users);
+
+    int updateClassVal(ClassEntity classEntity);
 }

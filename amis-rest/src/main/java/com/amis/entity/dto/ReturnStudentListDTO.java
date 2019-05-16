@@ -15,4 +15,5 @@ public class ReturnStudentListDTO {
     private String uc_phone;        //学生手机号
     private String eq_mac;          //学生设备mac
     private String tc_name;              //班级id
+    private int tc_id;
 }

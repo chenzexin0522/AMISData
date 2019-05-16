@@ -9,10 +9,14 @@ import com.amis.entity.dto.*;
 import com.amis.service.RestAdminService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName RestAdminController
@@ -100,6 +104,28 @@ public class RestAdminController {
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(adminDTO);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/13 10:36
+     * @param admin
+     * @return com.amis.common.ResponseVO
+     * @Description        添加普通管理员
+     **/
+    @RequestMapping(value = "addAdmin",method = RequestMethod.POST)
+    public ResponseVO addAdmin(@RequestBody Admin admin) throws Exception {
+        if (StringUtils.isBlank(admin.getUser_phone()) && StringUtils.isBlank(admin.getUser_password())){
+            ResponseVO responseVO = new ResponseVO(MessageKey.PHOME_NUMBER_OR_PASSWORD_ERROR);
+            return responseVO;
+        }
+        int as = restAdminService.addAdmin(admin);
+        if (as == 0){
+            ResponseVO responseVO = new ResponseVO(MessageKey.DB_OPERATIONE_FAIL);
+            return responseVO;
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;
     }
 
@@ -219,7 +245,7 @@ public class RestAdminController {
      **/
     @RequestMapping(value = "selectStudentList",method = RequestMethod.POST)
     public ResponseVO selectStudentList() {
-        List<Student> students = restAdminService.selectStudentList();
+        List<ReturnStudentListDTO> students = restAdminService.selectStudentList();
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(students);
         return responseVO;
@@ -261,6 +287,48 @@ public class RestAdminController {
         return responseVO;
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/15 13:11
+     * @param student
+     * @return com.amis.entity.dto.UpdateStudent
+     * @Description        修改学生信息
+     **/
+    @RequestMapping("/updatestudentVal")
+    public ResponseVO updatestudentVal(@RequestBody Student student){
+        int as = restAdminService.updatestudentVal(student);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/15 13:11
+     * @param student
+     * @return com.amis.entity.dto.UpdateStudent
+     * @Description        修改教练信息
+     **/
+    @RequestMapping("/updateCoachVal")
+    public ResponseVO updateCoachVal(@RequestBody Users users){
+        int as = restAdminService.updateCoachVal(users);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/15 13:11
+     * @param student
+     * @return com.amis.entity.dto.UpdateStudent
+     * @Description        修改班级信息
+     **/
+    @RequestMapping("/updateClassVal")
+    public ResponseVO updateClassVal(@RequestBody ClassEntity classEntity){
+        int as = restAdminService.updateClassVal(classEntity);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        return responseVO;
+    }
 
     /**
      * @Author chenzexin
@@ -438,6 +506,23 @@ public class RestAdminController {
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;
     }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/14 16:19
+     * @param
+     * @return com.amis.common.ResponseVO
+     * @Description        后台管理系统首页
+     **/
+    @RequestMapping(value = "loginPageS",method = RequestMethod.POST)
+    public ResponseVO loginPageS() throws Exception {
+        Map<String ,Object> map = restAdminService.loginPageS();
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(map);
+        return responseVO;
+    }
+
+
 
 
 }

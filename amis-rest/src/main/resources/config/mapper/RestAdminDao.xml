@@ -57,7 +57,8 @@
         SELECT
               user_id,
               user_name,
-              user_phone
+              user_phone,
+              user_role
             FROM tab_admin
             WHERE user_phone = #{user_phone} AND user_password = #{user_password}
     </select>
@@ -159,10 +160,11 @@
         <result column="uc_phone" property="uc_phone"/>
         <result column="eq_mac" property="eq_mac"/>
         <result column="tc_name" property="tc_name"/>
+        <result column="tc_id" property="tc_id"/>
     </resultMap>
 
     <select id="selectStudentList" resultMap="selectStudent">
-        select uc.uc_id,uc.uc_name,uc.uc_phone,uc.eq_mac,tc.tc_name from tab_uc_student uc left join tab_class tc on uc.tc_id = tc.tc_id
+        select uc.uc_id,uc.uc_name,uc.uc_phone,uc.eq_mac,tc.tc_name,uc.tc_id from tab_uc_student uc left join tab_class tc on uc.tc_id = tc.tc_id
     </select>
 
 
@@ -296,5 +298,185 @@ WHERE tus.tc_id = #{tc_id}
     <select id="getSchoolIP" resultMap="getSchoolIPList">
         select s_name,s_province,s_city,s_ip from tab_school
     </select>
+
+
+    <insert id="addAdmin">
+        insert into  tab_admin(
+          user_name,
+          user_phone,
+          user_password,
+          user_role)
+        values (
+          #{user_name},
+          #{user_phone},
+          #{user_password},
+          #{user_role})
+    </insert>
+
+
+    <select id="updatestudent" resultType="com.amis.entity.dto.UpdateStudent">
+        select tus.uc_id,tus.uc_name,tus.uc_phone,tus.eq_mac,tus.tc_id,tc.tc_name from tab_uc_student tus
+        left join tab_class tc on tus.tc_id = tc.tc_id where tus.uc_id = #{uc_id}
+    </select>
+
+
+    <update id="updateUser">
+        UPDATE tab_user
+        <set>
+            <if test="u_name != null and u_name != ''">
+                u_name = #{u_name},
+            </if>
+            <if test="u_gender != null and u_gender != ''">
+                u_gender = #{u_gender},
+            </if>
+            <if test="coach_teaching_age != null and coach_teaching_age != ''">
+                coach_teaching_age = #{coach_teaching_age},
+            </if>
+            <if test="u_autograph != null and u_autograph != ''">
+                u_autograph = #{u_autograph},
+            </if>
+            <if test="coach_title != null and coach_title != ''">
+                coach_title = #{coach_title}
+            </if>
+        </set>
+        <where>
+            u_id = #{u_id}
+        </where>
+    </update>
+
+
+    <select id="selectStudentPage" resultType="String">
+        SELECT COUNT(uc_id) AS studentPage FROM tab_uc_student
+    </select>
+
+    <select id="selectTrainPage" resultType="String">
+        SELECT COUNT(u_id) AS trainPage FROM tab_user
+    </select>
+
+    <select id="selectClassPage" resultType="String">
+        SELECT COUNT(tc_id) AS classPage FROM tab_class
+    </select>
+
+
+    <select id="selectPageStatistics" resultType="com.amis.entity.dto.PageStatisticsDTO">
+        SELECT COUNT(ttt.tt_id) AS trainTotal, SUM(TIMESTAMPDIFF(MINUTE,ttt.start_time,ttt.end_time))AS totalTrainMinute,
+        (SELECT ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,2) as total_completion_rate
+        FROM tab_result tr LEFT JOIN tab_total_train ttt ON ttt.tt_id=tr.tt_id WHERE ttt.train_state = 2) AS totalCompletionRrate
+        FROM tab_total_train ttt WHERE ttt.train_state = 2
+    </select>
+
+
+    <select id="selectWeekCompletionRrate" resultType="String">
+        SELECT ROUND(AVG(ROUND((IF(ttt.action_set_one = 0,0,IF(ROUND(tr.action_actual_one / ttt.action_set_one * 100,0) > 100,100,ROUND(tr.action_actual_one / ttt.action_set_one * 100,0)))
++ IF(ttt.action_set_two = 0,0,IF(ROUND(tr.action_actual_two / ttt.action_set_two * 100,0) > 100,100,ROUND(tr.action_actual_two / ttt.action_set_two * 100,0)))
++ IF(ttt.action_set_three = 0,0,IF(ROUND(tr.action_actual_three / ttt.action_set_three * 100,0) > 100,100,ROUND(tr.action_actual_three / ttt.action_set_three * 100,0)))
++ IF(ttt.action_set_four = 0,0,IF(ROUND(tr.action_actual_four / ttt.action_set_four * 100,0) > 100,100,ROUND(tr.action_actual_four / ttt.action_set_four * 100,0))))/(IF(ttt.action_set_one>0,1,0)+IF(ttt.action_set_two>0,1,0)+IF(ttt.action_set_three>0,1,0)+IF(ttt.action_set_four>0,1,0)),0)),0)as weekCompletionRrate
+FROM tab_total_train ttt LEFT JOIN tab_result tr ON ttt.tt_id = tr.tt_id
+WHERE   YEARWEEK( date_format(ttt.insert_time,'%Y-%m-%d' ) ) = YEARWEEK( now() ) AND ttt.train_state = 2
+    </select>
+
+
+    <update id="updatestudentVal">
+        UPDATE tab_uc_student
+        <set>
+            <if test="uc_name != null and uc_name != ''">
+                uc_name = #{uc_name},
+            </if>
+            <if test="uc_phone != null and uc_phone != ''">
+                uc_phone = #{uc_phone},
+            </if>
+            <if test="eq_mac != null and eq_mac != ''">
+                eq_mac = #{eq_mac},
+            </if>
+            <if test="tc_id != null and tc_id != ''">
+                tc_id = #{tc_id}
+            </if>
+        </set>
+        <where>
+            uc_id = #{uc_id}
+        </where>
+    </update>
+
+    <update id="updateCoachVal">
+        UPDATE tab_user
+        <set>
+            <if test="u_name != null and u_name != ''">
+                u_name = #{u_name},
+            </if>
+            <if test="u_phone != null and u_phone != ''">
+                u_phone = #{u_phone},
+            </if>
+        </set>
+        <where>
+            u_id = #{u_id}
+        </where>
+    </update>
+
+
+    <update id="updateClassVal">
+        UPDATE tab_class
+        <set>
+            <if test="tc_name != null and tc_name != ''">
+                tc_name = #{tc_name}
+            </if>
+        </set>
+        <where>
+            tc_id = #{tc_id}
+        </where>
+    </update>
+
+
+    <resultMap id="selectgradeDTOSList" type="com.amis.entity.dto.GradeDTO">
+        <result column="gr_name" property="gr_name"/>
+        <result column="total_completion_rate" property="total_completion_rate"/>
+    </resultMap>
+
+    <select id="selectgradeDTOS" resultMap="selectgradeDTOSList">
+
+        SELECT tgr.gr_name,ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,0) as total_completion_rate
+        from tab_class tc LEFT JOIN tab_grade tgr ON tc.gr_id = tgr.gr_id
+        LEFT JOIN tab_total_train ttt ON ttt.tc_id = tc.tc_id
+        LEFT JOIN tab_result tr ON ttt.tt_id = tr.tt_id
+        WHERE YEARWEEK( date_format(ttt.insert_time,'%Y-%m-%d' ) ) = YEARWEEK( now() ) AND ttt.train_state = 2 GROUP BY tgr.gr_id
+    </select>
+
+
+    <select id="selectWeekClassCompletionRrate" resultType="String">
+        SELECT ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,0) as total_completion_rate
+        from tab_class tc LEFT JOIN tab_total_train ttt ON ttt.tc_id = tc.tc_id
+        LEFT JOIN tab_result tr ON ttt.tt_id = tr.tt_id
+        WHERE YEARWEEK( date_format(ttt.insert_time,'%Y-%m-%d' ) ) = YEARWEEK( now() ) AND ttt.train_state = 2
+    </select>
+
+    <resultMap id="selecClassTotalDTOSList" type="com.amis.entity.dto.ClassTotalDTO">
+        <result column="tc_name" property="tc_name"/>
+        <result column="total_completion_rate" property="total_completion_rate"/>
+    </resultMap>
+
+    <select id="selecClassTotalDTOS" resultMap="selecClassTotalDTOSList">
+        SELECT * from (
+        SELECT tc.tc_name,ROUND( COUNT(IF(ttt.action_set_one &lt;= tr.action_actual_one,true,null)
+        AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
+        AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
+        AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,0) as total_completion_rate
+        from tab_class tc LEFT JOIN tab_total_train ttt ON ttt.tc_id = tc.tc_id
+        LEFT JOIN tab_result tr ON ttt.tt_id = tr.tt_id
+        WHERE YEARWEEK( date_format(ttt.insert_time,'%Y-%m-%d' ) ) = YEARWEEK( now() ) AND ttt.train_state = 2 GROUP BY tc.tc_id)
+        as ta ORDER BY ta.total_completion_rate DESC
+    </select>
+
+
+
+
+
 
 </mapper>

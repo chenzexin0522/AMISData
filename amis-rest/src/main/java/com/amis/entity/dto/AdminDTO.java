@@ -14,4 +14,5 @@ public class AdminDTO {
     private String token;
     private String user_name;
     private String user_phone;
+    private int user_role;
 }

@@ -17,16 +17,14 @@
     <h1>
         AIMS-修改学生
     </h1>
-    <form method="post" action="addstudentVal" onsubmit="return subForm()">
-        <input type="text" name="uc_name" value='学生昵称' onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '学生昵称';}">
-        <select id="gender" name="gender">
-            <option name="gender"  th:value="男" th:text="男"></option>
-            <option name="gender"  th:value="女" th:text="女"></option>
-        </select>
-        <input type="text" name="uc_phone" value="手机号" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '手机号';}">
-        <input type="text" name="uc_password" value="密码" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '密码';}">
-        <input type="text" name="eq_mac" value="设备mac" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '设备mac';}">
+    <form method="post" action="" onsubmit="return subForm()">
+        <input hidden th:name ="uc_id" th:value="${uc_id}">
+        <input type="text" name="uc_name" th:value="${uc_name}" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '${uc_name}';}">
+        <input type="text" name="uc_phone" value="${uc_phone}" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '${uc_phone}';}">
+        <input type="text" name="uc_password" value="${uc_password}" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '${uc_password}';}">
+        <input type="text" name="eq_mac" value="${eq_mac}" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = '${eq_mac}';}">
         <select id="classop" name="tc_id">
+            <option name="tc_id" th:value="0" th:text="${tc_name}"></option>
             <option name="tc_id" th:each="adminClassList,stat:${ClassList}" th:value="${adminClassList.tc_id}" th:text="${adminClassList.tc_name}"></option>
         </select>
         <input type="submit" value="保存">
@@ -35,10 +33,12 @@
 <!-- //main -->
 <script>
     function subForm(){
+        var uc_id = $("input[name='uc_id']").val();
         var uc_name = $("input[name='uc_name']").val();
         var uc_phone = $("input[name='uc_phone']").val();
         var uc_password = $("input[name='uc_password']").val();
         var eq_mac = $("input[name='eq_mac']").val();
+        alert(uc_id);
         var obj=document.getElementById('classop');
         var index=obj.selectedIndex; //序号，取当前选中选项的序号
         var tc_id = obj.options[index].value;

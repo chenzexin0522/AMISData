@@ -23,6 +23,17 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
             <version>1.9.22</version>
@@ -217,10 +228,12 @@
                     <include>**/*.properties</include>
                     <include>**/*.yml</include>
                     <include>**/*.html</include>
+                    <include>**/*.jsp</include>
                     <include>**/*.js</include>
                     <include>**/*.css</include>
                     <include>**/*.jpg</include>
                     <include>**/*.png</include>
+                    <include>**/*.jks</include>
                 </includes>
             </resource>
             <resource>
@@ -232,10 +245,12 @@
                     <include>**/*.properties</include>
                     <include>**/*.yml</include>
                     <include>**/*.html</include>
+                    <include>**/*.jsp</include>
                     <include>**/*.js</include>
                     <include>**/*.css</include>
                     <include>**/*.jpg</include>
                     <include>**/*.png</include>
+                    <include>**/*.jks</include>
                 </includes>
             </resource>
             <resource>
@@ -247,12 +262,14 @@
                     <include>**/*.properties</include>
                     <include>**/*.yml</include>
                     <include>**/*.html</include>
+                    <include>**/*.jsp</include>
                     <include>**/*.js</include>
                     <include>**/*.css</include>
                     <include>**/*.jpg</include>
                     <include>**/*.jpeg</include>
                     <include>**/*.png</include>
                     <include>**/*.txt</include>
+                    <include>**/*.jks</include>
                 </includes>
             </resource>
 

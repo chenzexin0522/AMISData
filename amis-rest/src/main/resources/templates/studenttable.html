@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>tables</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-
+    <script type="text/javascript" src="/js/jquery.min.js"  th:inline="none"></script>
+    <link rel="stylesheet" href="/styeCss/common.css"/>
     <style>
         *{
             box-sizing: border-box;
@@ -15,7 +15,7 @@
         body{
             font-family: Helvetica;
             -webkit-font-smoothing: antialiased;
-            background: rgba( 71, 147, 227, 1);
+            background: #fff;
         }
         h2{
             text-align: center;
@@ -30,7 +30,7 @@
 
         .table-wrapper{
             margin: 10px 70px 70px;
-            box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+            box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.0 );
         }
 
         .fl-table {
@@ -137,11 +137,12 @@
         }
     </style>
 </head>
-<body><script src="/demos/googlegg.js"></script>
+<body>
 
 <h2>AIMS-学生列表</h2>
 <div class="table-wrapper">
     <div class="as"><a href="addstudent">添加学生</a></div>
+    <div class="as"><a href="#" class="easyui-linkbutton" onclick="downloadfile();">数据导出</a></div>
     <table class="fl-table">
         <thead>
         <tr>
@@ -154,15 +155,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="students,stat : ${student}">
-            <td th:text="${students.uc_id}">s</td>
+        <th:each=""></th:each>
+        <tr th:each="students,stat : ${student}" >
+            <td th:text="${students.uc_id}" th:id="${students.uc_id}">s</td>
             <td th:text="${students.uc_name}">民乐</td>
             <td th:text="${students.uc_phone}">a</td>
             <td th:text="${students.eq_mac}">a</td>
             <td th:text="${students.tc_name}">a</td>
-            <!--   <td><button onclick="deleteById(${students.uc_id})">删除</button><&nbsp;&nbsp;&nbsp;<a href="test.html">修改</a</td>-->
-            <td><button th:onclick = "|deleteById(${students.uc_id})|">删除</button><&nbsp;&nbsp;&nbsp;
-                <button th:onclick = "|deleteById(${students.uc_id})|">修改</button></td>
+            <td>
+                <button th:onclick = "|deleteById(${students.uc_id})|">删除</button>&nbsp;&nbsp;&nbsp;
+                <div class="demo"><button class="bounceIn" th:onclick = "|updatestudent(${students.uc_id})|">修改</button></div>
+            </td>
         </tr>
         <tbody>
     </table>
@@ -172,8 +175,34 @@
     <a href="" target="_blank">下一页</a>
 </div>
 
+
+<div class="box">
+    <div id="dialogBg"></div>
+    <div id="dialog" class="animated">
+        <img class="dialogIco" width="50" height="50" src="/img/ico.png" alt="" />
+        <div class="dialogTop">
+            <a href="javascript:;" class="claseDialogBtn">关闭</a>
+        </div>
+        <div  id="showUpdate" style="display:none;">
+         <form action="updatestudentVal" method="post" id="editForm" onsubmit="return subForm()">
+            <ul class="editInfos">
+                <input hidden id = "updateId" name ="uc_id" value="">
+                <li><label><font color="#ff0000">* </font>昵称：<input type="text" id = "updateName" name="uc_name" value="" class="ipt" /></label></li>
+                <li><label><font color="#ff0000">* </font>手机：<input type="text" id = "updatePhone" name="uc_phone" value="" class="ipt" /></label></li>
+                <li><label><font color="#ff0000">* </font>Mac：<input type="text" id = "updateEqMac" name="eq_mac" value="" class="ipt" /></label></li>
+                <li><label><font color="#ff0000">* </font>班级：
+                    <select id="classop" name="tc_id">
+                    </select>
+                </label></li>
+                <li><input type="submit" value="确认提交" class="submitBtn" /></li>
+            </ul>
+        </form>
+        </div>
+    </div>
+</div>
+
 </body>
-<script th:inline="none">
+<script type="text/javascript" th:inline="none">
     function deleteById(id){
         $.ajax({
             type: 'POST',
@@ -185,5 +214,81 @@
             }
         })
     }
+
+    function updatestudent(id){
+        $.ajax({
+            type: 'POST',
+            url: "/admines/updatestudent",
+            data: {"id":id},    //映射或字符串值，规定连同请求发送到服务器的数据；
+            success : function(data) {
+                $("#showUpdate").show();
+                $("#updateId").val(data.uc_id);
+                $("#updateName").val(data.uc_name);
+                $("#updatePhone").val(data.uc_phone);
+                $("#updateEqMac").val(data.eq_mac);
+                jQuery("#classop").append(" <option value="+data.tc_id+">"+data.tc_name+"</option>");
+                var list = data.adminClassList;
+                $.each(list, function (i, item) {
+                    jQuery("#classop").append(" <option value="+item.tc_id+">"+item.tc_name+"</option>");
+                });
+                className = $(this).attr('class');
+                $('#dialogBg').fadeIn(300);
+                $('#dialog').removeAttr('class').addClass('animated '+className+'').fadeIn();
+            }
+        })
+    }
+
+    $('.claseDialogBtn').click(function(){
+        window.location.reload();
+        $('#dialogBg').fadeOut(300,function(){
+            $('#dialog').addClass('bounceOutUp').fadeOut();
+        });
+    });
+
+
+    function downloadfile(){
+        window.location.href="/UserExcelDownloads";
+    }
+
+
+    function subForm(){
+        var uc_id = $("input[name='uc_id']").val();
+        var uc_name = $("input[name='uc_name']").val();
+        var uc_phone = $("input[name='uc_phone']").val();
+        var eq_mac = $("input[name='eq_mac']").val();
+        var tc_id = $("input[name='tc_id']").val();
+        alert(uc_id);
+        var obj=document.getElementById('classop');
+        var index=obj.selectedIndex; //序号，取当前选中选项的序号
+        var tc_id = obj.options[index].value;
+        if (uc_name == "" ||uc_name == "学生昵称" || uc_name == null || uc_name == undefined) {
+            alert("学生昵称不能为空");
+            return false;/*阻止表单提交*/
+        } else if (uc_phone == "" ||uc_phone == "手机号" || uc_phone == null || uc_phone == undefined) {
+            alert("手机号不能为空");
+            return false;
+        } else if (eq_mac == "" ||eq_mac == "设备mac" || eq_mac == null || eq_mac == undefined) {
+            alert("设备mac不能为空");
+            return false;
+        } else {
+            alert("添加成功");
+            return true;
+        }
+    }
+
+//修改学生数据
+    function submitUpdateStubent (){
+        $.ajax({
+            type: 'POST',
+            url: "/admines/updatestudent",
+            data: {"id":id},    //映射或字符串值，规定连同请求发送到服务器的数据；
+            success : function(data) {
+                alert(data.toString());
+                $("#showUpdate").none();
+            }
+        })
+    }
 </script>
+
+
 </html>

@@ -1,23 +1,23 @@
 package com.amis.controller.admin;
 
 import com.amis.entity.*;
-import com.amis.entity.dto.AdminClass;
-import com.amis.entity.dto.AdminDTO;
-import com.amis.entity.dto.FeedbackDTO;
-import com.amis.entity.dto.ReturnCoachDTO;
-import com.amis.service.AdminService;
+import com.amis.entity.dto.*;
 import com.amis.service.RestAdminService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName AdminController
@@ -32,6 +32,29 @@ public class AdminController {
     @Autowired
     private RestAdminService restAdminService;
 
+
+    @RequestMapping(value = "/EcharsShow")
+    @ResponseBody
+    public Map<String,List> findById(Model model) {
+        List<Echars> list = new ArrayList<Echars>();
+        list.add(new Echars("初一",50));
+        list.add(new Echars("初二",126));
+        list.add(new Echars("初三",75));
+        list.add(new Echars("高一",201));
+        list.add(new Echars("高二",172));
+        list.add(new Echars("高三",22));
+        System.err.println(list.toString());
+        Map<String,List> map = new HashMap<>();
+        map.put("echarsList",list);
+        return map;
+    }
+
+    @GetMapping(value = "/Echars.do")
+    public String echarts4(Model model){
+        System.err.println("========开始");
+        return "Echars";
+    }
+
     /**
      * @Author chenzexin
      * @Date 2019/5/7 16:56
@@ -43,8 +66,8 @@ public class AdminController {
      **/
     @RequestMapping(value = "/loginPage",method = {RequestMethod.POST, RequestMethod.GET})
     public String loginSub(HttpServletRequest request, HttpSession session, Model model){
-        String phone = request.getParameter("username");
-        String passowrd = request.getParameter("password");
+        String phone = request.getParameter("Phone");
+        String passowrd = request.getParameter("Password");
         Admin admin = new Admin();
         admin.setUser_phone(phone);
         admin.setUser_password(passowrd);
@@ -52,11 +75,12 @@ public class AdminController {
             return "indexcopy";
         }
         AdminDTO adminDTO = restAdminService.adminlogin(admin);
-        model.addAttribute("aloo","aimsshou");
         model.addAttribute("admin",adminDTO);
-        model.addAttribute("title","AIMS首页");
+        model.addAttribute("aloo","Echars");
         return "indexcopy";
     }
+
+
 
     /**
      * @Author chenzexin
@@ -67,7 +91,7 @@ public class AdminController {
      **/
     @RequestMapping("/login")
     public String login(){
-        return "login";
+        return "/test/login";
     }
 
     /**
@@ -79,9 +103,14 @@ public class AdminController {
      **/
     @RequestMapping("/aimsshou")
     public String aimsshou(){
-        return "aimsshou";
+        return "Echars";
     }
 
+
+    @RequestMapping("/Echars")
+    public String Echars(){
+        return "Echars";
+    }
     @RequestMapping("/index")
     public String index(){
         return "indexcopy";
@@ -151,7 +180,7 @@ public class AdminController {
      **/
     @RequestMapping("/studenttable")
     public String studenttable(HttpServletRequest request, HttpSession session, Model model){
-        List<Student> students = restAdminService.selectStudentList();
+        List<ReturnStudentListDTO> students = restAdminService.selectStudentList();
         model.addAttribute("student",students);
         return "studenttable";
     }
@@ -208,16 +237,54 @@ public class AdminController {
     public String deletestudentVal(HttpServletRequest request, HttpSession session, Model model){
         int uc_id = Integer.parseInt(request.getParameter("id"));
         int a = restAdminService.deleteStudent(uc_id);
-        List<Student> students = restAdminService.selectStudentList();
+        List<ReturnStudentListDTO> students = restAdminService.selectStudentList();
         model.addAttribute("student",students);
         return "studenttable";
     }
 
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/9 14:01
+     * @param
+     * @return java.lang.String
+     * @Description        弹出修改学生接口
+     **/
     @RequestMapping("/updatestudent")
-    public String updatestudent(){
-        return "updatestudent";
+    @ResponseBody
+    public UpdateStudent updatestudent(HttpServletRequest request, HttpSession session, Model model){
+        int uc_id = Integer.parseInt(request.getParameter("id"));
+        UpdateStudent updateStudent = restAdminService.updatestudent(uc_id);
+        updateStudent.setAdminClassList(restAdminService.selectClass());
+        model.addAttribute("updateStudent",updateStudent);
+        return updateStudent;
     }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/15 13:11
+     * @param request
+     * @param session
+     * @param model
+     * @return com.amis.entity.dto.UpdateStudent
+     * @Description        修改学生信息
+     **/
+    @RequestMapping("/updatestudentVal")
+    public String updatestudentVal(HttpServletRequest request, HttpSession session, Model model){
+        Student student = new Student();
+        student.setUc_id(Integer.parseInt(request.getParameter("uc_id")));
+        student.setUc_name(request.getParameter("uc_name"));
+        student.setUc_phone(request.getParameter("uc_phone"));
+        student.setEq_mac(request.getParameter("eq_mac"));
+        student.setTc_id(Integer.parseInt(request.getParameter("tc_id")));
+        int as = restAdminService.updatestudentVal(student);
+        List<ReturnStudentListDTO> students = restAdminService.selectStudentList();
+        model.addAttribute("student",students);
+        return "studenttable";
+    }
+
+
+
     /**
      * @Author chenzexin
      * @Date 2019/5/7 16:55

@@ -1,5 +1,10 @@
 server:
   port: 8888
+  ssl:
+    key-store: classpath:config/aims.jks
+    key-store-password: w5D4Ccj4
+    key-password: w5D4Ccj4
+    key-store-type: JKS
 
 spring:
   thymeleaf:

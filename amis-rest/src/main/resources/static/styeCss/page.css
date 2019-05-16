@@ -4,7 +4,7 @@ body {
 }
 
 .left {
-	background: #313541;
+	background: #0F75BC;
 	width: 20%;
 	float: left;
 	position: absolute;
@@ -17,7 +17,8 @@ body {
 	float: right;
 	height: 100px;
 	line-height: 100px;
-	border-bottom: 1px solid #b0cdff;
+	border-bottom: 1px solid #F34141;
+	background:  #E7F1F8;
 }
 
 .content {
@@ -32,7 +33,7 @@ body {
 	font-size: 25px;
 	padding-left: 30px;
 	font-weight: 600;
-	color: #545454;
+	color: #F34141;
 	float: left;
 }
 
@@ -42,7 +43,7 @@ body {
 }
 
 .bigTitle {
-	background: #3d598a;
+	background: #0F75BC;
 	color: #fff;
 	height: 100px;
 	line-height: 100px;
@@ -52,7 +53,7 @@ body {
 }
 
 .lines .active {
-	background: #272a34;
+	background: #0F75BC;
 	color: #fff;
 }
 .lines img{
@@ -65,10 +66,13 @@ body {
 	height: 70px;
 	line-height: 70px;
 	padding-left: 50px;
-	color: #707783;
+	color: #fff;
 }
 
 .lines div:hover {
 	cursor: pointer;
-	color: #FFFFFF;
+	color: #0b0b0b;
+	background: #E7F1F8;
+	font-size: 20px;
+	font-weight:bold;
 }

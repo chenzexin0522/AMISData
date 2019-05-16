@@ -36,7 +36,7 @@ public interface RestAdminDao {
 
     int deleteCoach(int u_id);
 
-    List<Student> selectStudentList();
+    List<ReturnStudentListDTO> selectStudentList();
 
     int addStudent(Student student);
 
@@ -63,4 +63,30 @@ public interface RestAdminDao {
     School getSchoolIP();
 
     int addCoachClass(Users users);
+
+    int addAdmin(Admin admin);
+
+    UpdateStudent updatestudent(int uc_id);
+
+    String selectStudentPage();
+
+    String selectTrainPage();
+
+    String selectClassPage();
+
+    PageStatisticsDTO selectPageStatistics();
+
+    String selectWeekCompletionRrate();
+
+    int updatestudentVal(Student student);
+
+    List<GradeDTO> selectgradeDTOS();
+
+    String selectWeekClassCompletionRrate();
+
+    List<ClassTotalDTO> selecClassTotalDTOS();
+
+    int updateCoachVal(Users users);
+
+    int updateClassVal(ClassEntity classEntity);
 }

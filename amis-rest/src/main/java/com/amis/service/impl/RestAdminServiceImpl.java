@@ -10,7 +10,9 @@ import com.amis.service.RestAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName RestAdminServiceImpl
@@ -83,7 +85,7 @@ public class RestAdminServiceImpl implements RestAdminService {
     }
 
     @Override
-    public List<Student> selectStudentList() {
+    public List<ReturnStudentListDTO> selectStudentList() {
         return restAdminDao.selectStudentList();
     }
 
@@ -164,6 +166,58 @@ public class RestAdminServiceImpl implements RestAdminService {
     @Override
     public int addCoachClass(Users users) {
         return restAdminDao.addCoachClass(users);
+    }
+
+    @Override
+    public int addAdmin(Admin admin) {
+        return restAdminDao.addAdmin(admin);
+    }
+
+    @Override
+    public UpdateStudent updatestudent(int uc_id) {
+        return restAdminDao.updatestudent(uc_id);
+    }
+
+    @Override
+    public Map<String, Object> loginPageS() {
+        Map<String, Object> map = new HashMap<>();
+        String studentPage = restAdminDao.selectStudentPage();  //查询学生总数
+        String trainPage = restAdminDao.selectTrainPage();      //查询教练总数
+        String classPage = restAdminDao.selectClassPage();      //查询班级总数
+        PageStatisticsDTO pageStatisticsDTO = restAdminDao.selectPageStatistics();  //学生体育课程平均完成率
+        int trainTotal =pageStatisticsDTO.getTrainTotal();      //课程总次数
+        int totalTrainMinute =pageStatisticsDTO.getTotalTrainMinute();      //课程总分钟数
+        int totalCompletionRrate =pageStatisticsDTO.getTotalCompletionRrate();      //平均完成率
+        String weekCompletionRrate = restAdminDao.selectWeekCompletionRrate();  //查询本周学生训练完成率
+        List<GradeDTO> gradeDTOS = restAdminDao.selectgradeDTOS();   //查询各年级周训练完成率
+        String weekClassCompletionRrate = restAdminDao.selectWeekClassCompletionRrate();    //查询本所有周班级训练完成率
+        List<ClassTotalDTO> classTotalDTOS = restAdminDao.selecClassTotalDTOS();    //查询本周各班级训练完成率
+        map.put("studentPage",studentPage);
+        map.put("trainPage",trainPage);
+        map.put("classPage",classPage);
+        map.put("trainTotal",trainTotal);
+        map.put("totalTrainMinute",totalTrainMinute);
+        map.put("totalCompletionRrate",totalCompletionRrate);
+        map.put("weekCompletionRrate",weekCompletionRrate);
+        map.put("weekClassCompletionRrate",weekClassCompletionRrate);
+        map.put("gradeDTOS",gradeDTOS);
+        map.put("classTotalDTOS",classTotalDTOS);
+        return map;
+    }
+
+    @Override
+    public int updatestudentVal(Student student) {
+        return restAdminDao.updatestudentVal(student);
+    }
+
+    @Override
+    public int updateCoachVal(Users users) {
+        return restAdminDao.updateCoachVal(users);
+    }
+
+    @Override
+    public int updateClassVal(ClassEntity classEntity) {
+        return restAdminDao.updateClassVal(classEntity);
     }
 
 

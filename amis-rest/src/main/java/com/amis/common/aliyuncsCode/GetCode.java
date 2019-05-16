@@ -40,6 +40,7 @@ public class GetCode {
         request.putQueryParameter("TemplateParam", "{\"code\":\""+VerCode+"\"}");
         try {
             CommonResponse response = client.getCommonResponse(request);
+            int status = response.getHttpStatus();
             System.out.println(response.getData());
         } catch (ServerException e) {
             e.printStackTrace();

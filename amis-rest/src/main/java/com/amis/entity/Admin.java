@@ -15,4 +15,5 @@ public class Admin {
     private String user_name;
     private String user_phone;
     private String user_password;
+    private int user_role;
 }
