@@ -1,6 +1,5 @@
 package com.amis.common.redis;
 
-import org.apache.log4j.Logger;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,6 @@ import redis.clients.jedis.Jedis;
 @ConfigurationProperties(prefix = "spring.redis") //读取application.properties文件中以“spring.redis”开头的变量值。
 public class RedisConfig {
 
-    private static Logger logger = Logger.getLogger(RedisConfig.class);
 
     private String host;
 

@@ -1,10 +1,17 @@
+
 server:
-  port: 8888
+#  port: 8888
 #  ssl:
-#    key-store: classpath:config/2213595_www.gbadiea.com.pfx
+#    key-store: classpath:config/aims.jks
 #    key-store-password: w5D4Ccj4
 #    key-password: w5D4Ccj4
 #    key-store-type: PKCS12
+#    keyAlias: tomcat
+#
+#http:
+#  port: 8888
+#fzk.port: 8091
+
 
 spring:
   thymeleaf:
