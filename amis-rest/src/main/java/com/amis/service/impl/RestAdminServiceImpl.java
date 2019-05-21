@@ -178,26 +178,21 @@ public class RestAdminServiceImpl implements RestAdminService {
         return restAdminDao.updatestudent(uc_id);
     }
 
+
+
     @Override
     public Map<String, Object> loginPageS() {
         Map<String, Object> map = new HashMap<>();
         String studentPage = restAdminDao.selectStudentPage();  //查询学生总数
         String trainPage = restAdminDao.selectTrainPage();      //查询教练总数
         String classPage = restAdminDao.selectClassPage();      //查询班级总数
-        PageStatisticsDTO pageStatisticsDTO = restAdminDao.selectPageStatistics();  //学生体育课程平均完成率
-        int trainTotal =pageStatisticsDTO.getTrainTotal();      //课程总次数
-        int totalTrainMinute =pageStatisticsDTO.getTotalTrainMinute();      //课程总分钟数
-        int totalCompletionRrate =pageStatisticsDTO.getTotalCompletionRrate();      //平均完成率
         String weekCompletionRrate = restAdminDao.selectWeekCompletionRrate();  //查询本周学生训练完成率
-        List<GradeDTO> gradeDTOS = restAdminDao.selectgradeDTOS();   //查询各年级周训练完成率
+        List<GradeDTO> gradeDTOS = restAdminDao.selectgradeDTOS();
         String weekClassCompletionRrate = restAdminDao.selectWeekClassCompletionRrate();    //查询本所有周班级训练完成率
         List<ClassTotalDTO> classTotalDTOS = restAdminDao.selecClassTotalDTOS();    //查询本周各班级训练完成率
         map.put("studentPage",studentPage);
         map.put("trainPage",trainPage);
         map.put("classPage",classPage);
-        map.put("trainTotal",trainTotal);
-        map.put("totalTrainMinute",totalTrainMinute);
-        map.put("totalCompletionRrate",totalCompletionRrate);
         map.put("weekCompletionRrate",weekCompletionRrate);
         map.put("weekClassCompletionRrate",weekClassCompletionRrate);
         map.put("gradeDTOS",gradeDTOS);
@@ -220,5 +215,84 @@ public class RestAdminServiceImpl implements RestAdminService {
         return restAdminDao.updateClassVal(classEntity);
     }
 
+    @Override
+    public List<GradeDTO> selectgradeDTOS() {
+        return restAdminDao.selectgradeDTOS();
+    }
 
+    @Override
+    public String selectWeekCompletionRrate() {
+        return restAdminDao.selectWeekCompletionRrate();
+    }
+
+    @Override
+    public String selectWeekCompletionRrateTable() {
+        return restAdminDao.selectWeekCompletionRrate();
+    }
+
+    @Override
+    public String selectWeekClassCompletionRrate() {
+        return restAdminDao.selectWeekClassCompletionRrate();
+    }
+
+    @Override
+    public String selectWeekClassCompletionRrateTable() {
+        return restAdminDao.selectWeekClassCompletionRrate();
+    }
+
+
+    @Override
+    public List<ClassTotalDTO> selecClassTotalDTOS() {
+        return restAdminDao.selecClassTotalDTOS();
+    }
+
+    @Override
+    public List<ClassTotalDTO> selecClassTableTotalDTOS() {
+        return restAdminDao.selecClassTotalDTOS();
+    }
+
+    //数据统计
+    @Override
+    public Map<String,String> selectDataStatistics(){
+        Map<String,String> map = new HashMap<>();
+        String studentPage = restAdminDao.selectStudentPage();  //查询学生总数
+        String trainPage = restAdminDao.selectTrainPage();      //查询教练总数
+        String classPage = restAdminDao.selectClassPage();      //查询班级总数
+        map.put("studentPage",studentPage);
+        map.put("trainPage",trainPage);
+        map.put("classPage",classPage);
+        return map;
+    }
+
+    @Override
+    public Map<String, String> selectStudentCurriculum( Presentation presentation) {
+        Map<String,String> map = new HashMap<>();
+        PageStatisticsDTO pageStatisticsDTO = restAdminDao.selectPageStatistics(presentation);  //学生体育课程平均完成率
+        int trainTotal =pageStatisticsDTO.getTrainTotal();      //课程总次数
+        int totalTrainMinute =pageStatisticsDTO.getTotalTrainMinute();      //课程总分钟数
+        int totalCompletionRrate =pageStatisticsDTO.getTotalCompletionRrate();      //平均完成率
+        map.put("trainTotal",String.valueOf(trainTotal));
+        map.put("totalTrainMinute",String.valueOf(totalTrainMinute));
+        map.put("totalCompletionRrate",String.valueOf(totalCompletionRrate));
+
+        map.put("trainTotalTable",String.valueOf(trainTotal));
+        map.put("totalTrainMinuteTable",String.valueOf(totalTrainMinute));
+        map.put("totalCompletionRrateTable",String.valueOf(totalCompletionRrate));
+        return map;
+    }
+
+    @Override
+    public UpdateTrainDTO updateTrain(int u_id) {
+        return restAdminDao.updateTrain(u_id);
+    }
+
+    @Override
+    public  List<StudentTrainTotalList> getStudentTrain(int uc_id, String start_time, String end_time) {
+        return restAdminDao.getStudentTrain(uc_id,start_time,end_time);
+    }
+
+    @Override
+    public List<ClassTrainExcelDTO>  getClassTrainExcel(int tc_id,String start_time,String end_time) {
+        return restAdminDao.getClassTrainExcel(tc_id,start_time,end_time);
+    }
 }

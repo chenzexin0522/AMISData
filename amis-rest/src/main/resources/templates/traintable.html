@@ -17,12 +17,12 @@
             -webkit-font-smoothing: antialiased;
             background: #fff;
         }
-        h2{
+        h1{
             text-align: center;
-            font-size: 18px;
+            font-size: 33px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: white;
+            color: #0b0b0b;
             padding: 30px 0;
         }
 
@@ -56,14 +56,14 @@
         }
 
         .fl-table thead th {
-            color: #ffffff;
-            background: #4FC3A1;
+            color: black;
+            background: #EEEDED;
         }
 
 
         .fl-table thead th:nth-child(odd) {
             color: #ffffff;
-            background: #324960;
+            background: #0F75BC;
         }
 
         .fl-table tr:nth-child(even) {
@@ -134,14 +134,25 @@
                 display: block;
                 text-align: center;
             }
+            #sel_btn{
+                height: 21px;
+                width: 120px;
+                background-color: #02bafa;
+                border: 1px #26bbdb solid;
+                font-size: 22px;
+                position: absolute;
+                top:9px;
+                left: 30px;
+            }
         }
     </style>
 </head>
 <body><script src="/demos/googlegg.js"></script>
 
-<h2>AIMS-教练列表</h2>
+<h1>AIMS-教练列表</h1>
 <div class="table-wrapper">
-    <div class="as"><a href="addtrain">添加教练</a></div>
+    <div id="sel_btn"><a href="addtrain">添加教练</a></div>
+    <div id="sel_btn1"><a href="#" class="easyui-linkbutton" onclick="downloadfile();">数据导出</a></div>
     <table class="fl-table">
         <thead>
         <tr>
@@ -164,7 +175,9 @@
             <td th:text="${returnCoachDTOS.coach_teaching_age}">a</td>
             <td th:text="${returnCoachDTOS.coach_title}">a</td>
             <td th:text="${returnCoachDTOS.s_name}">a</td>
-            <td><button th:onclick = "|deleteById(${returnCoachDTOS.u_id})|">删除</button></td>
+            <td>
+                <button th:onclick = "|deleteById(${returnCoachDTOS.u_id})|">删除</button>
+            </td>
         </tr>
         <tbody>
     </table>
@@ -186,6 +199,33 @@
                 window.location.reload();
             }
         })
+    }
+
+    function updateTrain(id){
+        $.ajax({
+            type: 'POST',
+            url: "/admines/updatestudent",
+            data: {"id":id},    //映射或字符串值，规定连同请求发送到服务器的数据；
+            success : function(data) {
+                $("#showUpdate").show();
+                $("#updateId").val(data.uc_id);
+                $("#updateName").val(data.uc_name);
+                $("#updatePhone").val(data.uc_phone);
+                $("#updateEqMac").val(data.eq_mac);
+                jQuery("#classop").append(" <option value="+data.tc_id+">"+data.tc_name+"</option>");
+                var list = data.adminClassList;
+                $.each(list, function (i, item) {
+                    jQuery("#classop").append(" <option value="+item.tc_id+">"+item.tc_name+"</option>");
+                });
+                className = $(this).attr('class');
+                $('#dialogBg').fadeIn(300);
+                $('#dialog').removeAttr('class').addClass('animated '+className+'').fadeIn();
+            }
+        })
+    }
+
+    function downloadfile(){
+        window.location.href="/excel/getTrainUser";
     }
 </script>
 </html>

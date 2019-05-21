@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,19 +31,147 @@ public class AdminController {
     private RestAdminService restAdminService;
 
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 10:15
+     * @param model
+     * @return java.util.List<com.amis.entity.dto.GradeDTO>
+     * @Description        查询各年级周训练完成率
+     **/
     @RequestMapping(value = "/EcharsShow")
     @ResponseBody
-    public Map<String,List> findById(Model model) {
-        List<Echars> list = new ArrayList<Echars>();
-        list.add(new Echars("初一",50));
-        list.add(new Echars("初二",126));
-        list.add(new Echars("初三",75));
-        list.add(new Echars("高一",201));
-        list.add(new Echars("高二",172));
-        list.add(new Echars("高三",22));
-        System.err.println(list.toString());
-        Map<String,List> map = new HashMap<>();
-        map.put("echarsList",list);
+    public List<GradeDTO> findById(Model model) {
+        List<GradeDTO> gradeDTOS = restAdminService.selectgradeDTOS();
+        return gradeDTOS;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 10:24
+     * @param model
+     * @return java.util.List<com.amis.entity.dto.GradeDTO>
+     * @Description        查询各年级周训练完成率
+     **/
+    @RequestMapping(value = "/selectStudentListTable")
+    @ResponseBody
+    public List<GradeDTO> selectStudentListTable(Model model) {
+        List<GradeDTO> gradeDTOS = restAdminService.selectgradeDTOS();
+        return gradeDTOS;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 11:31
+     * @param model
+     * @return java.lang.String
+     * @Description        查询本周学生训练完成率
+     **/
+    @RequestMapping(value = "/selectWeekCompletionRrate")
+    @ResponseBody
+    public String selectWeekCompletionRrate(Model model) {
+        String weekCompletionRrate = restAdminService.selectWeekCompletionRrate();
+        return weekCompletionRrate;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 12:15
+     * @param model
+     * @return java.lang.String
+     * @Description        查询本周学生作业完成率
+     **/
+    @RequestMapping(value = "/selectWeekCompletionRrateTable")
+    @ResponseBody
+    public String selectWeekCompletionRrateTable(Model model) {
+        String WeekCompletionRrateTable = restAdminService.selectWeekCompletionRrateTable();
+        return WeekCompletionRrateTable;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 12:17
+     * @param model
+     * @return java.lang.String
+     * @Description        查询本周所有周班级训练完成率
+     **/
+    @RequestMapping(value = "/selectWeekClassCompletionRrate")
+    @ResponseBody
+    public String selectWeekClassCompletionRrate(Model model) {
+        String WeekClassCompletionRrate = restAdminService.selectWeekClassCompletionRrate();
+        return WeekClassCompletionRrate;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 12:17
+     * @param model
+     * @return java.lang.String
+     * @Description        查询本周所有周班级作业完成率
+     **/
+    @RequestMapping(value = "/selectWeekClassCompletionRrateTable")
+    @ResponseBody
+    public String selectWeekClassCompletionRrateTable(Model model) {
+        String WeekClassCompletionRrateTable = restAdminService.selectWeekClassCompletionRrateTable();
+        return WeekClassCompletionRrateTable;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 14:10
+     * @param model
+     * @return java.util.List<com.amis.entity.dto.ClassTotalDTO>
+     * @Description        查询本周各班级训练完成率排名
+     **/
+    @RequestMapping(value = "/selecClassTotalDTOS")
+    @ResponseBody
+    public List<ClassTotalDTO> selecClassTotalDTOS(Model model) {
+        List<ClassTotalDTO> classTotalDTOS = restAdminService.selecClassTotalDTOS();
+        return classTotalDTOS;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 14:10
+     * @param model
+     * @return java.util.List<com.amis.entity.dto.ClassTotalDTO>
+     * @Description        查询本周各班级作业完成率排名
+     **/
+    @RequestMapping(value = "/selecClassTableTotalDTOS")
+    @ResponseBody
+    public List<ClassTotalDTO> selecClassTableTotalDTOS(Model model) {
+        List<ClassTotalDTO> classTotalDTOS = restAdminService.selecClassTotalDTOS();
+        return classTotalDTOS;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 15:19
+     * @param model
+     * @return java.util.Map<java.lang.String,java.lang.String>
+     * @Description        数据统计
+     **/
+    @RequestMapping(value = "/selectDataStatistics")
+    @ResponseBody
+    public Map<String,String> selectDataStatistics(Model model) {
+        Map<String,String> map = restAdminService.selectDataStatistics();
+        return map;
+    }
+
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/17 16:01
+     * @param model
+     * @return java.util.Map<java.lang.String,java.lang.String>
+     * @Description        按时间查询学生体育完成率
+     **/
+    @RequestMapping(value = "/selectStudentCurriculum")
+    @ResponseBody
+    public Map<String,String> selectStudentCurriculum(HttpServletRequest request, HttpSession session,Model model) {
+        Presentation presentation = new Presentation();
+        presentation.setStart_time(request.getParameter("start"));
+        presentation.setEnd_time(request.getParameter("end"));
+        Map<String,String> map = restAdminService.selectStudentCurriculum(presentation);
         return map;
     }
 
@@ -184,6 +310,15 @@ public class AdminController {
         model.addAttribute("student",students);
         return "studenttable";
     }
+
+
+    @RequestMapping("/excelshow")
+    @ResponseBody
+    public String excelshow(HttpServletRequest request, HttpSession session, Model model){
+       String id = request.getParameter("id");
+        return id;
+    }
+
     /**
      * @Author chenzexin
      * @Date 2019/5/7 18:38
@@ -242,6 +377,22 @@ public class AdminController {
         return "studenttable";
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/9 14:01
+     * @param
+     * @return java.lang.String
+     * @Description        弹出修改教练接口
+     **/
+    @RequestMapping("/updateTrain")
+    @ResponseBody
+    public UpdateTrainDTO updateTrain(HttpServletRequest request, HttpSession session, Model model){
+        int u_id = Integer.parseInt(request.getParameter("id"));
+        UpdateTrainDTO updateStudent = restAdminService.updateTrain(u_id);
+        model.addAttribute("updateStudent",updateStudent);
+        return updateStudent;
+    }
+
 
     /**
      * @Author chenzexin
@@ -259,6 +410,7 @@ public class AdminController {
         model.addAttribute("updateStudent",updateStudent);
         return updateStudent;
     }
+
 
     /**
      * @Author chenzexin
@@ -436,4 +588,5 @@ public class AdminController {
         model.addAttribute("feedbackDTOS",feedbackDTOSList);
         return "selectFeedback";
     }
+
 }

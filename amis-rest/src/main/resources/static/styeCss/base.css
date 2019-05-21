@@ -73,24 +73,58 @@
     width:430px;
     color:black;
     text-align:center;
-    position: absolute;
+   /* position: absolute;
     top:490px;
-    left: 30px;
+    left: 30px;*/
     background-color:#E7F1F8;
 }
+
+#StudentWeekRateView{
+    border-radius:9px 9px 9px 9px;
+    height:220px;
+    width:430px;
+    color:black;
+    text-align:center;
+    position: absolute;
+    top:440px;
+    left: 30px;
+    background-color:#E7F1F8;
+    /*background-color:#E7F1F8;*/
+}
+
 .StudentTableWeekRate{
     border-radius:9px 9px 9px 9px;
     height:170px;
     width:430px;
     color:black;
     text-align:center;
+    background-color:#EEEDED;
+}
+
+#StudentTableWeekRateView{
+    border-radius:9px 9px 9px 9px;
+    height:220px;
+    width:430px;
+    color:black;
+    text-align:center;
     position: absolute;
-    top:490px;
+    top:440px;
     left: 500px;
     background-color:#EEEDED;
 }
 
+
 .gradeWeekRate{
+    border-radius:9px 9px 9px 9px;
+    height:270px;
+    width:430px;
+    color:black;
+    text-align:center;
+    background-color:#E7F1F8;
+    position: relative;
+    top:-40px;
+}
+#gradeWeekRateView{
     border-radius:9px 9px 9px 9px;
     height:270px;
     width:430px;
@@ -108,10 +142,20 @@
     width:430px;
     color:black;
     text-align:center;
+    position: relative;
+    top:-40px;
+    background-color:#EEEDED;
+}
+#gradeTableWeekRateView{
+    border-radius:9px 9px 9px 9px;
+    height:270px;
+    width:430px;
+    color:black;
+    text-align:center;
     position: absolute;
     top:690px;
-    left: 500px;
-    background-color:#EEEDED;
+    left:500px;
+    background-color:#E7F1F8;
 }
 
 .classWeekRate{
@@ -136,3 +180,49 @@
     left: 500px;
     background-color:#EEEDED;
 }
+
+.ClassWeekRateView{
+    background-color:#E7F1F8;
+    height:170px;
+    position: relative;
+    top:10px;
+}
+.ClassTableWeekRateView{
+    background-color:#EEEDED;
+    height:170px;
+    position: relative;
+    top:10px;
+}
+
+#ClassWeekRateViewTable{
+    text-align:center;
+    background-color:#E7F1F8;
+}
+
+#ClassTableWeekRateViewTable{
+    text-align:center;
+    background-color:#EEEDED;
+}
+#classop th, #classop td{
+    height:30px;
+    width:50px;
+    color: white;
+    background-color:#0F75BC ;
+}
+
+#classops th, #classops td{
+    height:30px;
+    width:50px;
+    color: white;
+    background-color:#494545 ;
+}
+.Viewtitle{
+    border-radius:9px 9px 9px 9px;
+    height: 38px;
+    color: black;
+    text-align:center;
+    z-index:9999;
+    position: relative;
+    top:15px;
+}
+

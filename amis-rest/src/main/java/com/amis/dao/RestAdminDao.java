@@ -3,8 +3,10 @@ package com.amis.dao;
 import com.amis.entity.*;
 import com.amis.entity.dto.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @InterfaceName RestAdminDao
@@ -74,7 +76,7 @@ public interface RestAdminDao {
 
     String selectClassPage();
 
-    PageStatisticsDTO selectPageStatistics();
+    PageStatisticsDTO selectPageStatistics(Presentation presentation);
 
     String selectWeekCompletionRrate();
 
@@ -89,4 +91,10 @@ public interface RestAdminDao {
     int updateCoachVal(Users users);
 
     int updateClassVal(ClassEntity classEntity);
+
+    UpdateTrainDTO updateTrain(int u_id);
+
+    List<StudentTrainTotalList> getStudentTrain(@Param("uc_id") int uc_id,@Param("start_time") String start_time,@Param("end_time") String end_time);
+
+    List<ClassTrainExcelDTO>  getClassTrainExcel(@Param("tc_id")int tc_id,@Param("start_time")String start_time,@Param("end_time")String end_time);
 }

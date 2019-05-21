@@ -17,12 +17,12 @@
             -webkit-font-smoothing: antialiased;
             background: #fff;
         }
-        h2{
+        h1{
             text-align: center;
-            font-size: 18px;
+            font-size: 33px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: white;
+            color: #0b0b0b;
             padding: 30px 0;
         }
 
@@ -30,7 +30,7 @@
 
         .table-wrapper{
             margin: 10px 70px 70px;
-            box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+            /*box-shadow: 0px 35px 30px rgba( 0, 0, 0, 0.0 );*/
         }
 
         .fl-table {
@@ -56,14 +56,14 @@
         }
 
         .fl-table thead th {
-            color: #ffffff;
-            background: #4FC3A1;
+            color: black;
+            background: #EEEDED;
         }
 
 
         .fl-table thead th:nth-child(odd) {
             color: #ffffff;
-            background: #324960;
+            background: #0F75BC;
         }
 
         .fl-table tr:nth-child(even) {
@@ -77,7 +77,8 @@
                 display: block;
                 width: 100%;
             }
-            .table-wrapper:before{
+
+            .table-wrapper:before {
                 content: "Scroll horizontally >";
                 display: block;
                 text-align: right;
@@ -85,20 +86,25 @@
                 color: white;
                 padding: 0 0 10px;
             }
+
             .fl-table thead, .fl-table tbody, .fl-table thead th {
                 display: block;
             }
-            .fl-table thead th:last-child{
+
+            .fl-table thead th:last-child {
                 border-bottom: none;
             }
+
             .fl-table thead {
                 float: left;
             }
+
             .fl-table tbody {
                 width: auto;
                 position: relative;
                 overflow-x: auto;
             }
+
             .fl-table td, .fl-table th {
                 padding: 20px .625em .625em .625em;
                 height: 60px;
@@ -110,26 +116,33 @@
                 font-size: 13px;
                 text-overflow: ellipsis;
             }
+
             .fl-table thead th {
                 text-align: left;
                 border-bottom: 1px solid #f7f7f9;
             }
+
             .fl-table tbody tr {
                 display: table-cell;
             }
+
             .fl-table tbody tr:nth-child(odd) {
                 background: none;
             }
+
             .fl-table tr:nth-child(even) {
                 background: transparent;
             }
+
             .fl-table tr td:nth-child(odd) {
                 background: #F8F8F8;
                 border-right: 1px solid #E6E4E4;
             }
+
             .fl-table tr td:nth-child(even) {
                 border-right: 1px solid #E6E4E4;
             }
+
             .fl-table tbody td {
                 display: block;
                 text-align: center;
@@ -139,7 +152,7 @@
 </head>
 <body><script src="/demos/googlegg.js"></script>
 
-<h2>AIMS-反馈列表</h2>
+<h1>AIMS-反馈列表</h1>
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>

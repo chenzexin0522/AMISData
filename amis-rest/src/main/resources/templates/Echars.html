@@ -11,29 +11,40 @@
 <div class="ex">
     <h1 color="red" align="left">数据统计</h1>
     <div class="dataTotal" >
-        <b class="totalvalue">48</b><b class="totalordinaryvalue">班级 &nbsp;&nbsp;&nbsp;</b>
-        <b class="totalvalue">2680</b><b class="s">学生 &nbsp;&nbsp;&nbsp;</b>
-        <b class="totalvalue">6</b><b class="totalordinaryvalue">体育老师 &nbsp;&nbsp;&nbsp;</b>
+        <b class="totalvalue" id="classPage"></b>&nbsp;&nbsp;<b class="totalordinaryvalue">班级 &nbsp;&nbsp;&nbsp;</b>
+        <b class="totalvalue" id="studentPage"></b>&nbsp;&nbsp;<b class="s">学生 &nbsp;&nbsp;&nbsp;</b>
+        <b class="totalvalue" id="trainPage"></b>&nbsp;&nbsp;<b class="totalordinaryvalue">体育老师 &nbsp;&nbsp;&nbsp;</b>
     </div>
 
     <br />
     <div class="dataJs">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <label for="start"><b>从：</b>&nbsp;&nbsp;</label><input id="start" type="date" value="2014-01-13"/>
-        &nbsp;&nbsp;&nbsp;&nbsp;<label for="end"><b>至：</b>&nbsp;&nbsp;</label><input id="end" type="date" value="2014-01-13"/>
+        <form  method="post" id="editForm" onsubmit="selectStudentCurriculum()">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label for="start"><b>从：</b>&nbsp;&nbsp;</label>
+            <input id="start" type="date" value=""/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<label for="end"><b>至：</b>&nbsp;&nbsp;</label>
+            <input id="end" type="date" value=""/>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="确认" class="submitBtn" />
+        </form>
     </div>
 
     <div class="TotalTrainDate">
         <br />
          <div class="boxscroll"><b>学生体育课程平均完成率</b></div>
           <div class="totalValue">
-            <b class="totalvalue">&nbsp;&nbsp;20 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <b class="totalvalue">400 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <b class="totalvalue">60%  </b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b class="totalvalue" id="trainTotal"> </b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b class="totalvalue" id="totalTrainMinute"> </b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b class="totalvalue" id="totalCompletionRrate"></b>
           </div>
           <div class="boxscroll2">
-                <b>课程总次数 </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>总分钟/分钟 </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>课程总次数 </b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>总分钟/分钟 </b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <b>平均完成率</b>
           </div>
     </div>
@@ -42,9 +53,12 @@
        <br />
         <div class="boxscroll"><b>学生体育作业平均完成率</b></div>
         <div class="totalValue">
-            <b class="totalvalue">&nbsp;&nbsp;50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <b class="totalvalue">900 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-            <b class="totalvalue">90%  </b>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b class="totalvalue" id="trainTotalTable"> </b>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b class="totalvalue" id="totalTrainMinuteTable"> </b>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b class="totalvalue" id="totalCompletionRrateTable"> </b>
         </div>
         <div class="boxscroll2">
             <b>作业总次数 </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,41 +66,66 @@
             <b>平均完成率</b>
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
     <h1 align="left">本周</h1>
-    <div class="StudentWeekRate" id="StudentWeekRate">
-        <br />
-        <div class="boxscroll"><b>学生体育课程平均完成率</b></div>
-
+    <div id="StudentWeekRateView">
+        <div class="Viewtitle" id="studentTrainCurriculum"><b>学生体育课程平均完成率</b></div>
+        <div class="StudentWeekRate" id="StudentWeekRate">
     </div>
-    <div class="StudentTableWeekRate" id="StudentTableWeekRate">
+
         <br />
-        <div class="boxscroll"><b>学生体育作业平均完成率</b></div>
+        <!--<div class="boxscroll" id="StudentWeekRateTitle" align="center"><b>学生体育课程平均完成率</b></div>-->
+    </div>
+    <div id="StudentTableWeekRateView">
+        <div class="Viewtitle" id="studentTrainTable"><b>学生体育作业平均完成率</b></div>
+        <div class="StudentTableWeekRate" id="StudentTableWeekRate">
+    </div>
+        <br />
+
+        <div class="boxscroll"><b></b></div>
 
     </div>
 
     <!--各年级体育课程平均完成率-->
-    <div class="gradeWeekRate" id="gradeWeekRate">
-        <br />
-        <div class="boxscroll"><b>各年级体育课程平均完成率</b></div>
-
+    <div id="gradeWeekRateView">
+        <div class="Viewtitle" id="gradeWeekRateTitle"><b>各年级体育课程平均完成率</b></div>
+        <div class="gradeWeekRate" id="gradeWeekRate">
+        </div>
     </div>
-    <div class="gradeTableWeekRate" id="gradeTableWeekRate">
-        <br />
-        <div class="boxscroll"><b>各年级体育作业平均完成率</b></div>
 
+    <div id="gradeTableWeekRateView">
+        <div class="Viewtitle" id="gradeTableWeekRateTitle"><b>各年级体育作业平均完成率</b></div>
+        <div class="gradeTableWeekRate" id="gradeTableWeekRate">
+        </div>
     </div>
+
 
     <!--各班级体育课程平均完成率-->
     <div class="classWeekRate" id="classWeekRate">
-        <br />
-        <div class="boxscroll"><b>各班级体育课程平均完成率</b></div>
-
+        <div class="Viewtitle" ><b>各班级体育课程平均完成率</b></div>
+        <div class="ClassWeekRateView" id="ClassWeekRateView"></div>
+        <div id="ClassWeekRateViewTable" >
+            <br /><br />
+            <table id="classop" cellspacing="4" style="width: 70%;margin:auto">
+                <th>排名</th>
+                <th>班级</th>
+                <th>完成率</th>
+            </table>
+        </div>
     </div>
     <div class="classTableWeekRate" id="classTableWeekRate">
-        <br />
-        <div class="boxscroll"><b>各班级体育课程平均完成率</b></div>
-
+        <div class="Viewtitle" ><b>各班级体育作业平均完成率</b></div>
+        <div class="ClassTableWeekRateView" id="ClassTableWeekRateView"></div>
+        <div id="ClassTableWeekRateViewTable" >
+            <br /><br />
+            <table id="classops" cellspacing="4" style="width: 70%;margin:auto">
+                <tr>
+                    <th>排名</th>
+                    <th>班级</th>
+                    <th>完成率</th>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <!--<div class="div1" id="main" style="width: 300px;height:250px;"></div>-->
@@ -97,6 +136,483 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function(){
+         selectStudentListTable();  //各年级体育作业平均完成率
+         selectStudentList();       //各年级体育课程平均完成率
+         selectStudentWeekRate();    //学生体育课程平均完成率
+         selectWeekCompletionRrateTable();  //学生体育作业平均完成率
+        selectWeekClassCompletionRrate();   //查询本周所有周班级训练完成率
+        selectWeekClassCompletionRrateTable();  //查询本周所有周班级作业完成率
+        selecClassTotalDTOS();          //查询本周各班级训练完成率排名
+        selecClassTableTotalDTOS();     //查询本周各班级作业完成率排名
+        selectDataStatistics();         //数据统计
+        selectStudentCurriculum();      //学生体育课程平均完成率
+    });
+
+    function selectStudentCurriculum() {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        if (start == null || start == "" || end == null || end == "" ){
+            var date = new Date();
+            var seperator1 = "-";
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = year + seperator1 + month + seperator1 + strDate;
+            var endcurrentdate = addDate(currentdate,-3);
+            $("#start").val(endcurrentdate);
+            $("#end").val(currentdate);
+            start = endcurrentdate;
+            end = currentdate;
+        }
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectStudentCurriculum",    //请求发送到dataActiont处
+            data : {"start":start,"end":end},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                document.getElementById('trainTotal').innerHTML = result["trainTotal"];
+                document.getElementById('totalTrainMinute').innerHTML = result["totalTrainMinute"];
+                document.getElementById('totalCompletionRrate').innerHTML = result["totalCompletionRrate"]+"%";
+                document.getElementById('trainTotalTable').innerHTML = result["trainTotalTable"];
+                document.getElementById('totalTrainMinuteTable').innerHTML = result["totalTrainMinuteTable"];
+                document.getElementById('totalCompletionRrateTable').innerHTML = result["totalCompletionRrateTable"]+"%";
+            }
+        });
+    }
+
+    function addDate(date,days){
+        var d=new Date(date);
+        d.setMonth(d.getMonth()+days);
+        var m=d.getMonth()+1;
+        if (m >= 1 && m <= 9) {
+            m = "0" + m;
+        }
+        return d.getFullYear()+'-'+m+'-'+d.getDate();
+    }
+
+
+    function selectDataStatistics() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectDataStatistics",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                document.getElementById('classPage').innerHTML = result["classPage"];
+                document.getElementById('studentPage').innerHTML = result["studentPage"];
+                document.getElementById('trainPage').innerHTML = result["trainPage"];
+            }
+        });
+    }
+
+    function selecClassTableTotalDTOS() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selecClassTableTotalDTOS",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                var as = 0;
+                $.each(result, function (i, item) {
+                    as = i + 1;
+                    if (as <= 6){
+                        jQuery("#classops").append(" <tr><td>"+as+"</td><td>"+item.tc_name+"</td><td>"+item.total_completion_rate+"</td></tr>");
+                    }
+                });
+            }
+        });
+    }
+
+    function selecClassTotalDTOS() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selecClassTotalDTOS",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                var as = 0;
+                $.each(result, function (i, item) {
+                    as = i + 1;
+                    if (as <= 6){
+                        jQuery("#classop").append(" <tr><td>"+as+"</td><td>"+item.tc_name+"</td><td>"+item.total_completion_rate+"</td></tr>");
+                    }
+                });
+            }
+        });
+    }
+
+    //查询本周所有周班级作业完成率
+    function selectWeekClassCompletionRrateTable() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectWeekClassCompletionRrate",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                if (result) {
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('ClassTableWeekRateView'));
+                    //数据加载完之前先显示一段简单的loading动画
+                    myChart.showLoading();
+                    var echarsList = result;
+                    var echarsListJian = 100 - echarsList;
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                       /* legend: {
+                            top: 25,
+                            orient: 'vertical',
+                            x: 'left',
+                            data:['完成率','未完成']
+                        },*/
+                        series: [
+                            {
+                                name:'体育作业',
+                                type:'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    normal: {
+                                        //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                        color: function(params) {
+                                            // build a color map as your need.
+                                            var colorList = [
+                                                '#494545','#EEEDED'
+                                            ];
+                                            return colorList[params.dataIndex]
+                                        },
+                                        //以下为是否显示，显示位置和显示格式的设置了
+                                        label: {
+                                            show: true,
+                                            position: 'top',
+//                             formatter: '{c}'
+                                            formatter: '{b}\n{c}'
+                                        }
+                                    }
+                                },
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '20',
+                                            fontWeight: 'bold',
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data:[
+                                    {value:echarsList, name:'完成率'},
+                                    {value:echarsListJian, name:'未完成'}
+                                ]
+                            }
+                        ]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });
+    }
+
+    //查询本周所有周班级训练完成率
+    function selectWeekClassCompletionRrate() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectWeekClassCompletionRrate",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                if (result) {
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('ClassWeekRateView'));
+                    //数据加载完之前先显示一段简单的loading动画
+                    myChart.showLoading();
+                    var echarsList = result;
+                    var echarsListJian = 100 - echarsList;
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                      /*  legend: {
+                            top: 25,
+                            orient: 'vertical',
+                            x: 'left',
+                            data:['完成率','未完成']
+                        },*/
+                        series: [
+                            {
+                                name:'体育课程',
+                                type:'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    normal: {
+                                        //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                        color: function(params) {
+                                            // build a color map as your need.
+                                            var colorList = [
+                                                '#0F75B7','#E7F1F8'
+                                            ];
+                                            return colorList[params.dataIndex]
+                                        },
+                                        //以下为是否显示，显示位置和显示格式的设置了
+                                        label: {
+                                            show: true,
+                                            position: 'top',
+//                             formatter: '{c}'
+                                            formatter: '{b}\n{c}'
+                                        }
+                                    }
+                                },
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '20',
+                                            fontWeight: 'bold',
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data:[
+                                    {value:echarsList, name:'完成率'},
+                                    {value:echarsListJian, name:'未完成'}
+                                ]
+                            }
+                        ]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });
+    }
+
+    //学生体育课程平均完成率
+    function selectStudentWeekRate() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectWeekCompletionRrate",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                if (result) {
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('StudentWeekRate'));
+                    //数据加载完之前先显示一段简单的loading动画
+                    myChart.showLoading();
+                    var echarsList = result;
+                    var echarsListJian = 100 - echarsList;
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                       /* legend: {
+                            top: 25,
+                            orient: 'vertical',
+                            x: 'left',
+                            data:['完成率','未完成']
+                        },*/
+                        series: [
+                            {
+                                name:'体育课程',
+                                type:'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    normal: {
+                                        //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                        color: function(params) {
+                                            // build a color map as your need.
+                                            var colorList = [
+                                                '#0F75B7','#E7F1F8',
+                                            ];
+                                            return colorList[params.dataIndex]
+                                        },
+                                        //以下为是否显示，显示位置和显示格式的设置了
+                                        label: {
+                                            show: true,
+                                            position: 'top',
+                            // formatter: '{c}%'
+                                            formatter: '{b}\n{c}%'
+                                        }
+                                    }
+                                },
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '20',
+                                            fontWeight: 'bold',
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data:[
+                                    {value:echarsList, name:'完成率'},
+                                    {value:echarsListJian, name:'未完成'}
+                                ]
+                            }
+                        ]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });
+    }
+
+
+
+    //学生体育作业平均完成率
+    function selectWeekCompletionRrateTable() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectWeekCompletionRrateTable",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                if (result) {
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('StudentTableWeekRate'));
+                    //数据加载完之前先显示一段简单的loading动画
+                    myChart.showLoading();
+                    var echarsList = result;
+                    var echarsListJian = 100 - echarsList;
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
+                      /*  title: {
+                            text : '学生体育作业平均完成率'
+                        },*/
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                     /*   legend: {
+                            top: 25,
+                            orient: 'vertical',
+                            x: 'left',
+                            data:['完成率','未完成']
+                        },*/
+                        series: [
+                            {
+                                name:'体育作业',
+                                type:'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                itemStyle: {
+                                    normal: {
+                                        //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                        color: function(params) {
+                                            // build a color map as your need.
+                                            var colorList = [
+                                                '#494545','#EEEDED'
+                                            ];
+                                            return colorList[params.dataIndex]
+                                        },
+                                        //以下为是否显示，显示位置和显示格式的设置了
+                                        label: {
+                                            show: true,
+                                            position: 'top',
+//                             formatter: '{c}'
+                                            formatter: '{b}\n{c}'
+                                        }
+                                    }
+                                },
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '20',
+                                            fontWeight: 'bold',
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data:[
+                                    {value:echarsList, name:'完成率'},
+                                    {value:echarsListJian, name:'未完成'}
+                                ]
+                            }
+                        ]
+                    });
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });
+    }
+    
+    function selectStudentList() {
         $.ajax({
             type : "post",
             async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
@@ -105,23 +621,20 @@
             dataType : "json",        //返回数据形式为json
             success : function(result) {
                 //请求成功时执行该函数内容，result即为服务器返回的json对象
-                if (result["echarsList"]) {
+                if (result) {
                     // 基于准备好的dom，初始化echarts实例
                     var myChart = echarts.init(document.getElementById('gradeWeekRate'));
                     //数据加载完之前先显示一段简单的loading动画
                     myChart.showLoading();
                     var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
                     var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
-                    var echarsList = result["echarsList"];
+                    var echarsList = result;
                     for(var i=0;i<echarsList.length;i++){
-                        names.push(echarsList[i].name);
-                        values.push(echarsList[i].num);
+                        names.push(echarsList[i].gr_name);
+                        values.push(echarsList[i].total_completion_rate);
                     }
                     myChart.hideLoading();    //隐藏加载动画
                     myChart.setOption({        //加载数据图表
-                        title: {
-                            text : '各年级体育课程平均完成率'
-                        },
                         tooltip: {},
                         xAxis: {
                             data: names
@@ -133,28 +646,64 @@
                             // 根据名字对应到相应的系列
                             name: '數量',//薪资 series not exists. Legend data should be same with series name or data name.
                             type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                    color: function(params) {
+                                        // build a color map as your need.
+                                        var colorList = [
+                                            '#0F75B7','#0F75B7','#0F75B7','#0F75B7','#0F75B7','#0F75B7','#0F75B7','#0F75B7','#0F75B7'
+                                        ];
+                                        return colorList[params.dataIndex]
+                                    },
+                                    //以下为是否显示，显示位置和显示格式的设置了
+                                    /*label: {
+                                        show: true,
+                                        position: 'top',
+//                             formatter: '{c}'
+                                        formatter: '{b}\n{c}'
+                                    }*/
+                                }
+                            },
                             data: values
                         }]
                     });
-
-                   /* var tabChart = echarts.init(document.getElementById('gradeTableWeekRate'));
+                }
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+                myChart.hideLoading();
+            }
+        });
+    }
+    
+    function selectStudentListTable() {
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/admines/selectStudentListTable",    //请求发送到dataActiont处
+            data : {},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                //请求成功时执行该函数内容，result即为服务器返回的json对象
+                if (result) {
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('gradeTableWeekRate'));
                     //数据加载完之前先显示一段简单的loading动画
-                    tabChart.showLoading();
-                    var tabnames=[];    //横坐标数组（实际用来盛放X轴坐标值）
-                    var tabvalues=[];    //纵坐标数组（实际用来盛放Y坐标值）
-                    var tabList = result["listTable"];
-                    for(var i=0;i<tabList.length;i++){
-                        tabnames.push(tabList[i].name);
-                        tabvalues.push(tabList[i].num);
+                    myChart.showLoading();
+                    var names=[];    //横坐标数组（实际用来盛放X轴坐标值）
+                    var values=[];    //纵坐标数组（实际用来盛放Y坐标值）
+                    var echarsList = result;
+                    for(var i=0;i<echarsList.length;i++){
+                        names.push(echarsList[i].gr_name);
+                        values.push(echarsList[i].total_completion_rate);
                     }
-                    tabChart.hideLoading();    //隐藏加载动画
-                    tabChart.setOption({        //加载数据图表
-                        title: {
-                            text : '各年级体育课程平均完成率'
-                        },
+                    myChart.hideLoading();    //隐藏加载动画
+                    myChart.setOption({        //加载数据图表
                         tooltip: {},
                         xAxis: {
-                            data: tabnames
+                            data: names
                         },
                         yAxis: {
                             type: 'value'
@@ -163,10 +712,28 @@
                             // 根据名字对应到相应的系列
                             name: '數量',//薪资 series not exists. Legend data should be same with series name or data name.
                             type: 'bar',
-                            data: tabvalues
+                            itemStyle: {
+                                normal: {
+                                    //好，这里就是重头戏了，定义一个list，然后根据所以取得不同的值，这样就实现了，
+                                    color: function(params) {
+                                        // build a color map as your need.
+                                        var colorList = [
+                                            '#494545','#494545','#494545','#494545','#494545','#494545','#494545','#494545','#494545'
+                                        ];
+                                        return colorList[params.dataIndex]
+                                    }
+                                    //以下为是否显示，显示位置和显示格式的设置了
+                                  /*  label: {
+                                        show: true,
+                                     //   position: 'top'
+                          //  formatter: '{c}'
+                                      //  formatter: '{b}\n{c}'
+                                    }*/
+                                }
+                            },
+                            data: values
                         }]
-                    });*/
-
+                    });
                 }
             },
             error : function(errorMsg) {
@@ -175,9 +742,7 @@
                 myChart.hideLoading();
             }
         });//end ajax
-
-
-    });
+    }
 
 </script>
 </html>

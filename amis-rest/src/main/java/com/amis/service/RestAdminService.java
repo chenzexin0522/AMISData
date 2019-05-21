@@ -75,4 +75,38 @@ public interface RestAdminService {
     int updateCoachVal(Users users);
 
     int updateClassVal(ClassEntity classEntity);
+
+    //查询各年级周训练完成率
+    List<GradeDTO> selectgradeDTOS();
+
+    //查询本周学生训练完成率
+    String selectWeekCompletionRrate();
+
+    //查询本周学生作业完成率
+    String selectWeekCompletionRrateTable();
+
+    //查询本周所有周班级训练完成率
+    String selectWeekClassCompletionRrate();
+
+    //查询本周所有周班级训练完成率
+    String selectWeekClassCompletionRrateTable();
+
+    //查询本周各班级训练完成率排名
+    List<ClassTotalDTO> selecClassTotalDTOS();
+
+    //查询本周各班级作业完成率排名
+    List<ClassTotalDTO> selecClassTableTotalDTOS();
+
+    //数据统计
+    Map<String,String> selectDataStatistics();
+
+
+    Map<String, String> selectStudentCurriculum(Presentation presentation);
+
+    UpdateTrainDTO updateTrain(int u_id);
+
+    List<StudentTrainTotalList> getStudentTrain(int uc_id, String start_time, String end_time);
+
+    List<ClassTrainExcelDTO>  getClassTrainExcel(int tc_id,String start_time,String end_time);
+
 }

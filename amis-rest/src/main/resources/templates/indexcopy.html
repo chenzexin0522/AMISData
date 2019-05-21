@@ -22,7 +22,7 @@
 			<div class="bigTitle">AIMS后台管理系统</div>
 			<div class="lines">
 				<div onclick="pageClick('aimsshou')" ><img src="/img/icon-1.png" />AIMS首页</div>
-				<div onclick="pageClick('tables')"  ><img src="/img/icon-1.png" />学校管理</div>
+				<!--<div onclick="pageClick('tables')"  ><img src="/img/icon-1.png" />学校管理</div>-->
 				<div onclick="pageClick('studenttable')" ><img src="/img/icon-1.png" />学生管理</div>
 				<div onclick="pageClick('traintable')" ><img src="/img/icon-1.png" />教练管理</div>
 				<div onclick="pageClick('elmtable')" ><img src="/img/icon-1.png" />班级管理</div>
@@ -35,7 +35,7 @@
 			<div class="thisUser" th:text="'当前用户：'+${admin.user_name}"></div>
 		</div>
 		<div class="content">
-				<iframe  th:src="${aloo}" style="width: 100%;height: 650px;border: hidden;"></iframe>
+				<iframe  th:src="${aloo}" style="width: 100%;height: 620px;border: hidden;"></iframe>
 		</div>
 		
 		<script>
