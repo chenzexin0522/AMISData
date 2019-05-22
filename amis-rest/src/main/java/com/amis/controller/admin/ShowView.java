@@ -19,8 +19,10 @@ public class ShowView {
     }
 
 
-    @RequestMapping("a")
+    @RequestMapping("cishan")
     public String loginsa(){
-        return "/ssssssssssssssssssssssssssssogin";
+        return "/test/cislogin";
     }
+
+
 }
