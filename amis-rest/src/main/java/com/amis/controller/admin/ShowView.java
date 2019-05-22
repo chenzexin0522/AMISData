@@ -2,6 +2,8 @@ package com.amis.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @ClassName ShowView
@@ -14,5 +16,11 @@ public class ShowView {
     @RequestMapping("")
     public String logins(){
         return "/test/login";
+    }
+
+
+    @RequestMapping("a")
+    public String loginsa(){
+        return "/ssssssssssssssssssssssssssssogin";
     }
 }

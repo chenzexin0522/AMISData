@@ -53,7 +53,7 @@ public class GetCode {
      * 生成随机的6位数，短信验证码
      * @return
      */
-    private static String getMsgCode() {
+    public static String getMsgCode() {
         int n = 6;
         StringBuilder code = new StringBuilder();
         Random ran = new Random();

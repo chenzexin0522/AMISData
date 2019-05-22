@@ -2,6 +2,7 @@ package com.amis.service.impl;
 
 import com.amis.common.ResponseVO;
 import com.amis.common.aliyuncsCode.GetCode;
+import com.amis.common.aliyuncsCode.JavaSmsApi;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.common.md5.MD5Config;
@@ -86,8 +87,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseVO insertPhoneCode(PhoneCode phoneCode) throws Exception {
-        GetCode getCode = new GetCode();
-        String retule = getCode.getVerCode(phoneCode.getP_phone());
+        String retule = JavaSmsApi.getCode(phoneCode.getP_phone());
         phoneCode.setP_verCode(retule);
         int os =phoneCodeDao.insertPhoneCode(phoneCode);
         if (os == 0){
@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService {
         || StringUtils.isBlank(phoneCode1.getP_phone())){
             throw new AmisException(MessageKey.VERCODE_NON_EXISTENT);
         }
-        int os =1;// phoneCodeDao.deletePhoneCode(phoneCode1);           //删除获取到的验证码------测试隐藏
+        int os = phoneCodeDao.deletePhoneCode(phoneCode1);           //删除获取到的验证码------测试隐藏
         if (os == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
         }
