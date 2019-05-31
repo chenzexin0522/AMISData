@@ -149,7 +149,7 @@ public class EditionController {
     @ResponseBody
     @RequestMapping(value = "trainLogError",method = RequestMethod.POST)
     public ResponseVO trainLogError(MultipartFile file, TrainLog trainLog) throws Exception{
-        String  pathName= urlC+"trainLog/";
+        String  pathName= urlC+"Error/";
         // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
         String fileName = file.getOriginalFilename();// 文件原名称
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");//设置日期格式
