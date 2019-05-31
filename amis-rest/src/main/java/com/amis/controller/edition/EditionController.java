@@ -152,9 +152,9 @@ public class EditionController {
         String  pathName= urlC+"trainLog/";
         // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
         String fileName = file.getOriginalFilename();// 文件原名称
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");//设置日期格式
         fileName = df.format(new Date())+fileName;// new Date()为获取当前系统时间
-        String fileUrl = "http://"+ipC+"/trainLog/"+trainLog.getInsertTime()+fileName;
+        String fileUrl = "http://"+ipC+"/trainLog/"+fileName;
         String path = photoUpload(file,fileName,pathName);
         trainLog.setFileUrl(fileUrl);
         editionService.trainLogUpload(trainLog);
