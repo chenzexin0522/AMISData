@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @ClassName EditionController
@@ -112,6 +114,8 @@ public class EditionController {
         return responseVO;
     }
 
+
+
     /**
      * @Author chenzexin
      * @Date 2019/4/22 15:34
@@ -126,6 +130,31 @@ public class EditionController {
         // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
         String fileName = file.getOriginalFilename();// 文件原名称
         String fileUrl = "http://"+ipC+"/trainLog/"+fileName;
+        String path = photoUpload(file,fileName,pathName);
+        trainLog.setFileUrl(fileUrl);
+        editionService.trainLogUpload(trainLog);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(fileUrl);
+        return responseVO;
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/5/31 11:29
+     * @param file
+     * @param trainLog
+     * @return com.amis.common.ResponseVO
+     * @Description        上传错误日志txt
+     **/
+    @ResponseBody
+    @RequestMapping(value = "trainLogError",method = RequestMethod.POST)
+    public ResponseVO trainLogError(MultipartFile file, TrainLog trainLog) throws Exception{
+        String  pathName= urlC+"trainLog/";
+        // 自定义的文件名称 String.valueOf(System.currentTimeMillis()) +
+        String fileName = file.getOriginalFilename();// 文件原名称
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String date = df.format(new Date());// new Date()为获取当前系统时间
+        String fileUrl = "http://"+ipC+"/trainLog/"+date+fileName;
         String path = photoUpload(file,fileName,pathName);
         trainLog.setFileUrl(fileUrl);
         editionService.trainLogUpload(trainLog);
