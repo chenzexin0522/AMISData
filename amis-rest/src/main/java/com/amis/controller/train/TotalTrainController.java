@@ -31,7 +31,7 @@ public class TotalTrainController {
      * @Date 2019/4/8 14:54
      * @param totalTrain
      * @return com.amis.common.ResponseVO
-     * @Description        插入训练表单加结果表单
+     * @Description        插入训练表单加结果表单---------无用接口
      **/
     @RequestMapping(value = "insertTrain",method = RequestMethod.POST)
     public ResponseVO insertTrain(@RequestBody TotalTrain totalTrain) throws Exception {    //判断是否为空
@@ -99,7 +99,7 @@ public class TotalTrainController {
      * @Date 2019/4/19 11:50
      * @param totalTrain
      * @return com.amis.common.ResponseVO
-     * @Description        删除训练记录
+     * @Description        删除训练记录(隐藏)
      **/
     @RequestMapping(value = "deleteTrain",method = RequestMethod.POST)
     public ResponseVO deleteTrain(@RequestBody TotalTrain totalTrain) throws AmisException {

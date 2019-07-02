@@ -192,7 +192,7 @@ public class EditionController {
                     file.transferTo(filepath);
                     System.out.println("文件成功上传到指定目录下");
                 } else {
-                    System.out.println("不是我们想要的文件类型,请按要求重新上传");
+                    System.out.println("文件上传失败，请重新上传！");
                     return null;
                 }
             } else {

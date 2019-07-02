@@ -67,18 +67,17 @@ public class JavaSmsApi {
         return code;
     }
 
-
    /* public static void main(String[] args) throws IOException,
             URISyntaxException {
         String code = "666666";
         System.out.println("--------------------------------"+JavaSmsApi.getUserInfo("44e793e0c67a43fa28b36022ef493006"));
         String text = "【AIMS迹动未来】您的验证码为："+code+"，5分钟内有效，请尽快填写！";
-         System.out.println(getCode("13058086435"));
+        // System.out.println(getCode("13058086435"));
+        System.out.println( sendVoice("44e793e0c67a43fa28b36022ef493006","13246607740","5201113"));
     }*/
 
     /**
      * 取账户信息
-     *
      * @return json格式字符串
      * @throws java.io.IOException
      */

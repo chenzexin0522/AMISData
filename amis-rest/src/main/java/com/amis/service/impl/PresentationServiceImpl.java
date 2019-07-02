@@ -4,6 +4,7 @@ import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.dao.PresentationDao;
 import com.amis.entity.Presentation;
+import com.amis.entity.YmlEntityTab;
 import com.amis.entity.dto.ReturnPresentationDto;
 import com.amis.entity.dto.SelectPresentationClassDTO;
 import com.amis.entity.dto.SelectPresentationDTO;
@@ -45,6 +46,7 @@ public class PresentationServiceImpl implements PresentationService {
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         presentation.setInsert_time(sdf.format(d));
+        presentation.setTab_presentation(YmlEntityTab.tab_presentation);
         int a = presentationDao.insertPresentation(presentation);
         if (a == 0){
             throw new AmisException(MessageKey.DB_OPERATIONE_FAIL);
@@ -53,7 +55,7 @@ public class PresentationServiceImpl implements PresentationService {
 
     @Override
     public List<ReturnPresentationDto> selectPresentationList(int u_id) {
-        List<ReturnPresentationDto> returnPresentationDtos = presentationDao.selectPresentationList(u_id);
+        List<ReturnPresentationDto> returnPresentationDtos = presentationDao.selectPresentationList(u_id,YmlEntityTab.tab_presentation);
         return returnPresentationDtos;
     }
 
@@ -66,9 +68,9 @@ public class PresentationServiceImpl implements PresentationService {
         List three_rateList = new ArrayList();
         List four_rateList = new ArrayList();
         if (type == 0){
-             selectPresentationDTO = presentationDao.selectPresentationDetails(pr_id);
+             selectPresentationDTO = presentationDao.selectPresentationDetails(pr_id,YmlEntityTab.tab_presentation,YmlEntityTab.tab_total_train,YmlEntityTab.tab_result);
         }else if (type == 1){
-           selectPresentationDTO = presentationDao.selectPresentationStudent(pr_id);
+           selectPresentationDTO = presentationDao.selectPresentationStudent(pr_id,YmlEntityTab.tab_presentation,YmlEntityTab.tab_total_train,YmlEntityTab.tab_result);
         }
             SelectPresentationClassDTO selectPresentationClassDTO = new SelectPresentationClassDTO();
             double total = 0;
@@ -105,6 +107,6 @@ public class PresentationServiceImpl implements PresentationService {
 
     @Override
     public int deletePresentation(int pr_id) {
-        return presentationDao.deletePresentation(pr_id);
+        return presentationDao.deletePresentation(pr_id,YmlEntityTab.tab_presentation);
     }
 }

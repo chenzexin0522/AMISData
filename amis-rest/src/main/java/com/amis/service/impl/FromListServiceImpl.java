@@ -1,9 +1,12 @@
 package com.amis.service.impl;
 
 import com.amis.dao.FromListDao;
+import com.amis.entity.YmlEntityTab;
 import com.amis.entity.dto.*;
 import com.amis.service.FromListService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,43 +23,48 @@ public class FromListServiceImpl implements FromListService {
     @Autowired
     private FromListDao fromListDao;
 
+
     @Override
     public List<ReturnTotalList> selectFromList(int u_id) {
-        List<ReturnTotalList> selectFromListDTOS = fromListDao.selectFromList(u_id);
+        List<ReturnTotalList> selectFromListDTOS = fromListDao.selectFromList(u_id,YmlEntityTab.tab_total_train,YmlEntityTab.tab_result);
         return selectFromListDTOS;
     }
 
     @Override
     public ClassTrainTabDTO selectTotalTab(int tt_id) {
-        ClassTrainTabDTO classTrainTabDTO = fromListDao.selectTotalTab(tt_id);
-        classTrainTabDTO.setStudentTrainLists(fromListDao.selectStudentList(tt_id));
+        ClassTrainTabDTO classTrainTabDTO = fromListDao.selectTotalTab(tt_id,YmlEntityTab.tab_total_train,YmlEntityTab.tab_result);
+        classTrainTabDTO.setStudentTrainLists(fromListDao.selectStudentList(tt_id,YmlEntityTab.tab_result));
         return classTrainTabDTO;
     }
 
     @Override
     public StudentTrainTab selectStudentTab(int tr_id) {
-        StudentTrainTab studentTrainTab = fromListDao.selectStudentTab(tr_id);
+        StudentTrainTab studentTrainTab = fromListDao.selectStudentTab(tr_id,YmlEntityTab.tab_total_train,YmlEntityTab.tab_result);
         int ad = 0;
         int completion_rate = 0;
-        if (studentTrainTab.getOne_completion_rate() > 0){
+        if (studentTrainTab.getOne_completion_rate() > 0) {
             ad++;
-            completion_rate = completion_rate+studentTrainTab.getOne_completion_rate();
-        }if (studentTrainTab.getTwo_completion_rate() > 0){
-            ad++;
-            completion_rate = completion_rate+studentTrainTab.getTwo_completion_rate();
-        }if (studentTrainTab.getThree_completion_rate() > 0){
-            ad++;
-            completion_rate = completion_rate+studentTrainTab.getThree_completion_rate();
-        }if (studentTrainTab.getFour_completion_rate() > 0){
-            ad++;
-            completion_rate = completion_rate+studentTrainTab.getFour_completion_rate();
+            completion_rate = completion_rate + studentTrainTab.getOne_completion_rate();
         }
-        studentTrainTab.setTotal_comletion_rate(completion_rate/ad);
+        if (studentTrainTab.getTwo_completion_rate() > 0) {
+            ad++;
+            completion_rate = completion_rate + studentTrainTab.getTwo_completion_rate();
+        }
+        if (studentTrainTab.getThree_completion_rate() > 0) {
+            ad++;
+            completion_rate = completion_rate + studentTrainTab.getThree_completion_rate();
+        }
+        if (studentTrainTab.getFour_completion_rate() > 0) {
+            ad++;
+            completion_rate = completion_rate + studentTrainTab.getFour_completion_rate();
+        }
+        studentTrainTab.setTotal_comletion_rate(completion_rate / ad);
         return studentTrainTab;
     }
 
     @Override
     public List<QueryClassReportDTO> queryClassReport(QueryClassReportDTO queryClassReportDTO) {
+        queryClassReportDTO.setTab_total_train(YmlEntityTab.tab_total_train);
         return fromListDao.queryClassReport(queryClassReportDTO);
     }
 

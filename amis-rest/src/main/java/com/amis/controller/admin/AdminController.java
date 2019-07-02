@@ -5,6 +5,7 @@ import com.amis.entity.dto.*;
 import com.amis.service.RestAdminService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,18 @@ public class AdminController {
 
     /**
      * @Author chenzexin
+     * @Date 2019/5/31 10:09
+     * @param
+     * @return java.lang.String
+     * @Description        忘记密码
+     **/
+    @RequestMapping("/forgetPassword")
+    public String forgetPassword(){
+        return "forgetPassword";
+    }
+
+    /**
+     * @Author chenzexin
      * @Date 2019/5/17 10:15
      * @param model
      * @return java.util.List<com.amis.entity.dto.GradeDTO>
@@ -49,7 +62,7 @@ public class AdminController {
      * @Author chenzexin
      * @Date 2019/5/17 10:24
      * @param model
-     * @return java.util.List<com.amis.entity.dto.GradeDTO>
+     * @return java.util.List<com.amis.entity.dto.GradeDTO
      * @Description        查询各年级周训练完成率
      **/
     @RequestMapping(value = "/selectStudentListTable")
@@ -171,6 +184,8 @@ public class AdminController {
         Presentation presentation = new Presentation();
         presentation.setStart_time(request.getParameter("start"));
         presentation.setEnd_time(request.getParameter("end"));
+        presentation.setOpn(request.getParameter("opn"));
+        System.err.println(request.getParameter("start")+"-----------------"+request.getParameter("opn"));
         Map<String,String> map = restAdminService.selectStudentCurriculum(presentation);
         return map;
     }
@@ -197,10 +212,13 @@ public class AdminController {
         Admin admin = new Admin();
         admin.setUser_phone(phone);
         admin.setUser_password(passowrd);
-        if (StringUtils.isBlank(phone) && StringUtils.isBlank(passowrd)) {
+        if (StringUtils.isBlank(phone) && StringUtils.isBlank(passowrd)){
             return "indexcopy";
         }
         AdminDTO adminDTO = restAdminService.adminlogin(admin);
+        if (adminDTO == null || adminDTO.getUser_id() == 0 || adminDTO.getUser_name() == null) {
+            return "/test/loginError";
+        }
         model.addAttribute("admin",adminDTO);
         model.addAttribute("aloo","Echars");
         return "indexcopy";
@@ -217,7 +235,7 @@ public class AdminController {
      **/
     @RequestMapping("/login")
     public String login(){
-        return "/test/login";
+        return "adminlogin";
     }
 
     /**
@@ -588,5 +606,4 @@ public class AdminController {
         model.addAttribute("feedbackDTOS",feedbackDTOSList);
         return "selectFeedback";
     }
-
 }

@@ -4,6 +4,7 @@ import com.amis.entity.Presentation;
 import com.amis.entity.dto.ReturnPresentationDto;
 import com.amis.entity.dto.SelectPresentationDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,11 +18,11 @@ import java.util.List;
 public interface PresentationDao {
     int insertPresentation(Presentation presentation);
 
-    List<ReturnPresentationDto> selectPresentationList(int u_id);
+    List<ReturnPresentationDto> selectPresentationList(@Param("u_id") int u_id, @Param("tab_presentation") String tab_presentation);
 
-    List<SelectPresentationDTO> selectPresentationDetails(int pr_id);
+    List<SelectPresentationDTO> selectPresentationDetails(@Param("pr_id")int pr_id, @Param("tab_presentation") String tab_presentation, @Param("tab_total_train") String tab_total_train, @Param("tab_result") String tab_result);
 
-    List<SelectPresentationDTO> selectPresentationStudent(int pr_id);
+    List<SelectPresentationDTO> selectPresentationStudent(@Param("pr_id")int pr_id, @Param("tab_presentation") String tab_presentation, @Param("tab_total_train") String tab_total_train, @Param("tab_result") String tab_result);
 
-    int deletePresentation(int pr_id);
+    int deletePresentation(@Param("pr_id")int pr_id, @Param("tab_presentation") String tab_presentation);
 }

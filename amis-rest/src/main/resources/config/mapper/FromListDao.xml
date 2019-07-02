@@ -15,8 +15,8 @@
     </resultMap>
     <select id="selectFromList" resultMap="selectList">
        SELECT ttt.tt_id,ttt.start_time,ttt.end_time,ttt.train_duration,tc.tc_name,SUM(tr.action_actual_one) AS total_one,SUM(tr.action_actual_two) AS total_two,SUM(tr.action_actual_three) AS total_three,SUM(tr.action_actual_four) as total_four
-        FROM tab_total_train ttt LEFT JOIN tab_class tc on ttt.tc_id = tc.tc_id
-        LEFT JOIN tab_result tr ON tr.tt_id = ttt.tt_id
+        FROM ${tab_total_train} ttt LEFT JOIN tab_class tc on ttt.tc_id = tc.tc_id
+        LEFT JOIN ${tab_result} tr ON tr.tt_id = ttt.tt_id
         WHERE ttt.u_id = #{u_id} AND ttt.hide = 0  AND ttt.train_state = 2  GROUP BY ttt.tt_id ORDER BY ttt.insert_time DESC
     </select>
 
@@ -35,7 +35,7 @@
         ROUND(IF(ttt.action_set_two > 0,sum(IF(ttt.action_set_two &lt;= tr.action_actual_two,1,0)),0)/COUNT(tr.tr_id)*100,0)as two_completion_rate,
         ROUND(IF(ttt.action_set_three > 0,sum(IF(ttt.action_set_three &lt;= tr.action_actual_three,1,0)),0)/COUNT(tr.tr_id)*100,0)as three_completion_rate,
         ROUND(IF(ttt.action_set_four > 0,sum(IF(ttt.action_set_four &lt;= tr.action_actual_four,1,0)),0)/COUNT(tr.tr_id)*100,0)as four_completion_rate
-        FROM tab_total_train ttt LEFT JOIN tab_result tr ON ttt.tt_id=tr.tt_id
+        FROM ${tab_total_train} ttt LEFT JOIN ${tab_result} tr ON ttt.tt_id=tr.tt_id
         where ttt.tt_id = #{tt_id}
     </select>
 
@@ -51,7 +51,7 @@
 
     <select id="selectStudentList" resultMap="selectStudentLists">
         SELECT tr.tr_id,tus.uc_name,tr.action_actual_one,tr.action_actual_two,tr.action_actual_three,tr.action_actual_four
-	 FROM tab_result tr LEFT JOIN tab_uc_student tus ON tr.uc_id = tus.uc_id WHERE tr.tt_id = #{tt_id};
+	 FROM ${tab_result} tr LEFT JOIN tab_uc_student tus ON tr.uc_id = tus.uc_id WHERE tr.tt_id = #{tt_id};
     </select>
 
     <select id="selectStudentTab" resultType="com.amis.entity.dto.StudentTrainTab">
@@ -64,7 +64,7 @@ tr.action_one_speed,tr.action_one_frequency,tr.action_one_fluency,tr.action_one_
 tr.action_two_speed,tr.action_two_frequency,tr.action_two_fluency,tr.action_two_melody,tr.action_two_power,
 tr.action_three_speed,tr.action_three_frequency,tr.action_three_fluency,tr.action_three_melody,tr.action_three_power,
 tr.action_four_speed,tr.action_four_frequency,tr.action_four_fluency,tr.action_four_melody,tr.action_four_power
-from tab_result tr LEFT JOIN tab_total_train ttt ON tr.tt_id = ttt.tt_id
+from ${tab_result} tr LEFT JOIN ${tab_total_train} ttt ON tr.tt_id = ttt.tt_id
 WHERE tr.tr_id = #{tr_id}
     </select>
 
@@ -78,7 +78,7 @@ WHERE tr.tr_id = #{tr_id}
 
     <select id="queryClassReport" resultMap="queryClassReportList">
         select tc.tc_name,ttt.u_id,ttt.start_time,ttt.end_time from
-        tab_total_train ttt LEFT JOIN tab_class tc ON ttt.tc_id = tc.tc_id
+        ${tab_total_train} ttt LEFT JOIN tab_class tc ON ttt.tc_id = tc.tc_id
         where ttt.tc_id = #{tc_id} and ttt.u_id = #{u_id} and (ttt.start_time between #{start_time} and #{end_time})
     </select>
 

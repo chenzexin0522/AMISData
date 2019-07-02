@@ -1,7 +1,9 @@
 package com.amis.dao;
 
+import com.amis.entity.YmlEntityTab;
 import com.amis.entity.dto.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,13 +16,13 @@ import java.util.List;
 @Mapper
 public interface FromListDao {
 
-    List<ReturnTotalList> selectFromList(int u_id);
+    List<ReturnTotalList> selectFromList(@Param("u_id") int u_id,@Param("tab_total_train") String tab_total_train,@Param("tab_result") String tab_result);
 
-    ClassTrainTabDTO selectTotalTab(int tt_id);
+    ClassTrainTabDTO selectTotalTab(@Param("tt_id")int tt_id,@Param("tab_total_train") String tab_total_train,@Param("tab_result") String tab_result);
 
-    List<StudentTrainList> selectStudentList(int tt_id);
+    List<StudentTrainList> selectStudentList(@Param("tt_id")int tt_id,@Param("tab_result") String tab_result);
 
-    StudentTrainTab selectStudentTab(int tr_id);
+    StudentTrainTab selectStudentTab(@Param("tr_id")int tr_id,@Param("tab_total_train") String tab_total_train,@Param("tab_result") String tab_result);
 
     List<QueryClassReportDTO> queryClassReport(QueryClassReportDTO queryClassReportDTO);
 }

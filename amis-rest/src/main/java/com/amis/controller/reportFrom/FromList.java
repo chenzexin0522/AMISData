@@ -93,6 +93,9 @@ public class FromList {
      * @param
      * @return com.amis.common.ResponseVO
      * @Description        按时间阶段查询班级训练报告
+     *
+     *
+     *
      **/
     @RequestMapping(value = "queryClassReport",method = RequestMethod.POST)
     public ResponseVO queryClassReport(@RequestBody QueryClassReportDTO queryClassReportDTO) throws AmisException {

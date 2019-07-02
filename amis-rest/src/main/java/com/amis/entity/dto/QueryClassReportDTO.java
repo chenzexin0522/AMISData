@@ -17,6 +17,7 @@ public class QueryClassReportDTO {
     private String tc_name;
     private String start_time;
     private String end_time;
+    private String tab_total_train;
     private int train_number;        //训练次数
     private int train_average;       //训练百分比
     private int type_one_average;              //投篮百分比

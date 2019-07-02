@@ -3,7 +3,7 @@
 <mapper namespace="com.amis.dao.TotalTrainDao" >
 
     <insert id="insertTrain" parameterType="com.amis.entity.TotalTrain" useGeneratedKeys="true" keyProperty="tt_id">
-        insert into  tab_total_train(
+        insert into  ${tab_total_train}(
           train_duration,
           action_set_one,
           action_set_two,
@@ -27,7 +27,7 @@
 
 
   <insert id="insertTabResultList">
-    INSERT INTO tab_result
+    INSERT INTO ${tab_result}
     (
     tc_id,
      te_id,
@@ -59,7 +59,7 @@
     action_four_power
      )
     VALUES
-    <foreach collection ="list" item="item" separator =",">
+    <foreach collection ="tabResultsList" item="item" separator =",">
       (
       #{item.tc_id},
       #{item.te_id},
@@ -95,7 +95,7 @@
 
 
     <update id="updateTrainType">
-        UPDATE tab_total_train
+        UPDATE ${tab_total_train}
         <set>
             train_state = 2,
             start_time = #{start_time},
@@ -112,7 +112,7 @@
 
 
     <update id="updateTrainAlone">
-        UPDATE tab_total_train
+        UPDATE ${tab_total_train}
         <set>
             train_duration = #{train_duration},
             action_set_one = #{action_set_one},
@@ -127,7 +127,7 @@
 
 
     <update id="deleteTrain">
-        UPDATE tab_total_train
+        UPDATE ${tab_total_train}
         <set>
             hide = 1
         </set>

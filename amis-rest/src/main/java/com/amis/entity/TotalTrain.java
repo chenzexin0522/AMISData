@@ -19,6 +19,7 @@ public class TotalTrain {
     private int tt_id;
     private String start_time;              //开始时间
     private String end_time;               //结束时间
+    private String tab_total_train;
     private int train_duration;      //目标训练时长
     private int u_id;                   //用户id
     private int tc_id;                  //班级id

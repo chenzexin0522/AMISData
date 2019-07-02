@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4fc1fd3d-4335-403d-9602-91c383bdb8f3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../java/com/amis/common/scheduler/SchedulerUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/adminlogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test/loginError.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/AmisRestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/AmisRestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/common/aliyuncsCode/JavaSmsApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/common/aliyuncsCode/JavaSmsApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/common/config/HttpsConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/common/config/HttpsConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/common/token/TokenProccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/common/token/TokenProccessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/controller/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/controller/admin/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/controller/admin/RestAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/controller/admin/RestAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/controller/edition/EditionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/controller/edition/EditionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/controller/reportFrom/FromList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/controller/reportFrom/FromList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/controller/reportFrom/PresentationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/controller/reportFrom/PresentationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/controller/train/TotalTrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/controller/train/TotalTrainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/dao/FromListDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/dao/FromListDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/dao/PresentationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/dao/PresentationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/entity/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/entity/Presentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/entity/TabResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/entity/TabResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/entity/TotalTrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/entity/TotalTrain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/service/FromListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/service/FromListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/service/PresentationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/service/PresentationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/service/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/service/impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/service/impl/FromListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/service/impl/FromListServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/service/impl/PresentationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/service/impl/PresentationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java/com/amis/service/impl/TotalTrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java/com/amis/service/impl/TotalTrainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mapper/FromListDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/mapper/FromListDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mapper/PresentationDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/mapper/PresentationDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mapper/TotalTrainDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/mapper/TotalTrainDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styeCss/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styeCss/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Echars.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Echars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/editiontable.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/editiontable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/selectFeedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/selectFeedback.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-09_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-10_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-11_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-12_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-15_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-16_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-17_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-18_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-19_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-22_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-23_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-24_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-24_1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-24_2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-24_3.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-25_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-25_1.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/debug_2019-04-25_2.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-01_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-02_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-03_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-04_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-06_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-07_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-08_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-09_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-10_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-11_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-12_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-15_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-16_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-17_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-18_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-19_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-22_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-23_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-24_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/error_2019-04-25_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-01_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-02_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-03_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-04_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-06_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-07_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-08_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-09_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-10_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-11_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-12_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-15_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-16_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-17_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-18_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-19_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-22_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-23_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-24_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/info_2019-04-25_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-01_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-02_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-03_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-04_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-06_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-07_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-08_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-09_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-10_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-11_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-12_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-15_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-16_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-17_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-18_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-19_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-22_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-23_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-24_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../logfrom/warn_2019-04-25_0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../picture_apk/12223344412.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../picture_apk/12223344412.png" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="150" />
+    <option name="y" value="-20" />
+    <option name="width" value="1750" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="resources" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="resources" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4fc1fd3d-4335-403d-9602-91c383bdb8f3" name="Default Changelist" comment="" />
+      <created>1561364855268</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561364855268</updated>
+      <workItem from="1561364857070" duration="64000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="64000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

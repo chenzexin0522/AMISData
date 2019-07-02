@@ -74,7 +74,7 @@ public class TokenProccessor {
      * @return java.lang.String
      * @Description        删除token
      **/
-    public static boolean deletetoken(Users users) throws Exception {
+        public static boolean deletetoken(Users users) throws Exception {
         RedisConfig redisConfig = new RedisConfig();
         Jedis jedis = redisConfig.getJedisPool();
         if (jedis == null){
@@ -83,5 +83,6 @@ public class TokenProccessor {
         jedis.del(String.valueOf(users.getU_id()));
         return true;
     }
+
 
 }

@@ -15,6 +15,7 @@ public class TabResult {
     private int te_id;                      //设备id
     private int uc_id;                      //学生id
     private int tt_id;                      //训练表id
+    private int mt_type;                    //运动类型分类
     private int action_actual_one;          //动作实际完成值
     private int action_actual_two;
     private int action_actual_three;

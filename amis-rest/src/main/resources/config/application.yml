@@ -54,4 +54,9 @@ logging:
        root: info
   config: classpath:config/logback.xml
 
-name: ChenZeXin
+
+
+#tab_total_train: basketball_tab_total_train
+#tab_task: basketball_tab_task
+#tab_result: basketball_tab_result
+#tab_presentation: basketball_tab_presentation

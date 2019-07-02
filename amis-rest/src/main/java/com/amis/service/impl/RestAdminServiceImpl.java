@@ -186,10 +186,10 @@ public class RestAdminServiceImpl implements RestAdminService {
         String studentPage = restAdminDao.selectStudentPage();  //查询学生总数
         String trainPage = restAdminDao.selectTrainPage();      //查询教练总数
         String classPage = restAdminDao.selectClassPage();      //查询班级总数
-        String weekCompletionRrate = restAdminDao.selectWeekCompletionRrate();  //查询本周学生训练完成率
-        List<GradeDTO> gradeDTOS = restAdminDao.selectgradeDTOS();
-        String weekClassCompletionRrate = restAdminDao.selectWeekClassCompletionRrate();    //查询本所有周班级训练完成率
-        List<ClassTotalDTO> classTotalDTOS = restAdminDao.selecClassTotalDTOS();    //查询本周各班级训练完成率
+        String weekCompletionRrate = restAdminDao.selectWeekCompletionRrate(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);  //查询本周学生训练完成率
+        List<GradeDTO> gradeDTOS = restAdminDao.selectgradeDTOS(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
+        String weekClassCompletionRrate = restAdminDao.selectWeekClassCompletionRrate(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);    //查询本所有周班级训练完成率
+        List<ClassTotalDTO> classTotalDTOS = restAdminDao.selecClassTotalDTOS(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);    //查询本周各班级训练完成率
         map.put("studentPage",studentPage);
         map.put("trainPage",trainPage);
         map.put("classPage",classPage);
@@ -217,38 +217,38 @@ public class RestAdminServiceImpl implements RestAdminService {
 
     @Override
     public List<GradeDTO> selectgradeDTOS() {
-        return restAdminDao.selectgradeDTOS();
+        return restAdminDao.selectgradeDTOS(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     @Override
     public String selectWeekCompletionRrate() {
-        return restAdminDao.selectWeekCompletionRrate();
+        return restAdminDao.selectWeekCompletionRrate(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     @Override
     public String selectWeekCompletionRrateTable() {
-        return restAdminDao.selectWeekCompletionRrate();
+        return restAdminDao.selectWeekCompletionRrate(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     @Override
     public String selectWeekClassCompletionRrate() {
-        return restAdminDao.selectWeekClassCompletionRrate();
+        return restAdminDao.selectWeekClassCompletionRrate(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     @Override
     public String selectWeekClassCompletionRrateTable() {
-        return restAdminDao.selectWeekClassCompletionRrate();
+        return restAdminDao.selectWeekClassCompletionRrate(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
 
     @Override
     public List<ClassTotalDTO> selecClassTotalDTOS() {
-        return restAdminDao.selecClassTotalDTOS();
+        return restAdminDao.selecClassTotalDTOS(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     @Override
     public List<ClassTotalDTO> selecClassTableTotalDTOS() {
-        return restAdminDao.selecClassTotalDTOS();
+        return restAdminDao.selecClassTotalDTOS(YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     //数据统计
@@ -264,9 +264,40 @@ public class RestAdminServiceImpl implements RestAdminService {
         return map;
     }
 
+    public static void setString(String strString,String sports){
+        String str =strString;
+        String[] temp;
+        String delimeter = "_";  // 指定分割字符
+        temp = str.split(delimeter); // 分割字符串
+        for (int a = 0;a<temp.length;a++){
+            if (a==0){
+                str = sports;
+            }else {
+                str = str+"_"+temp[a];
+            }
+        }
+        if (strString == YmlEntityHotTab.tab_total_train || strString.equals(YmlEntityHotTab.tab_total_train)){
+            YmlEntityHotTab.tab_total_train = str;
+        } else if (strString == YmlEntityHotTab.tab_result || strString.equals(YmlEntityHotTab.tab_result)) {
+            YmlEntityHotTab.tab_result = str;
+        }else if (strString == YmlEntityHotTab.tab_task || strString.equals(YmlEntityHotTab.tab_task)) {
+            YmlEntityHotTab.tab_task = str;
+        }else if (strString == YmlEntityHotTab.tab_presentation || strString.equals(YmlEntityHotTab.tab_presentation)) {
+            YmlEntityHotTab.tab_presentation = str;
+        }
+
+    }
+
+
     @Override
     public Map<String, String> selectStudentCurriculum( Presentation presentation) {
+        setString(YmlEntityHotTab.tab_total_train,presentation.getOpn());
+        setString(YmlEntityHotTab.tab_result,presentation.getOpn());
+        setString(YmlEntityHotTab.tab_presentation,presentation.getOpn());
+        setString(YmlEntityHotTab.tab_task,presentation.getOpn());
         Map<String,String> map = new HashMap<>();
+        presentation.setTab_total_train(YmlEntityHotTab.tab_total_train);
+        presentation.setTab_result(YmlEntityHotTab.tab_result);
         PageStatisticsDTO pageStatisticsDTO = restAdminDao.selectPageStatistics(presentation);  //学生体育课程平均完成率
         int trainTotal =pageStatisticsDTO.getTrainTotal();      //课程总次数
         int totalTrainMinute =pageStatisticsDTO.getTotalTrainMinute();      //课程总分钟数

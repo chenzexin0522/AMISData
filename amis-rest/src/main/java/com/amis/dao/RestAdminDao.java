@@ -78,15 +78,15 @@ public interface RestAdminDao {
 
     PageStatisticsDTO selectPageStatistics(Presentation presentation);
 
-    String selectWeekCompletionRrate();
+    String selectWeekCompletionRrate(@Param("tab_total_train")String tab_total_train,@Param("tab_result") String tab_result);
 
     int updatestudentVal(Student student);
 
-    List<GradeDTO> selectgradeDTOS();
+    List<GradeDTO> selectgradeDTOS(@Param("tab_total_train")String tab_total_train,@Param("tab_result") String tab_result);
 
-    String selectWeekClassCompletionRrate();
+    String selectWeekClassCompletionRrate(@Param("tab_total_train")String tab_total_train,@Param("tab_result") String tab_result);
 
-    List<ClassTotalDTO> selecClassTotalDTOS();
+    List<ClassTotalDTO> selecClassTotalDTOS(@Param("tab_total_train")String tab_total_train,@Param("tab_result") String tab_result);
 
     int updateCoachVal(Users users);
 

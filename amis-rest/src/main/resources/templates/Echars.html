@@ -18,14 +18,19 @@
 
     <br />
     <div class="dataJs">
-        <form  method="post" id="editForm" onsubmit="selectStudentCurriculum()">
+        <form  method="post" id="editForm" >
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label for="start"><b>从：</b>&nbsp;&nbsp;</label>
             <input id="start" type="date" value=""/>
               &nbsp;&nbsp;&nbsp;&nbsp;<label for="end"><b>至：</b>&nbsp;&nbsp;</label>
             <input id="end" type="date" value=""/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label for="end"><b>运动类型：</b>&nbsp;&nbsp;</label>
+            <select id="selects">
+                <option value ="basketball">篮球</option>
+                <option value ="badminton">羽毛球</option>
+            </select>
               &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="确认" class="submitBtn" />
+            <input type="button" value="确认" class="submitBtn" onclick="selectStudentCurriculum()"/>
         </form>
     </div>
 
@@ -72,7 +77,6 @@
         <div class="Viewtitle" id="studentTrainCurriculum"><b>学生体育课程平均完成率</b></div>
         <div class="StudentWeekRate" id="StudentWeekRate">
     </div>
-
         <br />
         <!--<div class="boxscroll" id="StudentWeekRateTitle" align="center"><b>学生体育课程平均完成率</b></div>-->
     </div>
@@ -136,6 +140,7 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function(){
+        selectStudentCurriculum();      //学生体育课程平均完成率
          selectStudentListTable();  //各年级体育作业平均完成率
          selectStudentList();       //各年级体育课程平均完成率
          selectStudentWeekRate();    //学生体育课程平均完成率
@@ -145,12 +150,13 @@
         selecClassTotalDTOS();          //查询本周各班级训练完成率排名
         selecClassTableTotalDTOS();     //查询本周各班级作业完成率排名
         selectDataStatistics();         //数据统计
-        selectStudentCurriculum();      //学生体育课程平均完成率
     });
+    
 
     function selectStudentCurriculum() {
         var start = document.getElementById('start').value;
         var end = document.getElementById('end').value;
+        var opn = document.getElementById('selects').value;
         if (start == null || start == "" || end == null || end == "" ){
             var date = new Date();
             var seperator1 = "-";
@@ -174,7 +180,7 @@
             type : "post",
             async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
             url : "/admines/selectStudentCurriculum",    //请求发送到dataActiont处
-            data : {"start":start,"end":end},
+            data : {"start":start,"end":end,"opn":opn},
             dataType : "json",        //返回数据形式为json
             success : function(result) {
                 document.getElementById('trainTotal').innerHTML = result["trainTotal"];
@@ -183,6 +189,14 @@
                 document.getElementById('trainTotalTable').innerHTML = result["trainTotalTable"];
                 document.getElementById('totalTrainMinuteTable').innerHTML = result["totalTrainMinuteTable"];
                 document.getElementById('totalCompletionRrateTable').innerHTML = result["totalCompletionRrateTable"]+"%";
+                selectStudentListTable();  //各年级体育作业平均完成率
+                selectStudentList();       //各年级体育课程平均完成率
+                selectStudentWeekRate();    //学生体育课程平均完成率
+                selectWeekCompletionRrateTable();  //学生体育作业平均完成率
+                selectWeekClassCompletionRrate();   //查询本周所有周班级训练完成率
+                selectWeekClassCompletionRrateTable();  //查询本周所有周班级作业完成率
+                selecClassTotalDTOS();          //查询本周各班级训练完成率排名
+                selecClassTableTotalDTOS();     //查询本周各班级作业完成率排名
             }
         });
     }
@@ -221,6 +235,14 @@
             data : {},
             dataType : "json",        //返回数据形式为json
             success : function(result) {
+                var tb = document.getElementById('classops');
+                var rowNum=tb.rows.length;
+                for (i=1;i<rowNum;i++)
+                {
+                    tb.deleteRow(i);
+                    rowNum=rowNum-1;
+                    i=i-1;
+                }
                 var as = 0;
                 $.each(result, function (i, item) {
                     as = i + 1;
@@ -240,6 +262,14 @@
             data : {},
             dataType : "json",        //返回数据形式为json
             success : function(result) {
+                var tb = document.getElementById('classop');
+                var rowNum=tb.rows.length;
+                for (i=1;i<rowNum;i++)
+                {
+                    tb.deleteRow(i);
+                    rowNum=rowNum-1;
+                    i=i-1;
+                }
                 var as = 0;
                 $.each(result, function (i, item) {
                     as = i + 1;
@@ -334,7 +364,7 @@
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
-                alert("图表请求数据失败!");
+                alert("无训练数据");
                 myChart.hideLoading();
             }
         });
@@ -423,7 +453,6 @@
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
-                alert("图表请求数据失败!");
                 myChart.hideLoading();
             }
         });
@@ -512,7 +541,6 @@
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
-                alert("图表请求数据失败!");
                 myChart.hideLoading();
             }
         });
@@ -606,7 +634,6 @@
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
-                alert("图表请求数据失败!");
                 myChart.hideLoading();
             }
         });
@@ -672,7 +699,6 @@
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
-                alert("图表请求数据失败!");
                 myChart.hideLoading();
             }
         });
@@ -738,7 +764,6 @@
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
-                alert("图表请求数据失败!");
                 myChart.hideLoading();
             }
         });//end ajax
