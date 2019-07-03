@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ShowView {
     @RequestMapping("")
     public String logins(){
-        return "/login";
+        return "login";
     }
 
 
