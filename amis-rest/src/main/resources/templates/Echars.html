@@ -171,6 +171,12 @@
             }
             var currentdate = year + seperator1 + month + seperator1 + strDate;
             var endcurrentdate = addDate(currentdate,-3);
+            var strs= new Array(); //定义一数组
+            strs=endcurrentdate.split("-"); //字符分割
+            if (strs[2].length = 1){
+                strs[2] = "0" + strs[2];
+            }
+            endcurrentdate = strs[0] + "-" + strs[1]+ "-" +strs[2] ;
             $("#start").val(endcurrentdate);
             $("#end").val(currentdate);
             start = endcurrentdate;
