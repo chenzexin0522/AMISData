@@ -1,58 +1,126 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<title>Aims</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>AIMS-Login</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Mannatthemes" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<link type="text/css" href="/styeCss/style.css" rel="stylesheet"/>
+        <!-- jQuery  -->
+        <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/assets/js/modernizr.min.js"></script>
+        <script type="text/javascript" src="/assets/js/waves.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery.slimscroll.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery.nicescroll.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery.scrollTo.min.js"></script>
 
-	<script type="text/javascript" src="/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/vector.js"></script>
+        <!-- App js -->
+        <script type="text/javascript" src="/assets/js/app.js">
+        </script>
+
+        <link rel="shortcut icon" href="/assets/images/favicon.ico">
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/styeCss/common.css"/>
+
+    </head>
 
 
-</head>
-<body>
+    <body>
 
-<div id="container">
-	<div id="output">
-		<div class="containerT">
-			<h1>AIMS-管理员登录</h1>
-			<form class="form" method="post" action="loginPage" onsubmit="return subForm()">
-				<input type="text" name="username" id="entry_name" value="aims"/>
-				<input type="password" name="password" id="entry_password"  value="1"/>
-				<button type="submit" id="entry_btn">登录</button>
-				<div id="prompt" class="prompt"></div>
-			</form>
-		</div>
-	</div>
-</div>
+        
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="wrapper-page">
 
-<script type="text/javascript">
-    $(function(){
-        Victor("container", "output");   //登录背景函数
-        $("#entry_name").focus();
-        $(document).keydown(function(event){
-            if(event.keyCode==13){
-                $("#entry_btn").click();
-            }
-        });
-    });
+            <div class="card">
+                <div class="card-body">
 
-	function subForm(){
-		var first = $("input[name='username']").val();
-		var last = $("input[name='password']").val();
+                    <h3 class="text-center mt-0 m-b-15">
+                        <a href="index.html" class="logo logo-admin"><img src="/assets/images/AIMSLOGOTWO.png" height="94" alt="logo"></a>
+                    </h3>
 
-		if (first == "" || first == null || first == undefined) {
-			alert("账号不能为空");
-			return false;/*阻止表单提交*/
-		} else if (last == "" || last == null || last == undefined) {
-			alert("密码不能为空");
-			return false;
-		} else {
-			return true;
-		}
-	}
-</script>
-</body>
+                    <div class="p-3">
+                        <form class="form-horizontal m-t-20"  method="post" action="/admines/loginPage" onsubmit="return loginVerification()">
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="Phone" type="text" required="" placeholder="Phone">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" name="Password" type="password" required="" placeholder="Password">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">记住密码</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center row m-t-20">
+                                <div class="col-12">
+                                    <button class="btn btn-danger btn-block waves-effect waves-light" type="submit">Log In</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group m-t-10 mb-0 row">
+                                <div class="col-sm-7 m-t-20">
+                                    <a href="/admines/forgetPassword" class="text-muted"><i class="mdi mdi-lock"></i> <small>
+                                        忘记密码</small></a>
+                                </div>
+
+                                <div class="col-sm-5 m-t-20">
+                                    <a href="javascript:FoPassword();" class="text-muted"><i class="mdi mdi-account-circle"></i> <small>
+                                        创建帐户</small></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <script  type="text/javascript">
+          /*  function loginVerification(){
+                var Phone = $("input[name='Phone']").val();
+                var Password = $("input[name='Password']").val();
+                var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(15[0-3]{1})|(15[4-9]{1})|(18[0-9]{1})|(199))+\d{8})$/;
+                if (Phone == "" || Phone == null || Phone == undefined) {
+                    alert("手机号码不能为空");
+                    return false;/!*阻止表单提交*!/
+                } else if (Phone.length != 11) {
+                     alert("请输入11位手机号码！");
+                    return false;
+                }  else if (!myreg.test(Phone)){
+                    alert("请输入有效的手机号码！");
+                    return false;
+                }  else if (Password == "" || Password == null || Password == undefined) {
+                    alert("密码不能为空");
+                    return false;
+                }  else {
+                    return true;
+                }
+            }*/
+
+
+        </script>
+
+    </body>
 </html>

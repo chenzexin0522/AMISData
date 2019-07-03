@@ -319,11 +319,11 @@ public class RestAdminServiceImpl implements RestAdminService {
 
     @Override
     public  List<StudentTrainTotalList> getStudentTrain(int uc_id, String start_time, String end_time) {
-        return restAdminDao.getStudentTrain(uc_id,start_time,end_time);
+        return restAdminDao.getStudentTrain(uc_id,start_time,end_time,YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 
     @Override
     public List<ClassTrainExcelDTO>  getClassTrainExcel(int tc_id,String start_time,String end_time) {
-        return restAdminDao.getClassTrainExcel(tc_id,start_time,end_time);
+        return restAdminDao.getClassTrainExcel(tc_id,start_time,end_time,YmlEntityHotTab.tab_total_train,YmlEntityHotTab.tab_result);
     }
 }

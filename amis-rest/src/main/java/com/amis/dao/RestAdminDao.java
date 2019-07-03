@@ -94,7 +94,7 @@ public interface RestAdminDao {
 
     UpdateTrainDTO updateTrain(int u_id);
 
-    List<StudentTrainTotalList> getStudentTrain(@Param("uc_id") int uc_id,@Param("start_time") String start_time,@Param("end_time") String end_time);
+    List<StudentTrainTotalList> getStudentTrain(@Param("uc_id") int uc_id,@Param("start_time") String start_time,@Param("end_time") String end_time,@Param("tab_total_train")String tab_total_train,@Param("tab_result")String tab_result);
 
-    List<ClassTrainExcelDTO>  getClassTrainExcel(@Param("tc_id")int tc_id,@Param("start_time")String start_time,@Param("end_time")String end_time);
+    List<ClassTrainExcelDTO>  getClassTrainExcel(@Param("tc_id")int tc_id,@Param("start_time")String start_time,@Param("end_time")String end_time,@Param("tab_total_train")String tab_total_train,@Param("tab_result")String tab_result);
 }
