@@ -4,6 +4,7 @@ import com.amis.entity.dto.SelectClassDTO;
 import com.amis.entity.dto.SelectCoachDTO;
 import com.amis.entity.dto.SelectStudentDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,5 +22,5 @@ public interface SelectClassDao {
 
     List<SelectClassDTO> coachSelectClass(int u_id);
 
-    List<SelectStudentDTO> selectStudent(int tc_id);
+    List<SelectStudentDTO> selectStudent( @Param("tc_id") int tc_id, @Param("tab_result") String tab_result,@Param("tab_total_train") String tab_total_train);
 }

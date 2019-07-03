@@ -15,6 +15,7 @@ public class Task {
     private int u_id;
     private String start_time;
     private String end_time;
+    private String tab_task;
     private int action_set_one;
     private int action_set_two;
     private int action_set_three;

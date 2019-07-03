@@ -4,6 +4,7 @@ import com.amis.entity.Student;
 import com.amis.entity.Task;
 import com.amis.entity.dto.ReturnTaskListDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,9 +19,9 @@ public interface TaskDao {
 
     void insertTask(Task task);
 
-    List<ReturnTaskListDTO> selectTaskList(int u_id);
+    List<ReturnTaskListDTO> selectTaskList(@Param("u_id") int u_id, @Param("tab_task") String tab_task);
 
-    List<Student> selectStudentList(int tc_id);
+    List<Student> selectStudentList(@Param("tc_id") int tc_id, @Param("tab_task") String tab_task);
 
-    int deleteTask(int ta_id);
+    int deleteTask(@Param("ta_id") int ta_id, @Param("tab_task") String tab_task);
 }

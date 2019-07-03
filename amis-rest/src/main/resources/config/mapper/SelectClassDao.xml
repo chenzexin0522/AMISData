@@ -81,7 +81,7 @@ LEFT JOIN tab_uc_student tus ON tus.tc_id = tc.tc_id WHERE tcc.u_id = #{u_id} GR
         AND IF(ttt.action_set_two &lt;= tr.action_actual_two,true,null)
         AND IF(ttt.action_set_three &lt;= tr.action_actual_three,true,null)
         AND IF(ttt.action_set_four &lt;= tr.action_actual_four,true,null))/COUNT(tr.tr_id)*100,2) as past_completion_rate
-        FROM tab_uc_student tus LEFT JOIN tab_result tr ON tus.uc_id = tr.uc_id LEFT JOIN tab_total_train ttt ON tr.tt_id = ttt.tt_id
+        FROM tab_uc_student tus LEFT JOIN ${tab_result} tr ON tus.uc_id = tr.uc_id LEFT JOIN ${tab_total_train} ttt ON tr.tt_id = ttt.tt_id
         WHERE tus.tc_id = #{tc_id} GROUP BY tus.uc_id
     </select>
 </mapper>

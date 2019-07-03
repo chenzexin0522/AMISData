@@ -1,6 +1,7 @@
 package com.amis.service.impl;
 
 import com.amis.dao.SelectClassDao;
+import com.amis.entity.YmlEntityTab;
 import com.amis.entity.dto.SelectClassDTO;
 import com.amis.entity.dto.SelectCoachDTO;
 import com.amis.entity.dto.SelectStudentDTO;
@@ -40,6 +41,6 @@ public class SelectServiceImpl implements SelectService {
 
     @Override
     public List<SelectStudentDTO> selectStudent(int tc_id) {
-        return selectClassDao.selectStudent(tc_id);
+        return selectClassDao.selectStudent(tc_id, YmlEntityTab.tab_result,YmlEntityTab.tab_total_train);
     }
 }
