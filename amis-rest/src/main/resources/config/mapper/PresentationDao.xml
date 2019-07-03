@@ -62,8 +62,7 @@ LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id LEFT JOIN tab_class tac
         where ttt.start_time BETWEEN (SELECT tpr.start_time from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id}) AND
         (SELECT tpr.end_time from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})
         AND ttt.u_id =  (SELECT tpr.u_id from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})
-        AND ttt.tc_id=  (SELECT tpr.tc_uc_id from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})
-        AND ttt.mt_type=  (SELECT tpr.mt_type from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id}) GROUP BY ttt.tt_id
+        AND ttt.tc_id=  (SELECT tpr.tc_uc_id from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id}) GROUP BY ttt.tt_id
     </select>
 
 
@@ -81,8 +80,7 @@ LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id LEFT JOIN tab_class tac
         AND (SELECT tpr.end_time from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})
         AND ttt.u_id =  (SELECT tpr.u_id from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})
         AND ttt.tc_id=  (SELECT tus.tc_id from ${tab_presentation} tpr LEFT JOIN tab_uc_student tus ON tpr.tc_uc_id = tus.uc_id WHERE tpr.pr_id = #{pr_id})
-        AND tr.uc_id = ((SELECT tpr.tc_uc_id from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id}))
-        AND tr.mt_type = ((SELECT tpr.mt_type from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})) GROUP BY tr.tr_id
+        AND tr.uc_id = ((SELECT tpr.tc_uc_id from ${tab_presentation} tpr WHERE tpr.pr_id = #{pr_id})) GROUP BY tr.tr_id
     </select>
 
 
