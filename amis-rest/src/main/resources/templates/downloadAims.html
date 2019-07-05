@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>tables</title>
+    <script type="text/javascript" src="/js/jquery.min.js"  th:inline="none"></script>
+    <link rel="stylesheet" href="/styeCss/common.css"/>
+    <style>
+        *{
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        body{
+            font-family: Helvetica;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+        }
+        h1{
+            text-align: center;
+            font-size: 33px;
+            font-weight:bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0b0b0b;
+            padding: 30px 0;
+        }
+
+            #sel_btn1{
+                border: 1px #26bbdb solid;
+                font-size: 22px;
+                position: absolute;
+                top:9px;
+                left: 30px;
+            }
+
+            #table-jump{
+                height: 200px;
+                width: 150px;
+                text-align: center;
+                font-size: 22px;
+                position: absolute;
+                top:230px;
+                left: 200px;
+            }
+            #table-bad{
+                height: 200px;
+                width: 150px;
+                text-align: center;
+                font-size: 22px;
+                position: absolute;
+                top:230px;
+                left: 400px;
+            }
+            #table-baseketball{
+                height: 200px;
+                width: 150px;
+                text-align: center;
+                font-size: 22px;
+                position: absolute;
+                top:230px;
+                left: 600px;
+            }
+        #table-oldbad{
+            height: 200px;
+            width: 150px;
+            text-align: center;
+            font-size: 22px;
+            position: absolute;
+            top:230px;
+            left: 800px;
+        }
+            .down{
+                height: 30px;
+                width: 80px;
+                border-style: outset;
+                position: relative;
+                left: 35px;
+                top: 4px;
+            }
+    </style>
+</head>
+<body>
+
+<h1 >AIMS-资源下载库</h1>
+<div id="table-jump">
+    <div id="jump"><img src="/img/AIMSLOGO.png" /></div><b>JumpRope.apk</b>
+    <div id="sel_jump" class="down"><a  href="#" class="easyui-linkbutton" onclick="downloadfile();">下载</a></div>
+</div>
+
+<div id="table-bad">
+    <div id="bad"><img src="/img/AIMSLOGO.png" /></div><b>badminton.apk</b>
+    <div id="sel_bad" class="down"><a  href="#" class="easyui-linkbutton" onclick="downloadfileBad();">下载</a></div>
+</div>
+
+<div id="table-baseketball">
+    <div id="baseketball"><img src="/img/AIMSLOGO.png" /></div><b>baseketball.apk</b>
+    <div id="sel_baseketball" class="down"><a  href="#" class="easyui-linkbutton" onclick="downloadfilebaseketball();">下载</a></div>
+</div>
+
+<div id="table-oldbad">
+    <div id="oldbad"><img src="/img/AIMSLOGO.png" /></div><b>OldBadminton.apk</b>
+    <div id="sel_oldbad" class="down"><a  href="#" class="easyui-linkbutton" onclick="downloadfileoldbad();">下载</a></div>
+</div>
+
+
+
+</body>
+<script type="text/javascript" th:inline="none">
+
+
+    function showStudentExcel(id) {
+        $.ajax({
+            type: 'POST',
+            url: "/admines/excelshow",
+            data: {"id":id},    //映射或字符串值，规定连同请求发送到服务器的数据；
+            success : function(data) {
+                $("#showStudentExcel").show();
+                $("#upStudentId").val(data);
+                className = $(this).attr('class');
+                $('#dialogBg').fadeIn(300);
+                $('#dialog').removeAttr('class').addClass('animated '+className+'').fadeIn();
+            }
+        })
+    }
+
+    function downloadfile(){
+        window.location.href="/excel/downloadAimsAPK?fileName="+"jump";
+    }
+
+    function downloadfileBad() {
+        window.location.href="/excel/downloadAimsAPK?fileName="+"bad";
+    }
+
+    function downloadfilebaseketball() {
+        window.location.href="/excel/downloadAimsAPK?fileName="+"baseketball";
+    }
+
+    function downloadfileoldbad() {
+        window.location.href="/excel/downloadAimsAPK?fileName="+"OldBadminton ";
+    }
+
+
+
+</script>
+
+
+</html>

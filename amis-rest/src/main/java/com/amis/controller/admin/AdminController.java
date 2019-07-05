@@ -44,6 +44,21 @@ public class AdminController {
         return "forgetPassword";
     }
 
+
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/7/5 10:27
+     * @param
+     * @return java.lang.String
+     * @Description        AIMS下载
+     **/
+    @RequestMapping("/downloadAims")
+    public String downloadAims(){
+        return "downloadAims";
+    }
+
+
     /**
      * @Author chenzexin
      * @Date 2019/5/17 10:15

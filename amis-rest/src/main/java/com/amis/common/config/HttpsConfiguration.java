@@ -21,11 +21,11 @@ public class HttpsConfiguration {
             public void customize(ConfigurableEmbeddedServletContainer container) {
                 Ssl ssl = new Ssl();
                 // Server.jks中包含服务器私钥和证书
-                ssl.setKeyStore("classpath:config/aims.jks");
-                ssl.setKeyStorePassword("w5D4Ccj4");
-                ssl.setKeyPassword("w5D4Ccj4");
+                ssl.setKeyStore("classpath:config/badminton.gbadiea.com.jks");
+                ssl.setKeyStorePassword("76plfyxk062vu");
+                ssl.setKeyPassword("76plfyxk062vu");
                 container.setSsl(ssl);
-                container.setPort(443);
+                container.setPort(10002);
             }
         };
     }
@@ -51,8 +51,8 @@ public class HttpsConfiguration {
         Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
         connector.setScheme("http");
         connector.setSecure(false);
-        connector.setPort(80);
-        connector.setRedirectPort(443);
+        connector.setPort(10021);
+        connector.setRedirectPort(10002);
         return connector;
     }
 }
