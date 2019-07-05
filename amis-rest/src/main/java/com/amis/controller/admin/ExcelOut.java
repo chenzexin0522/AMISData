@@ -517,13 +517,13 @@ public class ExcelOut {
                                   HttpServletResponse response) throws UnsupportedEncodingException {
         String fileNameApk = request.getParameter("fileName");
         // 获取指定目录下的第一个文件
-        File scFileDir = new File("D://IdeaProjects//amisbuild001//picture_apk//apk//"+fileNameApk+".apk");
+        File scFileDir = new File("D://AMISJAVA//picture_apk//apk//"+fileNameApk+".apk");
         String fileName = scFileDir.getName(); //下载的文件名
 
         // 如果文件名不为空，则进行下载
         if (fileName != null) {
             //设置文件路径
-            String realPath = "D://IdeaProjects//amisbuild001//picture_apk//apk";
+            String realPath = "D://AMISJAVA//picture_apk//apk";
             File file = new File(realPath, fileName);
 
             // 如果文件名存在，则进行下载
