@@ -4,10 +4,7 @@ import com.amis.common.ResponseVO;
 import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.controller.edition.EditionController;
-import com.amis.entity.Feedback;
-import com.amis.entity.PhoneCode;
-import com.amis.entity.UserPhoneCode;
-import com.amis.entity.Users;
+import com.amis.entity.*;
 import com.amis.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -143,6 +140,17 @@ public class UserController {
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
         return userService.deleteUser(users);
+    }
+
+    public static int numbers = 0;
+
+    @RequestMapping(value = "test",method = RequestMethod.POST)
+    public ResponseVO test(@RequestBody Users users){
+        numbers++;
+        System.out.println("调用次数---------"+numbers+"-----------数据："+users.getData());
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(users.getData());
+        return responseVO;
     }
 
 
