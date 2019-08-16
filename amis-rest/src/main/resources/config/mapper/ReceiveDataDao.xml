@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.ReceiveDataDao" >
+
+
+    <insert id="insertMotionData" parameterType="java.util.List" useGeneratedKeys="false">
+        insert into motiondata
+        (
+          Ax,
+          Ay,
+          Az,
+          Gx,
+          Gy,
+          Gz,
+          Mac,
+          ReceiveTime
+        )
+        values
+        <foreach collection="motionDataEntityList" item="item" index="index" separator=",">
+            (
+            #{item.Ax},
+            #{item.Ay},
+            #{item.Az},
+            #{item.Gx},
+            #{item.Gy},
+            #{item.Gz},
+            #{item.Mac},
+            #{item.ReceiveTime}
+            )
+        </foreach>
+    </insert>
+
+
+
+    <resultMap id="queryDataCriteriaList" type="com.amis.entity.dto.MotionDataEntityDTO">
+        <result column="id" property="id" />
+        <result column="Mac" property="Mac" />
+        <result column="Ax" property="Ax" />
+        <result column="Ay" property="Ay" />
+        <result column="Az" property="Az" />
+        <result column="Gx" property="Gx" />
+        <result column="Gy" property="Gy" />
+        <result column="Gz" property="Gz" />
+        <result column="ReceiveTime" property="ReceiveTime" />
+
+    </resultMap>
+
+    <select id="queryDataCriteria"  resultMap="queryDataCriteriaList">
+       select id,Mac,Ax,Ay,Az,Gx,Gy,Gz,ReceiveTime
+        from motiondata where  Mac = #{mac} and ReceiveTime between #{startDate} and #{endDate};
+    </select>
+
+
+
+    <update id="newBuildTab" parameterType="java.lang.String">
+         CREATE TABLE ${crtDate} (
+           id int(11) NOT NULL AUTO_INCREMENT,
+           Mac varchar(255) DEFAULT NULL,
+           Ax varchar(255) DEFAULT NULL,
+           Ay varchar(255) DEFAULT NULL,
+           Az varchar(255) DEFAULT NULL,
+           Gx varchar(255) DEFAULT NULL,
+           Gy varchar(255) DEFAULT NULL,
+           Gz varchar(255) DEFAULT NULL,
+           ReceiveTime varchar(255) DEFAULT NULL COMMENT '接收数据的时间',
+           PRIMARY KEY (id))
+    </update>
+
+
+</mapper>

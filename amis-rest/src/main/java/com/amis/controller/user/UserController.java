@@ -147,9 +147,7 @@ public class UserController {
     @RequestMapping(value = "test",method = RequestMethod.POST)
     public ResponseVO test(@RequestBody Users users){
         numbers++;
-        System.out.println("调用次数---------"+numbers+"-----------数据："+users.getData());
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-        responseVO.setData(users.getData());
         return responseVO;
     }
 
