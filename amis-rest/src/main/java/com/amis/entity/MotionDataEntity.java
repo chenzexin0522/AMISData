@@ -13,14 +13,9 @@ import lombok.Data;
 public class MotionDataEntity {
 
     private int id;
-    private String Ax;
-    private String Ay;
-    private String Az;
-    private String Gx;
-    private String Gy;
-    private String Gz;
-    private String Mac;
-    private String ReceiveTime;         //接收的时间
+    private String mac;
+    private long arrindex;       //下标
+    private long unixdate;         //接收的时间
     private String data;
 
 }

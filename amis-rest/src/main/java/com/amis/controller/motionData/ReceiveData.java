@@ -5,22 +5,17 @@ import com.amis.common.exception.AmisException;
 import com.amis.common.exception.MessageKey;
 import com.amis.entity.MotionDataEntity;
 import com.amis.entity.QueryDataCriteria;
+import com.amis.entity.RelayMac;
+import com.amis.entity.dto.RelayMacListDTO;
 import com.amis.service.ReceiveDataService;
-import com.fasterxml.jackson.databind.ser.Serializers;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import sun.misc.BASE64Decoder;
-
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -43,13 +38,45 @@ public class ReceiveData {
 
     /**
      * @Author chenzexin
+     * @Date 2019/8/12 10:13
+     * @param relayMac
+     * @return com.amis.common.ResponseVO
+     * @Description        获取指定中继下的设备
+     **/
+    @RequestMapping(value = "getRelayMac",method = RequestMethod.POST)
+    public ResponseVO getRelayMac(@RequestBody RelayMac relayMac) {
+        List<RelayMacListDTO> relayMacListDTOS = receiveDataService.getRelayMacList(relayMac);
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(relayMacListDTOS);
+        return responseVO;
+    }
+
+
+
+    /**
+     * @Author chenzexin
      * @Date 2019/8/12 10:04
      * @param queryDataCriteria
      * @return com.amis.common.ResponseVO
      * @Description        查询指定设备时间范围内的数据
      **/
     @RequestMapping(value = "queryDataCriteria",method = RequestMethod.POST)
-    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException {
+    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException {
+        if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        return receiveDataService.queryDataCriteria(queryDataCriteria);
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/8/12 10:04
+     * @param queryDataCriteria
+     * @return com.amis.common.ResponseVO
+     * @Description        查询指定设备时间范围内的数据（页面请求）
+     **/
+    @RequestMapping(value = "queryDataCriteriaWebView",method = RequestMethod.POST)
+    public ResponseVO queryDataCriteriaWebView(QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException {
         if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
@@ -64,13 +91,14 @@ public class ReceiveData {
      * @param motionDataEntity
      * @return com.amis.common.ResponseVO
      * @Description        接收192位字节接口
+     *      解：每秒钟3个包，有一个只存储3个包的mapList，定义此mapList是为了实时将最新的数据让web进行显示以及3个包整合成一个包进行处理。
+     *          如果mapList中某个key的value的size超过3，则将数据转移到arr[86400]数组中。
      **/
     @RequestMapping(value = "receiveData",method = RequestMethod.POST)
-    public ResponseVO insertMotionData(@RequestBody MotionDataEntity motionDataEntity) throws AmisException, IOException {
+    public ResponseVO insertMotionData(@RequestBody MotionDataEntity motionDataEntity) throws AmisException, IOException, ParseException {
         if (StringUtils.isBlank(String.valueOf(motionDataEntity.getData()))){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        ao++;
         return receiveDataService.insertMotionData(motionDataEntity);
     }
 
@@ -89,7 +117,6 @@ public class ReceiveData {
         ao=0;
         return responseVO;
     }
-
 
 
 }

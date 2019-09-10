@@ -2,85 +2,1125 @@
 <html style="height: 100%">
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/styeCss/montionDataView.css" />
 </head>
 <body style="height: 100%; margin: 0">
-<div id="container" style="height: 50%"></div>
-<div id="lous" style="height: 50%">
-
-    <input type="button" value="确认" class="submitBtn" onclick="shiShiGetData()"/>
+<div id="she1" style="height: 50%;">
+    <div id="she1A" class="she1A" style="height: 100%;width: 50%"></div>
+    <div id="she1G" class="she1A" style="height: 100%;width: 50%"></div>
 </div>
+<div id="she2" style="height: 50%;">
+    <div id="she2A" class="she2A" style="height: 100%;width: 50%"></div>
+    <div id="she2G" class="she2G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she3" style="height: 50%;">
+    <div id="she3A" class="she3A" style="height: 100%;width: 50%"></div>
+    <div id="she3G" class="she3G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she4" style="height: 50%;">
+    <div id="she4A" class="she4A" style="height: 100%;width: 50%"></div>
+    <div id="she4G" class="she4G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she5" style="height: 50%;">
+    <div id="she5A" class="she5A" style="height: 100%;width: 50%"></div>
+    <div id="she5G" class="she5G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she6" style="height: 50%;">
+    <div id="she6A" class="she6A" style="height: 100%;width: 50%"></div>
+    <div id="she6G" class="she6G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she7" style="height: 50%;">
+    <div id="she7A" class="she7A" style="height: 100%;width: 50%"></div>
+    <div id="she7G" class="she7G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she8" style="height: 50%;">
+    <div id="she8A" class="she8A" style="height: 100%;width: 50%"></div>
+    <div id="she8G" class="she8G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she9" style="height: 50%;">
+    <div id="she9A" class="she9A" style="height: 100%;width: 50%"></div>
+    <div id="she9G" class="she9G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she10" style="height: 50%;">
+    <div id="she10A" class="she10A" style="height: 100%;width: 50%"></div>
+    <div id="she10G" class="she10G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she11" style="height: 50%;">
+    <div id="she11A" class="she11A" style="height: 100%;width: 50%"></div>
+    <div id="she11G" class="she11G" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she12" style="height: 50%;">
+    <div id="she12A" class="she12A" style="height: 100%;width: 50%"></div>
+    <div id="she12G" class="she12G" style="height: 100%;width: 50%"></div>
+</div>
+
 <script type="text/javascript" src="/js/echarts.min.js" ></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript">
+    var she1AIndex=0;
+    var she1GIndex=0;
+    var she2AIndex=0;
+    var she2GIndex=0;
+    var she3AIndex=0;
+    var she3GIndex=0;
+    var she4AIndex=0;
+    var she4GIndex=0;
+    var she5AIndex=0;
+    var she5GIndex=0;
+    var she6AIndex=0;
+    var she6GIndex=0;
+    var she7AIndex=0;
+    var she7GIndex=0;
+    var she8AIndex=0;
+    var she8GIndex=0;
+    var she9AIndex=0;
+    var she9GIndex=0;
+    var she10AIndex=0;
+    var she10GIndex=0;
+    var she11AIndex=0;
+    var she11GIndex=0;
+    var she12AIndex=0;
+    var she12GIndex=0;
 
-    var c=0;
-    var data = [];
-    var dom = document.getElementById("container");
-    var myChart = echarts.init(dom);
-    option = null;
-
-    var value =  100;
+    //设备1的存放数组
+    var she1dataax = [];
+    var she1dataay = [];
+    var she1dataaz = [];
+    var she1datagx = [];
+    var she1datagy = [];
+    var she1datagz = [];
+    //设备2的存放数组
+    var she2dataax = [];
+    var she2dataay = [];
+    var she2dataaz = [];
+    var she2datagx = [];
+    var she2datagy = [];
+    var she2datagz = [];
+    //设备3的存放数组
+    var she3dataax = [];
+    var she3dataay = [];
+    var she3dataaz = [];
+    var she3datagx = [];
+    var she3datagy = [];
+    var she3datagz = [];
+    //设备4的存放数组
+    var she4dataax = [];
+    var she4dataay = [];
+    var she4dataaz = [];
+    var she4datagx = [];
+    var she4datagy = [];
+    var she4datagz = [];
+    //设备5的存放数组
+    var she5dataax = [];
+    var she5dataay = [];
+    var she5dataaz = [];
+    var she5datagx = [];
+    var she5datagy = [];
+    var she5datagz = [];
+    //设备6的存放数组
+    var she6dataax = [];
+    var she6dataay = [];
+    var she6dataaz = [];
+    var she6datagx = [];
+    var she6datagy = [];
+    var she6datagz = [];
+    //设备7的存放数组
+    var she7dataax = [];
+    var she7dataay = [];
+    var she7dataaz = [];
+    var she7datagx = [];
+    var she7datagy = [];
+    var she7datagz = [];
+    //设备8的存放数组
+    var she8dataax = [];
+    var she8dataay = [];
+    var she8dataaz = [];
+    var she8datagx = [];
+    var she8datagy = [];
+    var she8datagz = [];
+    //设备9的存放数组
+    var she9dataax = [];
+    var she9dataay = [];
+    var she9dataaz = [];
+    var she9datagx = [];
+    var she9datagy = [];
+    var she9datagz = [];
+    //设备10的存放数组
+    var she10dataax = [];
+    var she10dataay = [];
+    var she10dataaz = [];
+    var she10datagx = [];
+    var she10datagy = [];
+    var she10datagz = [];
+    //设备11的存放数组
+    var she11dataax = [];
+    var she11dataay = [];
+    var she11dataaz = [];
+    var she11datagx = [];
+    var she11datagy = [];
+    var she11datagz = [];
+    //设备12的存放数组
+    var she12dataax = [];
+    var she12dataay = [];
+    var she12dataaz = [];
+    var she12datagx = [];
+    var she12datagy = [];
+    var she12datagz = [];
+    //获取设备1的div，并设置为echarts折线图
+    var she1A = document.getElementById("she1A");
+    var she1G = document.getElementById("she1G");
+    var myChartShe1A = echarts.init(she1A);
+    var myChartShe1G = echarts.init(she1G);
+    optionshe1A = null;
+    optionshe1G =null;
+    //获取设备2的div，并设置为echarts折线图
+    var she2A = document.getElementById("she2A");
+    var she2G = document.getElementById("she2G");
+    var myChartShe2A = echarts.init(she2A);
+    var myChartShe2G = echarts.init(she2G);
+    optionshe2A = null;
+    optionshe2G =null;
+    //获取设备3的div，并设置为echarts折线图
+    var she3A = document.getElementById("she3A");
+    var she3G = document.getElementById("she3G");
+    var myChartShe3A = echarts.init(she3A);
+    var myChartShe3G = echarts.init(she3G);
+    optionshe3A = null;
+    optionshe3G =null;
+    //获取设备4的div，并设置为echarts折线图
+    var she4A = document.getElementById("she4A");
+    var she4G = document.getElementById("she4G");
+    var myChartShe4A = echarts.init(she4A);
+    var myChartShe4G = echarts.init(she4G);
+    optionshe4A = null;
+    optionshe4G =null;
+    //获取设备5的div，并设置为echarts折线图
+    var she5A = document.getElementById("she5A");
+    var she5G = document.getElementById("she5G");
+    var myChartShe5A = echarts.init(she5A);
+    var myChartShe5G = echarts.init(she5G);
+    optionshe5A = null;
+    optionshe5G =null;
+    //获取设备6的div，并设置为echarts折线图
+    var she6A = document.getElementById("she6A");
+    var she6G = document.getElementById("she6G");
+    var myChartShe6A = echarts.init(she6A);
+    var myChartShe6G = echarts.init(she6G);
+    optionshe6A = null;
+    optionshe6G =null;
+    //获取设备7的div，并设置为echarts折线图
+    var she7A = document.getElementById("she7A");
+    var she7G = document.getElementById("she7G");
+    var myChartShe7A = echarts.init(she7A);
+    var myChartShe7G = echarts.init(she7G);
+    optionshe7A = null;
+    optionshe7G =null;
+    //获取设备8的div，并设置为echarts折线图
+    var she8A = document.getElementById("she8A");
+    var she8G = document.getElementById("she8G");
+    var myChartShe8A = echarts.init(she8A);
+    var myChartShe8G = echarts.init(she8G);
+    optionshe8A = null;
+    optionshe8G =null;
+    //获取设备9的div，并设置为echarts折线图
+    var she9A = document.getElementById("she9A");
+    var she9G = document.getElementById("she9G");
+    var myChartShe9A = echarts.init(she9A);
+    var myChartShe9G = echarts.init(she9G);
+    optionshe9A = null;
+    optionshe9G =null;
+    //获取设备10的div，并设置为echarts折线图
+    var she10A = document.getElementById("she10A");
+    var she10G = document.getElementById("she10G");
+    var myChartShe10A = echarts.init(she10A);
+    var myChartShe10G = echarts.init(she10G);
+    optionshe10A = null;
+    optionshe10G =null;
+    //获取设备11的div，并设置为echarts折线图
+    var she11A = document.getElementById("she11A");
+    var she11G = document.getElementById("she11G");
+    var myChartShe11A = echarts.init(she11A);
+    var myChartShe11G = echarts.init(she11G);
+    optionshe11A = null;
+    optionshe11G =null;
+    //获取设备12的div，并设置为echarts折线图
+    var she12A = document.getElementById("she12A");
+    var she12G = document.getElementById("she12G");
+    var myChartShe12A = echarts.init(she12A);
+    var myChartShe12G = echarts.init(she12G);
+    optionshe12A = null;
+    optionshe12G =null;
 
     //设置固定数据，技术循环500次，往数据里添加500条数据
     for (var i = 0; i < 500; i++) {
-        data.push(randomDatas());
+        //设备1添加平滑数据
+        she1dataax.push(randomDatas(she1AIndex++));
+        she1dataay.push(randomDatas(she1AIndex++));
+        she1dataaz.push(randomDatas(she1AIndex++));
+        she1datagx.push(randomDatas(she1GIndex++));
+        she1datagy.push(randomDatas(she1GIndex++));
+        she1datagz.push(randomDatas(she1GIndex++));
+        //设备2添加平滑数据
+        she2dataax.push(randomDatas(she2AIndex++));
+        she2dataay.push(randomDatas(she2AIndex++));
+        she2dataaz.push(randomDatas(she2AIndex++));
+        she2datagx.push(randomDatas(she2GIndex++));
+        she2datagy.push(randomDatas(she2GIndex++));
+        she2datagz.push(randomDatas(she2GIndex++));
+        //设备3添加平滑数据
+        she3dataax.push(randomDatas(she3AIndex++));
+        she3dataay.push(randomDatas(she3AIndex++));
+        she3dataaz.push(randomDatas(she3AIndex++));
+        she3datagx.push(randomDatas(she3GIndex++));
+        she3datagy.push(randomDatas(she3GIndex++));
+        she3datagz.push(randomDatas(she3GIndex++));
+        //设备4添加平滑数据
+        she4dataax.push(randomDatas(she4AIndex++));
+        she4dataay.push(randomDatas(she4AIndex++));
+        she4dataaz.push(randomDatas(she4AIndex++));
+        she4datagx.push(randomDatas(she4GIndex++));
+        she4datagy.push(randomDatas(she4GIndex++));
+        she4datagz.push(randomDatas(she4GIndex++));
+        //设备5添加平滑数据
+        she5dataax.push(randomDatas(she5AIndex++));
+        she5dataay.push(randomDatas(she5AIndex++));
+        she5dataaz.push(randomDatas(she5AIndex++));
+        she5datagx.push(randomDatas(she5GIndex++));
+        she5datagy.push(randomDatas(she5GIndex++));
+        she5datagz.push(randomDatas(she5GIndex++));
+        //设备6添加平滑数据
+        she6dataax.push(randomDatas(she6AIndex++));
+        she6dataay.push(randomDatas(she6AIndex++));
+        she6dataaz.push(randomDatas(she6AIndex++));
+        she6datagx.push(randomDatas(she6GIndex++));
+        she6datagy.push(randomDatas(she6GIndex++));
+        she6datagz.push(randomDatas(she6GIndex++));
+        //设备7添加平滑数据
+        she7dataax.push(randomDatas(she7AIndex++));
+        she7dataay.push(randomDatas(she7AIndex++));
+        she7dataaz.push(randomDatas(she7AIndex++));
+        she7datagx.push(randomDatas(she7GIndex++));
+        she7datagy.push(randomDatas(she7GIndex++));
+        she7datagz.push(randomDatas(she7GIndex++));
+        //设备8添加平滑数据
+        she8dataax.push(randomDatas(she8AIndex++));
+        she8dataay.push(randomDatas(she8AIndex++));
+        she8dataaz.push(randomDatas(she8AIndex++));
+        she8datagx.push(randomDatas(she8GIndex++));
+        she8datagy.push(randomDatas(she8GIndex++));
+        she8datagz.push(randomDatas(she8GIndex++));
+        //设备9添加平滑数据
+        she9dataax.push(randomDatas(she9AIndex++));
+        she9dataay.push(randomDatas(she9AIndex++));
+        she9dataaz.push(randomDatas(she9AIndex++));
+        she9datagx.push(randomDatas(she9GIndex++));
+        she9datagy.push(randomDatas(she9GIndex++));
+        she9datagz.push(randomDatas(she9GIndex++));
+        //设备10添加平滑数据
+        she10dataax.push(randomDatas(she10AIndex++));
+        she10dataay.push(randomDatas(she10AIndex++));
+        she10dataaz.push(randomDatas(she10AIndex++));
+        she10datagx.push(randomDatas(she10GIndex++));
+        she10datagy.push(randomDatas(she10GIndex++));
+        she10datagz.push(randomDatas(she10GIndex++));
+        //设备11添加平滑数据
+        she11dataax.push(randomDatas(she11AIndex++));
+        she11dataay.push(randomDatas(she11AIndex++));
+        she11dataaz.push(randomDatas(she11AIndex++));
+        she11datagx.push(randomDatas(she11GIndex++));
+        she11datagy.push(randomDatas(she11GIndex++));
+        she11datagz.push(randomDatas(she11GIndex++));
+        //设备12添加平滑数据
+        she12dataax.push(randomDatas(she12AIndex++));
+        she12dataay.push(randomDatas(she12AIndex++));
+        she12dataaz.push(randomDatas(she12AIndex++));
+        she12datagx.push(randomDatas(she12GIndex++));
+        she12datagy.push(randomDatas(she12GIndex++));
+        she12datagz.push(randomDatas(she12GIndex++));
     }
 
     //设置固定数据
-    function randomDatas() {
+    function randomDatas(index) {
         return {
-            name: 200,
+            name: -0.2,
             value: [
-                c++,
-                50
+                index,
+                -0.2
             ]
         }
     }
 
     //设置返回对象，封装数据
-    function randomData(montionSpr) {
-        value =Math.random() * 21 - 10;
+    function randomData(montionSpr,index) {
         return {
-            name: value,
+            name: montionSpr,
             value: [
-                c++,
+                index,
                 montionSpr
             ]
         }
     }
 
+    setInterval(function () {
+        var resultax = [];
+        var resultay = [];
+        var resultaz = [];
+        var resultgx = [];
+        var resultgy = [];
+        var resultgz = [];
+        var data = {
+            "mac":"F1:F9:B4:B5:CD:78",
+            "startDate":new Date().getTime(),
+            "endDate":new Date().getTime(),
+            "analysisType":1
+        };
+        $.ajax({
+            url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+            type : "POST",
+            contentType: "application/json;charset=UTF-8",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            dataType : "json",        //返回数据形式为json
+            data : JSON.stringify(data),
+            success : function(result) {
+                resultax = result.data[0].ax;
+                resultay = result.data[0].ay;
+                resultaz = result.data[0].az;
+                resultgx = result.data[0].gx;
+                resultgy = result.data[0].gy;
+                resultgz = result.data[0].gz;
+                for (var i = 0; i < resultax.length; i++) {
+                            she1dataax.shift();
+                            she1dataax.push(randomData(resultax[i],she1AIndex++));
+                            she1dataay.shift();
+                            she1dataay.push(randomData(resultay[i],she1AIndex++));
+                            she1dataaz.shift();
+                            she1dataaz.push(randomData(resultaz[i],she1AIndex++));
+                            she1datagx.shift();
+                            she1datagx.push(randomData(resultgx[i],she1GIndex++));
+                            she1datagy.shift();
+                            she1datagy.push(randomData(resultgy[i],she1GIndex++));
+                            she1datagz.shift();
+                            she1datagz.push(randomData(resultgz[i],she1GIndex++));
+                }
+                myChartShe1A.setOption({
+                    series: [{
+                        data: she1dataax
+                    },{
+                        data: she1dataay
+                    },{
+                        data: she1dataaz
+                    }]
+                });
+                myChartShe1G.setOption({
+                    series: [{
+                        data: she1datagx
+                    },{
+                        data: she1datagy
+                    },{
+                        data: she1datagz
+                    }]
+                });
+            }
+        });
+    }, 1000);
 
     setInterval(function () {
         var resultax = [];
+        var resultay = [];
+        var resultaz = [];
+        var resultgx = [];
+        var resultgy = [];
+        var resultgz = [];
+        var data = {
+            "mac":"C1:49:53:91:A8:91",
+            "startDate":new Date().getTime(),
+            "endDate":new Date().getTime(),
+            "analysisType":1
+        };
         $.ajax({
-            type : "post",
+            url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+            type : "POST",
+            contentType: "application/json;charset=UTF-8",
             async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-            url : "/montion/getMontionDataTable",    //请求发送到dataActiont处
-            data : {},
             dataType : "json",        //返回数据形式为json
+            data : JSON.stringify(data),
             success : function(result) {
-                resultax = result[0];
+                resultax = result.data[0].ax;
+                resultay = result.data[0].ay;
+                resultaz = result.data[0].az;
+                resultgx = result.data[0].gx;
+                resultgy = result.data[0].gy;
+                resultgz = result.data[0].gz;
                 for (var i = 0; i < resultax.length; i++) {
-                        (function(j) {
-                            setTimeout( function timer() {
-                                data.shift();
-                                data.push(randomData(resultax[j]));
-                                myChart.setOption({
-                                    series: [{
-                                        data: data
-                                    }]
-                                });
-                        }, j*60 );
-                    })(i);
+                            she2dataax.shift();
+                            she2dataax.push(randomData(resultax[i],she2AIndex++));
+                            she2dataay.shift();
+                            she2dataay.push(randomData(resultay[i],she2AIndex++));
+                            she2dataaz.shift();
+                            she2dataaz.push(randomData(resultaz[i],she2AIndex++));
+                            she2datagx.shift();
+                            she2datagx.push(randomData(resultgx[i],she2GIndex++));
+                            she2datagy.shift();
+                            she2datagy.push(randomData(resultgy[i],she2GIndex++));
+                            she2datagz.shift();
+                            she2datagz.push(randomData(resultgz[i],she2GIndex++));
                 }
+                myChartShe2A.setOption({
+                    series: [{
+                        data: she2dataax
+                    },{
+                        data: she2dataay
+                    },{
+                        data: she2dataaz
+                    }]
+                });
+                myChartShe2G.setOption({
+                    series: [{
+                        data: she2datagx
+                    },{
+                        data: she2datagy
+                    },{
+                        data: she2datagz
+                    }]
+                });
             }
         });
-    }, 1000);;
+    }, 1000);
+
+        setInterval(function () {
+            var resultax = [];
+            var resultay = [];
+            var resultaz = [];
+            var resultgx = [];
+            var resultgy = [];
+            var resultgz = [];
+            var data = {
+                "mac":"DC:50:A4:6E:A7:11",
+                "startDate":new Date().getTime(),
+                "endDate":new Date().getTime(),
+                "analysisType":1
+            };
+            $.ajax({
+                url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                type : "POST",
+                contentType: "application/json;charset=UTF-8",
+                async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                dataType : "json",        //返回数据形式为json
+                data : JSON.stringify(data),
+                success : function(result) {
+                    resultax = result.data[0].ax;
+                    resultay = result.data[0].ay;
+                    resultaz = result.data[0].az;
+                    resultgx = result.data[0].gx;
+                    resultgy = result.data[0].gy;
+                    resultgz = result.data[0].gz;
+                    for (var i = 0; i < resultax.length; i++) {
+                                she3dataax.shift();
+                                she3dataax.push(randomData(resultax[i],she3AIndex++));
+                                she3dataay.shift();
+                                she3dataay.push(randomData(resultay[i],she3AIndex++));
+                                she3dataaz.shift();
+                                she3dataaz.push(randomData(resultaz[i],she3AIndex++));
+                                she3datagx.shift();
+                                she3datagx.push(randomData(resultgx[i],she3GIndex++));
+                                she3datagy.shift();
+                                she3datagy.push(randomData(resultgy[i],she3GIndex++));
+                                she3datagz.shift();
+                                she3datagz.push(randomData(resultgz[i],she3GIndex++));
+                    }
+                    myChartShe3A.setOption({
+                        series: [{
+                            data: she3dataax
+                        },{
+                            data: she3dataay
+                        },{
+                            data: she3dataaz
+                        }]
+                    });
+                    myChartShe3G.setOption({
+                        series: [{
+                            data: she3datagx
+                        },{
+                            data: she3datagy
+                        },{
+                            data: she3datagz
+                        }]
+                    });
+                }
+            });
+        }, 1000);
+
+        setInterval(function () {
+            var resultax = [];
+            var resultay = [];
+            var resultaz = [];
+            var resultgx = [];
+            var resultgy = [];
+            var resultgz = [];
+            var data = {
+                "mac":"DF:F8:B4:E3:FE:B3",
+                "startDate":new Date().getTime(),
+                "endDate":new Date().getTime(),
+                "analysisType":1
+            };
+            $.ajax({
+                url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                type : "POST",
+                contentType: "application/json;charset=UTF-8",
+                async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                dataType : "json",        //返回数据形式为json
+                data : JSON.stringify(data),
+                success : function(result) {
+                    resultax = result.data[0].ax;
+                    resultay = result.data[0].ay;
+                    resultaz = result.data[0].az;
+                    resultgx = result.data[0].gx;
+                    resultgy = result.data[0].gy;
+                    resultgz = result.data[0].gz;
+                    for (var i = 0; i < resultax.length; i++) {
+                                she4dataax.shift();
+                                she4dataax.push(randomData(resultax[i],she4AIndex++));
+                                she4dataay.shift();
+                                she4dataay.push(randomData(resultay[i],she4AIndex++));
+                                she4dataaz.shift();
+                                she4dataaz.push(randomData(resultaz[i],she4AIndex++));
+                                she4datagx.shift();
+                                she4datagx.push(randomData(resultgx[i],she4GIndex++));
+                                she4datagy.shift();
+                                she4datagy.push(randomData(resultgy[i],she4GIndex++));
+                                she4datagz.shift();
+                                she4datagz.push(randomData(resultgz[i],she4GIndex++));
+                    }
+                    myChartShe4A.setOption({
+                        series: [{
+                            data: she4dataax
+                        },{
+                            data: she4dataay
+                        },{
+                            data: she4dataaz
+                        }]
+                    });
+                    myChartShe4G.setOption({
+                        series: [{
+                            data: she4datagx
+                        },{
+                            data: she4datagy
+                        },{
+                            data: she4datagz
+                        }]
+                    });
+                }
+            });
+        }, 1000);
+
+            setInterval(function () {
+                var resultax = [];
+                var resultay = [];
+                var resultaz = [];
+                var resultgx = [];
+                var resultgy = [];
+                var resultgz = [];
+                var data = {
+                    "mac":"C3:83:02:4D:B5:D3",
+                    "startDate":new Date().getTime(),
+                    "endDate":new Date().getTime(),
+                    "analysisType":1
+                };
+                $.ajax({
+                    url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                    type : "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                    dataType : "json",        //返回数据形式为json
+                    data : JSON.stringify(data),
+                    success : function(result) {
+                        resultax = result.data[0].ax;
+                        resultay = result.data[0].ay;
+                        resultaz = result.data[0].az;
+                        resultgx = result.data[0].gx;
+                        resultgy = result.data[0].gy;
+                        resultgz = result.data[0].gz;
+                        for (var i = 0; i < resultax.length; i++) {
+                                    she5dataax.shift();
+                                    she5dataax.push(randomData(resultax[i],she5AIndex++));
+                                    she5dataay.shift();
+                                    she5dataay.push(randomData(resultay[i],she5AIndex++));
+                                    she5dataaz.shift();
+                                    she5dataaz.push(randomData(resultaz[i],she5AIndex++));
+                                    she5datagx.shift();
+                                    she5datagx.push(randomData(resultgx[i],she5GIndex++));
+                                    she5datagy.shift();
+                                    she5datagy.push(randomData(resultgy[i],she5GIndex++));
+                                    she5datagz.shift();
+                                    she5datagz.push(randomData(resultgz[i],she5GIndex++));
+                        }
+                        myChartShe5A.setOption({
+                            series: [{
+                                data: she5dataax
+                            },{
+                                data: she5dataay
+                            },{
+                                data: she5dataaz
+                            }]
+                        });
+                        myChartShe5G.setOption({
+                            series: [{
+                                data: she5datagx
+                            },{
+                                data: she5datagy
+                            },{
+                                data: she5datagz
+                            }]
+                        });
+                    }
+                });
+            }, 1000);
+
+            setInterval(function () {
+                var resultax = [];
+                var resultay = [];
+                var resultaz = [];
+                var resultgx = [];
+                var resultgy = [];
+                var resultgz = [];
+                var data = {
+                    "mac":"F9:E9:F4:C3:EB:5B",
+                    "startDate":new Date().getTime(),
+                    "endDate":new Date().getTime(),
+                    "analysisType":1
+                };
+                $.ajax({
+                    url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                    type : "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                    dataType : "json",        //返回数据形式为json
+                    data : JSON.stringify(data),
+                    success : function(result) {
+                        resultax = result.data[0].ax;
+                        resultay = result.data[0].ay;
+                        resultaz = result.data[0].az;
+                        resultgx = result.data[0].gx;
+                        resultgy = result.data[0].gy;
+                        resultgz = result.data[0].gz;
+                        for (var i = 0; i < resultax.length; i++) {
+                                    she6dataax.shift();
+                                    she6dataax.push(randomData(resultax[i],she6AIndex++));
+                                    she6dataay.shift();
+                                    she6dataay.push(randomData(resultay[i],she6AIndex++));
+                                    she6dataaz.shift();
+                                    she6dataaz.push(randomData(resultaz[i],she6AIndex++));
+                                    she6datagx.shift();
+                                    she6datagx.push(randomData(resultgx[i],she6GIndex++));
+                                    she6datagy.shift();
+                                    she6datagy.push(randomData(resultgy[i],she6GIndex++));
+                                    she6datagz.shift();
+                                    she6datagz.push(randomData(resultgz[i],she6GIndex++));
+                        }
+                        myChartShe6A.setOption({
+                            series: [{
+                                data: she6dataax
+                            },{
+                                data: she6dataay
+                            },{
+                                data: she6dataaz
+                            }]
+                        });
+                        myChartShe6G.setOption({
+                            series: [{
+                                data: she6datagx
+                            },{
+                                data: she6datagy
+                            },{
+                                data: she6datagz
+                            }]
+                        });
+                    }
+                });
+            }, 1000);
+
+                setInterval(function () {
+                    var resultax = [];
+                    var resultay = [];
+                    var resultaz = [];
+                    var resultgx = [];
+                    var resultgy = [];
+                    var resultgz = [];
+                    var data = {
+                        "mac":"D1:DC:AC:16:90:2D",
+                        "startDate":new Date().getTime(),
+                        "endDate":new Date().getTime(),
+                        "analysisType":1
+                    };
+                    $.ajax({
+                        url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                        type : "POST",
+                        contentType: "application/json;charset=UTF-8",
+                        async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                        dataType : "json",        //返回数据形式为json
+                        data : JSON.stringify(data),
+                        success : function(result) {
+                            resultax = result.data[0].ax;
+                            resultay = result.data[0].ay;
+                            resultaz = result.data[0].az;
+                            resultgx = result.data[0].gx;
+                            resultgy = result.data[0].gy;
+                            resultgz = result.data[0].gz;
+                            for (var i = 0; i < resultax.length; i++) {
+                                        she7dataax.shift();
+                                        she7dataax.push(randomData(resultax[i],she7AIndex++));
+                                        she7dataay.shift();
+                                        she7dataay.push(randomData(resultay[i],she7AIndex++));
+                                        she7dataaz.shift();
+                                        she7dataaz.push(randomData(resultaz[i],she7AIndex++));
+                                        she7datagx.shift();
+                                        she7datagx.push(randomData(resultgx[i],she7GIndex++));
+                                        she7datagy.shift();
+                                        she7datagy.push(randomData(resultgy[i],she7GIndex++));
+                                        she7datagz.shift();
+                                        she7datagz.push(randomData(resultgz[i],she7GIndex++));
+                            }
+                            myChartShe7A.setOption({
+                                series: [{
+                                    data: she7dataax
+                                },{
+                                    data: she7dataay
+                                },{
+                                    data: she7dataaz
+                                }]
+                            });
+                            myChartShe7G.setOption({
+                                series: [{
+                                    data: she7datagx
+                                },{
+                                    data: she7datagy
+                                },{
+                                    data: she7datagz
+                                }]
+                            });
+                        }
+                    });
+                }, 1000);
+
+                setInterval(function () {
+                    var resultax = [];
+                    var resultay = [];
+                    var resultaz = [];
+                    var resultgx = [];
+                    var resultgy = [];
+                    var resultgz = [];
+                    var data = {
+                        "mac":"CA:38:EC:31:F1:EC",
+                        "startDate":new Date().getTime(),
+                        "endDate":new Date().getTime(),
+                        "analysisType":1
+                    };
+                    $.ajax({
+                        url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                        type : "POST",
+                        contentType: "application/json;charset=UTF-8",
+                        async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                        dataType : "json",        //返回数据形式为json
+                        data : JSON.stringify(data),
+                        success : function(result) {
+                            resultax = result.data[0].ax;
+                            resultay = result.data[0].ay;
+                            resultaz = result.data[0].az;
+                            resultgx = result.data[0].gx;
+                            resultgy = result.data[0].gy;
+                            resultgz = result.data[0].gz;
+                            for (let i = 0; i < resultax.length; i++) {
+                                        she8dataax.shift();
+                                        she8dataax.push(randomData(resultax[i],she8AIndex++));
+                                        she8dataay.shift();
+                                        she8dataay.push(randomData(resultay[i],she8AIndex++));
+                                        she8dataaz.shift();
+                                        she8dataaz.push(randomData(resultaz[i],she8AIndex++));
+                                        she8datagx.shift();
+                                        she8datagx.push(randomData(resultgx[i],she8GIndex++));
+                                        she8datagy.shift();
+                                        she8datagy.push(randomData(resultgy[i],she8GIndex++));
+                                        she8datagz.shift();
+                                        she8datagz.push(randomData(resultgz[i],she8GIndex++));
+                            }
+                            myChartShe8A.setOption({
+                                series: [{
+                                    data: she8dataax
+                                },{
+                                    data: she8dataay
+                                },{
+                                    data: she8dataaz
+                                }]
+                            });
+                            myChartShe8G.setOption({
+                                series: [{
+                                    data: she8datagx
+                                },{
+                                    data: she8datagy
+                                },{
+                                    data: she8datagz
+                                }]
+                            });
+                        }
+                    });
+                }, 1000);
+
+                   setInterval(function () {
+                       var resultax = [];
+                       var resultay = [];
+                       var resultaz = [];
+                       var resultgx = [];
+                       var resultgy = [];
+                       var resultgz = [];
+                       var data = {
+                           "mac":"CB:11:20:64:66:AC",
+                           "startDate":new Date().getTime(),
+                           "endDate":new Date().getTime(),
+                           "analysisType":1
+                       };
+                       $.ajax({
+                           url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                           type : "POST",
+                           contentType: "application/json;charset=UTF-8",
+                           async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                           dataType : "json",        //返回数据形式为json
+                           data : JSON.stringify(data),
+                           success : function(result) {
+                               resultax = result.data[0].ax;
+                               resultay = result.data[0].ay;
+                               resultaz = result.data[0].az;
+                               resultgx = result.data[0].gx;
+                               resultgy = result.data[0].gy;
+                               resultgz = result.data[0].gz;
+                               for (var i = 0; i < resultax.length; i++) {
+                                           she9dataax.shift();
+                                           she9dataax.push(randomData(resultax[i],she9AIndex++));
+                                           she9dataay.shift();
+                                           she9dataay.push(randomData(resultay[i],she9AIndex++));
+                                           she9dataaz.shift();
+                                           she9dataaz.push(randomData(resultaz[i],she9AIndex++));
+                                           she9datagx.shift();
+                                           she9datagx.push(randomData(resultgx[i],she9GIndex++));
+                                           she9datagy.shift();
+                                           she9datagy.push(randomData(resultgy[i],she9GIndex++));
+                                           she9datagz.shift();
+                                           she9datagz.push(randomData(resultgz[i],she9GIndex++));
+                               }
+                               myChartShe9A.setOption({
+                                   series: [{
+                                       data: she9dataax
+                                   },{
+                                       data: she9dataay
+                                   },{
+                                       data: she9dataaz
+                                   }]
+                               });
+                               myChartShe9G.setOption({
+                                   series: [{
+                                       data: she9datagx
+                                   },{
+                                       data: she9datagy
+                                   },{
+                                       data: she9datagz
+                                   }]
+                               });
+                           }
+                       });
+                   }, 1000);
+
+                       setInterval(function () {
+                           var resultax = [];
+                           var resultay = [];
+                           var resultaz = [];
+                           var resultgx = [];
+                           var resultgy = [];
+                           var resultgz = [];
+                           var data = {
+                               "mac":"C8:73:C2:20:45:E7",
+                               "startDate":new Date().getTime(),
+                               "endDate":new Date().getTime(),
+                               "analysisType":1
+                           };
+                           $.ajax({
+                               url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                               type : "POST",
+                               contentType: "application/json;charset=UTF-8",
+                               async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                               dataType : "json",        //返回数据形式为json
+                               data : JSON.stringify(data),
+                               success : function(result) {
+                                   resultax = result.data[0].ax;
+                                   resultay = result.data[0].ay;
+                                   resultaz = result.data[0].az;
+                                   resultgx = result.data[0].gx;
+                                   resultgy = result.data[0].gy;
+                                   resultgz = result.data[0].gz;
+                                   for (var i = 0; i < resultax.length; i++) {
+                                               she10dataax.shift();
+                                               she10dataax.push(randomData(resultax[i],she10AIndex++));
+                                               she10dataay.shift();
+                                               she10dataay.push(randomData(resultay[i],she10AIndex++));
+                                               she10dataaz.shift();
+                                               she10dataaz.push(randomData(resultaz[i],she10AIndex++));
+                                               she10datagx.shift();
+                                               she10datagx.push(randomData(resultgx[i],she10GIndex++));
+                                               she10datagy.shift();
+                                               she10datagy.push(randomData(resultgy[i],she10GIndex++));
+                                               she10datagz.shift();
+                                               she10datagz.push(randomData(resultgz[i],she10GIndex++));
+                                   }
+                                   myChartShe10A.setOption({
+                                       series: [{
+                                           data: she10dataax
+                                       },{
+                                           data: she10dataay
+                                       },{
+                                           data: she10dataaz
+                                       }]
+                                   });
+                                   myChartShe10G.setOption({
+                                       series: [{
+                                           data: she10datagx
+                                       },{
+                                           data: she10datagy
+                                       },{
+                                           data: she10datagz
+                                       }]
+                                   });
+                               }
+                           });
+                       }, 1000);
+
+                       setInterval(function () {
+                           var resultax = [];
+                           var resultay = [];
+                           var resultaz = [];
+                           var resultgx = [];
+                           var resultgy = [];
+                           var resultgz = [];
+                           var data = {
+                               "mac":"CB:B5:0A:76:95:31",
+                               "startDate":new Date().getTime(),
+                               "endDate":new Date().getTime(),
+                               "analysisType":1
+                           };
+                           $.ajax({
+                               url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                               type : "POST",
+                               contentType: "application/json;charset=UTF-8",
+                               async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                               dataType : "json",        //返回数据形式为json
+                               data : JSON.stringify(data),
+                               success : function(result) {
+                                   resultax = result.data[0].ax;
+                                   resultay = result.data[0].ay;
+                                   resultaz = result.data[0].az;
+                                   resultgx = result.data[0].gx;
+                                   resultgy = result.data[0].gy;
+                                   resultgz = result.data[0].gz;
+                                   for (var i = 0; i < resultax.length; i++) {
+                                               she11dataax.shift();
+                                               she11dataax.push(randomData(resultax[i],she11AIndex++));
+                                               she11dataay.shift();
+                                               she11dataay.push(randomData(resultay[i],she11AIndex++));
+                                               she11dataaz.shift();
+                                               she11dataaz.push(randomData(resultaz[i],she11AIndex++));
+                                               she11datagx.shift();
+                                               she11datagx.push(randomData(resultgx[i],she11GIndex++));
+                                               she11datagy.shift();
+                                               she11datagy.push(randomData(resultgy[i],she11GIndex++));
+                                               she11datagz.shift();
+                                               she11datagz.push(randomData(resultgz[i],she11GIndex++));
+                                   }
+                                   myChartShe11A.setOption({
+                                       series: [{
+                                           data: she11dataax
+                                       },{
+                                           data: she11dataay
+                                       },{
+                                           data: she11dataaz
+                                       }]
+                                   });
+                                   myChartShe11G.setOption({
+                                       series: [{
+                                           data: she11datagx
+                                       },{
+                                           data: she11datagy
+                                       },{
+                                           data: she11datagz
+                                       }]
+                                   });
+                               }
+                           });
+                       }, 1000);
+
+                           setInterval(function () {
+                               var resultax = [];
+                               var resultay = [];
+                               var resultaz = [];
+                               var resultgx = [];
+                               var resultgy = [];
+                               var resultgz = [];
+                               var data = {
+                                   "mac":"DA:E7:66:75:23:48",
+                                   "startDate":new Date().getTime(),
+                                   "endDate":new Date().getTime(),
+                                   "analysisType":1
+                               };
+                               $.ajax({
+                                   url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+                                   type : "POST",
+                                   contentType: "application/json;charset=UTF-8",
+                                   async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+                                   dataType : "json",        //返回数据形式为json
+                                   data : JSON.stringify(data),
+                                   success : function(result) {
+                                       resultax = result.data[0].ax;
+                                       resultay = result.data[0].ay;
+                                       resultaz = result.data[0].az;
+                                       resultgx = result.data[0].gx;
+                                       resultgy = result.data[0].gy;
+                                       resultgz = result.data[0].gz;
+                                       for (var i = 0; i < resultax.length; i++) {
+                                                   she12dataax.shift();
+                                                   she12dataax.push(randomData(resultax[i],she12AIndex++));
+                                                   she12dataay.shift();
+                                                   she12dataay.push(randomData(resultay[i],she12AIndex++));
+                                                   she12dataaz.shift();
+                                                   she12dataaz.push(randomData(resultaz[i],she12AIndex++));
+                                                   she12datagx.shift();
+                                                   she12datagx.push(randomData(resultgx[i],she12GIndex++));
+                                                   she12datagy.shift();
+                                                   she12datagy.push(randomData(resultgy[i],she12GIndex++));
+                                                   she12datagz.shift();
+                                                   she12datagz.push(randomData(resultgz[i],she12GIndex++));
+                                       }
+                                       myChartShe12A.setOption({
+                                           series: [{
+                                               data: she12dataax
+                                           },{
+                                               data: she12dataay
+                                           },{
+                                               data: she12dataaz
+                                           }]
+                                       });
+                                       myChartShe12G.setOption({
+                                           series: [{
+                                               data: she12datagx
+                                           },{
+                                               data: she12datagy
+                                           },{
+                                               data: she12datagz
+                                           }]
+                                       });
+                                   }
+                               });
+                           }, 1000);
 
     //echarts数据view
-    option = {
+    optionshe1A = {
         title: {
-            text: '动态数据 + 时间坐标轴'
+            text: '设备01：F1:F9:B4:B5:CD:78   ，加速度'
         },
         tooltip: {
             trigger: 'axis',
@@ -107,17 +1147,1380 @@
             }
         },
         series: [{
-            name: '模拟数据',
+            name: 'ax',
             type: 'line',
             showSymbol: false,
             hoverAnimation: false,
-            data: data
-        }]
+            data: she1dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she1dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she1dataaz
+            }
+        ]
     };
 
 
-    if (option && typeof option === "object") {
-        myChart.setOption(option, true);
+    optionshe1G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she1datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she1datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she1datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe2A = {
+        title: {
+            text: '设备02：C1:49:53:91:A8:91   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she2dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she2dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she2dataaz
+            }
+        ]
+    };
+
+
+    optionshe2G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she2datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she2datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she2datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe3A = {
+        title: {
+            text: '设备03：DC:50:A4:6E:A7:11   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she3dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she3dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she3dataaz
+            }
+        ]
+    };
+
+
+    optionshe3G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she3datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she3datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she3datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe4A = {
+        title: {
+            text: '设备04：DF:F8:B4:E3:FE:B3   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she4dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she4dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she4dataaz
+            }
+        ]
+    };
+
+
+    optionshe4G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she4datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she4datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she4datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe5A = {
+        title: {
+            text: '设备05：C3:83:02:4D:B5:D3   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she5dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she5dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she5dataaz
+            }
+        ]
+    };
+
+
+    optionshe5G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she5datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she5datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she5datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe6A = {
+        title: {
+            text: '设备06：F9:E9:F4:C3:EB:5B   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she6dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she6dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she6dataaz
+            }
+        ]
+    };
+
+
+    optionshe6G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she6datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she6datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she6datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe7A = {
+        title: {
+            text: '设备07：D1:DC:AC:16:90:2D   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she7dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she7dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she7dataaz
+            }
+        ]
+    };
+
+
+    optionshe7G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she7datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she7datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she7datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe8A = {
+        title: {
+            text: '设备08：CA:38:EC:31:F1:EC   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she8dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she8dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she8dataaz
+            }
+        ]
+    };
+
+
+    optionshe8G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she8datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she8datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she8datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe9A = {
+        title: {
+            text: '设备09：CB:11:20:64:66:AC   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she9dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she9dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she9dataaz
+            }
+        ]
+    };
+
+
+    optionshe9G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she9datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she9datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she9datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe10A = {
+        title: {
+            text: '设备10：C8:73:C2:20:45:E7   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she10dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she10dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she10dataaz
+            }
+        ]
+    };
+
+
+    optionshe10G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she10datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she10datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she10datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe11A = {
+        title: {
+            text: '设备11：CB:B5:0A:76:95:31   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she11dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she11dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she11dataaz
+            }
+        ]
+    };
+
+
+    optionshe11G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she11datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she11datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she11datagz
+            }
+        ]
+    };
+
+    //设备2折线图
+    optionshe12A = {
+        title: {
+            text: '设备12：DA:E7:66:75:23:48   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she12dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she12dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she12dataaz
+            }
+        ]
+    };
+
+
+    optionshe12G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she12datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she12datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she12datagz
+            }
+        ]
+    };
+
+
+
+    if (optionshe1A && typeof optionshe1A === "object") {
+        myChartShe1A.setOption(optionshe1A, true);
+    }
+    if (optionshe1G && typeof optionshe1G === "object") {
+        myChartShe1G.setOption(optionshe1G, true);
+    }
+
+    if (optionshe2A && typeof optionshe2A === "object") {
+        myChartShe2A.setOption(optionshe2A, true);
+    }
+    if (optionshe2G && typeof optionshe2G === "object") {
+        myChartShe2G.setOption(optionshe2G, true);
+    }
+
+    if (optionshe3A && typeof optionshe3A === "object") {
+        myChartShe3A.setOption(optionshe3A, true);
+    }
+    if (optionshe3G && typeof optionshe3G === "object") {
+        myChartShe3G.setOption(optionshe3G, true);
+    }
+
+    if (optionshe4A && typeof optionshe4A === "object") {
+        myChartShe4A.setOption(optionshe4A, true);
+    }
+    if (optionshe4G && typeof optionshe4G === "object") {
+        myChartShe4G.setOption(optionshe4G, true);
+    }
+
+    if (optionshe5A && typeof optionshe5A === "object") {
+        myChartShe5A.setOption(optionshe5A, true);
+    }
+    if (optionshe5G && typeof optionshe5G === "object") {
+        myChartShe5G.setOption(optionshe5G, true);
+    }
+
+    if (optionshe6A && typeof optionshe6A === "object") {
+        myChartShe6A.setOption(optionshe6A, true);
+    }
+    if (optionshe6G && typeof optionshe6G === "object") {
+        myChartShe6G.setOption(optionshe6G, true);
+    }
+
+    if (optionshe7A && typeof optionshe7A === "object") {
+        myChartShe7A.setOption(optionshe7A, true);
+    }
+    if (optionshe7G && typeof optionshe7G === "object") {
+        myChartShe7G.setOption(optionshe7G, true);
+    }
+
+    if (optionshe8A && typeof optionshe8A === "object") {
+        myChartShe8A.setOption(optionshe8A, true);
+    }
+    if (optionshe8G && typeof optionshe8G === "object") {
+        myChartShe8G.setOption(optionshe8G, true);
+    }
+
+    if (optionshe9A && typeof optionshe9A === "object") {
+        myChartShe9A.setOption(optionshe9A, true);
+    }
+    if (optionshe9G && typeof optionshe9G === "object") {
+        myChartShe9G.setOption(optionshe9G, true);
+    }
+
+    if (optionshe10A && typeof optionshe10A === "object") {
+        myChartShe10A.setOption(optionshe10A, true);
+    }
+    if (optionshe10G && typeof optionshe10G === "object") {
+        myChartShe10G.setOption(optionshe10G, true);
+    }
+
+    if (optionshe11A && typeof optionshe11A === "object") {
+        myChartShe11A.setOption(optionshe11A, true);
+    }
+    if (optionshe11G && typeof optionshe11G === "object") {
+        myChartShe11G.setOption(optionshe11G, true);
+    }
+
+    if (optionshe12A && typeof optionshe12A === "object") {
+        myChartShe12A.setOption(optionshe12A, true);
+    }
+    if (optionshe12G && typeof optionshe12G === "object") {
+        myChartShe12G.setOption(optionshe12G, true);
     }
 
 </script>

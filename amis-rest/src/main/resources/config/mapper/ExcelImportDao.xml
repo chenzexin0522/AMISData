@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.amis.dao.ExcelImportDao" >
+
+    <insert id="insertExcel" parameterType="java.util.List" useGeneratedKeys="false">
+        insert into tab_zExcel
+        (
+        shangPinName,
+        shangPinNumber,
+        shangPinMoney,
+        zhuangTai,
+        tuanZhangName,
+        tuanZhangPhone,
+        tuanZhangDiZhi
+        )
+        values
+        <foreach collection="importDatas" item="item" index="index" separator=",">
+            (
+            #{item.shangPinName},
+            #{item.shangPinNumber},
+            #{item.shangPinMoney},
+            #{item.zhuangTai},
+            #{item.tuanZhangName},
+            #{item.tuanZhangPhone},
+            #{item.tuanZhangDiZhi}
+            )
+        </foreach>
+    </insert>
+
+
+    <resultMap id="selectTotalNumberList" type="com.amis.entity.dto.ExeclTotalNumber">
+        <result column="shangPinName" property="shangPinName" />
+        <result column="shangPinNumber" property="shangPinNumber" />
+    </resultMap>
+
+    <select id="selectTotalNumber"  resultMap="selectTotalNumberList">
+       select newTable.shangPinName,newTable.shangPinNumber from (SELECT tz.shangPinName as shangPinName,SUM(tz.shangPinNumber) as shangPinNumber
+FROM tab_zexcel tz GROUP BY tz.shangPinName ) newTable
+order by newTable.shangPinNumber DESC
+    </select>
+
+
+
+    <resultMap id="selectTuanTotalNumberList" type="com.amis.entity.dto.ExeclTuanTotalNumber">
+        <result column="shangPinName" property="shangPinName" />
+        <result column="shangPinNumber" property="shangPinNumber" />
+        <result column="tuanZhangName" property="tuanZhangName" />
+    </resultMap>
+
+    <select id="selectTuanTotalNumber"  resultMap="selectTuanTotalNumberList">
+select newTable.shangPinName,newTable.shangPinNumber,newTable.tuanZhangName
+from (SELECT tz.shangPinName as shangPinName,tz.tuanZhangName as tuanZhangName,SUM(tz.shangPinNumber) as shangPinNumber
+FROM tab_zexcel tz GROUP BY tz.shangPinName,tz.tuanZhangName ) newTable ORDER BY newTable.tuanZhangName
+    </select>
+
+
+    <update id="truncateTable">
+        truncate table tab_zexcel
+    </update>
+
+</mapper>

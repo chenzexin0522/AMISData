@@ -47,12 +47,9 @@ public class SchedulerUtils {
      * @return void
      * @Description        每天凌晨0点创建新表
      **/
-    @Scheduled(cron = "0 00 00 ? * *")
+    @Scheduled(cron = "0 00 12 ? * *")
     public void newBuildTab() {
-        //获取当前日期，并创建新的数据库表
-            SimpleDateFormat dates = new SimpleDateFormat("yyyy_MM_dd");
-            String formats = dates.format(new Date(System.currentTimeMillis()));
-            receiveDataService.newBuildTab(formats+"motionData");
+            receiveDataService.newBuildTab();
     }
 
 

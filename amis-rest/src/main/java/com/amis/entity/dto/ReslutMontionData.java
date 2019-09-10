@@ -11,13 +11,14 @@ import lombok.Data;
 
 @Data
 public class ReslutMontionData {
-
-    private String mac;         //设备mac地址
-    private Integer[] ax;
-    private Integer[] ay;
-    private Integer[] az;
-    private Integer[] gx;
-    private Integer[] gy;
-    private Integer[] gz;
-
+    private int id;
+    private String mac;
+    private long receiveTime;         //接收的时间
+    private long arrindex;       //下标
+    private float[] ax;
+    private float[] ay;
+    private float[] az;
+    private float[] gx;
+    private float[] gy;
+    private float[] gz;
 }

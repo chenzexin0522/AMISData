@@ -11,9 +11,9 @@ import lombok.Data;
 
 @Data
 public class QueryDataCriteria {
-
     private String mac;     //设备mac
-    private String startDate;   //开始时间
-    private String endDate;     //结束时间
-
+    private long startDate;   //开始时间
+    private long endDate;     //结束时间
+    private String dateTimeStr;         //日期格式化
+    private int analysisType;           //是否需要解析，1：表示需要解析，0：不需要解析
 }

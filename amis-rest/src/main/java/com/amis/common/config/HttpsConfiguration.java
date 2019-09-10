@@ -21,7 +21,7 @@ public class HttpsConfiguration {
             public void customize(ConfigurableEmbeddedServletContainer container) {
                 Ssl ssl = new Ssl();
                 // Server.jks中包含服务器私钥和证书
-                ssl.setKeyStore("classpath:config/badminton.gbadiea.com.jks");
+                ssl.setKeyStore("classpath:config/basketball.gbadiea.com.jks");
                 ssl.setKeyStorePassword("76plfyxk062vu");
                 ssl.setKeyPassword("76plfyxk062vu");
                 container.setSsl(ssl);

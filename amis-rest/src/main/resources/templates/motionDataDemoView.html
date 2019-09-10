@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styeCss/montionDataView.css" />
+</head>
+<body style="height: 100%; margin: 0">
+<div id="she1" style="height: 50%;">
+    <div id="she1A" class="she1A" style="height: 100%;width: 50%"></div>
+    <div id="she1G" class="she1A" style="height: 100%;width: 50%"></div>
+</div>
+<div id="she2" style="height: 50%;">
+    <div id="she2A" class="she2A" style="height: 100%;width: 50%"></div>
+    <div id="she2G" class="she2G" style="height: 100%;width: 50%"></div>
+</div>
+
+
+<script type="text/javascript" src="/js/echarts.min.js" ></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
+    var she1AIndex=0;
+    var she1GIndex=0;
+    //设备1的存放数组
+    var she1dataax = [];
+    var she1dataay = [];
+    var she1dataaz = [];
+    var she1datagx = [];
+    var she1datagy = [];
+    var she1datagz = [];
+    //获取设备1的div，并设置为echarts折线图
+    var she1A = document.getElementById("she1A");
+    var she1G = document.getElementById("she1G");
+    var myChartShe1A = echarts.init(she1A);
+    var myChartShe1G = echarts.init(she1G);
+    optionshe1A = null;
+    optionshe1G =null;
+
+    //设置固定数据，技术循环500次，往数据里添加500条数据
+    for (var i = 0; i < 500; i++) {
+        //设备1添加平滑数据
+        she1dataax.push(randomDatas(she1AIndex++));
+        she1dataay.push(randomDatas(she1AIndex++));
+        she1dataaz.push(randomDatas(she1AIndex++));
+        she1datagx.push(randomDatas(she1GIndex++));
+        she1datagy.push(randomDatas(she1GIndex++));
+        she1datagz.push(randomDatas(she1GIndex++));
+    }
+
+    //设置固定数据
+    function randomDatas(index) {
+        return {
+            name: -0.2,
+            value: [
+                index,
+                -0.2
+            ]
+        }
+    }
+
+    //设置返回对象，封装数据
+    function randomData(montionSpr,index) {
+        return {
+            name: montionSpr,
+            value: [
+                index,
+                montionSpr
+            ]
+        }
+    }
+
+
+    setInterval(function () {
+        var resultax = [];
+        var resultay = [];
+        var resultaz = [];
+        var resultgx = [];
+        var resultgy = [];
+        var resultgz = [];
+        var data = {
+            "mac":"80:EA:CA:00:19:49",
+            "startDate":1567737356600,
+            "endDate":1567737356600,
+            "analysisType":1
+        };
+        $.ajax({
+            url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+            type : "POST",
+            contentType: "application/json;charset=UTF-8",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            dataType : "json",        //返回数据形式为json
+            data : JSON.stringify(data),
+            success : function(result) {
+                resultax = result.data[0].ax;
+                resultay = result.data[0].ay;
+                resultaz = result.data[0].az;
+                resultgx = result.data[0].gx;
+                resultgy = result.data[0].gy;
+                resultgz = result.data[0].gz;
+                for (var i = 0; i < resultax.length; i++) {
+                    she1dataax.shift();
+                    she1dataax.push(randomData(resultax[i],she1AIndex++));
+                    she1dataay.shift();
+                    she1dataay.push(randomData(resultay[i],she1AIndex++));
+                    she1dataaz.shift();
+                    she1dataaz.push(randomData(resultaz[i],she1AIndex++));
+                    she1datagx.shift();
+                    she1datagx.push(randomData(resultgx[i],she1GIndex++));
+                    she1datagy.shift();
+                    she1datagy.push(randomData(resultgy[i],she1GIndex++));
+                    she1datagz.shift();
+                    she1datagz.push(randomData(resultgz[i],she1GIndex++));
+                }
+                myChartShe1A.setOption({
+                    series: [{
+                        data: she1dataax
+                    },{
+                        data: she1dataay
+                    },{
+                        data: she1dataaz
+                    }]
+                });
+                myChartShe1G.setOption({
+                    series: [{
+                        data: she1datagx
+                    },{
+                        data: she1datagy
+                    },{
+                        data: she1datagz
+                    }]
+                });
+            }
+        });
+    }, 1000);;
+
+
+
+
+
+    //echarts数据view
+    optionshe1A = {
+        title: {
+            text: '设备：DC:50:A4:6E:A7:11   ，加速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'ax',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she1dataax
+        },
+            {
+                name: 'ay',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she1dataay
+            },
+            {
+                name: 'az',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she1dataaz
+            }
+        ]
+    };
+
+
+    optionshe1G = {
+        title: {
+            text: '角速度'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'gx',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: she1datagx
+        },
+            {
+                name: 'gy',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 136, 212, 0.3)',
+                data: she1datagy
+            },
+            {
+                name: 'gz',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                color : 'rgba(0, 0, 0, 0.1)',
+                data: she1datagz
+            }
+        ]
+    };
+
+
+    if (optionshe1A && typeof optionshe1A === "object") {
+        myChartShe1A.setOption(optionshe1A, true);
+    }
+    if (optionshe1G && typeof optionshe1G === "object") {
+        myChartShe1G.setOption(optionshe1G, true);
+    }
+
+
+</script>
+</body>
+</html>

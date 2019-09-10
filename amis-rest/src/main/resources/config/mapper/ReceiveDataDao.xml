@@ -3,68 +3,105 @@
 <mapper namespace="com.amis.dao.ReceiveDataDao" >
 
 
-    <insert id="insertMotionData" parameterType="java.util.List" useGeneratedKeys="false">
-        insert into motiondata
+    <insert id="insertMotionData">
+        insert into `motiondata_${tableName}`
         (
-          Ax,
-          Ay,
-          Az,
-          Gx,
-          Gy,
-          Gz,
-          Mac,
-          ReceiveTime
+          mac,
+          arrindex,
+          receiveTime1,
+          motionData1,
+          receiveTime2,
+          motionData2,
+          receiveTime3,
+          motionData3
         )
         values
-        <foreach collection="motionDataEntityList" item="item" index="index" separator=",">
+        <foreach collection="returnJieMotionDataDTOS" item="item" index="index" separator=",">
             (
-            #{item.Ax},
-            #{item.Ay},
-            #{item.Az},
-            #{item.Gx},
-            #{item.Gy},
-            #{item.Gz},
-            #{item.Mac},
-            #{item.ReceiveTime}
+            #{item.mac},
+            #{item.arrindex},
+            #{item.receiveTime1},
+            #{item.motionData1},
+            #{item.receiveTime2},
+            #{item.motionData2},
+            #{item.receiveTime3},
+            #{item.motionData3}
             )
         </foreach>
     </insert>
 
 
 
-    <resultMap id="queryDataCriteriaList" type="com.amis.entity.dto.MotionDataEntityDTO">
+    <resultMap id="queryDataCriteriaList" type="com.amis.entity.dto.ReturnJieMotionDataDTO">
         <result column="id" property="id" />
-        <result column="Mac" property="Mac" />
-        <result column="Ax" property="Ax" />
-        <result column="Ay" property="Ay" />
-        <result column="Az" property="Az" />
-        <result column="Gx" property="Gx" />
-        <result column="Gy" property="Gy" />
-        <result column="Gz" property="Gz" />
-        <result column="ReceiveTime" property="ReceiveTime" />
-
+        <result column="mac" property="mac" />
+        <result column="arrindex" property="arrindex" />
+        <result column="receiveTime1" property="receiveTime1" />
+        <result column="motionData1" property="motionData1" />
+        <result column="receiveTime2" property="receiveTime2" />
+        <result column="motionData2" property="motionData2" />
+        <result column="receiveTime3" property="receiveTime3" />
+        <result column="motionData3" property="motionData3" />
     </resultMap>
 
-    <select id="queryDataCriteria"  resultMap="queryDataCriteriaList">
-       select id,Mac,Ax,Ay,Az,Gx,Gy,Gz,ReceiveTime
-        from motiondata where  Mac = #{mac} and ReceiveTime between #{startDate} and #{endDate};
+    <select id="queryDataCriteria" resultMap="queryDataCriteriaList">
+            SELECT * FROM `motiondata_${dateTimeStr}` WHERE mac = '${mac}' AND arrindex BETWEEN ${startDate} AND ${endDate}
+    </select>
+
+
+    <resultMap id="queryWholeDataCriteriaList" type="com.amis.entity.MotionDataEntity">
+        <result column="id" property="id" />
+        <result column="mac" property="mac" />
+        <result column="receiveTime" property="receiveTime" />
+        <result column="arrindex" property="arrindex" />
+        <result column="motionData" property="motionData" />
+    </resultMap>
+
+    <select id="queryWholeDataCriteria"  resultMap="queryWholeDataCriteriaList">
+            select * from `motiondata_${dateTimeStr}` where mac = '${mac}'
     </select>
 
 
 
+
+
     <update id="newBuildTab" parameterType="java.lang.String">
-         CREATE TABLE ${crtDate} (
-           id int(11) NOT NULL AUTO_INCREMENT,
-           Mac varchar(255) DEFAULT NULL,
-           Ax varchar(255) DEFAULT NULL,
-           Ay varchar(255) DEFAULT NULL,
-           Az varchar(255) DEFAULT NULL,
-           Gx varchar(255) DEFAULT NULL,
-           Gy varchar(255) DEFAULT NULL,
-           Gz varchar(255) DEFAULT NULL,
-           ReceiveTime varchar(255) DEFAULT NULL COMMENT '接收数据的时间',
-           PRIMARY KEY (id))
+            CREATE TABLE `${crtDate}` (
+                id int(11) NOT NULL AUTO_INCREMENT,
+                mac varchar(255) DEFAULT NULL,
+                arrindex int(11) DEFAULT NULL,
+                receiveTime1 bigint(20) DEFAULT NULL COMMENT '接收数据的时间',
+                motionData1 varchar(500) DEFAULT NULL,
+                receiveTime2 bigint(20) DEFAULT NULL COMMENT '接收数据的时间',
+                motionData2 varchar(500) DEFAULT NULL,
+                receiveTime3 bigint(20) DEFAULT NULL COMMENT '接收数据的时间',
+                motionData3 varchar(500) DEFAULT NULL,
+                PRIMARY KEY (id))
     </update>
+
+
+
+
+    <resultMap id="getRelayMacListList" type="com.amis.entity.dto.RelayMacListDTO">
+        <result column="id" property="id" />
+        <result column="equipmentMac" property="equipmentMac" />
+    </resultMap>
+
+    <select id="getRelayMacList"  resultMap="getRelayMacListList">
+        SELECT rm.id,rm.equipmentMac FROM relaymac rm LEFT JOIN relayTable rt on rm.deviceId = rt.id
+        WHERE rt.deviceId = #{relayAddress}
+    </select>
+
+
+
+
+    <resultMap id="selectEquipmentMacList" type="java.lang.String">
+        <result column="mac" property="mac" />
+    </resultMap>
+
+    <select id="selectEquipmentMac"  resultMap="selectEquipmentMacList">
+        SELECT mac FROM motiondata_equipment
+    </select>
 
 
 </mapper>

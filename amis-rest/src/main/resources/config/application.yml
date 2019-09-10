@@ -51,7 +51,7 @@ mybatis:
 
 logging:
   level:
-       root: info
+       root: debug
   config: classpath:config/logback.xml
 
 
