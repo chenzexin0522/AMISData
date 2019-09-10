@@ -79,7 +79,9 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
         if (startZeroDate == todayZeroDate && endZeroDate==todayZeroDate){          //开始查询时间和结束查询时间都等于今天，进行内存查询
             List<ReturnJieMotionDataDTO> motionDataEntities = queryMemory(startZeroDate,endZeroDate,todayZeroDate,startIndex,endIndex,queryDataCriteria.getMac());
             ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
-            returnMotionDataEntity.addAll(motionDataEntities);
+            if (motionDataEntities != null){
+                returnMotionDataEntity.addAll(motionDataEntities);
+            }
             responseVO.setData(returnMotionDataEntity);
         }
         if (startZeroDate != todayZeroDate){    //如果查询开始时间非等于今天，则进行数据库查询
