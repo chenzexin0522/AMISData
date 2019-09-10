@@ -237,10 +237,16 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
         List<ReturnJieMotionDataDTO> motionDataEntities = new ArrayList<>();
         for (long a = startIndex; a <= endIndex;a++){
             if (insertPointer == 0) {
+                if (oldMotionDataEntityList.get(mac) == null){
+                    return null;
+                }
                 if (oldMotionDataEntityList.get(mac)[(int)a] != null){
                     motionDataEntities.add(oldMotionDataEntityList.get(mac)[(int)a]);
                 }
             }else if (insertPointer == 1){
+                if (oldMotionDataEntityList.get(mac) == null){
+                    return null;
+                }
                 if (newMotionDataEntityList.get(mac)[(int)a] != null){
                     motionDataEntities.add(newMotionDataEntityList.get(mac)[(int)a]);
                 }
