@@ -53,6 +53,10 @@ public class ReceiveDataView {
         return "motionDataDemoView";
     }
 
+    @RequestMapping("/exportSwimmingData")
+    public String exportSwimmingData(){
+        return "motionDataDemoView";
+    }
 
 
 

@@ -26,4 +26,5 @@ public interface ReceiveDataService {
     int newBuildTab();
 
     List<RelayMacListDTO> getRelayMacList(RelayMac relayMac);
+
 }

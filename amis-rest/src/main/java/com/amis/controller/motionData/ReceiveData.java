@@ -68,6 +68,7 @@ public class ReceiveData {
         return receiveDataService.queryDataCriteria(queryDataCriteria);
     }
 
+
     /**
      * @Author chenzexin
      * @Date 2019/8/12 10:04
@@ -101,6 +102,7 @@ public class ReceiveData {
         }
         return receiveDataService.insertMotionData(motionDataEntity);
     }
+
 
     /**
      * @Author chenzexin

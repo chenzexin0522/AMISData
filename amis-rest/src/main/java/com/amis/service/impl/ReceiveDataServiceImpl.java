@@ -170,11 +170,11 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
         DateFormat ddf = new SimpleDateFormat("yyyy-MM-dd");
         Date d = new Date(todayZeroDate);
         String today = ddf.format(d);
-//        List<String> strings = receiveDataDao.selectEquipmentMac();
-//        for (String str:strings) {
-//            String newNumber =  str.replace(":", "-");
-//            receiveDataDao.newBuildTab("motiondata_"+newNumber+"_"+today);
-//        }
+        List<String> strings = receiveDataDao.selectEquipmentMac();
+        for (String str:strings) {
+            String newNumber =  str.replace(":", "-");
+            receiveDataDao.newBuildTab("motiondata_"+newNumber+"_"+today);
+        }
         return 0;
     }
 
@@ -182,6 +182,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
     public List<RelayMacListDTO> getRelayMacList(RelayMac relayMac) {
         return receiveDataDao.getRelayMacList(relayMac);
     }
+
 
     private int insertMemoryMotionData(MotionDataEntity motionDataEntity){
         List<MotionDataEntity> motionDataEntities = listMap.get(motionDataEntity.getMac());
@@ -298,6 +299,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
         }
         return motionDataEntities;
     }
+
 
 
 
