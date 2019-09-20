@@ -53,6 +53,18 @@ public class AdminController {
      * @return java.lang.String
      * @Description        AIMS下载
      **/
+    @RequestMapping("/montionDataViewDong")
+    public String montionDataViewDong(){
+        return "montionDataViewDong";
+    }
+
+    /**
+     * @Author chenzexin
+     * @Date 2019/7/5 10:27
+     * @param
+     * @return java.lang.String
+     * @Description        AIMS下载
+     **/
     @RequestMapping("/downloadAims")
     public String downloadAims(){
         return "downloadAims";
