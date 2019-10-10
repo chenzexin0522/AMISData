@@ -7,8 +7,6 @@ import com.amis.service.SwimmingDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 
 /**
  * @ClassName SwimmingDataController
@@ -34,14 +32,13 @@ public class SwimmingDataController {
      * @Description        插入游泳数据
      **/
     @RequestMapping(value = "/insertSwimmingData", method = RequestMethod.POST)
-    public ResponseVO insertSwimmingData( @RequestBody MotionDataEntity motionDataEntity) {
+    public ResponseVO insertSwimmingData(@RequestBody MotionDataEntity motionDataEntity) {
         int ye = swimmingDataService.insertSwimmingData(motionDataEntity);
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setId(ye);
         ao++;
         return responseVO;
     }
-
 
     /**
      * @Author chenzexin

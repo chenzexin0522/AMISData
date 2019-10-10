@@ -12,6 +12,7 @@ import com.amis.entity.dto.ReturnJieMotionDataDTO;
 import com.amis.service.ReceiveDataService;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Decoder;
 
@@ -47,6 +48,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
 
 
     @Override
+    @Async("excetor")
     public ResponseVO insertMotionData(MotionDataEntity motionDataEntity){
             if (listMap.get(motionDataEntity.getMac()) == null){                //判断临时存储listMap是否为空，如果为空，就将motionDataEntity  put到listMap中
                 List<MotionDataEntity> motionDataEntities = new ArrayList<>();
@@ -69,6 +71,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
     }
 
     @Override
+    @Async("excetor")
     public ResponseVO queryDataCriteria(QueryDataCriteria queryDataCriteria) throws IOException {
         List<ReturnJieMotionDataDTO> returnMotionDataEntity = new ArrayList<>();              //最终list
         long startZeroDate = (queryDataCriteria.getStartDate()/86400000L)*86400000L-28800000L;      //计算出开始查询时间的凌晨整点unix时间。

@@ -389,18 +389,18 @@
                 resultgy = result.data[0].gy;
                 resultgz = result.data[0].gz;
                 for (var i = 0; i < resultax.length; i++) {
-                            she1dataax.shift();
-                            she1dataax.push(randomData(resultax[i],she1AIndex++));
-                            she1dataay.shift();
-                            she1dataay.push(randomData(resultay[i],she1AIndex++));
-                            she1dataaz.shift();
-                            she1dataaz.push(randomData(resultaz[i],she1AIndex++));
-                            she1datagx.shift();
-                            she1datagx.push(randomData(resultgx[i],she1GIndex++));
-                            she1datagy.shift();
-                            she1datagy.push(randomData(resultgy[i],she1GIndex++));
-                            she1datagz.shift();
-                            she1datagz.push(randomData(resultgz[i],she1GIndex++));
+                    she1dataax.shift();
+                    she1dataax.push(randomData(resultax[i],she1AIndex++));
+                    she1dataay.shift();
+                    she1dataay.push(randomData(resultay[i],she1AIndex++));
+                    she1dataaz.shift();
+                    she1dataaz.push(randomData(resultaz[i],she1AIndex++));
+                    she1datagx.shift();
+                    she1datagx.push(randomData(resultgx[i],she1GIndex++));
+                    she1datagy.shift();
+                    she1datagy.push(randomData(resultgy[i],she1GIndex++));
+                    she1datagz.shift();
+                    she1datagz.push(randomData(resultgz[i],she1GIndex++));
                 }
                 myChartShe1A.setOption({
                     series: [{
