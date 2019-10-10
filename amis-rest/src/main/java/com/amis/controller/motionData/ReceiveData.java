@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * @ClassName ReceiveDataService
@@ -61,11 +63,12 @@ public class ReceiveData {
      * @Description        查询指定设备时间范围内的数据
      **/
     @RequestMapping(value = "queryDataCriteria",method = RequestMethod.POST)
-    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException {
+    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
         if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        return receiveDataService.queryDataCriteria(queryDataCriteria);
+        Future<ResponseVO> future = receiveDataService.queryDataCriteria(queryDataCriteria);
+        return future.get();
     }
 
 
@@ -77,11 +80,12 @@ public class ReceiveData {
      * @Description        查询指定设备时间范围内的数据（页面请求）
      **/
     @RequestMapping(value = "queryDataCriteriaWebView",method = RequestMethod.POST)
-    public ResponseVO queryDataCriteriaWebView(QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException {
+    public ResponseVO queryDataCriteriaWebView(QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
         if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        return receiveDataService.queryDataCriteria(queryDataCriteria);
+        Future<ResponseVO> future = receiveDataService.queryDataCriteria(queryDataCriteria);
+        return future.get();
     }
 
 

@@ -9,6 +9,7 @@ import com.amis.entity.dto.RelayMacListDTO;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.concurrent.Future;
 
 /**
  * @InterfaceName ReceiveDataService
@@ -21,7 +22,7 @@ public interface ReceiveDataService {
 
     String getListSize();
 
-    ResponseVO queryDataCriteria(QueryDataCriteria queryDataCriteria) throws ParseException, IOException;
+    Future<ResponseVO> queryDataCriteria(QueryDataCriteria queryDataCriteria) throws ParseException, IOException;
 
     int newBuildTab();
 

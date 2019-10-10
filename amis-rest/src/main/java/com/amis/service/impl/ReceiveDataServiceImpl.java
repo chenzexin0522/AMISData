@@ -13,6 +13,7 @@ import com.amis.service.ReceiveDataService;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Decoder;
 
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Future;
 
 /**
  * @ClassName ReceiveDataServiceImpl
@@ -72,7 +74,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
 
     @Override
     @Async("excetor")
-    public ResponseVO queryDataCriteria(QueryDataCriteria queryDataCriteria) throws IOException {
+    public Future<ResponseVO> queryDataCriteria(QueryDataCriteria queryDataCriteria) throws IOException {
         List<ReturnJieMotionDataDTO> returnMotionDataEntity = new ArrayList<>();              //最终list
         long startZeroDate = (queryDataCriteria.getStartDate()/86400000L)*86400000L-28800000L;      //计算出开始查询时间的凌晨整点unix时间。
         long endZeroDate = (queryDataCriteria.getEndDate()/86400000L)*86400000L-28800000L;          //计算出结束查询时间的凌晨整点unix时间。
@@ -119,15 +121,15 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
             }
             ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
             responseVO.setData(motionDataEntityList);
-            return responseVO;
+            return new AsyncResult<>(responseVO);
         }else if (queryDataCriteria.getAnalysisType() == 0){
             ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
             responseVO.setData(returnMotionDataEntity);
-            return responseVO;
+            return new AsyncResult<>(responseVO);
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         responseVO.setData(returnMotionDataEntity);
-        return responseVO;
+        return new AsyncResult<>(responseVO);
     }
 
 
