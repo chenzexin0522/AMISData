@@ -10,10 +10,8 @@ import com.amis.entity.dto.RelayMacListDTO;
 import com.amis.service.ReceiveDataService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -62,11 +60,17 @@ public class ReceiveData {
      * @return com.amis.common.ResponseVO
      * @Description        查询指定设备时间范围内的数据
      **/
-    @RequestMapping(value = "queryDataCriteria",method = RequestMethod.POST)
-    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
-        if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
+    @RequestMapping(value = "queryDataCriteria",method = RequestMethod.POST)//@RequestBody QueryDataCriteria queryDataCriteria
+    @ResponseBody
+    public ResponseVO queryDataCriteria(@RequestParam String mac, @RequestParam String startDate, @RequestParam String endDate, @RequestParam Integer analysisType) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
+        if (StringUtils.isBlank(String.valueOf(mac))){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
+        QueryDataCriteria queryDataCriteria = new QueryDataCriteria();
+        queryDataCriteria.setMac(mac);
+        queryDataCriteria.setStartDate(Long.valueOf(startDate));
+        queryDataCriteria.setEndDate(Long.valueOf(endDate));
+        queryDataCriteria.setAnalysisType(analysisType);
         Future<ResponseVO> future = receiveDataService.queryDataCriteria(queryDataCriteria);
         return future.get();
     }
