@@ -22,10 +22,10 @@ public class ExecutorConfig {
     @Bean(name = "excetor")
     public Executor getExecutor(){
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(30);
-        executor.setMaxPoolSize(40);
-        executor.setQueueCapacity(30);
-        executor.setKeepAliveSeconds(60);
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(200);
+        executor.setKeepAliveSeconds(200);
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
         executor.setThreadNamePrefix("excetor_1");
         return executor;

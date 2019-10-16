@@ -62,20 +62,32 @@
 
 
 
-    const maxShe = 3;
+    const maxShe = 8;
     const initNum = 500;
     const iIntervalValCount = 48;
     const intervalParams = [
         {
-            mac :"C9:53:D8:09:56:DA"
+            mac :"F4:90:74:20:20:7D"
         },{
             mac :"C4:FC:19:61:C4:8E"
+        },{
+            mac :"F4:90:74:20:20:7D"
+        },{
+            mac :"F4:90:74:20:20:7D"
+        },{
+            mac :"F4:90:74:20:20:7D"
+        },{
+            mac :"F4:90:74:20:20:7D"
+        },{
+            mac :"F4:90:74:20:20:7D"
         },{
             mac :"F4:90:74:20:20:7D"
         }]
 
     var curIdx = initNum;
     var sheDatas = [];
+
+    var times = [];
 
     var sheChartsA = [];
     var sheChartsG = [];
@@ -109,16 +121,18 @@
 
     function startInterval (iNum){
         setInterval(function (iNum) {
-            console.log('mac', intervalParams[iNum].mac);
             let params = new URLSearchParams();
             params.append('mac', intervalParams[iNum].mac);
             params.append('startDate', new Date().getTime());
             params.append('endDate', new Date().getTime());
             params.append('analysisType', 1);
+            var st=new Date();
             axios.post('/sprData/queryDataCriteria',
                 params
             )
                 .then(function (response) {
+                    var et=new Date();
+                    times.push(et-st);
                     if(response.data.data.length == 0){
                         return;
                     }
@@ -300,8 +314,6 @@
         startInterval(i);
 
     }
-
-
 
 
 
