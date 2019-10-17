@@ -62,32 +62,30 @@
 
 
 
-    const maxShe = 8;
+    const maxShe = 5;
     const initNum = 500;
     const iIntervalValCount = 48;
     const intervalParams = [
         {
-            mac :"F4:90:74:20:20:7D"
+            mac :"CA:38:EC:31:F1:EC",
+            curIdx : 500
         },{
-            mac :"C4:FC:19:61:C4:8E"
+            mac :"DF:F8:B4:E3:FE:B3",
+            curIdx : 500
         },{
-            mac :"F4:90:74:20:20:7D"
+            mac :"C8:73:C2:20:45:E7",
+            curIdx : 500
         },{
-            mac :"F4:90:74:20:20:7D"
+            mac :"F4:90:74:20:20:7D",
+            curIdx : 500
         },{
-            mac :"F4:90:74:20:20:7D"
-        },{
-            mac :"F4:90:74:20:20:7D"
-        },{
-            mac :"F4:90:74:20:20:7D"
-        },{
-            mac :"F4:90:74:20:20:7D"
+            mac :"E2:7E:E1:1F:E9:25",
+            curIdx : 500
         }]
 
-    var curIdx = initNum;
+    // var curIdx = initNum;
     var sheDatas = [];
 
-    var times = [];
 
     var sheChartsA = [];
     var sheChartsG = [];
@@ -119,64 +117,65 @@
     }
 
 
-    function startInterval (iNum){
-        setInterval(function (iNum) {
-            let params = new URLSearchParams();
-            params.append('mac', intervalParams[iNum].mac);
-            params.append('startDate', new Date().getTime());
-            params.append('endDate', new Date().getTime());
-            params.append('analysisType', 1);
-            var st=new Date();
-            axios.post('/sprData/queryDataCriteria',
-                params
-            )
-                .then(function (response) {
-                    var et=new Date();
-                    times.push(et-st);
-                    if(response.data.data.length == 0){
-                        return;
+    setInterval(function () {
+        let params = new URLSearchParams();
+        params.append('startDate', new Date().getTime());
+        params.append('endDate', new Date().getTime());
+        params.append('analysisType', 1);
+        axios.post('/sprData/queryWholeDataCriteria',
+            params
+        )
+            .then(function (response) {
+                if(response.data.data.length == 0){
+                    return;
+                }
+                var macArray = response.data.data;
+                for(var a = 0; a < macArray.length; a++){
+                    for (var iNum = 0; iNum < intervalParams.length; iNum ++){
+                        if (macArray[a].mac == intervalParams[iNum].mac){
+                            sheDatas[iNum].ax.splice(0,iIntervalValCount - 1);
+                            sheDatas[iNum].ay.splice(0,iIntervalValCount - 1);
+                            sheDatas[iNum].az.splice(0,iIntervalValCount - 1);
+                            sheDatas[iNum].gx.splice(0,iIntervalValCount - 1);
+                            sheDatas[iNum].gy.splice(0,iIntervalValCount - 1);
+                            sheDatas[iNum].gz.splice(0,iIntervalValCount - 1);
+                            for (var i = 0; i < iIntervalValCount; i++) {
+                                sheDatas[iNum].ax.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].ax[i]));
+                                sheDatas[iNum].ay.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].ay[i]));
+                                sheDatas[iNum].az.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].az[i]));
+                                sheDatas[iNum].gx.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].gx[i]));
+                                sheDatas[iNum].gy.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].gy[i]));
+                                sheDatas[iNum].gz.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].gz[i]));
+                                intervalParams[iNum].curIdx++;
+                            }
+                            sheChartsA[iNum].setOption({
+                                title:{text:"设备"+iNum +"   Mac:"+intervalParams[iNum].mac},
+                                series: [{
+                                    data: sheDatas[iNum].ax
+                                },{
+                                    data: sheDatas[iNum].ay
+                                },{
+                                    data: sheDatas[iNum].az
+                                }]
+                            });
+                            sheChartsG[iNum].setOption({
+                                series: [{
+                                    data: sheDatas[iNum].gx
+                                },{
+                                    data: sheDatas[iNum].gy
+                                },{
+                                    data: sheDatas[iNum].gz
+                                }]
+                            });
+                        }
                     }
-                    sheDatas[iNum].ax.splice(0,iIntervalValCount - 1);
-                    sheDatas[iNum].ay.splice(0,iIntervalValCount - 1);
-                    sheDatas[iNum].az.splice(0,iIntervalValCount - 1);
-                    sheDatas[iNum].gx.splice(0,iIntervalValCount - 1);
-                    sheDatas[iNum].gy.splice(0,iIntervalValCount - 1);
-                    sheDatas[iNum].gz.splice(0,iIntervalValCount - 1);
-                    for (var i = 0; i < iIntervalValCount; i++) {
-                        sheDatas[iNum].ax.push(packageData(curIdx, curIdx, response.data.data[0].ax[i]));
-                        sheDatas[iNum].ay.push(packageData(curIdx, curIdx, response.data.data[0].ay[i]));
-                        sheDatas[iNum].az.push(packageData(curIdx, curIdx, response.data.data[0].az[i]));
-                        sheDatas[iNum].gx.push(packageData(curIdx, curIdx, response.data.data[0].gx[i]));
-                        sheDatas[iNum].gy.push(packageData(curIdx, curIdx, response.data.data[0].gy[i]));
-                        sheDatas[iNum].gz.push(packageData(curIdx, curIdx, response.data.data[0].gz[i]));
-                        sheChartsA[iNum].setOption({
-                            title:{text:"设备"+iNum +"   Mac:"+intervalParams[iNum].mac},
-                            series: [{
-                                data: sheDatas[iNum].ax
-                            },{
-                                data: sheDatas[iNum].ay
-                            },{
-                                data: sheDatas[iNum].az
-                            }]
-                        });
-                        sheChartsG[iNum].setOption({
-                            series: [{
-                                data: sheDatas[iNum].gx
-                            },{
-                                data: sheDatas[iNum].gy
-                            },{
-                                data: sheDatas[iNum].gz
-                            }]
-                        });
-                        curIdx++;
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
-        }, 1000, iNum);
-    }
+    }, 1000);
 
     for(let i = 0; i < maxShe; i++){
         sheDatas[i] = {
@@ -311,9 +310,9 @@
         sheChartsA[i].setOption(sheOptionA[i], true);
         sheChartsG[i].setOption(sheOptionG[i], true);
 
-        startInterval(i);
-
     }
+
+
 
 
 

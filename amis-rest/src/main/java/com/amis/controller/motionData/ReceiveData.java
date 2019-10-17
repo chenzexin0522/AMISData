@@ -75,6 +75,27 @@ public class ReceiveData {
         return future.get();
     }
 
+    /**
+     * @Author chenzexin
+     * @Date 2019/8/12 10:04
+     * @param queryDataCriteria
+     * @return com.amis.common.ResponseVO
+     * @Description        查询suoyou设备时间范围内的数据
+     **/
+    @RequestMapping(value = "queryWholeDataCriteria",method = RequestMethod.POST)//@RequestBody QueryDataCriteria queryDataCriteria
+    @ResponseBody
+    public ResponseVO queryWholeDataCriteria(@RequestParam String startDate, @RequestParam String endDate, @RequestParam Integer analysisType) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
+        if (StringUtils.isBlank(String.valueOf(startDate))){
+            throw new AmisException(MessageKey.PARAMETER_ERROR);
+        }
+        QueryDataCriteria queryDataCriteria = new QueryDataCriteria();
+        queryDataCriteria.setStartDate(Long.valueOf(startDate));
+        queryDataCriteria.setEndDate(Long.valueOf(endDate));
+        queryDataCriteria.setAnalysisType(analysisType);
+        Future<ResponseVO> future = receiveDataService.queryWholeDataCriteria(queryDataCriteria);
+        return future.get();
+    }
+
 
     /**
      * @Author chenzexin

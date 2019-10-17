@@ -9,6 +9,7 @@ import com.amis.entity.dto.RelayMacListDTO;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
@@ -28,4 +29,5 @@ public interface ReceiveDataService {
 
     List<RelayMacListDTO> getRelayMacList(RelayMac relayMac);
 
+    Future<ResponseVO> queryWholeDataCriteria(QueryDataCriteria queryDataCriteria) throws IOException, ExecutionException, InterruptedException;
 }

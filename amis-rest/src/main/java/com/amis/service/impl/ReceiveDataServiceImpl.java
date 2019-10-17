@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /**
@@ -52,16 +53,16 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
     @Override
     @Async("excetor")
     public ResponseVO insertMotionData(MotionDataEntity motionDataEntity){
-            if (listMap.get(motionDataEntity.getMac()) == null){                //判断临时存储listMap是否为空，如果为空，就将motionDataEntity  put到listMap中
-                List<MotionDataEntity> motionDataEntities = new ArrayList<>();
-                long todayZeroDate = (new Date().getTime()/86400000L)*86400000L-28800000L;
-                long dateUnix = motionDataEntity.getUnixdate()/1000L - todayZeroDate/1000L;		//获取今天unix时间/秒数
-                motionDataEntity.setArrindex(dateUnix);			//设置motionDataEntity中的insertTime属性为当前unix时间
-                motionDataEntities.add(motionDataEntity);
-                listMap.put(motionDataEntity.getMac(),motionDataEntities);
-            }else if (listMap.get(motionDataEntity.getMac()) != null){
-                insertMemoryMotionData(motionDataEntity);
-            }
+        if (listMap.get(motionDataEntity.getMac()) == null){                //判断临时存储listMap是否为空，如果为空，就将motionDataEntity  put到listMap中
+            List<MotionDataEntity> motionDataEntities = new ArrayList<>();
+            long todayZeroDate = (new Date().getTime()/86400000L)*86400000L-28800000L;
+            long dateUnix = motionDataEntity.getUnixdate()/1000L - todayZeroDate/1000L;		//获取今天unix时间/秒数
+            motionDataEntity.setArrindex(dateUnix);			//设置motionDataEntity中的insertTime属性为当前unix时间
+            motionDataEntities.add(motionDataEntity);
+            listMap.put(motionDataEntity.getMac(),motionDataEntities);
+        }else if (listMap.get(motionDataEntity.getMac()) != null){
+            insertMemoryMotionData(motionDataEntity);
+        }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
         return responseVO;
     }
@@ -186,6 +187,22 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
     @Override
     public List<RelayMacListDTO> getRelayMacList(RelayMac relayMac) {
         return receiveDataDao.getRelayMacList(relayMac);
+    }
+
+    @Override
+    public Future<ResponseVO> queryWholeDataCriteria(QueryDataCriteria queryDataCriteria) throws IOException, ExecutionException, InterruptedException {
+        List<ReslutMontionData> reslutMontionData = new ArrayList<>();
+        for(String key : oldMotionDataEntityList.keySet()){
+            queryDataCriteria.setMac(key);
+            Future<ResponseVO> responseVOFuture = queryDataCriteria(queryDataCriteria);
+            List<ReslutMontionData> reslutMontionData1 = (List<ReslutMontionData>) responseVOFuture.get().getData();
+            if (null != reslutMontionData1.get(0)){
+                reslutMontionData.add (reslutMontionData1.get(0));
+            }
+        }
+        ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
+        responseVO.setData(reslutMontionData);
+        return new AsyncResult<>(responseVO);
     }
 
 
