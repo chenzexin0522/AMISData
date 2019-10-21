@@ -23,6 +23,8 @@ public class ImportData {
 
     private String tuanZhangDiZhi;
 
+    private String userName;
 
+    private String userPhone;
 
 }

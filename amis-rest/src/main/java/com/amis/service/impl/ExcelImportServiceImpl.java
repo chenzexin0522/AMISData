@@ -41,4 +41,9 @@ public class ExcelImportServiceImpl implements ExcelImportService {
     public List<ExeclTuanTotalNumber> selectTuanTotalNumber() {
         return excelImportDao.selectTuanTotalNumber();
     }
+
+    @Override
+    public List<ImportData> selectexeclUserDatas() {
+        return excelImportDao.selectexeclUserDatas();
+    }
 }

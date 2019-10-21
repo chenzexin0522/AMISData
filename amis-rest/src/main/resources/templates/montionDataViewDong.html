@@ -62,24 +62,45 @@
 
 
 
-    const maxShe = 5;
+    const maxShe = 12;
     const initNum = 500;
     const iIntervalValCount = 48;
     const intervalParams = [
         {
-            mac :"CA:38:EC:31:F1:EC",
+            mac :"E3:BC:7A:2B:BE:B6",
             curIdx : 500
         },{
-            mac :"DF:F8:B4:E3:FE:B3",
+            mac :"ED:B1:5D:9E:18:B5",
             curIdx : 500
         },{
-            mac :"C8:73:C2:20:45:E7",
+            mac :"CD:8A:58:7E:29:B1",
             curIdx : 500
         },{
-            mac :"F4:90:74:20:20:7D",
+            mac :"DE:F1:39:D2:41:A7",
             curIdx : 500
         },{
-            mac :"E2:7E:E1:1F:E9:25",
+            mac :"D3:B1:E9:F0:6B:C9",
+            curIdx : 500
+        },{
+            mac :"D2:C7:F1:68:19:6B",
+            curIdx : 500
+        },{
+            mac :"F3:E7:E7:F5:49:DD",
+            curIdx : 500
+        },{
+            mac :"F1:BD:95:D7:D0:A8",
+            curIdx : 500
+        },{
+            mac :"F4:CF:B5:39:17:D8",
+            curIdx : 500
+        },{
+            mac :"CC:4B:1A:CA:59:32",
+            curIdx : 500
+        },{
+            mac :"E5:DA:AA:2E:F2:44",
+            curIdx : 500
+        },{
+            mac :"CC:7A:5B:12:9F:59",
             curIdx : 500
         }]
 
@@ -140,12 +161,12 @@
                             sheDatas[iNum].gy.splice(0,iIntervalValCount - 1);
                             sheDatas[iNum].gz.splice(0,iIntervalValCount - 1);
                             for (var i = 0; i < iIntervalValCount; i++) {
-                                sheDatas[iNum].ax.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].ax[i]));
-                                sheDatas[iNum].ay.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].ay[i]));
-                                sheDatas[iNum].az.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].az[i]));
-                                sheDatas[iNum].gx.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].gx[i]));
-                                sheDatas[iNum].gy.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].gy[i]));
-                                sheDatas[iNum].gz.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[iNum].gz[i]));
+                                sheDatas[iNum].ax.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].ax[i]));
+                                sheDatas[iNum].ay.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].ay[i]));
+                                sheDatas[iNum].az.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].az[i]));
+                                sheDatas[iNum].gx.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].gx[i]));
+                                sheDatas[iNum].gy.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].gy[i]));
+                                sheDatas[iNum].gz.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].gz[i]));
                                 intervalParams[iNum].curIdx++;
                             }
                             sheChartsA[iNum].setOption({
@@ -311,8 +332,6 @@
         sheChartsG[i].setOption(sheOptionG[i], true);
 
     }
-
-
 
 
 

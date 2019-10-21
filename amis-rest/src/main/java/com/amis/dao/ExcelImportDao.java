@@ -23,4 +23,6 @@ public interface ExcelImportDao {
     void truncateTable();
 
     List<ExeclTuanTotalNumber> selectTuanTotalNumber();
+
+    List<ImportData> selectexeclUserDatas();
 }

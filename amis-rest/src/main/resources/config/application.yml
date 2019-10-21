@@ -1,6 +1,6 @@
 
 server:
-  port: 8888
+  port: 10016
 #  ssl:
 #    key-store: classpath:config/aims.jks
 #    key-store-password: w5D4Ccj4
@@ -51,7 +51,7 @@ mybatis:
 
 logging:
   level:
-       root: debug
+    root: info
   config: classpath:config/logback.xml
 
 

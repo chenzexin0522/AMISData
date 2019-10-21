@@ -11,7 +11,9 @@
         zhuangTai,
         tuanZhangName,
         tuanZhangPhone,
-        tuanZhangDiZhi
+        tuanZhangDiZhi,
+        userName,
+        userPhone
         )
         values
         <foreach collection="importDatas" item="item" index="index" separator=",">
@@ -22,7 +24,9 @@
             #{item.zhuangTai},
             #{item.tuanZhangName},
             #{item.tuanZhangPhone},
-            #{item.tuanZhangDiZhi}
+            #{item.tuanZhangDiZhi},
+            #{item.userName},
+            #{item.userPhone}
             )
         </foreach>
     </insert>
@@ -51,6 +55,24 @@ order by newTable.shangPinNumber DESC
 select newTable.shangPinName,newTable.shangPinNumber,newTable.tuanZhangName
 from (SELECT tz.shangPinName as shangPinName,tz.tuanZhangName as tuanZhangName,SUM(tz.shangPinNumber) as shangPinNumber
 FROM tab_zexcel tz GROUP BY tz.shangPinName,tz.tuanZhangName ) newTable ORDER BY newTable.tuanZhangName
+    </select>
+
+
+    <resultMap id="selectexeclUserDatasList" type="com.amis.entity.ImportData">
+        <result column="id" property="id" />
+        <result column="shangPinName" property="shangPinName" />
+        <result column="shangPinNumber" property="shangPinNumber" />
+        <result column="shangPinMoney" property="shangPinMoney" />
+        <result column="zhuangTai" property="zhuangTai" />
+        <result column="tuanZhangName" property="tuanZhangName" />
+        <result column="tuanZhangPhone" property="tuanZhangPhone" />
+        <result column="tuanZhangDiZhi" property="tuanZhangDiZhi" />
+        <result column="userName" property="userName" />
+        <result column="userPhone" property="userPhone" />
+    </resultMap>
+
+    <select id="selectexeclUserDatas"  resultMap="selectexeclUserDatasList">
+        SELECT * FROM tab_zexcel tz ORDER BY tz.userName
     </select>
 
 
