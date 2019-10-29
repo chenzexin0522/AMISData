@@ -135,15 +135,15 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
 
 
     @Override
-    public int newBuildTab(){
+    public int newBuildTab() {
         if (insertPointer == 0){    //如果当前指针式0，将指针替换为1
             insertPointer = 1;
             long todayZeroDate = (new Date().getTime()/86400000L)*86400000L-28800000L-86400000L;            //算出昨天的日期
             DateFormat ddf = new SimpleDateFormat("yyyy-MM-dd");
             Date d = new Date(todayZeroDate);
             String yesterday = ddf.format(d);
-            List<ReturnJieMotionDataDTO> resultList = new ArrayList<>();
             for (Map.Entry<String, ReturnJieMotionDataDTO[]> entry : oldMotionDataEntityList.entrySet()) {
+                List<ReturnJieMotionDataDTO> resultList = new ArrayList<>();
                 ReturnJieMotionDataDTO[] returnJieMotionDataDTOS = entry.getValue();
                 for (int a = 0;a < returnJieMotionDataDTOS.length;a++){
                     if (returnJieMotionDataDTOS[a] != null){
@@ -159,8 +159,8 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
             DateFormat ddf = new SimpleDateFormat("yyyy-MM-dd");
             Date d = new Date(todayZeroDate);
             String yesterday = ddf.format(d);
-            List<ReturnJieMotionDataDTO> resultList = new ArrayList<>();
             for (Map.Entry<String, ReturnJieMotionDataDTO[]> entry : newMotionDataEntityList.entrySet()) {
+                List<ReturnJieMotionDataDTO> resultList = new ArrayList<>();
                 ReturnJieMotionDataDTO[] returnJieMotionDataDTOS = entry.getValue();
                 for (int a = 0;a < returnJieMotionDataDTOS.length;a++){
                     if (returnJieMotionDataDTOS[a] != null){
@@ -196,7 +196,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
             queryDataCriteria.setMac(key);
             Future<ResponseVO> responseVOFuture = queryDataCriteria(queryDataCriteria);
             List<ReslutMontionData> reslutMontionData1 = (List<ReslutMontionData>) responseVOFuture.get().getData();
-            if (null != reslutMontionData1.get(0)){
+            if (0 != reslutMontionData1.size()){
                 reslutMontionData.add (reslutMontionData1.get(0));
             }
         }
