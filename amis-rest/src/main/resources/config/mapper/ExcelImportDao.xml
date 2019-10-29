@@ -75,6 +75,25 @@ FROM tab_zexcel tz GROUP BY tz.shangPinName,tz.tuanZhangName ) newTable ORDER BY
         SELECT * FROM tab_zexcel tz ORDER BY tz.userName
     </select>
 
+    <resultMap id="selectexeclTuanDatasList" type="com.amis.entity.ImportData">
+        <result column="id" property="id" />
+        <result column="shangPinName" property="shangPinName" />
+        <result column="shangPinNumber" property="shangPinNumber" />
+        <result column="shangPinMoney" property="shangPinMoney" />
+        <result column="zhuangTai" property="zhuangTai" />
+        <result column="tuanZhangName" property="tuanZhangName" />
+        <result column="tuanZhangPhone" property="tuanZhangPhone" />
+        <result column="tuanZhangDiZhi" property="tuanZhangDiZhi" />
+        <result column="userName" property="userName" />
+        <result column="userPhone" property="userPhone" />
+    </resultMap>
+
+    <select id="selectexeclTuanDatas"  resultMap="selectexeclUserDatasList">
+        SELECT * FROM tab_zexcel tz ORDER BY tz.tuanZhangName
+    </select>
+
+
+
 
     <update id="truncateTable">
         truncate table tab_zexcel

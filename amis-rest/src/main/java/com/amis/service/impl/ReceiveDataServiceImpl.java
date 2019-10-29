@@ -135,7 +135,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
 
 
     @Override
-    public int newBuildTab() {
+    public int newBuildTab(){
         if (insertPointer == 0){    //如果当前指针式0，将指针替换为1
             insertPointer = 1;
             long todayZeroDate = (new Date().getTime()/86400000L)*86400000L-28800000L-86400000L;            //算出昨天的日期

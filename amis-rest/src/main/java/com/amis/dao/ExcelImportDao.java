@@ -25,4 +25,6 @@ public interface ExcelImportDao {
     List<ExeclTuanTotalNumber> selectTuanTotalNumber();
 
     List<ImportData> selectexeclUserDatas();
+
+    List<ImportData> selectexeclTuanDatas();
 }

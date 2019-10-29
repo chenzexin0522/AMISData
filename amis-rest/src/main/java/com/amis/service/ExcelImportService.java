@@ -17,7 +17,6 @@ import java.util.List;
 @Service
 public interface ExcelImportService {
 
-
     int insertExcel(List<ImportData> importDatas);
 
     List<ExeclTotalNumber> selectTotalNumber();
@@ -27,4 +26,6 @@ public interface ExcelImportService {
     List<ExeclTuanTotalNumber> selectTuanTotalNumber();
 
     List<ImportData> selectexeclUserDatas();
+
+    List<ImportData> selectexeclTuanDatas();
 }

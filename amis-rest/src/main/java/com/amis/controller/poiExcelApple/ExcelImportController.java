@@ -77,18 +77,22 @@ public class ExcelImportController {
             List<ExeclTotalNumber> execlTotalNumbers = new ArrayList<>();
             List<ExeclTuanTotalNumber> execlTuanTotalNumbers = new ArrayList<>();
             List<ImportData> execlUserDatas = new ArrayList<>();
+            List<ImportData> execlTuanDatas = new ArrayList<>();
             if (yAndNo != 0){
                 execlTotalNumbers = excelImportService.selectTotalNumber();
                 execlTuanTotalNumbers = excelImportService.selectTuanTotalNumber();
                 execlUserDatas = excelImportService.selectexeclUserDatas();
+                execlTuanDatas = excelImportService.selectexeclTuanDatas();
             }
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheets = workbook.createSheet("单品统计");
             HSSFSheet sheetTuan = workbook.createSheet("团长统计");
             HSSFSheet sheetUser = workbook.createSheet("用户统计");
+            HSSFSheet sheetTuanName = workbook.createSheet("团长排序");
             createTitle(workbook,sheets,1);
             createTitle(workbook,sheetTuan,2);
             createTitle(workbook,sheetUser,3);
+            createTitle(workbook,sheetTuanName,4);
             //设置日期格式
             HSSFCellStyle style = workbook.createCellStyle();
             style.setDataFormat(HSSFDataFormat.getBuiltinFormat("m/d/yy h:mm"));
@@ -120,6 +124,19 @@ public class ExcelImportController {
                 rowas.createCell(6).setCellValue(importData.getTuanZhangPhone());
                 rowas.createCell(7).setCellValue(importData.getTuanZhangDiZhi());
                 rowNumUser++;
+            }
+            int rowNumTuanName=1;
+            for(ImportData importData:execlTuanDatas){
+                HSSFRow rowas = sheetTuanName.createRow(rowNumTuanName);
+                rowas.createCell(0).setCellValue(importData.getUserName());
+                rowas.createCell(1).setCellValue("");
+                rowas.createCell(2).setCellValue(importData.getUserPhone());
+                rowas.createCell(3).setCellValue(importData.getShangPinName());
+                rowas.createCell(4).setCellValue(importData.getShangPinNumber());
+                rowas.createCell(5).setCellValue(importData.getTuanZhangName());
+                rowas.createCell(6).setCellValue(importData.getTuanZhangPhone());
+                rowas.createCell(7).setCellValue(importData.getTuanZhangDiZhi());
+                rowNumTuanName++;
             }
             String fileNameas = "单品统计-"+fileName;
             //生成excel文件
@@ -178,6 +195,41 @@ public class ExcelImportController {
             cell.setCellValue("团长名称");
             cell.setCellStyle(style);
         }else if (a ==3){
+            sheet.setColumnWidth(0,15*256);
+            sheet.setColumnWidth(1,17*256);
+            sheet.setColumnWidth(3,40*256);
+            cell = row.createCell(0);
+            cell.setCellValue("收货人");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(1);
+            cell.setCellValue("已取货打勾");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(2);
+            cell.setCellValue("联系电话");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(3);
+            cell.setCellValue("商品名称");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(4);
+            cell.setCellValue("商品数量");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(5);
+            cell.setCellValue("团长姓名");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(6);
+            cell.setCellValue("团长电话");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(7);
+            cell.setCellValue("完整地址");
+            cell.setCellStyle(style);
+        }else if (a ==4){
             sheet.setColumnWidth(0,15*256);
             sheet.setColumnWidth(1,17*256);
             sheet.setColumnWidth(3,40*256);
