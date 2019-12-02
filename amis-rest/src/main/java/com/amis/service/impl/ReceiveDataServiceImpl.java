@@ -153,6 +153,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
                 String tableName = entry.getKey().replace(":", "-") + "_"+yesterday;
                 receiveDataDao.insertMotionData(resultList,tableName);
             }
+            oldMotionDataEntityList.clear();
         }else if (insertPointer == 1){ //如果当前指针式1，将指针替换为0
             insertPointer = 0;
             long todayZeroDate = (new Date().getTime()/86400000L)*86400000L-28800000L-86400000L;            //算出昨天的日期
@@ -170,6 +171,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
                 String tableName = entry.getKey().replace(":", "-") + "_"+yesterday;
                 receiveDataDao.insertMotionData(resultList,tableName);
             }
+            newMotionDataEntityList.clear();
         }
         //获取当前日期，并创建新的数据库表
         long todayZeroDate = (new Date().getTime()/86400000L)*86400000L-28800000L;            //算出昨天的日期
@@ -192,12 +194,23 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
     @Override
     public Future<ResponseVO> queryWholeDataCriteria(QueryDataCriteria queryDataCriteria) throws IOException, ExecutionException, InterruptedException {
         List<ReslutMontionData> reslutMontionData = new ArrayList<>();
-        for(String key : oldMotionDataEntityList.keySet()){
-            queryDataCriteria.setMac(key);
-            Future<ResponseVO> responseVOFuture = queryDataCriteria(queryDataCriteria);
-            List<ReslutMontionData> reslutMontionData1 = (List<ReslutMontionData>) responseVOFuture.get().getData();
-            if (0 != reslutMontionData1.size()){
-                reslutMontionData.add (reslutMontionData1.get(0));
+        if (insertPointer == 0){
+            for(String key : oldMotionDataEntityList.keySet()){
+                queryDataCriteria.setMac(key);
+                Future<ResponseVO> responseVOFuture = queryDataCriteria(queryDataCriteria);
+                List<ReslutMontionData> reslutMontionData1 = (List<ReslutMontionData>) responseVOFuture.get().getData();
+                if (0 != reslutMontionData1.size()){
+                    reslutMontionData.add (reslutMontionData1.get(0));
+                }
+            }
+        }else {
+            for(String key : newMotionDataEntityList.keySet()){
+                queryDataCriteria.setMac(key);
+                Future<ResponseVO> responseVOFuture = queryDataCriteria(queryDataCriteria);
+                List<ReslutMontionData> reslutMontionData1 = (List<ReslutMontionData>) responseVOFuture.get().getData();
+                if (0 != reslutMontionData1.size()){
+                    reslutMontionData.add (reslutMontionData1.get(0));
+                }
             }
         }
         ResponseVO responseVO = new ResponseVO(MessageKey.RETURN_OK);
@@ -269,7 +282,7 @@ public class ReceiveDataServiceImpl implements ReceiveDataService {
                     motionDataEntities.add(oldMotionDataEntityList.get(mac)[(int)a]);
                 }
             }else if (insertPointer == 1){
-                if (oldMotionDataEntityList.get(mac) == null){
+                if (newMotionDataEntityList.get(mac) == null){
                     return null;
                 }
                 if (newMotionDataEntityList.get(mac)[(int)a] != null){

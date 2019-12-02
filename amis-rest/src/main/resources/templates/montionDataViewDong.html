@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" http-equiv="refresh" content="600">
     <link rel="stylesheet" href="/styeCss/montionDataView.css" />
 </head>
 <body style="height: 100%; margin: 0">
@@ -33,46 +33,7 @@
     <div id="she7A" class="she7A" style="height: 100%;width: 50%"></div>
     <div id="she7G" class="she7G" style="height: 100%;width: 50%"></div>
 </div>
-<div id="she8" style="height: 50%;">
-    <div id="she8A" class="she8A" style="height: 100%;width: 50%"></div>
-    <div id="she8G" class="she8G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she9" style="height: 50%;">
-    <div id="she9A" class="she9A" style="height: 100%;width: 50%"></div>
-    <div id="she9G" class="she9G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she10" style="height: 50%;">
-    <div id="she10A" class="she10A" style="height: 100%;width: 50%"></div>
-    <div id="she10G" class="she10G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she11" style="height: 50%;">
-    <div id="she11A" class="she11A" style="height: 100%;width: 50%"></div>
-    <div id="she11G" class="she11G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she12" style="height: 50%;">
-    <div id="she12A" class="she12A" style="height: 100%;width: 50%"></div>
-    <div id="she12G" class="she12G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she13" style="height: 50%;">
-    <div id="she13A" class="she13A" style="height: 100%;width: 50%"></div>
-    <div id="she13G" class="she13G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she14" style="height: 50%;">
-    <div id="she14A" class="she14A" style="height: 100%;width: 50%"></div>
-    <div id="she14G" class="she14G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she15" style="height: 50%;">
-    <div id="she15A" class="she15A" style="height: 100%;width: 50%"></div>
-    <div id="she15G" class="she15G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she16" style="height: 50%;">
-    <div id="she16A" class="she16A" style="height: 100%;width: 50%"></div>
-    <div id="she16G" class="she16G" style="height: 100%;width: 50%"></div>
-</div>
-<div id="she17" style="height: 50%;">
-    <div id="she17A" class="she17A" style="height: 100%;width: 50%"></div>
-    <div id="she17G" class="she17G" style="height: 100%;width: 50%"></div>
-</div>
+
 
 <script type="text/javascript" src="/js/echarts.min.js" ></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
@@ -82,60 +43,30 @@
 
 
 
-    const maxShe = 17;
+    const maxShe = 7;
     const initNum = 500;
     const iIntervalValCount = 48;
     const intervalParams = [
         {
-            mac :"F4:90:74:20:20:7D",
+            mac :"F1:F9:B4:B5:CD:78",
             curIdx : 500
         },{
-            mac :"D1:DC:AC:16:90:2D",
+            mac :"F6:B4:8A:3D:7C:8C",
             curIdx : 500
         },{
-            mac :"F6:DE:F5:50:26:E4",
-            curIdx : 500
-        },{
-            mac :"C9:53:D8:09:56:DA",
-            curIdx : 500
-        },{
-            mac :"ED:BA:5D:9E:18:B5",
+            mac :"E3:BC:7A:2B:BE:B6",
             curIdx : 500
         },{
             mac :"CC:7A:5B:12:9F:59",
             curIdx : 500
         },{
-            mac :"F4:CF:B5:39:17:D8",
+            mac :"D3:48:0A:4E:70:0F",
             curIdx : 500
         },{
-            mac :"F9:E9:F4:C3:EB:5B",
+            mac :"ED:B1:5D:9E:18:B5",
             curIdx : 500
         },{
-            mac :"F1:BD:95:D7:D0:A8",
-            curIdx : 500
-        },{
-            mac :"E5:DA:AA:2E:F2:44",
-            curIdx : 500
-        },{
-            mac :"D2:C7:F1:68:19:6B",
-            curIdx : 500
-        },{
-            mac :"CC:4B:1A:CA:59:32",
-            curIdx : 500
-        },{
-            mac :"E2:7E:E1:1F:E9:25",
-            curIdx : 500
-        },{
-            mac :"D3:B1:E9:F0:6B:C9",
-            curIdx : 500
-        },{
-            mac :"DE:F1:39:D2:41:A7",
-            curIdx : 500
-        },{
-            mac :"CD:8A:58:7E:29:B1",
-            curIdx : 500
-        },{
-            mac :"E2:7E:E1:1F:E9:25",
+            mac :"E3:E7:E7:F5:49:DD",
             curIdx : 500
         }]
 
@@ -175,8 +106,8 @@
 
     setInterval(function () {
         let params = new URLSearchParams();
-        params.append('startDate', new Date().getTime());
-        params.append('endDate', new Date().getTime());
+        params.append('startDate', new Date().getTime()-2000);
+        params.append('endDate', new Date().getTime()-2000);
         params.append('analysisType', 1);
         axios.post('/sprData/queryWholeDataCriteria',
             params
@@ -202,7 +133,7 @@
                                 sheDatas[iNum].gx.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].gx[i]));
                                 sheDatas[iNum].gy.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].gy[i]));
                                 sheDatas[iNum].gz.push(packageData(intervalParams[iNum].curIdx, intervalParams[iNum].curIdx, response.data.data[a].gz[i]));
-                                intervalParams[iNum].curIdx++;
+                                 intervalParams[iNum].curIdx++;
                             }
                             sheChartsA[iNum].setOption({
                                 title:{text:"设备"+iNum +"   Mac:"+intervalParams[iNum].mac},

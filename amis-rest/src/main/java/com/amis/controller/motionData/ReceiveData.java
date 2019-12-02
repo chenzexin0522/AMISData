@@ -61,16 +61,15 @@ public class ReceiveData {
      * @Description        查询指定设备时间范围内的数据
      **/
     @RequestMapping(value = "queryDataCriteria",method = RequestMethod.POST)//@RequestBody QueryDataCriteria queryDataCriteria
-    @ResponseBody
-    public ResponseVO queryDataCriteria(@RequestParam String mac, @RequestParam String startDate, @RequestParam String endDate, @RequestParam Integer analysisType) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
-        if (StringUtils.isBlank(String.valueOf(mac))){
+    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
+        if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
             throw new AmisException(MessageKey.PARAMETER_ERROR);
         }
-        QueryDataCriteria queryDataCriteria = new QueryDataCriteria();
-        queryDataCriteria.setMac(mac);
-        queryDataCriteria.setStartDate(Long.valueOf(startDate));
-        queryDataCriteria.setEndDate(Long.valueOf(endDate));
-        queryDataCriteria.setAnalysisType(analysisType);
+//        QueryDataCriteria queryDataCriteria = new QueryDataCriteria();
+//        queryDataCriteria.setMac(mac);
+//        queryDataCriteria.setStartDate(Long.valueOf(startDate));
+//        queryDataCriteria.setEndDate(Long.valueOf(endDate));
+//        queryDataCriteria.setAnalysisType(analysisType);
         Future<ResponseVO> future = receiveDataService.queryDataCriteria(queryDataCriteria);
         return future.get();
     }

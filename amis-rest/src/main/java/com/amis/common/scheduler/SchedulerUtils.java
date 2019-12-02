@@ -47,9 +47,9 @@ public class SchedulerUtils {
      * @return void
      * @Description        每天凌晨0点创建新表
      **/
-    @Scheduled(cron = "0 00 12 ? * *")
+    @Scheduled(cron = "0 00 18 ? * *")
     public void newBuildTab() {
-            receiveDataService.newBuildTab();
+           receiveDataService.newBuildTab();
     }
 
 

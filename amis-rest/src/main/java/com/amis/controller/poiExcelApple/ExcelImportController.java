@@ -4,6 +4,7 @@ import com.amis.entity.dto.ExeclTotalNumber;
 import com.amis.entity.dto.ExeclTuanTotalNumber;
 import com.amis.service.ExcelImportService;
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.usermodel.CellType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +61,7 @@ public class ExcelImportController {
 //获取每一行数据
                 row = sheet.getRow(i);
                 ImportData data = new ImportData();
+                row.getCell(4).setCellType(CellType.STRING);
                 data.setUserName(row.getCell(4).getStringCellValue());
                 data.setShangPinName(row.getCell(11).getStringCellValue());
                 data.setShangPinNumber(Integer.valueOf((int) row.getCell(13).getNumericCellValue()));
