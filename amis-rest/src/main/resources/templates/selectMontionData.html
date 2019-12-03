@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>AimsMotionData</title>
+    <script type="text/javascript" src="/js/echarts.min.js" ></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/styeCss/base.css" />
+</head>
+<body>
+<form method="post" id="editForm">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>查询范围：</b>
+    <b>从：</b>&nbsp;&nbsp;
+    <input id="start" type="datetime-local" value=""/>
+    &nbsp;&nbsp;&nbsp;&nbsp;<b>至：</b>&nbsp;&nbsp;
+    <input id="end" type="datetime-local" value=""/>
+    &nbsp;&nbsp;&nbsp;&nbsp;<b>设备编号：</b>&nbsp;&nbsp;
+    <select id="macId">
+        <option value ="D3:48:0A:4E:70:0F">D3:48:0A:4E:70:0F</option>
+        <option value ="02">02</option>
+        <option value ="03">03</option>
+        <option value ="04">04</option>
+        <option value ="05">05</option>
+        <option value ="06">06</option>
+        <option value ="07">07</option>
+        <option value ="08">08</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;<b>是否解析：</b>&nbsp;&nbsp;
+    <select id="analysisType">
+        <option value =1>是</option>
+        <option value =2>否</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" value="确认" class="submitBtn" onclick="selectStudentCurriculum()"/>
+</form>
+
+<br />
+
+<textarea id="returnJson" rows="300" cols="200">
+
+</textarea>
+
+</body>
+<script type="text/javascript">
+    function selectStudentCurriculum() {
+        var startDate =new Date(document.getElementById('start').value).getTime();
+        var endDate = new Date(document.getElementById('end').value).getTime();
+
+        var mac = document.getElementById('macId').value;
+        var analysisType = document.getElementById('analysisType').value;
+        $.ajax({
+            type : "post",
+            async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url : "/sprData/queryDataCriteria",    //请求发送到dataActiont处
+            data : {"startDate":startDate,"endDate":endDate,"mac":mac,"analysisType":analysisType},
+            dataType : "json",        //返回数据形式为json
+            success : function(result) {
+                var resultData = "";
+                for (var a = 0; a < result.data.length;a++){
+                    resultData += "mac:"+result.data[a].mac+",receiveTime:"+result.data[a].receiveTime+",arrindex:"+result.data[a].arrindex+
+                            ",ax:["+result.data[a].ax.toString()+"],ay:["+result.data[a].ay.toString()+"],az:["+result.data[a].az.toString()+"],gx:["+
+                        result.data[a].gx.toString()+"],gy:["+result.data[a].gx.toString()+"],gz:["+result.data[a].gz.toString()+"]"
+                 }
+                document.getElementById('returnJson').innerHTML = resultData;
+            }
+        });
+    }
+</script>
+</html>

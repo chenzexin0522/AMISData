@@ -10,8 +10,11 @@ import com.amis.entity.dto.RelayMacListDTO;
 import com.amis.service.ReceiveDataService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -61,15 +64,13 @@ public class ReceiveData {
      * @Description        查询指定设备时间范围内的数据
      **/
     @RequestMapping(value = "queryDataCriteria",method = RequestMethod.POST)//@RequestBody QueryDataCriteria queryDataCriteria
-    public ResponseVO queryDataCriteria(@RequestBody QueryDataCriteria queryDataCriteria) throws AmisException, ParseException, IOException, ExecutionException, InterruptedException {
-        if (StringUtils.isBlank(String.valueOf(queryDataCriteria.getMac()))){
-            throw new AmisException(MessageKey.PARAMETER_ERROR);
-        }
-//        QueryDataCriteria queryDataCriteria = new QueryDataCriteria();
-//        queryDataCriteria.setMac(mac);
-//        queryDataCriteria.setStartDate(Long.valueOf(startDate));
-//        queryDataCriteria.setEndDate(Long.valueOf(endDate));
-//        queryDataCriteria.setAnalysisType(analysisType);
+    @ResponseBody
+    public ResponseVO queryDataCriteria(HttpServletRequest request, HttpSession session, Model model) throws IOException, ParseException, ExecutionException, InterruptedException {
+        QueryDataCriteria queryDataCriteria = new QueryDataCriteria();
+        queryDataCriteria.setMac(request.getParameter("mac"));
+        queryDataCriteria.setStartDate(Long.valueOf(request.getParameter("startDate")));
+        queryDataCriteria.setEndDate(Long.valueOf(request.getParameter("endDate")));
+        queryDataCriteria.setAnalysisType(Integer.valueOf(request.getParameter("analysisType")));
         Future<ResponseVO> future = receiveDataService.queryDataCriteria(queryDataCriteria);
         return future.get();
     }
